@@ -6,8 +6,14 @@ export default function Navbar() {
   const { darkMode, toggledarkMode } = useDarkMode();
 
   return (
-    <div className="navbar">
-      <ul className="list bg-slate-200 flex items-center m-5 space-x-20 justify-center tracking-wide">
+    <div
+      className={
+        darkMode === "dark"
+          ? "navbar bg-dark-background-primary text-dark-text"
+          : "navbar bg-light-background-primary"
+      }
+    >
+      <ul className="list flex items-center m-5 space-x-20 justify-center tracking-wide">
         <li>Home</li>
         <li>Assets Return</li>
         <li>Macroeconomics Chart</li>
