@@ -9,8 +9,8 @@ export default function Navbar() {
   const [ProjectsOpen, setProjectsOpen] = useState(false);
 
   const buttonHoverColor =
-    darkMode === "dark" ? "hover:bg-gray-400" : "hover:bg-gray-400";
-  const projectsActiveColor = ProjectsOpen ? "bg-gray-400" : "";
+    darkMode === "dark" ? "hover:font-bold" : "hover:font-bold";
+  const projectsActiveColor = ProjectsOpen ? "font-bold" : "";
 
   const toggleProjects = () => {
     setProjectsOpen(!ProjectsOpen);
@@ -25,22 +25,32 @@ export default function Navbar() {
             : "flex-shrink-0 bg-gray-300 w-full"
         }
       >
-        <ul className="flex items-center justify-center space-x-44 tracking-widest text-lg h-full font-semibold">
-          <button className={`${buttonHoverColor} py-2 px-8 rounded`}>
-            <Link to="/" className="block w-full h-full">
-              HOME
+        <ul className="flex items-center justify-center space-x-4 text-lg h-full">
+          <li className="w-40">
+            <Link
+              to="/"
+              className={`${buttonHoverColor} block w-full h-full text-center py-1 px-3 rounded`}
+            >
+              Home
             </Link>
-          </button>
-          <button className={`${buttonHoverColor} py-2 px-8 rounded`}>
-            <Link to="/about">ABOUT</Link>
-          </button>
-          <button
-            className={`${buttonHoverColor} ${projectsActiveColor} py-2 px-3 rounded`}
-            onClick={toggleProjects}
-          >
-            PROJECTS ⏷
-          </button>
-          <li className="">
+          </li>
+          <li className="w-40">
+            <Link
+              to="/about"
+              className={`${buttonHoverColor} block w-full h-full text-center py-1 px-3 rounded`}
+            >
+              About
+            </Link>
+          </li>
+          <li className="w-40">
+            <span
+              onClick={toggleProjects}
+              className={`${buttonHoverColor} ${projectsActiveColor} block w-full h-full text-center py-1 px-3 rounded cursor-pointer`}
+            >
+              Projects ⏷
+            </span>
+          </li>
+          <li className="w-40 flex justify-center">
             <img
               src={darkMode === "dark" ? Sun : Moon}
               onClick={toggledarkMode}
