@@ -14,3 +14,12 @@
   -moz-osx-font-smoothing: grayscale;
   -webkit-text-size-adjust: 100%;
 }
+
+body {
+  transition: background-color 0.3s ease;
+  background-color: #f8f8f8;
+}
+
+body.dark {
+  background-color: #333;
+}
