@@ -8,12 +8,16 @@ export default function Navbar() {
   const { darkMode, toggledarkMode } = useDarkMode();
   const [ProjectsOpen, setProjectsOpen] = useState(false);
 
+  const buttonHoverColor =
+    darkMode === "dark" ? "hover:bg-gray-400" : "hover:bg-gray-400";
+  const projectsActiveColor = ProjectsOpen ? "bg-gray-400" : "";
+
   const toggleProjects = () => {
     setProjectsOpen(!ProjectsOpen);
   };
 
   return (
-    <div className="flex h-16 ml-32 mr-32">
+    <div className="flex h-16 ">
       <div
         className={
           darkMode === "dark"
@@ -21,15 +25,22 @@ export default function Navbar() {
             : "flex-shrink-0 bg-gray-300 w-full"
         }
       >
-        <ul className="flex items-center justify-center space-x-36 tracking-widest text-lg h-full">
-          <li>
-            <Link to="/">Home</Link>
-          </li>
-          <li>
-            <Link to="/about">About</Link>
-          </li>
-          <li onClick={toggleProjects}>Projects</li>
-          <li>
+        <ul className="flex items-center justify-center space-x-44 tracking-widest text-lg h-full font-semibold">
+          <button className={`${buttonHoverColor} py-2 px-8 rounded`}>
+            <Link to="/" className="block w-full h-full">
+              HOME
+            </Link>
+          </button>
+          <button className={`${buttonHoverColor} py-2 px-8 rounded`}>
+            <Link to="/about">ABOUT</Link>
+          </button>
+          <button
+            className={`${buttonHoverColor} ${projectsActiveColor} py-2 px-3 rounded`}
+            onClick={toggleProjects}
+          >
+            PROJECTS ⏷
+          </button>
+          <li className="">
             <img
               src={darkMode === "dark" ? Sun : Moon}
               onClick={toggledarkMode}
@@ -38,18 +49,33 @@ export default function Navbar() {
             />
           </li>
         </ul>
+        <div className="border-t border-gray-100"></div>
         {ProjectsOpen && (
           <div
             className={
               darkMode === "dark"
-                ? "bg-red-100 bg-opacity-20 h-16 items-center flex justify-center"
-                : "bg-gray-300  h-16 items-center flex justify-center"
+                ? "bg-red-100 bg-opacity-20 flex justify-center space-x-36"
+                : "bg-gray-300 flex justify-center space-x-36"
             }
           >
-            <ul className="flex space-x-16 justify-center text-lg tracking-widest">
-              <li>Assets Return</li>
-              <li>Macroeconomics Chart</li>
-              <li>Recession Model</li>
+            <ul className="flex flex-col space-y-4 text-lg  p-6">
+              <button className="text-left hover:font-bold">
+                Assets Return
+              </button>
+              <button className="text-left hover:font-bold w-60">
+                Macroeconomic Charts
+              </button>
+              <button className="text-left hover:font-bold ">
+                Recession Model
+              </button>
+            </ul>
+            <div className="border-l border-gray-100 "></div>
+
+            <ul className="flex flex-col space-y-4 text-lg p-6">
+              <button className="text-left hover:font-bold">Data</button>
+              <button className="text-left hover:font-bold w-40">
+                Architecture
+              </button>
             </ul>
           </div>
         )}
