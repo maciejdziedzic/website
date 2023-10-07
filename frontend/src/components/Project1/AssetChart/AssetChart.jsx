@@ -9,14 +9,16 @@ ChartJS.register(...registerables, dateFnsAdapter);
 
 const COLORS = {
   gold_pct: "rgb(238, 212, 133)",
-  house_pct: "rgb(165, 159, 159)",
+  house_pct: "rgb(229 229 229)",
   sp500_pct: "rgb(43, 142, 199)",
+  bond10tr_pct: "rgb(113 63 18)",
 };
 
 const METRIC_LABELS = {
   gold_pct: "Gold (%)",
   house_pct: "House (%)",
   sp500_pct: "SP500 (%)",
+  bond10tr_pct: "BONDS10Y (%)",
 };
 
 const chartOptions = {
@@ -132,6 +134,11 @@ const AssetChart = ({
     if (enabledMetrics.house_pct) {
       newCummulativePercentages.house_pct =
         calculateCummulativePercentage("house_pct");
+    }
+
+    if (enabledMetrics.bond10tr_pct) {
+      newCummulativePercentages.bond10tr_pct =
+        calculateCummulativePercentage("bond10tr_pct");
     }
 
     const chartData = {

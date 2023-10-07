@@ -14,6 +14,7 @@ const AssetDashboard = () => {
     gold_pct: true,
     house_pct: false,
     sp500_pct: false,
+    bond10tr_pct: false,
   });
   const [dividends, setDividends] = useState({ enabled: false, value: 2.8 });
   const [rent, setRent] = useState({ enabled: false, value: 4 });
@@ -127,7 +128,7 @@ const AssetDashboard = () => {
   };
 
   return (
-    <div>
+    <div className="flex">
       <div className="chart">
         <div className="dashboard1-ui flex flex-col lg:flex-row lg:justify-center xl:gap-60 lg:gap-40 lg:m-5 lg:scale-100 scale-90">
           {/* Assets Section */}
@@ -175,6 +176,7 @@ const AssetDashboard = () => {
                   />
                 </div>
               </div>
+
               <div className="button-checkbox flex items-center lg:space-x-4">
                 <Button1
                   onClick={() => toggleMetric("sp500_pct")}
@@ -212,6 +214,11 @@ const AssetDashboard = () => {
                 </div>
               </div>
             </div>
+            <Button1
+              onClick={() => toggleMetric("bond10tr_pct")}
+              label="BONDS10"
+              active={enabledMetrics.bond10tr_pct}
+            />
           </div>
 
           {/* Return Section */}
@@ -219,21 +226,27 @@ const AssetDashboard = () => {
             <h2 className="h2-title">Returns:</h2>
             <div className="space-y-2.5 button-txt ">
               <div className="flex space-x-3">
-                <div className="h-6 w-1 bg-light-bg-gold"></div>
+                <div className="h-6 w-1 bg-yellow-500"></div>
                 <span className="text-l">
                   {renderCummulativePercentage("Gold", "gold_pct")}
                 </span>
               </div>
               <div className="flex space-x-3">
-                <div className="h-6 w-1 bg-light-bg-house"></div>
+                <div className="h-6 w-1 bg-zinc-500"></div>
                 <span className="text-l">
                   {renderCummulativePercentage("House", "house_pct")}
                 </span>
               </div>
               <div className="flex space-x-3">
-                <div className="h-6 w-1 bg-light-bg-sp500"></div>
+                <div className="h-6 w-1 bg-blue-500"></div>
                 <span className="text-l">
                   {renderCummulativePercentage("SP500", "sp500_pct")}
+                </span>
+              </div>
+              <div className="flex space-x-3">
+                <div className="h-6 w-1 bg-yellow-900	"></div>
+                <span className="text-l">
+                  {renderCummulativePercentage("BONDS", "bond10tr_pct")}
                 </span>
               </div>
             </div>
