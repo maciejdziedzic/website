@@ -130,7 +130,7 @@ const AssetDashboard = () => {
   return (
     <div className="asset-dashboard  lg:flex  lg:justify-center lg:space-x-8">
       <div
-        className="left-section bg-neutral-400 bg-opacity-10 rounded shadow-md  lg:w-[22.5%]"
+        className="left-section bg-neutral-400 bg-opacity-10 rounded shadow-md  lg:w-[22.5%] 2xl:w-[18%]"
         style={{ color: darkMode ? "white" : "black" }}
       >
         <div className="lg:scale-90 lg:m-0 scale-90 flex-col md:flex sm:flex-col">
@@ -296,7 +296,7 @@ const AssetDashboard = () => {
           </div>
         </div>
       </div>
-      <div className="right-section flex lg:w-[72.5%] m-5 md:m-0">
+      <div className="right-section flex lg:w-[72.5%] 2xl:w-[80%] m-5 md:m-0">
         <div className="chart-container">
           <AssetChart
             data={displayedData}
