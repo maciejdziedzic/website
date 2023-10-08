@@ -16,7 +16,6 @@ export const DarkModeProvider = ({ children }) => {
     }
   }, [darkMode]); // Listen for changes to the darkMode state
 
-  // Helper function to toggle the darkMode between 'light' and 'dark'
   const toggledarkMode = () => {
     setdarkMode((prevdarkMode) =>
       prevdarkMode === "light" ? "dark" : "light"

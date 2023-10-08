@@ -1,12 +1,15 @@
 .left-section {
-  width: 25%;
-  margin-bottom: 0.2rem;
+  width: 22.5%;
+  /* margin-bottom: 0.2rem; */
 }
 
 .right-section {
-  width: 75%;
+  width: 72.5%;
 }
 
+.chart-container {
+  width: 100%;
+}
 .h1-title {
   font-weight: 600;
   font-size: small;
@@ -15,5 +18,4 @@
 
 .button-txt {
   font-weight: 600;
-  font-size: ;
 }

@@ -128,9 +128,9 @@ const AssetDashboard = () => {
   };
 
   return (
-    <div className="asset-dashboard flex  scale-95">
-      <div className="left-section">
-        <div className="">
+    <div className="asset-dashboard flex justify-center space-x-10">
+      <div className="left-section bg-slate-600 bg-opacity-10 rounded flex justify-center items-center">
+        <div className=" scale-90">
           {/* Assets Section */}
           <div className=" mb-8">
             <h1 className="h1-title">Assets:</h1>
@@ -293,8 +293,8 @@ const AssetDashboard = () => {
           </div>
         </div>
       </div>
-      <div className="right-section ">
-        <div className="chart-box">
+      <div className="right-section justify-center items-center flex bg-inherit">
+        <div className="chart-container">
           <AssetChart
             data={displayedData}
             enabledMetrics={enabledMetrics}

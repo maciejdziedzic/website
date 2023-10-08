@@ -21,37 +21,6 @@ const METRIC_LABELS = {
   bond10tr_pct: "BONDS10Y (%)",
 };
 
-const chartOptions = {
-  scales: {
-    x: {
-      type: "time",
-      time: {
-        unit: "year",
-        displayFormats: {
-          year: "yyyy",
-        },
-      },
-      ticks: {
-        autoSkip: true,
-        maxTicksLimit: 10,
-      },
-    },
-  },
-  plugins: {
-    tooltip: {
-      callbacks: {
-        title: () => "",
-        label: (tooltipItem) => {
-          const date = new Date(tooltipItem.parsed.x);
-          const label = tooltipItem.dataset.label;
-          const value = tooltipItem.parsed.y.toFixed(2);
-          return `${label}: ${value}, ${date.getFullYear()}`;
-        },
-      },
-    },
-  },
-};
-
 const applyAdjustment = (originalValue, adjustment) =>
   originalValue + Number(adjustment);
 
@@ -102,6 +71,39 @@ const AssetChart = ({
 }) => {
   const [finalChartData, setFinalChartData] = useState({});
   const { darkMode } = useDarkMode();
+  console.log(darkMode);
+
+  const chartOptions = () => ({
+    scales: {
+      x: {
+        type: "time",
+        time: {
+          unit: "year",
+          displayFormats: {
+            year: "yyyy",
+          },
+        },
+        ticks: {
+          autoSkip: true,
+          maxTicksLimit: 10,
+          color: darkMode ? "white" : "black",
+        },
+      },
+    },
+    plugins: {
+      tooltip: {
+        callbacks: {
+          title: () => "",
+          label: (tooltipItem) => {
+            const date = new Date(tooltipItem.parsed.x);
+            const label = tooltipItem.dataset.label;
+            const value = tooltipItem.parsed.y.toFixed(2);
+            return `${label}: ${value}, ${date.getFullYear()}`;
+          },
+        },
+      },
+    },
+  });
 
   useEffect(() => {
     let modifiedData = adjustForDividendsAndRent(data, dividends, rent);
@@ -165,12 +167,9 @@ const AssetChart = ({
   ]);
 
   return (
-    <div
-      className="chart"
-      style={{ backgroundColor: darkMode === "dark" ? "#d1d5db" : "white" }}
-    >
+    <div className="chart">
       {finalChartData.labels && finalChartData.datasets && (
-        <Chart type="bar" data={finalChartData} options={chartOptions} />
+        <Chart type="bar" data={finalChartData} options={chartOptions()} />
       )}
     </div>
   );
