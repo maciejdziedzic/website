@@ -1,9 +1,19 @@
-.h2-title {
-  margin: 0.8rem 0rem 1.2rem 0rem;
-  font-size: small;
+.left-section {
+  width: 25%;
+  margin-bottom: 0.2rem;
+}
+
+.right-section {
+  width: 75%;
+}
+
+.h1-title {
   font-weight: 600;
+  font-size: small;
+  margin-bottom: 0.4rem;
 }
 
 .button-txt {
-  font-weight: 500;
+  font-weight: 600;
+  font-size: ;
 }

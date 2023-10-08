@@ -18,15 +18,15 @@ export default function Navbar() {
 
   return (
     <div style={{ position: "sticky", top: "0", zIndex: "1000" }}>
-      <div className="flex h-16 mt-4">
+      <div className="flex h-6 m-4">
         <div
           className={
             darkMode === "dark"
-              ? "flex-shrink-0 text-dark-text bg-red-100 bg-opacity-20 w-full"
+              ? "flex-shrink-0 text-dark-text bg-blue-950	  w-full"
               : "flex-shrink-0 bg-gray-300 w-full"
           }
         >
-          <ul className="flex items-center justify-center space-x-4 text-lg h-full tracking-widest">
+          <ul className="flex items-center justify-center space-x-4 text-sm h-full tracking-widest">
             <li className="w-40">
               <Link
                 to="/"
@@ -56,7 +56,7 @@ export default function Navbar() {
                 src={darkMode === "dark" ? Sun : Moon}
                 onClick={toggledarkMode}
                 alt="Toggle Dark Mode"
-                className="w-6 h-6 cursor-pointer"
+                className="w-5 h-5 cursor-pointer"
               />
             </li>
           </ul>
@@ -65,11 +65,11 @@ export default function Navbar() {
             <div
               className={
                 darkMode === "dark"
-                  ? "bg-red-100 bg-opacity-20 flex justify-center space-x-36"
+                  ? "bg-blue-950 flex justify-center space-x-36"
                   : "bg-gray-300 flex justify-center space-x-36"
               }
             >
-              <ul className="flex flex-col space-y-4 text-lg  p-6">
+              <ul className="flex flex-col space-y-4 text-sm  p-2">
                 <Link to="/project1">
                   <button className="text-left hover:font-bold">
                     Assets Return
@@ -84,7 +84,7 @@ export default function Navbar() {
               </ul>
               <div className="border-l border-gray-100 "></div>
 
-              <ul className="flex flex-col space-y-4 text-lg p-6">
+              <ul className="flex flex-col space-y-4 text-sm p-6">
                 <button className="text-left hover:font-bold">Data</button>
                 <button className="text-left hover:font-bold w-40">
                   Architecture

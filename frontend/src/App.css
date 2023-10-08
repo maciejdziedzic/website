@@ -15,11 +15,6 @@
   -webkit-text-size-adjust: 100%;
 }
 
-.pages {
-  height: 160vh;
-  margin: 10rem auto;
-}
-
 body {
   transition: background-color 0.2s ease;
   background-color: #f1f0f0;

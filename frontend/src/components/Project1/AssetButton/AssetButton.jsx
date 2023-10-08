@@ -1,9 +1,10 @@
 import PropTypes from "prop-types";
+import "./AssetButton.css";
 
 const Button1 = ({ onClick, label, active }) => {
   return (
     <button
-      className={`w-24 min-w-[96px] flex-shrink-0 h-7 my-0.5 tracking-wider font-bold rounded
+      className={`button1 w-18 min-w-[96px] flex-shrink-0 h-6 my-0.5 tracking-wider font-bold rounded 
 
     ${
       active

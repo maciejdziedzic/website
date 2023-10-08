@@ -5,8 +5,8 @@ import fetchData from "../../../utils/fetchData";
 import Slider from "@mui/material/Slider";
 import Box from "@mui/material/Box";
 import useDarkMode from "../../../contexts/DarkMode/useDarkMode";
-import "./AssetDashboard.css";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
+import "./AssetDashboard.css";
 
 const AssetDashboard = () => {
   const [data, setData] = useState([]);
@@ -128,14 +128,15 @@ const AssetDashboard = () => {
   };
 
   return (
-    <div className="flex">
-      <div className="chart">
-        <div className="dashboard1-ui flex flex-col lg:flex-row lg:justify-center xl:gap-60 lg:gap-40 lg:m-5 lg:scale-100 scale-90">
+    <div className="asset-dashboard flex  scale-95">
+      <div className="left-section">
+        <div className="">
           {/* Assets Section */}
-          <div className="ui-buttons lg:mt-0 -mt-5">
-            <h2 className="h2-title ml-1">Assets:</h2>
+          <div className=" mb-8">
+            <h1 className="h1-title">Assets:</h1>
             <div className="">
               <Button1
+                className=""
                 onClick={() => toggleMetric("gold_pct")}
                 label="GOLD"
                 active={enabledMetrics.gold_pct}
@@ -190,7 +191,7 @@ const AssetDashboard = () => {
                       checked={dividends.enabled}
                       onChange={toggleDividends}
                       disabled={!enabledMetrics.sp500_pct}
-                      className="ml-2 lg:ml-0"
+                      className=""
                     />
                     <span className="ml-0.5">Dividends (%)</span>
                   </label>
@@ -222,9 +223,9 @@ const AssetDashboard = () => {
           </div>
 
           {/* Return Section */}
-          <div className="stats lg:ml-[-7rem]">
-            <h2 className="h2-title">Returns:</h2>
-            <div className="space-y-2.5 button-txt ">
+          <div className="stats mb-8">
+            <h1 className="h1-title">Returns:</h1>
+            <div className="space-y-2.5 button-txt">
               <div className="flex space-x-3">
                 <div className="h-6 w-1 bg-yellow-500"></div>
                 <span className="text-l">
@@ -254,8 +255,8 @@ const AssetDashboard = () => {
 
           {/* Settings Section */}
           <div>
-            <h2 className="h2-title">Settings:</h2>
-            <div className="lg:mt-1">
+            <h2 className="h1-title">Settings:</h2>
+            <div className="">
               <div>
                 <label>
                   <input
@@ -268,7 +269,7 @@ const AssetDashboard = () => {
               </div>
 
               {/* Slider */}
-              <div className="slider-chart lg:mt-7">
+              <div className="slider-chart ">
                 <Box sx={{ width: 240, margin: "0.6rem" }}>
                   <ThemeProvider theme={theme}>
                     <Slider
@@ -292,7 +293,7 @@ const AssetDashboard = () => {
           </div>
         </div>
       </div>
-      <div className="chart-box-box bg-white lg:ml-10 lg:mr-10 lg:mt-5 m-2">
+      <div className="right-section ">
         <div className="chart-box">
           <AssetChart
             data={displayedData}
