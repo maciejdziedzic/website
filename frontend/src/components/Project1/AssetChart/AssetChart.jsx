@@ -9,9 +9,9 @@ ChartJS.register(...registerables, dateFnsAdapter);
 
 const COLORS = {
   gold_pct: "rgb(238, 212, 133)",
-  house_pct: "rgb(229 229 229)",
+  house_pct: "rgb(23 23 23)",
   sp500_pct: "rgb(43, 142, 199)",
-  bond10tr_pct: "rgb(113 63 18)",
+  bond10tr_pct: "rgb(100 100 100)",
 };
 
 const METRIC_LABELS = {
@@ -85,12 +85,25 @@ const AssetChart = ({
         },
         ticks: {
           autoSkip: true,
-          maxTicksLimit: 10,
+          maxTicksLimit: 11,
+          color: darkMode ? "white" : "black",
+        },
+        grid: {
+          color: darkMode ? "rgba(100, 100, 0, 0.1)" : "rgba(0, 0, 0, 0.1)", // optional: adjust grid color
+        },
+      },
+      y: {
+        ticks: {
           color: darkMode ? "white" : "black",
         },
       },
     },
     plugins: {
+      legend: {
+        labels: {
+          color: darkMode ? "white" : "black",
+        },
+      },
       tooltip: {
         callbacks: {
           title: () => "",

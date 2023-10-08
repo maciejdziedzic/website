@@ -1,6 +1,5 @@
 .left-section {
   width: 22.5%;
-  /* margin-bottom: 0.2rem; */
 }
 
 .right-section {
@@ -17,5 +16,5 @@
 }
 
 .button-txt {
-  font-weight: 600;
+  font-weight: 500;
 }

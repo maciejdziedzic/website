@@ -2,7 +2,7 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import Sun from "../../assets/sun.svg";
 import Moon from "../../assets/moon.svg";
-import useDarkMode from "../../contexts/Darkmode/useDarkMode";
+import useDarkMode from "../../contexts/DarkMode/useDarkMode";
 
 export default function Navbar() {
   const { darkMode, toggledarkMode } = useDarkMode();
@@ -17,12 +17,12 @@ export default function Navbar() {
 
   return (
     <div style={{ position: "sticky", top: "0", zIndex: "1000" }}>
-      <div className="flex h-6 m-4">
+      <div className="flex h-6 mb-5 m-4">
         <div
           className={
             darkMode
-              ? "flex-shrink-0 text-dark-text bg-blue-950	  w-full"
-              : "flex-shrink-0 bg-gray-300 w-full"
+              ? "flex-shrink-0 text-dark-text  w-full"
+              : "flex-shrink-0  w-full"
           }
         >
           <ul className="flex items-center justify-center space-x-4 text-sm h-full tracking-widest">
@@ -59,13 +59,13 @@ export default function Navbar() {
               />
             </li>
           </ul>
-          <div className="border-t border-gray-100"></div>
+          <div className="border-t border-gray-100 "></div>
           {ProjectsOpen && (
             <div
               className={
-                darkMode === "dark"
-                  ? "bg-blue-950 flex justify-center space-x-36"
-                  : "bg-gray-300 flex justify-center space-x-36"
+                darkMode
+                  ? "bg-neutral-700   flex justify-center space-x-36"
+                  : "bg-neutral-100 flex justify-center space-x-36"
               }
             >
               <ul className="flex flex-col space-y-4 text-sm  p-2">
