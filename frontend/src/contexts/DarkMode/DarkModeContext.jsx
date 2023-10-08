@@ -4,22 +4,15 @@ import PropTypes from "prop-types";
 export const DarkModeContext = createContext();
 
 export const DarkModeProvider = ({ children }) => {
-  const [darkMode, setdarkMode] = useState("light");
+  const [darkMode, setdarkMode] = useState(false);
 
   useEffect(() => {
-    if (darkMode === "dark") {
-      document.body.classList.add("dark");
-      document.body.classList.remove("light");
-    } else {
-      document.body.classList.add("light");
-      document.body.classList.remove("dark");
-    }
+    document.body.classList.toggle("dark", darkMode);
+    document.body.classList.toggle("light", !darkMode);
   }, [darkMode]); // Listen for changes to the darkMode state
 
   const toggledarkMode = () => {
-    setdarkMode((prevdarkMode) =>
-      prevdarkMode === "light" ? "dark" : "light"
-    );
+    setdarkMode((prevdarkMode) => !prevdarkMode);
   };
 
   return (

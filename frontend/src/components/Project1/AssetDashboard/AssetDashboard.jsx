@@ -41,20 +41,20 @@ const AssetDashboard = () => {
           },
           track: {
             height: 1.2,
-            backgroundColor: `${darkMode === "dark" ? "#e2e2e2" : "#000000"}`, // Your existing color for the track (axis)
+            backgroundColor: `${darkMode ? "#e2e2e2" : "#000000"}`, // Your existing color for the track (axis)
           },
           rail: {
-            backgroundColor: `${darkMode === "dark" ? "#000000" : "#e5e7eb"}`,
+            backgroundColor: `${darkMode ? "#000000" : "#e5e7eb"}`,
           },
           markLabel: {
-            color: `${darkMode === "dark" ? "#fff" : "#000000"}`,
+            color: `${darkMode ? "#fff" : "#000000"}`,
           },
           valueLabel: {
-            background: `${darkMode === "dark" ? "#737373" : "#fff"}`,
+            background: `${darkMode ? "#737373" : "#fff"}`,
             top: -6,
             "& *": {
-              background: `${darkMode === "dark" ? "#737373" : "#fff"}`,
-              color: `${darkMode === "dark" ? "#fff" : "#000"}`,
+              background: `${darkMode ? "#737373" : "#fff"}`,
+              color: `${darkMode ? "#fff" : "#000"}`,
             },
             "&:before": {
               display: "none",

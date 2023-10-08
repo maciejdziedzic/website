@@ -8,8 +8,7 @@ export default function Navbar() {
   const { darkMode, toggledarkMode } = useDarkMode();
   const [ProjectsOpen, setProjectsOpen] = useState(false);
 
-  const buttonHoverColor =
-    darkMode === "dark" ? "hover:font-bold" : "hover:font-bold";
+  const buttonHoverColor = darkMode ? "hover:font-bold" : "hover:font-bold";
   const projectsActiveColor = ProjectsOpen ? "font-bold" : "";
 
   const toggleProjects = () => {
@@ -21,7 +20,7 @@ export default function Navbar() {
       <div className="flex h-6 m-4">
         <div
           className={
-            darkMode === "dark"
+            darkMode
               ? "flex-shrink-0 text-dark-text bg-blue-950	  w-full"
               : "flex-shrink-0 bg-gray-300 w-full"
           }
@@ -53,7 +52,7 @@ export default function Navbar() {
             </li>
             <li className="w-40 flex justify-center">
               <img
-                src={darkMode === "dark" ? Sun : Moon}
+                src={darkMode ? Sun : Moon}
                 onClick={toggledarkMode}
                 alt="Toggle Dark Mode"
                 className="w-5 h-5 cursor-pointer"
