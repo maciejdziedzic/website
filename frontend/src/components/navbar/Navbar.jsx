@@ -17,7 +17,7 @@ export default function Navbar() {
 
   return (
     <div style={{ position: "sticky", top: "0", zIndex: "1000" }}>
-      <div className="flex h-6 mb-5 m-4">
+      <div className="flex h-6 mb-5 ">
         <div
           className={
             darkMode
@@ -64,7 +64,7 @@ export default function Navbar() {
             <div
               className={
                 darkMode
-                  ? "bg-neutral-700   flex justify-center space-x-36"
+                  ? "bg-neutral-700 flex justify-center space-x-36"
                   : "bg-neutral-100 flex justify-center space-x-36"
               }
             >

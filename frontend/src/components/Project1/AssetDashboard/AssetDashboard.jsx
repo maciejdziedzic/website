@@ -128,12 +128,12 @@ const AssetDashboard = () => {
   };
 
   return (
-    <div className="asset-dashboard flex justify-center space-x-8">
+    <div className="asset-dashboard lg:flex  lg:justify-center lg:space-x-8 ">
       <div
-        className="left-section bg-neutral-400 bg-opacity-10 rounded shadow-md"
+        className="left-section bg-neutral-400 bg-opacity-10 rounded shadow-md  lg:w-[22.5%]"
         style={{ color: darkMode ? "white" : "black" }}
       >
-        <div className="scale-90">
+        <div className="lg:scale-90 lg:m-0 scale-90  flex-col md:flex sm:flex-col">
           {/* Assets Section */}
           <div className=" mb-8">
             <h1 className="h1-title">Assets:</h1>
@@ -159,7 +159,7 @@ const AssetDashboard = () => {
                       disabled={!enabledMetrics.house_pct}
                       className="ml-2 lg:ml-0"
                     />
-                    <span className="ml-0.5">Rent (%)</span>
+                    <span className="ml-0.5 text-sm">Rent (%)</span>
                   </label>
                   <input
                     type="number"
@@ -188,7 +188,7 @@ const AssetDashboard = () => {
                   active={enabledMetrics.sp500_pct}
                 />
                 <div className="rent-div space-x-2">
-                  <label>
+                  <label className="">
                     <input
                       type="checkbox"
                       checked={dividends.enabled}
@@ -196,7 +196,7 @@ const AssetDashboard = () => {
                       disabled={!enabledMetrics.sp500_pct}
                       className=""
                     />
-                    <span className="ml-0.5">Dividends (%)</span>
+                    <span className="ml-0.5 text-sm ">Dividends (%)</span>
                   </label>
                   <input
                     type="number"
@@ -236,7 +236,7 @@ const AssetDashboard = () => {
                 </span>
               </div>
               <div className="flex space-x-3">
-                <div className="h-8 w-1 bg-zinc-500"></div>
+                <div className="h-8 w-1 bg-red-300"></div>
                 <span className="text-2xl">
                   {renderCummulativePercentage("House", "house_pct")}
                 </span>
@@ -248,7 +248,7 @@ const AssetDashboard = () => {
                 </span>
               </div>
               <div className="flex space-x-3">
-                <div className="h-8 w-1 bg-yellow-900	"></div>
+                <div className="h-8 w-1 bg-green-800	"></div>
                 <span className="text-2xl">
                   {renderCummulativePercentage("BONDS", "bond10tr_pct")}
                 </span>
@@ -296,7 +296,7 @@ const AssetDashboard = () => {
           </div>
         </div>
       </div>
-      <div className="right-section flex  ">
+      <div className="right-section flex lg:w-[72.5%] ">
         <div className="chart-container">
           <AssetChart
             data={displayedData}
