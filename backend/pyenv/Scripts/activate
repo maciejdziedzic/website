@@ -38,7 +38,7 @@ deactivate () {
 # unset irrelevant variables
 deactivate nondestructive
 
-VIRTUAL_ENV="C:\Users\Maciek\Desktop\website\backend\py-env-website"
+VIRTUAL_ENV="C:\Users\Maciek\Desktop\website\backend\pyenv"
 export VIRTUAL_ENV
 
 _OLD_VIRTUAL_PATH="$PATH"
@@ -55,9 +55,9 @@ fi
 
 if [ -z "${VIRTUAL_ENV_DISABLE_PROMPT:-}" ] ; then
     _OLD_VIRTUAL_PS1="${PS1:-}"
-    PS1="(py-env-website) ${PS1:-}"
+    PS1="(pyenv) ${PS1:-}"
     export PS1
-    VIRTUAL_ENV_PROMPT="(py-env-website) "
+    VIRTUAL_ENV_PROMPT="(pyenv) "
     export VIRTUAL_ENV_PROMPT
 fi
 
