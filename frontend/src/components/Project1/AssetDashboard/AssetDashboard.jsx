@@ -189,7 +189,7 @@ const AssetDashboard = () => {
                   active={enabledMetrics.sp500_pct}
                 />
                 <div className="rent-div space-x-2">
-                  <label className="">
+                  <label className="lg:ml-0 ml-2">
                     <input
                       type="checkbox"
                       checked={dividends.enabled}

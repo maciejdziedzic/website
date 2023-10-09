@@ -8,7 +8,7 @@ const Button1 = ({ onClick, label, active }) => {
 
   return (
     <button
-      className={`button1 w-18 min-w-[96px] flex-shrink-0 h-6 my-0.5 tracking-wider font-bold rounded 
+      className={`button1 w-18 min-w-[96px] flex-shrink-0 h-6 my-1 tracking-wider font-bold rounded 
 
       ${
         active
