@@ -77,7 +77,7 @@ const EconomicChart = ({ data, activeSeries }) => {
     };
 
     const newData = {
-      labels: data.map((item) => item.date),
+      labels: data.map((item) => new Date(item.date)),
       datasets: activeSeriesKeys.map((key) => ({
         label: Labels[key].label, // Correctly access the label property
         backgroundColor: Labels[key].color, // setting the color here

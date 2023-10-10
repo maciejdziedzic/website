@@ -14,8 +14,15 @@ db = client['economic_data']
 def get_data():
     collection = db['economic_collection']
     data = list(collection.find({}, {'_id': False}))
-    print(data)
-    return jsonify(data)
+
+    # Convert NaN to None
+    clean_data = [
+        {k: (v if v == v else None)
+         for k, v in item.items()}  # v==v is False for NaN
+        for item in data
+    ]
+
+    return jsonify(clean_data)
 
 
 if __name__ == "__main__":

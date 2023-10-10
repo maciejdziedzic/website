@@ -1,4 +1,4 @@
-import fetchData from "../../../utils/fetchData";
+// import fetchData from "../../../utils/fetchData";
 import EconomicChart from "../EconomicChart/EconomicChart";
 import Button2 from "../Button2/Button2";
 import { useState, useEffect } from "react";
@@ -14,21 +14,25 @@ const EconomicDashboard = () => {
       {}
     )
   );
+
   const { darkMode } = useDarkMode();
+
   useEffect(() => {
-    const loadAndSetData = async () => {
-      const fileName = "dataProject2.csv";
-      const rows = await fetchData(fileName);
-      const modifiedRows = rows.map((row) => ({
-        ...row,
-        house_per_wage: row.house_per_wage
-          ? parseFloat(row.house_per_wage)
-          : null,
-      }));
-      setData(modifiedRows);
+    const fetchAndSetData = async () => {
+      try {
+        // Fetch data from your Flask API
+        const response = await fetch("http://localhost:5000/get_data");
+        const fetchedData = await response.json();
+
+        console.log(fetchedData);
+
+        setData(fetchedData);
+      } catch (error) {
+        console.error("An error occurred while fetching data: ", error);
+      }
     };
 
-    loadAndSetData();
+    fetchAndSetData();
   }, []);
 
   const toggleSeries = (label) => {
