@@ -49,8 +49,8 @@ const EconomicDashboard = () => {
   };
 
   return (
-    <div className="box">
-      <div className="button-box flex text-xs justify-center">
+    <div className="box flex ">
+      <div className="left-section button-box flex-col text-xs w-[22.5%] ">
         {seriesLabels.map((label) => (
           <Button2
             key={label}
@@ -67,7 +67,7 @@ const EconomicDashboard = () => {
       </div>
 
       <div
-        className="scale-95"
+        className="right-section scale-95 w-[72.5%]"
         style={{ backgroundColor: darkMode ? "#d1d5db" : "white" }}
       >
         <EconomicChart data={data} activeSeries={activeSeries} />
