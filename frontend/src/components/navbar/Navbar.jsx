@@ -79,9 +79,11 @@ export default function Navbar() {
                     Macroeconomic Charts
                   </button>
                 </Link>
-                <button className="text-left hover:font-bold ">
-                  Recession Model
-                </button>
+                <Link to="/project3">
+                  <button className="text-left hover:font-bold ">
+                    Recession Model
+                  </button>
+                </Link>
               </ul>
               <div className="border-l border-gray-100 "></div>
 
