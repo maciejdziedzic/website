@@ -1,10 +1,12 @@
-import Start from "../../../components/Project3/Start/Start";
+import GetEconomicData from "../../../components/Project3/GetEconomicData/GetEconomicData";
+import GptInterpretation from "../../../components/Project3/GptInterpretation/GptInterpretation";
 
-export default function Project2() {
+export default function Project3() {
   return (
     <div>
       <div className=" ">
-        <Start />
+        <GetEconomicData />
+        <GptInterpretation />
       </div>
     </div>
   );
