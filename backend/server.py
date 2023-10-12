@@ -2,10 +2,17 @@
 from flask import Flask, jsonify
 from flask_cors import CORS
 from pymongo import MongoClient
+import os
+from fredapi import Fred
+from dotenv import load_dotenv
 
 app = Flask(__name__)
-CORS(app)
+CORS(app, resources={r"/api/*": {"origins": "http://localhost:5173"}})
 
+
+load_dotenv(".env")
+FRED_API_KEY = os.getenv("API_KEY")
+fred = Fred(api_key=FRED_API_KEY)
 client = MongoClient('mongodb://127.0.0.1:27017/')
 db = client['economic_data']
 
@@ -27,7 +34,12 @@ def get_data():
 
 @app.route('/api/fetch-data', methods=['GET', 'POST'])
 def get_model_data():
-    return 'hello world'
+    try:
+        bonds2tr = fred.get_series('T10Y2Y')
+
+        return jsonify(bonds2tr.to_list())
+    except Exception as e:
+        return print(e), 500
 
 
 if __name__ == "__main__":
