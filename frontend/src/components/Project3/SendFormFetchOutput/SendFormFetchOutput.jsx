@@ -2,35 +2,86 @@ import { useState } from "react";
 import axios from "axios";
 
 export default function SendFormFetchOutput() {
-  const [data, setData] = useState(null);
-  const [loading, setLoading] = useState(false);
-  const [error, setError] = useState(null);
+  const [t10y2yData, setT10y2yData] = useState(null);
+  const [gdpData, setGdpData] = useState(null);
+  const [interpretationData, setInterpretationData] = useState(null);
 
-  async function fetchData() {
-    setLoading(true);
+  const [loadingT10y2y, setLoadingT10y2y] = useState(false);
+  const [loadingGdp, setLoadingGdp] = useState(false);
+  const [loadingInterpretation, setLoadingInterpretation] = useState(false);
 
+  const [errorT10y2y, setErrorT10y2y] = useState(null);
+  const [errorGdp, setErrorGdp] = useState(null);
+  const [errorInterpretation, setErrorInterpretation] = useState(null);
+
+  async function fetchT10y2y() {
+    setLoadingT10y2y(true);
     try {
       const response = await axios.get(
-        "http://127.0.0.1:5000/api/fetch-data",
-        {}
+        "http://127.0.0.1:5000/api/fetch-t10y2y"
       );
-      setData(response.data);
+      setT10y2yData(response.data);
     } catch (err) {
-      console.error("Error fetching data:", err);
-      setError(err.message);
+      setErrorT10y2y(err.message);
     } finally {
-      setLoading(false);
+      setLoadingT10y2y(false);
+    }
+  }
+
+  async function fetchGdp() {
+    setLoadingGdp(true);
+    try {
+      const response = await axios.get("http://127.0.0.1:5000/api/fetch-gdp");
+      setGdpData(response.data.gdp);
+    } catch (err) {
+      setErrorGdp(err.message);
+    } finally {
+      setLoadingGdp(false);
+    }
+  }
+
+  async function fetchInterpretation() {
+    setLoadingInterpretation(true);
+    try {
+      const response = await axios.get(
+        "http://127.0.0.1:5000/api/fetch-interpretation"
+      );
+      setInterpretationData(response.data);
+    } catch (err) {
+      setErrorInterpretation(err.message);
+    } finally {
+      setLoadingInterpretation(false);
     }
   }
 
   return (
-    <div>
-      <button className="bg-red-200" onClick={fetchData} formMethod="GET">
-        Fetch Data
-      </button>
-      {loading && <p>Loading ...</p>}
-      {error && <p>Error: {error}</p>}
-      {data && <div>{data}</div>}
-    </div>
+    <>
+      <div>
+        <button className="bg-red-200" onClick={fetchT10y2y} formMethod="GET">
+          T10Y2Y
+        </button>
+        {loadingT10y2y && <p>Loading T10Y2Y...</p>}
+        {errorT10y2y && <p>Error: {errorT10y2y}</p>}
+        {t10y2yData && <div>Data: {JSON.stringify(t10y2yData)}</div>}
+
+        <button className="bg-blue-200" onClick={fetchGdp} formMethod="GET">
+          Fetch GDP
+        </button>
+        {loadingGdp && <p>Loading GDP...</p>}
+        {errorGdp && <p>Error: {errorGdp}</p>}
+        {gdpData && <div>GDP: {gdpData}</div>}
+
+        <button
+          className="bg-green-200"
+          onClick={fetchInterpretation}
+          formMethod="GET"
+        >
+          Get Interpretation
+        </button>
+        {loadingInterpretation && <p>Loading Interpretation...</p>}
+        {errorInterpretation && <p>Error: {errorInterpretation}</p>}
+        {interpretationData && <div>Interpretation: {interpretationData}</div>}
+      </div>
+    </>
   );
 }
