@@ -25,5 +25,10 @@ def get_data():
     return jsonify(clean_data)
 
 
+@app.route('/api/fetch-data', methods=['GET', 'POST'])
+def get_model_data():
+    return 'hello world'
+
+
 if __name__ == "__main__":
     app.run(debug=True)
