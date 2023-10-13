@@ -21,10 +21,8 @@ const EconomicDashboard = () => {
     const fetchAndSetData = async () => {
       try {
         // Fetch data from your Flask API
-        const response = await fetch("http://localhost:5000/get_data");
+        const response = await fetch("http://127.0.0.1:5000/api/get_data");
         const fetchedData = await response.json();
-
-        console.log(fetchedData);
 
         setData(fetchedData);
       } catch (error) {

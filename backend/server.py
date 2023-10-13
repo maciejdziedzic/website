@@ -28,16 +28,16 @@ db = client['economic_data']
 
 @app.route('/get_data', methods=['GET'])
 def get_data():
-    collection = db['economic_collection']
-    data = list(collection.find({}, {'_id': False}))
+    # collection = db['economic_collection']
+    # data = list(collection.find({}, {'_id': False}))
 
-    # Convert NaN to None
-    clean_data = [
-        {k: (v if v == v else None)
-         for k, v in item.items()}  # v==v is False for NaN
-        for item in data
-    ]
-
+    # # Convert NaN to None
+    # clean_data = [
+    #     {k: (v if v == v else None)
+    #      for k, v in item.items()}  # v==v is False for NaN
+    #     for item in data
+    # ]
+    clean_data = 'test'
     return jsonify(clean_data)
 
 
