@@ -32,7 +32,7 @@ export default function SendFormFetchOutput() {
     setLoadingGdp(true);
     try {
       const response = await axios.get("http://127.0.0.1:5000/api/fetch-gdp");
-      setGdpData(response.data.gdp);
+      setGdpData(response.data);
     } catch (err) {
       setErrorGdp(err.message);
     } finally {
@@ -62,7 +62,7 @@ export default function SendFormFetchOutput() {
         </button>
         {loadingT10y2y && <p>Loading T10Y2Y...</p>}
         {errorT10y2y && <p>Error: {errorT10y2y}</p>}
-        {t10y2yData && <div>Data: {JSON.stringify(t10y2yData)}</div>}
+        {t10y2yData && <div>{JSON.stringify(t10y2yData)}</div>}
 
         <button className="bg-blue-200" onClick={fetchGdp} formMethod="GET">
           Fetch GDP
