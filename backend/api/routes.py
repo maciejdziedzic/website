@@ -20,26 +20,28 @@ def get_data():
 
 @api_blueprint.route('/run-model', methods=['POST'])
 def predict():
-    # data = request.get_json
-    # return jsonify(message="Endpoint hit")
+    data = request.get_json()
+
     try:
+
+        # return 'helo kurwa'
         # Get JSON data
         data = request.get_json()
-        # Extract gdp and iyc values
+        # # Extract gdp and iyc values
         gdp = data.get('gdp')
         iyc = data.get('iyc')
+        # print(jsonify(data))
+        return jsonify(data)
 
-        print(f"gdp: {gdp}, iyc: {iyc}")
-        return jsonify('hello world')
-    #     # Run model
-    #     feature_values = [gdp, iyc]
-    #     # These should be the actual feature names used during training
-    #     feature_names = ['gdp', 'iyc']
-    #     X_test = pd.DataFrame([feature_values], columns=feature_names)
-    #     pred_test = logistic_regression.predict(X_test)
+        # # Run model
+        # feature_values = [gdp, iyc]
+        # These should be the actual feature names used during training
+        # feature_names = ['gdp', 'iyc']
+        # X_test = pd.DataFrame([feature_values], columns=feature_names)
+        # pred_test = logistic_regression.predict(X_test)
 
-    #     # Return prediction as JSON
-    #     return jsonify(prediction=pred_test.tolist())
+        # # Return prediction as JSON
+        # return jsonify(prediction=pred_test.tolist())
 
     except Exception as e:
         return jsonify(error=str(e)), 500
