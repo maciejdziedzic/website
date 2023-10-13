@@ -52,4 +52,4 @@ def fetch_data():
         data['gdp_status'] = "error"
         data['gdp_error'] = str(e)
 
-    return jsonify(data)
+    return data
