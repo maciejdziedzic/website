@@ -29,4 +29,11 @@ Lib
 Scripts
 
 # CPython Cache
+# Ignore the pycache directory
 __pycache__/
+
+# Ignore all .pyc files
+*.pyc
+
+# If using Jupyter Notebooks
+.ipynb_checkpoints/
