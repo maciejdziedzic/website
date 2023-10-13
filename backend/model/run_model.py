@@ -11,7 +11,9 @@ X_test = pd.DataFrame([feature_values], columns=feature_names)
 pred_test = logistic_regression.predict(X_test)
 
 print(pred_test)
-# def run_model():
-#     log_msg = 'hello model'
-#     print(log_msg)
-#     return log_msg
+
+
+def run_model():
+    log_msg = 'hello model'
+    print(log_msg)
+    return log_msg
