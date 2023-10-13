@@ -1,7 +1,6 @@
 from flask import Blueprint, jsonify, request
 from services.fetch_data import fetch_data
 import pandas as pd
-from model.run_model import run_model
 import joblib
 import logging
 
@@ -20,7 +19,7 @@ def get_data():
         return jsonify(error=str(e)), 500
 
 
-logistic_regression = joblib.load('data/saved_model.pkl')
+logistic_regression = joblib.load('model/saved_model.pkl')
 
 
 @api_blueprint.route('/run-model', methods=['POST'])
@@ -42,7 +41,6 @@ def predict():
         print(type(str(pred_test)))
         # # Return prediction as JSON
         return jsonify(str(pred_test))
-        # return jsonify(prediction=pred_test.tolist())
 
     except Exception as e:
         return jsonify(error=str(e)), 500
