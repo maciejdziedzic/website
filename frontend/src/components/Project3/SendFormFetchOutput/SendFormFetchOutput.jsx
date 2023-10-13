@@ -9,9 +9,9 @@ export default function GetEconomicData() {
     try {
       const response = await axios.get("http://127.0.0.1:5000/api/fetch-data");
       setData(response.data);
+      console.log(data);
     } catch (error) {
       console.error("Error fetching data: ", error);
-      // Handle error appropriately for your app
     }
   };
 
@@ -24,11 +24,8 @@ export default function GetEconomicData() {
       setModelResult(response.data);
     } catch (error) {
       console.error("Error running model: ", error);
-      // Handle error appropriately for your app
     }
   };
-
-  // ... rest of your component
 
   return (
     <>
