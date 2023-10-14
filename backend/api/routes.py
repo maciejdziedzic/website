@@ -7,7 +7,7 @@ import joblib
 import logging
 from pymongo import MongoClient
 
-logging.basicConfig(level=logging.DEBUG)
+# logging.basicConfig(level=logging.DEBUG)
 
 api_blueprint = Blueprint('api', __name__, url_prefix='/api')
 
@@ -17,9 +17,8 @@ def get_interpretation():
     try:
         data = request.get_json()
         interpreted_data = interpretation(data)
-        return jsonify(interpreted_data)
+        return interpreted_data
     except Exception as e:
-        app.logger.error(f"Failed to get interpretation: {str(e)}")
         return jsonify(error=str(e)), 500
 
 
