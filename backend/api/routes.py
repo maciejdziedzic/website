@@ -1,5 +1,7 @@
 from flask import Blueprint, jsonify, request
-from services.fetch_data import fetch_data
+from services.fetch_from_fred import fetch_data
+from services.fetch_from_fred import fetch_text
+from services.interpret import interpretation
 import pandas as pd
 import joblib
 import logging
@@ -10,11 +12,31 @@ logging.basicConfig(level=logging.DEBUG)
 api_blueprint = Blueprint('api', __name__, url_prefix='/api')
 
 
+@api_blueprint.route('/fetch-interpretation', methods=['GET', 'POST'])
+def get_interpretation():
+    try:
+        data = request.get_json()
+        interpreted_data = interpretation(data)
+        return jsonify(interpreted_data)
+    except Exception as e:
+        app.logger.error(f"Failed to get interpretation: {str(e)}")
+        return jsonify(error=str(e)), 500
+
+
 @api_blueprint.route('/fetch-data', methods=['GET'])
 def get_data():
     try:
         data = fetch_data()
+        return jsonify(data)
+    except Exception as e:
+        return jsonify(error=str(e)), 500
 
+
+@api_blueprint.route('/fetch-text', methods=['Get', 'POST'])
+def get_text():
+    try:
+        data = fetch_text()
+        print(data)
         return jsonify(data)
     except Exception as e:
         return jsonify(error=str(e)), 500
@@ -25,10 +47,8 @@ logistic_regression = joblib.load('model/saved_model.pkl')
 
 @api_blueprint.route('/run-model', methods=['POST'])
 def predict():
-
     try:
         data = request.get_json()
-        print(data)
         # # Extract gdp and iyc values
         gdp = data.get('gdp')
         iyc = data.get('iyc')

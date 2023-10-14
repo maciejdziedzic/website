@@ -33,8 +33,8 @@ def fetch_data():
         response = requests.get(url)
         if response.status_code == 200:
             soup = BeautifulSoup(response.text, 'html.parser')
-            css_selector = 'body > div.container > article:nth-child(2) > section > div:nth-child(2) > div.col-lg-11 > div > div.col-lg-9 > div.row.GDPNowLatest > p:nth-child(1) > strong'
-            desired_element = soup.select_one(css_selector)
+            gdp_css_selector = 'body > div.container > article:nth-child(2) > section > div:nth-child(2) > div.col-lg-11 > div > div.col-lg-9 > div.row.GDPNowLatest > p:nth-child(1) > strong'
+            desired_element = soup.select_one(gdp_css_selector)
             if desired_element is not None:
                 element_text = desired_element.get_text(strip=True)
                 match = re.search(r'(\d+\.\d+|\d+)', element_text)
@@ -51,5 +51,31 @@ def fetch_data():
         data['gdp'] = None
         data['gdp_status'] = "error"
         data['gdp_error'] = str(e)
+
+    return data
+
+
+def fetch_text():
+    data = {}
+    error_messages = []
+    # Fetch Text
+    try:
+        response = requests.get(url)
+        if response.status_code == 200:
+            soup = BeautifulSoup(response.text, 'html.parser')
+            text_css_selector = 'body > div.container > article:nth-child(2) > section > div:nth-child(2) > div.col-lg-11 > div > div.col-lg-9 > div.row.GDPNowLatest > p:nth-child(2)'
+            desired_element = soup.select_one(text_css_selector)
+            if desired_element is not None:
+                element_text = desired_element.get_text(strip=True)
+                data['text'] = element_text
+                data['text_status'] = "success"
+            else:
+                raise ValueError("Element not found")
+        else:
+            raise ValueError("Failed to retrieve the text from the page")
+    except Exception as e:
+        data['text'] = None
+        data['text_status'] = "error"
+        data['text_error'] = str(e)
 
     return data
