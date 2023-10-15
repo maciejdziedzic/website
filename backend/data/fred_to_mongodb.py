@@ -6,16 +6,15 @@ from dotenv import load_dotenv
 import datetime
 from fredapi import Fred
 
-# Determine paths and load .env file
-env_path = Path(__file__).resolve().parent.parent / '.env'
+env_path = pathlib.Path(__file__).resolve().parent.parent / '.env'
 load_dotenv(dotenv_path=env_path)
-
 FRED_API_KEY = os.getenv("FRED_API_KEY")
 fred = Fred(api_key=FRED_API_KEY)
 
+
 client = MongoClient('localhost', 27017)
-db = client.data_project2
-collection = db.collection_project2
+db = client.project2_data
+collection = db.project2_collection
 
 # Define your series dictionary, start and end dates as before
 series_dict = {
@@ -46,23 +45,30 @@ end_date = datetime.datetime(2022, 12, 31)
 # Initialize DataFrames
 dfs = {'M': pd.DataFrame(), 'Q': pd.DataFrame(), 'A': pd.DataFrame()}
 
-# Function to fetch and merge series data
-dd = fred.get_series('UNRATE')
 
-print(type(dd))
-# def fetch_and_merge(df, var_name, series_id, start, end):
-#     series_data = fred.get_series(series_id)
-#     series_data = series_data.loc[start_date:end_date]
-#     series_df = series_data.to_frame(name=var_name)
-#     series_df.index.name = 'date'
-#     return df.join(series_df, how='inner') if not df.empty else series_df
+def fetch_and_merge(df, var_name, series_id, start, end):
+    series_data = fred.get_series(series_id)
+    series_data = series_data.loc[start_date:end_date]
+    series_df = series_data.to_frame(name=var_name)
+    series_df.index.name = 'date'
+    return df.join(series_df, how='inner') if not df.empty else series_df
 
 
-# # Loop through each series
-# for var_name, (series_id, freq) in series_dict.items():
-#     dfs[freq] = fetch_and_merge(
-#         dfs[freq], var_name, series_id, start_date, end_date)
+# Loop through each series
+for var_name, (series_id, freq) in series_dict.items():
+    dfs[freq] = fetch_and_merge(
+        dfs[freq], var_name, series_id, start_date, end_date)
 
-# # Merge the DataFrames
-# df = dfs['M'].join(dfs['Q'], how='outer').join(dfs['A'], how='outer')
-# print(df.head())
+df = {}
+df['D_M'] = dfs['D'].resample('M').last()
+df['M_M'] = dfs['M'].resample('M').last()
+df['Q_M'] = dfs['Q'].resample('M').ffill()
+new_dates = pd.date_range(
+    start=df['Q_M'].index.min(), end='2022-12-31', freq='M')
+df['Q_M'] = df['Q_M'].reindex(new_dates).ffill()
+
+data = pd.concat([df['D_M'], df['M_M'], df['Q_M']], axis=1)
+
+data = data.reset_index()
+data_to_insert = data.to_dict(orient='records')
+collection.insert_many(data_to_insert)
