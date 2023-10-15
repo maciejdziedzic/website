@@ -1,4 +1,3 @@
-// import fetchData from "../../../utils/fetchData";
 import EconomicChart from "../EconomicChart/EconomicChart";
 import Button2 from "../Button2/Button2";
 import { useState, useEffect } from "react";

@@ -67,12 +67,12 @@ def predict():
 
 
 client = MongoClient('mongodb://127.0.0.1:27017/')
-db = client['economic_data']
+db = client['project2_db']
 
 
 @api_blueprint.route('/get_data', methods=['GET'])
 def get_from_mongodb():
-    collection = db['economic_collection']
+    collection = db['project2_collection']
     data = list(collection.find({}, {'_id': False}))
 
     # Convert NaN to None
