@@ -2,12 +2,13 @@ from flask import jsonify
 from fredapi import Fred
 from dotenv import load_dotenv
 import os
+import pathlib
 import requests
 from bs4 import BeautifulSoup
 import re
 
-# Load FRED API Key
-load_dotenv(".env")
+env_path = pathlib.Path(__file__).resolve().parent.parent / '.env'
+load_dotenv(dotenv_path=env_path)
 FRED_API_KEY = os.getenv("FRED_API_KEY")
 fred = Fred(api_key=FRED_API_KEY)
 
