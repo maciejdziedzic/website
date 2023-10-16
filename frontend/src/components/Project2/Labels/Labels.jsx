@@ -8,7 +8,7 @@ export const Labels = {
   // fedrate: { label: "Fedrate", color: "rgb(255, 99, 132)" },
   // gdp_pct: { label: "GDP", color: "rgb(201, 99, 132)" },
   // debt_to_gdp: { label: "DEBT/GDP", color: "rgb(54, 162, 235)" },
-  // m0_to_gdp: { label: "M0/GDP", color: "rgb(43, 142, 199)" },
+  m0_to_gdp: { label: "M0/GDP", color: "rgb(43, 142, 199)" },
   // m1_to_gdp: { label: "M1/GDP", color: "rgb(73, 190, 170)" },
   // m2_to_gdp: { label: "M2/GDP", color: "rgb(255, 99, 132)" },
   // fedrate: { label: "Fedrate", color: "rgb(255, 99, 132)" },
