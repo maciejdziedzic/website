@@ -22,10 +22,11 @@ def get_interpretation():
         return jsonify(error=str(e)), 500
 
 
-@api_blueprint.route('/fetch-data', methods=['GET'])
-def get_data():
+@api_blueprint.route('/fetch-data', methods=['GET', 'POST'])
+def fetch_data():
     try:
         data = fetch_data()
+        print('hello world')
         return jsonify(data)
     except Exception as e:
         return jsonify(error=str(e)), 500
@@ -72,7 +73,7 @@ db = client['project2_db']
 
 @api_blueprint.route('/get_data', methods=['GET'])
 def get_from_mongodb():
-    collection = db['project2_collection']
+    collection = db['economic_collection']
     data = list(collection.find({}, {'_id': False}))
 
     # Convert NaN to None
