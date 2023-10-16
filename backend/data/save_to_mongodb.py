@@ -6,7 +6,7 @@ from dotenv import load_dotenv
 import datetime
 from fredapi import Fred
 
-env_path = pathlib.Path(__file__).resolve().parent.parent / '.env'
+env_path = pathlib.Path('..') / '.env'
 load_dotenv(dotenv_path=env_path)
 FRED_API_KEY = os.getenv("FRED_API_KEY")
 fred = Fred(api_key=FRED_API_KEY)
@@ -70,6 +70,8 @@ df['Q_M'] = df['Q_M'].reindex(new_dates).ffill()
 
 data = pd.concat([df['D_M'], df['M_M'], df['Q_M']], axis=1)
 
+data.index.name = 'date'
 data = data.reset_index()
+
 data_to_insert = data.to_dict(orient='records')
 collection.insert_many(data_to_insert)
