@@ -23,10 +23,9 @@ def get_interpretation():
 
 
 @api_blueprint.route('/fetch-data', methods=['GET', 'POST'])
-def fetch_data():
+def get_fetch_data():
     try:
         data = fetch_data()
-        print('hello world')
         return jsonify(data)
     except Exception as e:
         return jsonify(error=str(e)), 500
