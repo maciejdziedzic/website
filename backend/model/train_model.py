@@ -98,7 +98,7 @@ df = df[(df.index >= start_date) & (df.index <= end_date)]
 # Build and validate models
 X_sp500 = df[['cpi_pct', 'fed_sentiment']].values
 y_sp500 = df['sp500_q_pct'].values
-build_and_validate_model(X_sp500, y_sp500, "S&P 500")
+build_and_validate_model(X_sp500, y_sp500, "S&P500")
 
 X_gold = df[['cpi_pct', 'fed_sentiment']].values
 y_gold = df['gold_q_pct'].values

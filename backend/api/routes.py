@@ -41,7 +41,7 @@ def get_text():
         return jsonify(error=str(e)), 500
 
 
-logistic_regression = joblib.load('model/saved_model.pkl')
+logistic_regression = joblib.load('model/Gold_model.pkl')
 
 
 @api_blueprint.route('/run-model', methods=['POST'])
