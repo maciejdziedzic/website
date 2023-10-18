@@ -1,89 +1,105 @@
 import os
 import datetime
+import pandas as pd
+import numpy as np
 from fredapi import Fred
 from dotenv import load_dotenv
-import pandas as pd
-from sklearn.model_selection import train_test_split
-from sklearn.linear_model import LogisticRegression
-from sklearn.ensemble import RandomForestClassifier
-from sklearn.metrics import confusion_matrix, classification_report, accuracy_score
+from sklearn.model_selection import TimeSeriesSplit
+from sklearn.metrics import mean_squared_error
+from sklearn.linear_model import LinearRegression
+import statsmodels.api as sm
 import joblib
-import numpy as np
 
-load_dotenv("backend/.env")
+
+def load_data_from_fred(api_key, series_code):
+    fred = Fred(api_key=api_key)
+    series = fred.get_series(series_code)
+    df = pd.DataFrame(series)
+    return df
+
+
+def preprocess_stooq_data(filepath, column_name):
+    df = pd.read_csv(filepath)
+    df['Data'] = pd.to_datetime(df['Data'])
+    df.set_index('Data', inplace=True)
+    df = df.rename(columns={"Zamkniecie": column_name})
+    df = df[[column_name]]
+    df_q = df.resample('Q').last()
+    df_q[f'{column_name}_q_pct'] = df_q[column_name].pct_change() * 100
+    df_q = df_q.drop(column_name, axis=1)
+    return df_q[(df_q.index >= start_date) & (df_q.index <= end_date)]
+
+
+def build_and_validate_model(X, y, model_name):
+    tscv = TimeSeriesSplit(n_splits=2)
+    model = LinearRegression()
+
+    for train_index, test_index in tscv.split(X):
+        X_train, X_test = X[train_index], X[test_index]
+        y_train, y_test = y[train_index], y[test_index]
+        model.fit(X_train, y_train)
+        predictions = model.predict(X_test)
+        mse = mean_squared_error(y_test, predictions)
+        print(f"{model_name} Test MSE: {mse}")
+
+    print(f"{model_name} Model Coefficients:", model.coef_)
+    print(f"{model_name} Model Intercept:", model.intercept_)
+
+    r2_score_train = model.score(X_train, y_train)
+    r2_score_test = model.score(X_test, y_test)
+
+    print(f"{model_name} Training R^2: {r2_score_train}")
+    print(f"{model_name} Test R^2: {r2_score_test}")
+
+    # Statsmodels for detailed statistics
+    X_with_const = sm.add_constant(X_train)
+    ols_model = sm.OLS(y_train, X_with_const)
+    result = ols_model.fit()
+    print(result.summary())
+
+    # Save model to a .pkl file
+    joblib.dump(model, f"{model_name}_model.pkl")
+
+    return model
+
+
+# Environment setup
+load_dotenv("../.env")
 FRED_API_KEY = os.getenv("API_KEY")
-fred = Fred(api_key=FRED_API_KEY)
 
 start_date = datetime.datetime(1970, 1, 1)
 end_date = datetime.datetime(2022, 12, 31)
-extended_date_range = pd.date_range(start=start_date, end=end_date)
 
-series_dict = {
-    'bonds2tr': ('DGS2', 'M'),
-    'gdp': ('GDP', 'Q'),
-    'recession': ('JHDUSRGDPBR', 'Q'),
-    'bonds10tr': ('DGS10', 'M'),
-    'cpi': ('CPIAUCSL', 'M'),
-}
-
-__bonds2tr = fred.get_series(series_dict['bonds2tr'][0])
-b2tr_start_date = pd.Timestamp('1976-06-01')
-b2tr_end_date = pd.Timestamp('1977-12-31')
-missing_start_date = pd.Timestamp('1970-01-31')
-mean_value = __bonds2tr[b2tr_start_date:b2tr_end_date].mean()
-missing_dates = pd.date_range(
-    start=missing_start_date, end=b2tr_start_date - pd.DateOffset(days=1), freq='M')
-missing_df = pd.DataFrame(index=missing_dates, data={'bonds2tr': mean_value})
-bonds2tr_df = pd.DataFrame(__bonds2tr, columns=['bonds2tr'])
-extended_df = pd.concat([missing_df, bonds2tr_df])
-result_df = extended_df.resample('Q').last()
-bonds2tr = result_df[(result_df.index >= start_date)
-                     & (result_df.index <= end_date)]
-
-bonds10tr = fred.get_series(series_dict['bonds10tr'][0])
-bonds10tr = pd.DataFrame(bonds10tr, columns=['bonds10tr'])
-bonds10tr = bonds10tr.resample('Q').last()
-bonds10tr = bonds10tr[(bonds10tr.index >= start_date)
-                      & (bonds10tr.index <= end_date)]
-
-iyc = bonds10tr['bonds10tr']/100 - bonds2tr['bonds2tr']/100
-iyc = pd.DataFrame(iyc, columns=['iyc'])
-
-cpi = fred.get_series(series_dict['cpi'][0])
-cpi = pd.DataFrame(cpi, columns=['cpi'])
+# Data loading and preprocessing
+gold = preprocess_stooq_data('../data/xausd.csv', 'gold')
+sp500 = preprocess_stooq_data('../data/spx.csv', 'sp500')
+cpi = load_data_from_fred(FRED_API_KEY, 'CPIAUCSL')
+cpi.columns = ['cpi']
 cpi = cpi.resample('Q').last()
-cpi = cpi[(cpi.index >= start_date) & (cpi.index <= end_date)]
+cpi['cpi_pct'] = cpi['cpi'].pct_change() * 100
+cpi.index = cpi.index + pd.offsets.MonthEnd(0)
+cpi.index.name = 'date'
+fedrate = load_data_from_fred(FRED_API_KEY, 'FEDFUNDS')
+fedrate.columns = ['fedrate']
+fedrate_avg = fedrate.resample('Q').mean()
+fedrate = fedrate_avg[(fedrate_avg.index >= start_date)
+                      & (fedrate_avg.index <= end_date)]
+fedrate.index.name = 'date'
 
-gdp = fred.get_series(series_dict['gdp'][0])
-gdp = pd.DataFrame(gdp, columns=['gdp'])
-gdp['gdp'] = gdp['gdp'].pct_change()
-gdp = gdp[(gdp.index >= start_date) & (gdp.index <= end_date)]
-gdp.index = gdp.index.to_period('Q').to_timestamp('Q')
+# Final DataFrame
+df = pd.concat([gold, sp500, cpi, fedrate], axis=1)
+df = df.drop(['cpi'], axis=1)
+df['fedrate_change'] = df['fedrate'].diff()
+df['fed_sentiment'] = np.where(
+    df['fedrate_change'] > 0, 1, np.where(df['fedrate_change'] < 0, -1, 0))
+df = df.drop(columns=['fedrate_change'])
+df = df[(df.index >= start_date) & (df.index <= end_date)]
 
-recession = fred.get_series(series_dict['recession'][0])
-recession = pd.DataFrame(recession, columns=['recession'])
-recession = recession.resample('Q').last()
-recession = recession[(recession.index >= start_date)
-                      & (recession.index <= end_date)]
-df = pd.concat([recession, gdp,  iyc], axis=1)
-df.index.name = 'date'
+# Build and validate models
+X_sp500 = df[['cpi_pct', 'fed_sentiment']].values
+y_sp500 = df['sp500_q_pct'].values
+build_and_validate_model(X_sp500, y_sp500, "S&P 500")
 
-# Splitting data into train and test sets
-X = df[['gdp',  'iyc']]
-y = df['recession']
-X_train, X_test, y_train, y_test = train_test_split(
-    X, y, test_size=0.2, random_state=42)
-
-# Initializing models
-logreg = LogisticRegression()
-rf = RandomForestClassifier()
-
-# Fitting and predicting with Logistic Regression
-logreg.fit(X_train, y_train)
-y_pred_logreg = logreg.predict(X_test)
-
-# Fitting and predicting with Random Forest
-rf.fit(X_train, y_train)
-y_pred_rf = rf.predict(X_test)
-
-joblib.dump(rf, 'backend/model/saved_model.pkl')
+X_gold = df[['cpi_pct', 'fed_sentiment']].values
+y_gold = df['gold_q_pct'].values
+build_and_validate_model(X_gold, y_gold, "Gold")
