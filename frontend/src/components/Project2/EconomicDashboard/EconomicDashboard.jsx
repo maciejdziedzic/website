@@ -4,7 +4,7 @@ import { useState, useEffect } from "react";
 import { Labels } from "../Labels/Labels";
 import useDarkMode from "../../../contexts/DarkMode/useDarkMode";
 
-import fetchData from "../../../utils/fetchData";
+// import fetchData from "../../../utils/fetchData";
 
 const seriesLabels = Object.keys(Labels);
 const EconomicDashboard = () => {
@@ -17,36 +17,36 @@ const EconomicDashboard = () => {
   );
 
   const { darkMode } = useDarkMode();
-  useEffect(() => {
-    const loadAndSetData = async () => {
-      const rows = await fetchData("quaterly_last_record.csv");
-      const modifiedRows = rows.map((row) => ({
-        ...row,
-        house_per_wage: row.house_per_wage
-          ? parseFloat(row.house_per_wage)
-          : null,
-      }));
-      setData(modifiedRows);
-    };
-
-    loadAndSetData();
-  }, []);
-
   // useEffect(() => {
-  //   const fetchAndSetData = async () => {
-  //     try {
-  //       // Fetch data from your Flask API
-  //       const response = await fetch("http://127.0.0.1:5000/api/get_data");
-  //       const fetchedData = await response.json();
-
-  //       setData(fetchedData);
-  //     } catch (error) {
-  //       console.error("An error occurred while fetching data: ", error);
-  //     }
+  //   const loadAndSetData = async () => {
+  //     const rows = await fetchData("quaterly_last_record.csv");
+  //     const modifiedRows = rows.map((row) => ({
+  //       ...row,
+  //       house_per_wage: row.house_per_wage
+  //         ? parseFloat(row.house_per_wage)
+  //         : null,
+  //     }));
+  //     setData(modifiedRows);
   //   };
 
-  //   fetchAndSetData();
+  //   loadAndSetData();
   // }, []);
+
+  useEffect(() => {
+    const fetchAndSetData = async () => {
+      try {
+        // Fetch data from your Flask API
+        const response = await fetch("http://127.0.0.1:5000/api/get_data");
+        const fetchedData = await response.json();
+
+        setData(fetchedData);
+      } catch (error) {
+        console.error("An error occurred while fetching data: ", error);
+      }
+    };
+
+    fetchAndSetData();
+  }, []);
 
   const toggleSeries = (label) => {
     setActiveSeries((prev) => {
