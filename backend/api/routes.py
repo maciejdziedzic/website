@@ -1,11 +1,11 @@
 from flask import Blueprint, jsonify, request
-from services.fetch_from_fred import fetch_data
-from services.fetch_from_fred import fetch_text
+from services.fetch_from_fred import fetch_data, fetch_text, fetch_combined_data
 from services.interpret import interpretation
 import pandas as pd
 import joblib
 import logging
 from pymongo import MongoClient
+
 
 # logging.basicConfig(level=logging.DEBUG)
 
@@ -23,19 +23,9 @@ def get_interpretation():
 
 
 @api_blueprint.route('/fetch-data', methods=['GET', 'POST'])
-def get_fetch_data():
+def get_data():
     try:
-        data = fetch_data()
-        return jsonify(data)
-    except Exception as e:
-        return jsonify(error=str(e)), 500
-
-
-@api_blueprint.route('/fetch-text', methods=['Get', 'POST'])
-def get_text():
-    try:
-        data = fetch_text()
-        print(data)
+        data = fetch_combined_data()
         return jsonify(data)
     except Exception as e:
         return jsonify(error=str(e)), 500
