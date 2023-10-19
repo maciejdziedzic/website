@@ -3,7 +3,7 @@ import pandas as pd
 import joblib
 import logging
 from pymongo import MongoClient
-from services.fetch_from_fred import fetch_data, fetch_text, fetch_combined_data
+from services.fetch_from_fred import fetch_combined_data
 
 
 # logging.basicConfig(level=logging.DEBUG)
