@@ -1,25 +1,14 @@
 from flask import Blueprint, jsonify, request
-from services.fetch_from_fred import fetch_data, fetch_text, fetch_combined_data
-from services.interpret import interpretation
 import pandas as pd
 import joblib
 import logging
 from pymongo import MongoClient
+from services.fetch_from_fred import fetch_data, fetch_text, fetch_combined_data
 
 
 # logging.basicConfig(level=logging.DEBUG)
 
 api_blueprint = Blueprint('api', __name__, url_prefix='/api')
-
-
-@api_blueprint.route('/fetch-interpretation', methods=['GET', 'POST'])
-def get_interpretation():
-    try:
-        data = request.get_json()
-        interpreted_data = interpretation(data)
-        return interpreted_data
-    except Exception as e:
-        return jsonify(error=str(e)), 500
 
 
 @api_blueprint.route('/fetch-data', methods=['GET', 'POST'])
@@ -31,7 +20,7 @@ def get_data():
         return jsonify(error=str(e)), 500
 
 
-logistic_regression = joblib.load('model/Gold_model.pkl')
+logistic_regression = joblib.load('model/S&P500_model.pkl')
 
 
 @api_blueprint.route('/run-model', methods=['POST'])
@@ -39,8 +28,8 @@ def predict():
     try:
         data = request.get_json()
         # # Extract gdp and iyc values
-        gdp = data.get('gdp')
-        iyc = data.get('iyc')
+        gdp = data['cpi_data']['cpi']
+        iyc = int(data['interpretation'])
 
         # # Run model
         feature_values = [gdp, iyc]
