@@ -68,12 +68,41 @@ const EconomicChart = ({ data, activeSeries }) => {
               return "";
             },
             label: function (tooltipItem) {
+              const monthNames = [
+                "Jan",
+                "Feb",
+                "Mar",
+                "Apr",
+                "May",
+                "Jun",
+                "Jul",
+                "Aug",
+                "Sep",
+                "Oct",
+                "Nov",
+                "Dec",
+              ];
               const datasetLabel = tooltipItem.dataset.label;
               const friendlyLabel = Labels[datasetLabel] || datasetLabel;
               const date = new Date(tooltipItem.parsed.x);
-              return `${friendlyLabel}: ${
-                tooltipItem.parsed.y
-              }, ${date.getFullYear()}`;
+              const formattedDate = `${
+                monthNames[date.getMonth()]
+              } ${date.getFullYear()}`;
+
+              const value = tooltipItem.parsed.y;
+              let unit = "";
+              switch (datasetLabel) {
+                case "OIL":
+                  unit = "$";
+                  break;
+                case "CORP. PROF.":
+                  unit = "Billion $";
+                  break;
+                case "house_wages":
+                  unit = "Months";
+                  break;
+              }
+              return `${friendlyLabel}: ${value} ${unit}, ${formattedDate}`;
             },
           },
         },
@@ -87,7 +116,7 @@ const EconomicChart = ({ data, activeSeries }) => {
     const newData = {
       labels: data.map((item) => new Date(item.date)),
       datasets: activeSeriesKeys.map((key) => ({
-        label: Labels[key].label, // Correctly access the label property
+        label: Labels[key].label,
         backgroundColor: Labels[key].color, // setting the background color for points
         borderColor: Labels[key].color, // setting the color for the line
         data: data.map((item) =>
