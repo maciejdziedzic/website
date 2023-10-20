@@ -89,8 +89,9 @@ export default function Navbar() {
 
               <ul className="flex flex-col space-y-4 text-sm p-6">
                 <button className="text-left hover:font-bold">Data</button>
+                <button className="text-left hover:font-bold">MODEL</button>
                 <button className="text-left hover:font-bold w-40">
-                  Architecture
+                  TECH STACK
                 </button>
               </ul>
             </div>

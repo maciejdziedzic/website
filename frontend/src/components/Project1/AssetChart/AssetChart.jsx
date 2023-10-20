@@ -71,7 +71,6 @@ const AssetChart = ({
 }) => {
   const [finalChartData, setFinalChartData] = useState({});
   const { darkMode } = useDarkMode();
-  console.log(darkMode);
 
   const chartOptions = () => ({
     scales: {

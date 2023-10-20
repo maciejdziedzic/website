@@ -1,6 +1,6 @@
 export const Labels = {
   fedrate: {
-    label: "Fed Rate",
+    label: "FED RATE",
     tooltipLabel: "Federal Effective Rate",
     color: "rgb(255, 99, 132)",
   },
@@ -15,12 +15,12 @@ export const Labels = {
     color: "rgb(255, 99, 132)",
   },
   gdp_pct_ma4: {
-    label: "US GDP GR",
+    label: "US GDP",
     tooltipLabel: "US Gross Domestic Product Growth",
     color: "rgb(201, 99, 132)",
   },
   gdpworld_pct: {
-    label: "GDP WORLD GR",
+    label: "GDP WORLD",
     tooltipLabel: "Global Gross Domestic Product Growth",
     color: "rgb(54, 162, 235)",
   },

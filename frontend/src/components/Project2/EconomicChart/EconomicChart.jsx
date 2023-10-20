@@ -2,9 +2,16 @@ import { useState, useEffect } from "react";
 import { Chart } from "react-chartjs-2";
 import PropTypes from "prop-types";
 import { Labels } from "../Labels/Labels";
+import useDarkMode from "../../../contexts/DarkMode/useDarkMode";
 
 const EconomicChart = ({ data, activeSeries }) => {
   const [chartData, setChartData] = useState(null);
+  const { darkMode } = useDarkMode();
+
+  function getTooltipLabel(datasetLabel) {
+    let key = Object.keys(Labels).find((k) => Labels[k].label === datasetLabel);
+    return (Labels[key] && Labels[key].tooltipLabel) || datasetLabel;
+  }
 
   useEffect(() => {
     if (!data.length || !Object.keys(activeSeries).length) return;
@@ -12,25 +19,7 @@ const EconomicChart = ({ data, activeSeries }) => {
     const getActiveSeriesKeys = () =>
       Object.keys(activeSeries).filter((key) => activeSeries[key]);
 
-    const getMaxMinValues = (keys) => {
-      const values = data
-        .flatMap((item) => keys.map((key) => item[key]))
-        .filter((value) => value !== null && value !== "");
-      return { min: Math.min(...values), max: Math.max(...values) };
-    };
-
     const activeSeriesKeys = getActiveSeriesKeys();
-    const housePerWageValues = getMaxMinValues(["house_per_wage"]);
-    const percentDataValues = getMaxMinValues(
-      activeSeriesKeys.filter((key) => key !== "house_per_wage")
-    );
-
-    function getTooltipLabel(datasetLabel) {
-      let key = Object.keys(Labels).find(
-        (k) => Labels[k].label === datasetLabel
-      );
-      return (Labels[key] && Labels[key].tooltipLabel) || datasetLabel;
-    }
 
     const options = {
       scales: {
@@ -45,26 +34,27 @@ const EconomicChart = ({ data, activeSeries }) => {
           ticks: {
             autoSkip: true,
             maxTicksLimit: 10,
+            color: darkMode ? "white" : "black",
+          },
+          grid: {
+            color: darkMode ? "rgba(255, 255, 255, 0.1)" : "rgba(0, 0, 0, 0.1)",
           },
         },
-        y1: {
-          type: "linear",
-          position: "left",
-          min: activeSeries.house_per_wage
-            ? housePerWageValues.min
-            : percentDataValues.min,
-          max: activeSeries.house_per_wage
-            ? housePerWageValues.max
-            : percentDataValues.max,
-        },
-        y2: {
-          type: "linear",
-          position: "right",
-          min: percentDataValues.min,
-          max: percentDataValues.max,
+        y: {
+          ticks: {
+            color: darkMode ? "white" : "black",
+          },
+          grid: {
+            color: darkMode ? "rgba(255, 255, 255, 0.1)" : "rgba(0, 0, 0, 0.1)",
+          },
         },
       },
       plugins: {
+        legend: {
+          labels: {
+            color: darkMode ? "white" : "black",
+          },
+        },
         tooltip: {
           mode: "nearest",
           intersect: false,
@@ -114,10 +104,6 @@ const EconomicChart = ({ data, activeSeries }) => {
           },
         },
       },
-      hover: {
-        mode: "index",
-        intersect: false,
-      },
     };
 
     const newData = {
@@ -130,7 +116,7 @@ const EconomicChart = ({ data, activeSeries }) => {
           item[key] === null || item[key] === "" ? NaN : item[key]
         ),
         fill: false,
-        yAxisID: key === "house_per_wage" ? "y1" : "y2",
+
         borderWidth: 0.8,
         pointRadius: 0,
         pointBorderWidth: 0,
@@ -139,14 +125,16 @@ const EconomicChart = ({ data, activeSeries }) => {
     };
 
     setChartData({ data: newData, options });
-  }, [data, activeSeries]);
+  }, [data, activeSeries, darkMode]);
 
   if (!chartData) {
     return null;
   }
 
   return (
-    <Chart type="line" data={chartData.data} options={chartData.options} />
+    <div className="chart">
+      <Chart type="line" data={chartData.data} options={chartData.options} />
+    </div>
   );
 };
 

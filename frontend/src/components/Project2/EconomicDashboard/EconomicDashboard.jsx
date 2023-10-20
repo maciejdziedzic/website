@@ -15,20 +15,6 @@ const EconomicDashboard = () => {
   );
 
   const { darkMode } = useDarkMode();
-  // useEffect(() => {
-  //   const loadAndSetData = async () => {
-  //     const rows = await fetchData("quaterly_last_record.csv");
-  //     const modifiedRows = rows.map((row) => ({
-  //       ...row,
-  //       house_per_wage: row.house_per_wage
-  //         ? parseFloat(row.house_per_wage)
-  //         : null,
-  //     }));
-  //     setData(modifiedRows);
-  //   };
-
-  //   loadAndSetData();
-  // }, []);
 
   useEffect(() => {
     const fetchAndSetData = async () => {
@@ -83,7 +69,11 @@ const EconomicDashboard = () => {
 
       <div
         className="right-section scale-95 w-[72.5%]"
-        style={{ backgroundColor: darkMode ? "#d1d5db" : "white" }}
+        style={{
+          backgroundColor: darkMode
+            ? "rgb(163 163 163 / var(--tw-bg-opacity))"
+            : "white",
+        }}
       >
         <EconomicChart data={data} activeSeries={activeSeries} />
       </div>
