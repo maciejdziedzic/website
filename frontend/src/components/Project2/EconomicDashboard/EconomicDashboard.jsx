@@ -4,8 +4,6 @@ import { useState, useEffect } from "react";
 import { Labels } from "../Labels/Labels";
 import useDarkMode from "../../../contexts/DarkMode/useDarkMode";
 
-// import fetchData from "../../../utils/fetchData";
-
 const seriesLabels = Object.keys(Labels);
 const EconomicDashboard = () => {
   const [data, setData] = useState([]);

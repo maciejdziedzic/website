@@ -25,6 +25,13 @@ const EconomicChart = ({ data, activeSeries }) => {
       activeSeriesKeys.filter((key) => key !== "house_per_wage")
     );
 
+    function getTooltipLabel(datasetLabel) {
+      let key = Object.keys(Labels).find(
+        (k) => Labels[k].label === datasetLabel
+      );
+      return (Labels[key] && Labels[key].tooltipLabel) || datasetLabel;
+    }
+
     const options = {
       scales: {
         x: {
@@ -83,7 +90,7 @@ const EconomicChart = ({ data, activeSeries }) => {
                 "Dec",
               ];
               const datasetLabel = tooltipItem.dataset.label;
-              const friendlyLabel = Labels[datasetLabel] || datasetLabel;
+              const friendlyLabel = getTooltipLabel(datasetLabel);
               const date = new Date(tooltipItem.parsed.x);
               const formattedDate = `${
                 monthNames[date.getMonth()]
