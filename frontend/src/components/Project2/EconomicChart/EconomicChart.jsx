@@ -59,6 +59,9 @@ const EconomicChart = ({ data, activeSeries }) => {
       },
       plugins: {
         tooltip: {
+          mode: "index",
+          intersect: false,
+          axis: "x",
           callbacks: {
             title: function () {
               return "";
@@ -74,6 +77,10 @@ const EconomicChart = ({ data, activeSeries }) => {
           },
         },
       },
+      hover: {
+        mode: "index",
+        intersect: false,
+      },
     };
 
     const newData = {
@@ -86,6 +93,11 @@ const EconomicChart = ({ data, activeSeries }) => {
         ),
         fill: false,
         yAxisID: key === "house_per_wage" ? "y1" : "y2",
+        borderWidth: 3,
+        pointRadius: 0,
+        borderJoinStyle: "round",
+        spanGaps: true,
+        tension: 0,
       })),
     };
 
