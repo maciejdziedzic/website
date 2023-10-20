@@ -59,9 +59,10 @@ const EconomicChart = ({ data, activeSeries }) => {
       },
       plugins: {
         tooltip: {
-          mode: "index",
+          mode: "nearest",
           intersect: false,
           axis: "x",
+          caretPadding: 10, // Add this line for padding
           callbacks: {
             title: function () {
               return "";
@@ -87,17 +88,17 @@ const EconomicChart = ({ data, activeSeries }) => {
       labels: data.map((item) => new Date(item.date)),
       datasets: activeSeriesKeys.map((key) => ({
         label: Labels[key].label, // Correctly access the label property
-        backgroundColor: Labels[key].color, // setting the color here
+        backgroundColor: Labels[key].color, // setting the background color for points
+        borderColor: Labels[key].color, // setting the color for the line
         data: data.map((item) =>
           item[key] === null || item[key] === "" ? NaN : item[key]
         ),
         fill: false,
         yAxisID: key === "house_per_wage" ? "y1" : "y2",
-        borderWidth: 3,
+        borderWidth: 0.8,
         pointRadius: 0,
-        borderJoinStyle: "round",
-        spanGaps: true,
-        tension: 0,
+        pointBorderWidth: 0,
+        pointHoverRadius: 4.5,
       })),
     };
 
