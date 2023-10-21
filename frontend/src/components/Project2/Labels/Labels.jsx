@@ -71,7 +71,7 @@ export const Labels = {
   },
   house_wages: {
     label: "HOUSES/WAGES",
-    tooltipLabel: "Housing Prices to Wages Ratio",
+    tooltipLabel: "Housing Prices to Monthly Wages Ratio",
     color: "rgb(0, 190, 200)",
   },
 };
