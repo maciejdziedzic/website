@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
-import Button1 from "../AssetButton/AssetButton";
+// import Button1 from "../AssetButton/AssetButton";
+import SharedButton from "../../Shared/Button/SharedButton";
 import AssetChart from "../AssetChart/AssetChart";
 import fetchData from "../../../utils/fetchData";
 import Slider from "@mui/material/Slider";
@@ -139,14 +140,22 @@ const AssetDashboard = () => {
           <div className=" mb-8">
             <h1 className="h1-title">Assets:</h1>
             <div className="">
-              <Button1
+              {/* <Button1
+                className=""
+                onClick={() => toggleMetric("gold_pct")}
+                label="GOLD"
+                active={enabledMetrics.gold_pct}
+              /> */}
+              <SharedButton
+                variant="button1"
                 className=""
                 onClick={() => toggleMetric("gold_pct")}
                 label="GOLD"
                 active={enabledMetrics.gold_pct}
               />
               <div className="button-checkbox flex items-center lg:space-x-4">
-                <Button1
+                <SharedButton
+                  variant="button1"
                   onClick={() => toggleMetric("house_pct")}
                   label="HOUSE"
                   active={enabledMetrics.house_pct}
@@ -183,11 +192,13 @@ const AssetDashboard = () => {
               </div>
 
               <div className="button-checkbox flex items-center lg:space-x-4">
-                <Button1
+                <SharedButton
+                  variant="button1"
                   onClick={() => toggleMetric("sp500_pct")}
                   label="SP500"
                   active={enabledMetrics.sp500_pct}
                 />
+
                 <div className="rent-div space-x-2">
                   <label className="lg:ml-0 ml-2">
                     <input
@@ -219,7 +230,8 @@ const AssetDashboard = () => {
                 </div>
               </div>
             </div>
-            <Button1
+            <SharedButton
+              variant="button1"
               onClick={() => toggleMetric("bond10tr_pct")}
               label="BONDS10"
               active={enabledMetrics.bond10tr_pct}
