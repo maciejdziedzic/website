@@ -50,21 +50,30 @@ def fetch_data():
 
 
 def fetch_text():
-
     url = "https://www.federalreserve.gov/"  # Assuming this is the main page URL
     response = requests.get(url)
     soup = BeautifulSoup(response.content, 'html.parser')
 
-    speech_links = soup.find_all(
-        'a', href=True, string=lambda t: t and 'Speech by Governor' in t)
-    newest_speech_link = speech_links[0]['href']
+    # Iterate over the li elements
+    base_selector = "#content > div:nth-child(3) > div.col-xs-12.col-sm-8 > ul > li"
+    li_tags = soup.select(base_selector)
+
+    newest_speech_link = None
+    for li_tag in li_tags:
+        span_tag_text = li_tag.select_one(
+            'p > span').text.lower() if li_tag else ""
+        if 'press release' in span_tag_text or 'speech' in span_tag_text:
+            # Extract the link from the matching li element
+            link_tag = li_tag.find('a', href=True)
+            if link_tag:
+                newest_speech_link = link_tag['href']
+                break
+
+    if not newest_speech_link:
+        raise ValueError("No 'Press Release' or 'Speech' found!")
 
     base_url = 'https://www.federalreserve.gov'
     full_link = base_url + newest_speech_link
-    # print(full_link)
-
-    if not speech_links:
-        raise ValueError("No speech links found!")
 
     speech_url = f"https://www.federalreserve.gov{newest_speech_link}"
     response = requests.get(speech_url)
@@ -73,8 +82,7 @@ def fetch_text():
     p_tags = soup.select("#article > div:nth-child(3) > p")[:3]
     speech_content = [p.get_text() for p in p_tags]
     if speech_content:
-        # print(type(speech_content))
-        pass
+        print(speech_content)
     else:
         print("Failed to retrieve speech content.")
 
