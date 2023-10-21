@@ -1,5 +1,6 @@
 import { useState } from "react";
 import axios from "axios";
+import SharedButton from "../../Shared/Button/SharedButton";
 
 export default function GetEconomicData() {
   const [data, setData] = useState(null);
@@ -29,11 +30,19 @@ export default function GetEconomicData() {
   return (
     <>
       <div className="flex space-x-5">
-        <button onClick={fetchData}>Fetch Data</button>
+        <SharedButton
+          variant="button1"
+          onClick={fetchData}
+          label="Fetch Data"
+        ></SharedButton>
         {data && <div>Your fetched data: {JSON.stringify(data)}</div>}
       </div>
       <div className="flex space-x-5">
-        <button onClick={runModel}>Run Model</button>
+        <SharedButton
+          variant="button1"
+          onClick={runModel}
+          label="Run Model"
+        ></SharedButton>
         {modelResult && (
           <div>Your model result: {JSON.stringify(modelResult)}</div>
         )}
