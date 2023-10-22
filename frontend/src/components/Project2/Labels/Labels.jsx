@@ -25,7 +25,7 @@ export const Labels = {
     color: "rgb(0, 150, 70)",
   },
   cbasstogdp: {
-    label: "CB ASS/GDP",
+    label: "CB. ASST./GDP",
     tooltipLabel: "Central Bank Assets to GDP Ratio",
     color: "rgb(50, 150, 220)",
   },
@@ -50,7 +50,7 @@ export const Labels = {
     color: "rgb(0, 180, 140)",
   },
   resins: {
-    label: "RES OF DEP.",
+    label: "RES. OF DEP.",
     tooltipLabel: "Reserves of Depository Institutions",
     color: "rgb(10, 50, 120)",
   },
@@ -70,7 +70,7 @@ export const Labels = {
     color: "rgb(140, 40, 180)",
   },
   house_wages: {
-    label: "HOUSES/WAGES",
+    label: "HOUSE/WAGES",
     tooltipLabel: "Housing Prices to Monthly Wages Ratio",
     color: "rgb(0, 190, 200)",
   },
