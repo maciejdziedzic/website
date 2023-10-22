@@ -28,14 +28,27 @@ export default function GetEconomicData() {
   };
 
   return (
-    <>
+    <div className="m-10 space-y-5">
       <div className="flex space-x-5">
         <SharedButton
           variant="button1"
           onClick={fetchData}
           label="Fetch Data"
         ></SharedButton>
-        {data && <div>Your fetched data: {JSON.stringify(data)}</div>}
+        {data && (
+          <div className="flex flex-col space-y-2 ml-5">
+            <div>
+              <strong>CPI:</strong> {data.cpi_data.cpi}
+            </div>
+            <div>
+              <strong>Speech Content:</strong>{" "}
+              {data.speech_content && data.speech_content}
+            </div>
+            <div>
+              <strong>Fed expected policy:</strong> {data.interpretation}
+            </div>
+          </div>
+        )}
       </div>
       <div className="flex space-x-5">
         <SharedButton
@@ -44,9 +57,11 @@ export default function GetEconomicData() {
           label="Run Model"
         ></SharedButton>
         {modelResult && (
-          <div>Your model result: {JSON.stringify(modelResult)}</div>
+          <div className="flex flex-col space-y-2 ml-5">
+            <strong>Model Result:</strong> {modelResult}
+          </div>
         )}
       </div>
-    </>
+    </div>
   );
 }
