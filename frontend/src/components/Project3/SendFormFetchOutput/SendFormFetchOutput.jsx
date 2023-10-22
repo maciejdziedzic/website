@@ -1,8 +1,11 @@
 import { useState } from "react";
 import axios from "axios";
 import SharedButton from "../../Shared/Button/SharedButton";
+import { DarkModeContext } from "../../../contexts/DarkMode/DarkModeContext";
+import { useContext } from "react";
 
 export default function GetEconomicData() {
+  const { darkMode } = useContext(DarkModeContext);
   const [data, setData] = useState(null);
   const [modelResult, setModelResult] = useState(null);
 
@@ -36,7 +39,13 @@ export default function GetEconomicData() {
           label="Fetch Data"
         ></SharedButton>
         {data && (
-          <div className="flex flex-col space-y-2 ml-5">
+          <div
+            className={
+              darkMode
+                ? "text-dark-text flex flex-col space-y-2 ml-5t"
+                : "text-white flex flex-col space-y-2 ml-5"
+            }
+          >
             <div>
               <strong>CPI:</strong> {data.cpi_data.cpi}
             </div>
@@ -57,7 +66,13 @@ export default function GetEconomicData() {
           label="Run Model"
         ></SharedButton>
         {modelResult && (
-          <div className="flex flex-col space-y-2 ml-5">
+          <div
+            className={
+              darkMode
+                ? "text-dark-text flex flex-col space-y-2 ml-5"
+                : "text-white flex flex-col space-y-2 ml-5"
+            }
+          >
             <strong>Model Result:</strong> {modelResult}
           </div>
         )}

@@ -88,10 +88,10 @@ export default function Navbar() {
               <div className="border-l border-gray-100 "></div>
 
               <ul className="flex flex-col space-y-4 text-sm p-6">
+                {/* <button className="text-left hover:font-bold">Data</button> */}
                 <button className="text-left hover:font-bold">Data</button>
-                <button className="text-left hover:font-bold">MODEL</button>
                 <button className="text-left hover:font-bold w-40">
-                  TECH STACK
+                  Model
                 </button>
               </ul>
             </div>
