@@ -43,7 +43,7 @@ export default function GetEconomicData() {
             className={
               darkMode
                 ? "text-dark-text flex flex-col space-y-2 ml-5t"
-                : "text-white flex flex-col space-y-2 ml-5"
+                : " flex flex-col space-y-2 ml-5"
             }
           >
             <div>

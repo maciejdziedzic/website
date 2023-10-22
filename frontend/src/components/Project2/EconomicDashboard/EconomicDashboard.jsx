@@ -9,7 +9,7 @@ const EconomicDashboard = () => {
   const [data, setData] = useState([]);
   const [activeSeries, setActiveSeries] = useState(
     seriesLabels.reduce(
-      (acc, label) => ({ ...acc, [label]: label === "house_per_wage" }),
+      (acc, label) => ({ ...acc, [label]: label === "fedrate" }),
       {}
     )
   );

@@ -1,6 +1,6 @@
 import PropTypes from "prop-types";
 import { useContext } from "react";
-import { DarkModeContext } from "../../../contexts/Darkmode/DarkModeContext";
+import { DarkModeContext } from "../../../contexts/DarkMode/DarkModeContext";
 import "./SharedButton.css";
 
 const SharedButton = ({ variant, label, onClick, active, disabled }) => {
