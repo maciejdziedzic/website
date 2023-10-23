@@ -20,18 +20,18 @@ def get_data():
         return jsonify(error=str(e)), 500
 
 
-logistic_regression = joblib.load('model/S&P500_model.pkl')
+logistic_regression = joblib.load('model/sp500_model.pkl')
 
 
 @api_blueprint.route('/run-model', methods=['POST'])
 def predict():
     try:
         data = request.get_json()
-        # # Extract gdp and iyc values
+        # Extract gdp and iyc values
         gdp = data['cpi_data']['cpi']
         iyc = int(data['interpretation'])
 
-        # # Run model
+        # Run model
         feature_values = [gdp, iyc]
         feature_names = ['gdp', 'iyc']
         X_test = pd.DataFrame([feature_values], columns=feature_names)
