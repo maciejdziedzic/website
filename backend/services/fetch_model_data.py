@@ -93,6 +93,7 @@ def interpretation(speech_content):
     try:
         response = openai.ChatCompletion.create(
             model="gpt-3.5-turbo",
+            temperature=0.2,
             messages=[
                 {"role": "system", "content": f"You will be given a text snippet. Your task is to determine its potential impact on interest rates. Return -1 if you believe the text indicates a negative impact on interest rates, 0 if it suggests no impact, and 1 if it indicates a positive impact. Please interpret the following text:{speech_content}"}
             ]

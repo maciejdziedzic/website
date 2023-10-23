@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import Sun from "../../assets/sun.svg";
 import Moon from "../../assets/moon.svg";
 import useDarkMode from "../../contexts/DarkMode/useDarkMode";
+import "./Navbar.css";
 
 export default function Navbar() {
   const { darkMode, toggledarkMode } = useDarkMode();
@@ -55,7 +56,7 @@ export default function Navbar() {
                 src={darkMode ? Sun : Moon}
                 onClick={toggledarkMode}
                 alt="Toggle Dark Mode"
-                className="w-5 h-5 cursor-pointer"
+                className="w-5 h-5 cursor-pointer svg-hover"
               />
             </li>
           </ul>

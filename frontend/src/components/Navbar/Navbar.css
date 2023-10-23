@@ -1,0 +1,4 @@
+.svg-hover:hover {
+  filter: drop-shadow(0.5px 0.5px 0 rgb(224, 224, 224))
+    drop-shadow(-0.2px -0.2px 0 rgb(67, 66, 66));
+}

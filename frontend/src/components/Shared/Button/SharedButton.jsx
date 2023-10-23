@@ -30,7 +30,7 @@ SharedButton.propTypes = {
   variant: PropTypes.oneOf(["button1", "button2"]).isRequired,
   label: PropTypes.string.isRequired,
   onClick: PropTypes.func.isRequired,
-  active: PropTypes.bool.isRequired,
+  active: PropTypes.bool, // Removed .isRequired
   disabled: PropTypes.bool,
 };
 
