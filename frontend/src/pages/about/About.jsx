@@ -1,6 +1,14 @@
+import useDarkMode from "../../contexts/DarkMode/useDarkMode";
+
 export default function About() {
+  const { darkMode } = useDarkMode();
+
   return (
-    <div className="container mx-auto mt-10 p-5">
+    <div
+      className={`container mx-auto mt-10 p-5 ${
+        darkMode ? "bg-neutral-700 text-white" : "bg-white text-neutral-700"
+      }`}
+    >
       <h1 className="text-2xl font-bold mb-5">About the Website</h1>
 
       <section className="mb-5">
