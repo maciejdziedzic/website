@@ -11,6 +11,9 @@
   font-size: small;
 }
 
+.button-shared.dark {
+  color: black;
+}
 .button-shared.button2 {
   width: 6rem;
   height: 1.5rem;

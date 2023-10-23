@@ -1,8 +1,14 @@
 import PropTypes from "prop-types";
+import useDarkMode from "../../contexts/DarkMode/useDarkMode";
 
 function Data() {
+  const { darkMode } = useDarkMode();
   return (
-    <div className="mt-10 space-y-10">
+    <div
+      className={`mt-10 space-y-10 ${
+        darkMode ? "bg-neutral-700 text-white" : "bg-white text-neutral-700"
+      }`}
+    >
       <ProjectSection
         title="Assets Return"
         rows={[
@@ -144,9 +150,9 @@ function TableComponent({ rows }) {
     <table className="w-full border-collapse">
       <thead>
         <tr>
-          <th className="py-3 px-4 border-b bg-gray-200">Asset</th>
-          <th className="py-3 px-4 border-b bg-gray-200">Description</th>
-          <th className="py-3 px-4 border-b bg-gray-200">Source</th>
+          <th className="py-3 px-4 border-b bg-gray-400">Asset</th>
+          <th className="py-3 px-4 border-b bg-gray-400">Description</th>
+          <th className="py-3 px-4 border-b bg-gray-400">Source</th>
         </tr>
       </thead>
       <tbody>
