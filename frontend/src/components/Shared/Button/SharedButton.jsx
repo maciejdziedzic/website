@@ -8,9 +8,9 @@ const SharedButton = ({ variant, label, onClick, active, disabled }) => {
 
   const baseClass = "button-shared";
   const variantClass = variant === "button1" ? "button1" : "button2";
-  const activeClass = active ? "bg-neutral-400" : "bg-neutral-200";
+  const activeClass = active ? "bg-neutral-500" : "bg-neutral-200";
   const darkModeClass = darkMode ? "dark" : "";
-  const disabledClass = disabled ? "opacity-50 cursor-not-allowed" : "";
+  const disabledClass = disabled ? "cursor-not-allowed" : "";
 
   const classNames = `${baseClass} ${variantClass} ${activeClass} ${darkModeClass} ${disabledClass}`;
 

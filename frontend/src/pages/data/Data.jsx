@@ -13,33 +13,33 @@ function Data() {
         title="Assets Return"
         rows={[
           [
-            "Gold (XAUUSD)",
-            "Annual growth of gold prices.",
+            "Gold",
+            "Annual Return based on price change.",
             "stooq.pl",
             "https://stooq.pl",
           ],
           [
-            "House Prices (MSPUS)",
-            "Median Sales Price of Houses Sold for the United States (Annual growth).",
-            "FRED",
+            "House Prices",
+            "Annual Return from Sales Price of Houses Sold in the U.S.",
+            "fred",
             "https://fred.stlouisfed.org/series/MSPUS",
           ],
           [
-            "S&P 500 Index (SPX)",
-            "Annual growth based on the closing price comparison between the last days of consecutive years.",
+            "S&P 500 Index",
+            "Annual Return determined by closing price on the last days of consecutive years.",
             "stooq.pl",
             "https://stooq.pl",
           ],
           [
-            "10-Year U.S. Treasury Bonds (DGS10)",
-            "Market Yield on U.S. Treasury Securities at 10-Year Constant Maturity (Annual data).",
-            "FRED",
+            "10-Year U.S. Treasury Bonds",
+            "Market Yield at 10-Year Constant Maturity (Annual data).",
+            "fred",
             "https://fred.stlouisfed.org/series/DGS10",
           ],
           [
-            "Inflation (CPIAUCSL)",
-            "Annual Consumer Price Index (CPI) growth.",
-            "FRED",
+            "Inflation",
+            "Consumer Price Index (CPI) growth annually.",
+            "fred",
             "https://fred.stlouisfed.org/series/CPIAUCSL",
           ],
         ]}
@@ -49,70 +49,101 @@ function Data() {
         title="Macroeconomic Chart"
         rows={[
           [
-            "FED RATE (Federal Effective Rate)",
+            "FED RATE",
             "Federal Effective Rate used by the Federal Reserve to influence economic conditions.",
-            "Placeholder Link",
+            "fred",
+            "https://fred.stlouisfed.org/series/FEDFUNDS",
           ],
           [
-            "IYC (Inverted Yield Curve)",
-            "Represents an Inverted Yield Curve, which can be an indicator of economic recessions. Bonds10TR - Bonds2TR",
-            "Placeholder Link",
+            "IYC",
+            <>
+              Inverted Yield Curve. Can be an indicator of economic recessions.
+              Calculated as Bonds10TR - Bonds2TR. FED published a{" "}
+              <a
+                href="https://www.federalreserve.gov/econres/feds/files/2018055pap.pdf"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-blue-500 hover:underline"
+              >
+                paper
+              </a>{" "}
+              in which considers the Near Term Forward Yield Spread as a better
+              indicator.
+            </>,
+            "fred",
+            "https://fred.stlouisfed.org/series/T10Y2Y",
           ],
           [
-            "DEBT/GDP (Debt to Gross Domestic Product Ratio)",
-            "The ratio of a country's debt compared to its Gross Domestic Product.",
-            "Placeholder Link",
-          ],
-          ["US GDP", "US Gross Domestic Product Growth.", "Placeholder Link"],
-          [
-            "GDP WORLD (Global Gross Domestic Product Growth)",
+            "GDP WORLD",
             "Growth rate of the global Gross Domestic Product.",
-            "Placeholder Link",
+            "fred",
+            "https://fred.stlouisfed.org/series/NYGDPMKTPCDWLD",
           ],
           [
-            "CB. ASST./GDP (Central Bank Assets to GDP Ratio)",
+            "US GDP",
+            "US Gross Domestic Product Growth.",
+            "fred",
+            "https://fred.stlouisfed.org/series/GDP",
+          ],
+          [
+            "DEBT/GDP",
+            "The ratio of a country's debt compared to its Gross Domestic Product.",
+            "fred",
+            "https://fred.stlouisfed.org/series/GFDEBTN",
+          ],
+          [
+            "CB. ASST./GDP",
             "The ratio of Central Bank Assets compared to Gross Domestic Product.",
-            "Placeholder Link",
+            "fred",
+            "https://fred.stlouisfed.org/series/DDDI06USA156NWDB",
           ],
           [
-            "M3/GDP (Broad Money Supply (M3) to GDP Ratio)",
+            "M3/GDP",
             "The ratio of Broad Money Supply (M3) compared to Gross Domestic Product.",
-            "Placeholder Link",
+            "fred",
+            "https://fred.stlouisfed.org/series/MABMM301USM189S",
           ],
           [
-            "UNEMPL (Unemployment Rate)",
+            "UNEMPL",
             "Represents the Unemployment Rate.",
-            "Placeholder Link",
+            "fred",
+            "https://fred.stlouisfed.org/series/UNRATE",
           ],
           [
-            "CPI (Consumer Price Index Percentage)",
-            "Measures the average change over time in the prices paid by consumers for a market basket of consumer goods and services.",
-            "Placeholder Link",
+            "CPI",
+            "Consumer Price Index Percentage. Measures the average change over time in the prices paid by consumers for a market basket of consumer goods and services.",
+            "fred",
+            "https://fred.stlouisfed.org/series/CPIAUCSL",
           ],
           [
-            "PPI (Producer Price Index Percentage)",
-            "Measures the average change over time in the selling prices received by domestic producers for their output.",
-            "Placeholder Link",
+            "PPI",
+            "Producer Price Index. Measures the average change over time in the selling prices received by domestic producers for their output.",
+            "fred",
+            "https://fred.stlouisfed.org/series/PPIACO",
           ],
           [
-            "RES. OF DEP. (Reserves of Depository Institutions)",
+            "RES. OF DEP.",
             "The amount of funds institutions have in reserve to manage day-to-day operations.",
-            "Placeholder Link",
+            "fred",
+            "https://fred.stlouisfed.org/series/TOTRESNS",
           ],
           [
-            "OIL (Crude Oil Prices)",
-            "Represents the prices of Crude Oil.",
-            "Placeholder Link",
+            "OIL",
+            "WTI oil price.",
+            "fred",
+            "https://fred.stlouisfed.org/series/WTISPLC",
           ],
           [
-            "INDUST. PROD. (Industrial Production Index)",
+            "INDUST. PROD.",
             "An index used to measure and view the overall value of production in an economy.",
-            "Placeholder Link",
+            "fred",
+            "https://fred.stlouisfed.org/series/INDPRO",
           ],
           [
-            "CORP. PROF. (Corporate Profits)",
-            "Refers to the profit that a company makes.",
-            "Placeholder Link",
+            "CORP. PROF.",
+            "Corporate Profits After Tax",
+            "fred",
+            "https://fred.stlouisfed.org/series/CP",
           ],
         ]}
       />
@@ -121,14 +152,16 @@ function Data() {
         title="Recession Model"
         rows={[
           [
-            "CPI (Consumer Price Index Percentage)",
+            "CPI",
             "Measures the average change over time in the prices paid by consumers for a market basket of consumer goods and services.",
-            "Placeholder Link",
+            "fred",
+            "https://fred.stlouisfed.org/series/DGS10",
           ],
           [
-            "PPI (Producer Price Index Percentage)",
+            "PPI",
             "Measures the average change over time in the selling prices received by domestic producers for their output.",
-            "Placeholder Link",
+            "fred",
+            "https://fred.stlouisfed.org/series/DGS10",
           ],
         ]}
       />
