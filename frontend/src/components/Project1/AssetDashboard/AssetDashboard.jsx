@@ -140,12 +140,6 @@ const AssetDashboard = () => {
           <div className=" mb-8">
             <h1 className="h1-title">Assets:</h1>
             <div className="">
-              {/* <Button1
-                className=""
-                onClick={() => toggleMetric("gold_pct")}
-                label="GOLD"
-                active={enabledMetrics.gold_pct}
-              /> */}
               <SharedButton
                 variant="button1"
                 className=""

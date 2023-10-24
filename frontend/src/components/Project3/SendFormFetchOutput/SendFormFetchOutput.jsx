@@ -31,7 +31,11 @@ export default function GetEconomicData() {
   };
 
   return (
-    <div className="m-10 space-y-5">
+    <div
+      className={`flex flex-col space-y-2 ml-5 ${
+        darkMode ? "bg-neutral-700 text-white" : "bg-white text-neutral-700"
+      }`}
+    >
       <div className="flex space-x-5">
         <SharedButton
           variant="button1"
@@ -66,13 +70,7 @@ export default function GetEconomicData() {
           label="Run Model"
         ></SharedButton>
         {modelResult && (
-          <div
-            className={
-              darkMode
-                ? "text-dark-text flex flex-col space-y-2 ml-5"
-                : "text-white flex flex-col space-y-2 ml-5"
-            }
-          >
+          <div>
             <strong>Model Result:</strong> {modelResult}
           </div>
         )}

@@ -1,4 +1,9 @@
 export const Labels = {
+  house_wages: {
+    label: "HOUSE/WAGES",
+    tooltipLabel: "Housing Prices to Monthly Wages Ratio",
+    color: "rgb(0, 190, 200)",
+  },
   fedrate: {
     label: "FED RATE",
     tooltipLabel: "Federal Effective Rate",
@@ -68,10 +73,5 @@ export const Labels = {
     label: "CORP. PROF.",
     tooltipLabel: "Corporate Profits",
     color: "rgb(140, 40, 180)",
-  },
-  house_wages: {
-    label: "HOUSE/WAGES",
-    tooltipLabel: "Housing Prices to Monthly Wages Ratio",
-    color: "rgb(0, 190, 200)",
   },
 };
