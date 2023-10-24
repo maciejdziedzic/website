@@ -1,7 +1,7 @@
 export const Labels = {
   house_wages: {
     label: "HOUSE/WAGES",
-    tooltipLabel: "Housing Prices to Monthly Wages Ratio",
+    tooltipLabel: "Median Sales Price of Houses to Monthly Wages Ratio",
     color: "rgb(0, 190, 200)",
   },
   fedrate: {
