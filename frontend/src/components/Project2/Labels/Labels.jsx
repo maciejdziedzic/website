@@ -46,12 +46,12 @@ export const Labels = {
   },
   cpi_pct: {
     label: "CPI",
-    tooltipLabel: "Consumer Price Index Percentage",
+    tooltipLabel: "Consumer Price Index Change",
     color: "rgb(200, 40, 40)",
   },
   ppi_pct: {
     label: "PPI",
-    tooltipLabel: "Producer Price Index Percentage",
+    tooltipLabel: "Producer Price Index Change",
     color: "rgb(0, 180, 140)",
   },
   resins: {

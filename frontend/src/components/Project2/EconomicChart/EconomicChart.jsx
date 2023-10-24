@@ -92,6 +92,36 @@ const EconomicChart = ({ data, activeSeries }) => {
                 case "OIL":
                   unit = "$";
                   break;
+                case "FED RATE":
+                  unit = "%";
+                  break;
+                case "IYC":
+                  unit = "%";
+                  break;
+                case "US GDP":
+                  unit = "%";
+                  break;
+                case "GDP WORLD":
+                  unit = "%";
+                  break;
+                case "CB. ASST./GDP":
+                  unit = "%";
+                  break;
+                case "M3/GDP":
+                  unit = "%";
+                  break;
+                case "UNEMPL":
+                  unit = "%";
+                  break;
+                case "CPI":
+                  unit = "%";
+                  break;
+                case "PPI":
+                  unit = "%";
+                  break;
+                case "RES. OF DEP.":
+                  unit = "Billion $";
+                  break;
                 case "CORP. PROF.":
                   unit = "Billion $";
                   break;
