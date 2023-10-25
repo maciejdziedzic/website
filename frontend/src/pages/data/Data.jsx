@@ -16,7 +16,7 @@ function Data() {
             "Gold",
             "Annual Return based on price change.",
             "stooq.pl",
-            "https://stooq.pl",
+            "https://stooq.pl/q/d/?s=%5Espx&c=0&d1=19691231&d2=20221230&i=y",
           ],
           [
             "House Prices",
@@ -28,7 +28,7 @@ function Data() {
             "S&P 500 Index",
             "Annual Return determined by closing price on the last days of consecutive years.",
             "stooq.pl",
-            "https://stooq.pl",
+            "https://stooq.pl/q/d/?s=^spx&i=y&d1=19691230&d2=20241231",
           ],
           [
             "10-Year U.S. Treasury Bonds",
