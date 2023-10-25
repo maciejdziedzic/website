@@ -5,7 +5,7 @@ function Data() {
   const { darkMode } = useDarkMode();
   return (
     <div
-      className={`mt-10 space-y-10 ${
+      className={`m-10 space-y-10 ${
         darkMode ? "bg-neutral-700 text-white" : "bg-white text-neutral-700"
       }`}
     >
