@@ -24,11 +24,6 @@ export const Labels = {
     tooltipLabel: "US Gross Domestic Product Growth",
     color: "rgb(0, 170, 170)",
   },
-  gdpworld_pct: {
-    label: "GDP WORLD",
-    tooltipLabel: "Global Gross Domestic Product Growth",
-    color: "rgb(0, 150, 70)",
-  },
   cbasstogdp: {
     label: "CB. ASST./GDP",
     tooltipLabel: "Central Bank Assets to GDP Ratio",
@@ -59,11 +54,6 @@ export const Labels = {
     tooltipLabel: "Reserves of Depository Institutions",
     color: "rgb(10, 50, 120)",
   },
-  oil: {
-    label: "OIL",
-    tooltipLabel: "Crude Oil Prices",
-    color: "rgb(20, 70, 160)",
-  },
   indpro: {
     label: "INDUST. PROD.",
     tooltipLabel: "Industrial Production Index",
@@ -73,5 +63,15 @@ export const Labels = {
     label: "CORP. PROF.",
     tooltipLabel: "Corporate Profits",
     color: "rgb(140, 40, 180)",
+  },
+  gdpworld_pct: {
+    label: "GDP WORLD",
+    tooltipLabel: "Global Gross Domestic Product Growth",
+    color: "rgb(0, 150, 70)",
+  },
+  oil: {
+    label: "OIL",
+    tooltipLabel: "Crude Oil Prices",
+    color: "rgb(20, 70, 160)",
   },
 };

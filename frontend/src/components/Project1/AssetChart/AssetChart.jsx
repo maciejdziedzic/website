@@ -84,7 +84,7 @@ const AssetChart = ({
         },
         ticks: {
           autoSkip: true,
-          maxTicksLimit: 11,
+          maxTicksLimit: 10,
           color: darkMode ? "white" : "black",
         },
         grid: {
@@ -111,9 +111,10 @@ const AssetChart = ({
           title: () => "",
           label: (tooltipItem) => {
             const date = new Date(tooltipItem.parsed.x);
-            const label = tooltipItem.dataset.label;
+            let label = tooltipItem.dataset.label;
+            label = label.replace(" (%)", ""); // This line will remove "(%)" from the label
             const value = tooltipItem.parsed.y.toFixed(2);
-            return `${label}: ${value}, ${date.getFullYear()}`;
+            return `${label}: ${value}%, ${date.getFullYear()}`;
           },
         },
       },
