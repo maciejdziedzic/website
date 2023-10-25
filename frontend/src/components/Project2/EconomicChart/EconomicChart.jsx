@@ -104,6 +104,9 @@ const EconomicChart = ({ data, activeSeries }) => {
                 case "GDP WORLD":
                   unit = "%";
                   break;
+                case "DEBT/GDP":
+                  unit = "%";
+                  break;
                 case "CB. ASST./GDP":
                   unit = "%";
                   break;
@@ -119,11 +122,11 @@ const EconomicChart = ({ data, activeSeries }) => {
                 case "PPI":
                   unit = "%";
                   break;
-                case "RES. OF DEP.":
-                  unit = "Billion $";
+                case "RES./GDP":
+                  unit = "%";
                   break;
-                case "CORP. PROF.":
-                  unit = "Billion $";
+                case "C.P./GDP":
+                  unit = "%";
                   break;
                 case "house_wages":
                   unit = "Months";

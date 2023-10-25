@@ -14,15 +14,15 @@ export const Labels = {
     tooltipLabel: "Inverted Yield Curve",
     color: "rgb(110, 130, 160)",
   },
-  debt_to_gdp: {
-    label: "DEBT/GDP",
-    tooltipLabel: "Debt to Gross Domestic Product Ratio",
-    color: "rgb(180, 180, 60)",
-  },
   gdp_pct_ma4: {
     label: "US GDP",
-    tooltipLabel: "US Gross Domestic Product Growth",
+    tooltipLabel: "US GDP Growth",
     color: "rgb(0, 170, 170)",
+  },
+  debt_to_gdp: {
+    label: "DEBT/GDP",
+    tooltipLabel: "Federal Debt to GDP",
+    color: "rgb(180, 180, 60)",
   },
   cbasstogdp: {
     label: "CB. ASST./GDP",
@@ -49,20 +49,20 @@ export const Labels = {
     tooltipLabel: "Producer Price Index Change",
     color: "rgb(0, 180, 140)",
   },
-  resins: {
-    label: "RES. OF DEP.",
-    tooltipLabel: "Reserves of Depository Institutions",
+  resinstogdp: {
+    label: "RES./GDP",
+    tooltipLabel: "Reserves of Depository Institutions to GDP",
     color: "rgb(10, 50, 120)",
+  },
+  cptogdp: {
+    label: "C.P./GDP",
+    tooltipLabel: "Corporate Profits to GDP",
+    color: "rgb(140, 40, 180)",
   },
   indpro: {
     label: "INDUST. PROD.",
     tooltipLabel: "Industrial Production Index",
     color: "rgb(0, 190, 160)",
-  },
-  cp: {
-    label: "CORP. PROF.",
-    tooltipLabel: "Corporate Profits",
-    color: "rgb(140, 40, 180)",
   },
   gdpworld_pct: {
     label: "GDP WORLD",
@@ -71,7 +71,7 @@ export const Labels = {
   },
   oil: {
     label: "OIL",
-    tooltipLabel: "Crude Oil Prices",
+    tooltipLabel: "WTI Crude Oil Price",
     color: "rgb(20, 70, 160)",
   },
 };

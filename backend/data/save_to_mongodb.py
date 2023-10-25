@@ -34,7 +34,7 @@ series_dict = {
     'oil': ('WTISPLC', 'M'),
     'indpro': ('INDPRO', 'M'),
     'houses': ('MSPUS', 'Q'),
-    'wages': ('CES3000000008', 'M'),
+    'wages': ('LES1252881500Q', 'Q'),
     'cp': ('CP', 'Q')
 }
 
@@ -68,18 +68,20 @@ df['A_M'] = dfs['A'].resample('M').ffill()
 
 data = pd.concat([df['D_M'], df['M_M'], df['Q_M'], df['A_M']], axis=1)
 
-data['wages_month'] = round(data['wages'] * 168, 2)
+data['wages_month'] = round(data['wages'] * 4, 2)
 data['house_wages'] = round(data['houses']/data['wages_month'], 2)
 data['iyc'] = round(data['bonds10tr'] - data['bonds2tr'], 2)
 data['gdp_pct'] = round(data['gdp'].pct_change(periods=4) * 100, 2)
 data['gdp_pct_ma4'] = round(data['gdp_pct'].rolling(window=4).mean(), 2)
 data['gdpworld_pct'] = round(data['gdpworld'].pct_change(12) * 100, 2)
-data['debt_to_gdp'] = round(data['debt'] / data['gdp']/1000, 2)
+data['debt_to_gdp'] = round(data['debt'] / data['gdp']/10, 2)
 data['m0_to_gdp'] = round(data['m0'] / data['gdp']/1000 * 100, 2)
 data['m3_to_gdp'] = round((data['m3']/1000000) / data['gdp']/1000 * 100, 2)
 data['cpi_pct'] = round(data['cpi'].pct_change(periods=12) * 100, 2)
 data['ppi_pct'] = round(data['ppi'].pct_change(periods=12) * 100, 2)
 data['cbasstogdp'] = round(data['cbasstogdp'], 2)
+data['resinstogdp'] = round(100 * data['resins']/data['gdp'], 2)
+data['cptogdp'] = round(100 * data['cbasstogdp']/data['gdp'], 2)
 data['indpro'] = round(data['indpro'], 2)
 data['oil'] = round(data['oil'], 2)
 

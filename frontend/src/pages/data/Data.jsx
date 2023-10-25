@@ -49,101 +49,108 @@ function Data() {
         title="Macroeconomic Chart"
         rows={[
           [
+            "HOUSE/WAGES",
+            "House median prices (Q) divided by wages (Q).",
+            "fred",
+            "https://fred.stlouisfed.org/series/LES1252881500Q",
+          ],
+          [
             "FED RATE",
-            "Federal Effective Rate used by the Federal Reserve to influence economic conditions.",
+            "Federal Effective Rate (M)",
             "fred",
             "https://fred.stlouisfed.org/series/FEDFUNDS",
           ],
           [
             "IYC",
-            <>
-              Inverted Yield Curve. Can be an indicator of economic recessions.
-              Calculated as Bonds10TR - Bonds2TR. FED published a{" "}
-              <a
-                href="https://www.federalreserve.gov/econres/feds/files/2018055pap.pdf"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-blue-500 hover:underline"
-              >
-                paper
-              </a>{" "}
-              in which considers the Near Term Forward Yield Spread as a better
-              indicator.
-            </>,
+            <>Inverted Yield Curve (M).</>,
+            // <>
+            //   Inverted Yield Curve (M). FED published a{" "}
+            //   <a
+            //     href="https://www.federalreserve.gov/econres/feds/files/2018055pap.pdf"
+            //     target="_blank"
+            //     rel="noopener noreferrer"
+            //     className="text-blue-500 hover:underline"
+            //   >
+            //     paper
+            //   </a>{" "}
+            //   in which considers the Near Term Forward Yield Spread as a better
+            //   indicator.
+            // </>,
             "fred",
             "https://fred.stlouisfed.org/series/T10Y2Y",
           ],
-          [
-            "GDP WORLD",
-            "Growth rate of the global Gross Domestic Product.",
-            "fred",
-            "https://fred.stlouisfed.org/series/NYGDPMKTPCDWLD",
-          ],
+
           [
             "US GDP",
-            "US Gross Domestic Product Growth.",
+            "4-month moving average of the GDP (Q) percentage change, that has been forward-filled into monthly intervals.",
             "fred",
             "https://fred.stlouisfed.org/series/GDP",
           ],
           [
             "DEBT/GDP",
-            "The ratio of a country's debt compared to its Gross Domestic Product.",
+            "Federal Debt (Q) to GDP (Q).",
             "fred",
-            "https://fred.stlouisfed.org/series/GFDEBTN",
+            "https://fred.stlouisfed.org/series/GFDEGDQ188S",
           ],
           [
             "CB. ASST./GDP",
-            "The ratio of Central Bank Assets compared to Gross Domestic Product.",
+            "The ratio of Central Bank Assets (A) to GDP (Q).",
             "fred",
             "https://fred.stlouisfed.org/series/DDDI06USA156NWDB",
           ],
           [
             "M3/GDP",
-            "The ratio of Broad Money Supply (M3) compared to Gross Domestic Product.",
+            "Broad Money M3 (M) to GDP (Q).",
             "fred",
             "https://fred.stlouisfed.org/series/MABMM301USM189S",
           ],
           [
             "UNEMPL",
-            "Represents the Unemployment Rate.",
+            "Unemployment Rate (M).",
             "fred",
             "https://fred.stlouisfed.org/series/UNRATE",
           ],
           [
             "CPI",
-            "Consumer Price Index Percentage. Measures the average change over time in the prices paid by consumers for a market basket of consumer goods and services.",
+            "Year-over-year percentage change in the Consumer Price Index (M).",
             "fred",
             "https://fred.stlouisfed.org/series/CPIAUCSL",
           ],
           [
             "PPI",
-            "Producer Price Index. Measures the average change over time in the selling prices received by domestic producers for their output.",
+            "Year-over-year percentage change in the Producer Price Index (M).",
             "fred",
             "https://fred.stlouisfed.org/series/PPIACO",
           ],
           [
             "RES. OF DEP.",
-            "The amount of funds institutions have in reserve to manage day-to-day operations.",
+            "Reserves of Depository Institutions (M) to GDP (Q).",
             "fred",
             "https://fred.stlouisfed.org/series/TOTRESNS",
           ],
           [
-            "OIL",
-            "WTI oil price.",
+            "C.P./GDP",
+            "Corporate Profits After Tax (Q) to GDP (Q).",
             "fred",
-            "https://fred.stlouisfed.org/series/WTISPLC",
+            "https://fred.stlouisfed.org/series/CP",
           ],
           [
             "INDUST. PROD.",
-            "An index used to measure and view the overall value of production in an economy.",
+            "Industrial Production (M), index 2017=100.",
             "fred",
             "https://fred.stlouisfed.org/series/INDPRO",
           ],
           [
-            "CORP. PROF.",
-            "Corporate Profits After Tax",
+            "GDP WORLD",
+            "(A) Growth rate of the global GDP year-over-year.",
             "fred",
-            "https://fred.stlouisfed.org/series/CP",
+            "https://fred.stlouisfed.org/series/NYGDPMKTPCDWLD",
+          ],
+          [
+            "OIL",
+            "WTI oil price (M).",
+            "fred",
+            "https://fred.stlouisfed.org/series/WTISPLC",
           ],
         ]}
       />
@@ -152,16 +159,16 @@ function Data() {
         title="Recession Model"
         rows={[
           [
-            "CPI",
-            "Measures the average change over time in the prices paid by consumers for a market basket of consumer goods and services.",
-            "fred",
-            "https://fred.stlouisfed.org/series/DGS10",
+            "CPI Forecast",
+            "CPI (Q) year-over-year % change forecast.",
+            "fed",
+            "https://www.clevelandfed.org/indicators-and-data/inflation-nowcasting",
           ],
           [
-            "PPI",
-            "Measures the average change over time in the selling prices received by domestic producers for their output.",
-            "fred",
-            "https://fred.stlouisfed.org/series/DGS10",
+            "Federal Effective Rate",
+            "Chat GPT's text analysis of the latest article: Press Release (paragraphs 1-3) or Speech (paragraphs 3-5). -1 for a rate cut, 0 for no change, and 1 for a rate increase.",
+            "fed",
+            "https://www.federalreserve.gov/",
           ],
         ]}
       />
