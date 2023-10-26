@@ -1,5 +1,4 @@
 import { useState, useEffect } from "react";
-// import Button1 from "../AssetButton/AssetButton";
 import SharedButton from "../../Shared/Button/SharedButton";
 import AssetChart from "../AssetChart/AssetChart";
 import fetchData from "../../../utils/fetchData";
@@ -227,7 +226,7 @@ const AssetDashboard = () => {
             <SharedButton
               variant="button1"
               onClick={() => toggleMetric("bond10tr_pct")}
-              label="BONDS10"
+              label="BONDS10Y"
               active={enabledMetrics.bond10tr_pct}
             />
           </div>

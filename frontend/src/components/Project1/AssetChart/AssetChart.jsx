@@ -15,10 +15,10 @@ const COLORS = {
 };
 
 const METRIC_LABELS = {
-  gold_pct: "Gold (%)",
-  house_pct: "House (%)",
-  sp500_pct: "SP500 (%)",
-  bond10tr_pct: "BONDS10Y (%)",
+  gold_pct: "Gold",
+  house_pct: "House",
+  sp500_pct: "SP500",
+  bond10tr_pct: "BONDS10Y",
 };
 
 const applyAdjustment = (originalValue, adjustment) =>

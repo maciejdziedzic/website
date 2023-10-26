@@ -5,7 +5,7 @@ function Data() {
   const { darkMode } = useDarkMode();
   return (
     <div
-      className={`m-10 space-y-10 ${
+      className={`space-y-10 ${
         darkMode ? "bg-neutral-700 text-white" : "bg-white text-neutral-700"
       }`}
     >
@@ -13,32 +13,32 @@ function Data() {
         title="Assets Return"
         rows={[
           [
-            "Gold",
-            "Annual Return based on price change.",
+            "GOLD",
+            "Year-over-year return based on gold price.",
             "stooq.pl",
             "https://stooq.pl/q/d/?s=%5Espx&c=0&d1=19691231&d2=20221230&i=y",
           ],
           [
-            "House Prices",
-            "Annual Return from Sales Price of Houses Sold in the U.S.",
+            "HOUSE",
+            "Year-over-year return from median sales price of houses sold in the U.S.",
             "fred",
             "https://fred.stlouisfed.org/series/MSPUS",
           ],
           [
-            "S&P 500 Index",
-            "Annual Return determined by closing price on the last days of consecutive years.",
+            "SP500",
+            "Year-over-year return based on the S&P500 index value.",
             "stooq.pl",
             "https://stooq.pl/q/d/?s=^spx&i=y&d1=19691230&d2=20241231",
           ],
           [
-            "10-Year U.S. Treasury Bonds",
-            "Market Yield at 10-Year Constant Maturity (Annual data).",
+            "BONDS10Y",
+            "End-of-year market yield for 10-year U.S. Treasury bonds.",
             "fred",
             "https://fred.stlouisfed.org/series/DGS10",
           ],
           [
             "Inflation",
-            "Consumer Price Index (CPI) growth annually.",
+            "Annual growth in the Consumer Price Index.",
             "fred",
             "https://fred.stlouisfed.org/series/CPIAUCSL",
           ],
@@ -50,105 +50,104 @@ function Data() {
         rows={[
           [
             "HOUSE/WAGES",
-            "House median prices (Q) divided by wages (Q).",
+            "Quarterly ratio of median house prices to wages.",
             "fred",
             "https://fred.stlouisfed.org/series/LES1252881500Q",
           ],
           [
             "FED RATE",
-            "Federal Effective Rate (M)",
+            "Monthly Federal Effective Funds Rate.",
             "fred",
             "https://fred.stlouisfed.org/series/FEDFUNDS",
           ],
           [
             "IYC",
-            <>Inverted Yield Curve (M).</>,
-            // <>
-            //   Inverted Yield Curve (M). FED published a{" "}
-            //   <a
-            //     href="https://www.federalreserve.gov/econres/feds/files/2018055pap.pdf"
-            //     target="_blank"
-            //     rel="noopener noreferrer"
-            //     className="text-blue-500 hover:underline"
-            //   >
-            //     paper
-            //   </a>{" "}
-            //   in which considers the Near Term Forward Yield Spread as a better
-            //   indicator.
-            // </>,
+            <>
+              Monthly Inverted Yield Curve. The FED published a{" "}
+              <a
+                href="https://www.federalreserve.gov/econres/feds/files/2018055pap.pdf"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-blue-500 hover:underline"
+              >
+                paper
+              </a>{" "}
+              in which it considers the Near Term Forward Yield Spread as a
+              better indicator.
+            </>,
             "fred",
             "https://fred.stlouisfed.org/series/T10Y2Y",
           ],
 
           [
             "US GDP",
-            "4-month moving average of the GDP (Q) percentage change, that has been forward-filled into monthly intervals.",
+            "Four-month moving average of the quarterly GDP percentage change, forward-filled into monthly intervals.",
             "fred",
             "https://fred.stlouisfed.org/series/GDP",
           ],
           [
             "DEBT/GDP",
-            "Federal Debt (Q) to GDP (Q).",
+            "Quarterly federal debt ratio to quarterly GDP.",
             "fred",
             "https://fred.stlouisfed.org/series/GFDEGDQ188S",
           ],
           [
             "CB. ASST./GDP",
-            "The ratio of Central Bank Assets (A) to GDP (Q).",
+            "Annual Central Bank assets (forward-filled into monthly intervals) as a ratio to quarterly GDP (also forward-filled into monthly intervals).",
             "fred",
             "https://fred.stlouisfed.org/series/DDDI06USA156NWDB",
           ],
           [
             "M3/GDP",
-            "Broad Money M3 (M) to GDP (Q).",
+            "Monthly Broad Money M3 ratio to quarterly GDP.",
             "fred",
             "https://fred.stlouisfed.org/series/MABMM301USM189S",
           ],
           [
             "UNEMPL",
-            "Unemployment Rate (M).",
+            "Monthly Unemployment Rate.",
             "fred",
             "https://fred.stlouisfed.org/series/UNRATE",
           ],
           [
             "CPI",
-            "Year-over-year percentage change in the Consumer Price Index (M).",
+            "Year-over-year percentage change in the monthly Consumer Price Index.",
             "fred",
             "https://fred.stlouisfed.org/series/CPIAUCSL",
           ],
           [
             "PPI",
-            "Year-over-year percentage change in the Producer Price Index (M).",
+            "Year-over-year percentage change in the monthly Producer Price Index.",
             "fred",
             "https://fred.stlouisfed.org/series/PPIACO",
           ],
           [
             "RES. OF DEP.",
-            "Reserves of Depository Institutions (M) to GDP (Q).",
+            "Monthly reserves of depository institutions ratio to quarterly GDP.",
             "fred",
             "https://fred.stlouisfed.org/series/TOTRESNS",
           ],
           [
             "C.P./GDP",
-            "Corporate Profits After Tax (Q) to GDP (Q).",
+            "Quarterly corporate profits after tax ratio to quarterly GDP.",
             "fred",
             "https://fred.stlouisfed.org/series/CP",
           ],
           [
             "INDUST. PROD.",
-            "Industrial Production (M), index 2017=100.",
+            "Monthly Industrial Production index (2017=100).",
             "fred",
             "https://fred.stlouisfed.org/series/INDPRO",
           ],
           [
             "GDP WORLD",
-            "(A) Growth rate of the global GDP year-over-year.",
+            "Annual growth rate of global GDP.",
             "fred",
             "https://fred.stlouisfed.org/series/NYGDPMKTPCDWLD",
           ],
           [
             "OIL",
-            "WTI oil price (M).",
+            "Monthly WTI oil price.",
             "fred",
             "https://fred.stlouisfed.org/series/WTISPLC",
           ],
@@ -160,13 +159,13 @@ function Data() {
         rows={[
           [
             "CPI Forecast",
-            "CPI (Q) year-over-year % change forecast.",
+            "Forecasted year-over-year % change in the quarterly Consumer Price Index.",
             "fed",
             "https://www.clevelandfed.org/indicators-and-data/inflation-nowcasting",
           ],
           [
             "Federal Effective Rate",
-            "Chat GPT's text analysis of the latest article: Press Release (paragraphs 1-3) or Speech (paragraphs 3-5). -1 for a rate cut, 0 for no change, and 1 for a rate increase.",
+            "Derived from Chat GPT's text analysis of the latest Federal Reserve article. It assesses either a Press Release (paragraphs 1-3) or a Speech (paragraphs 3-5) to predict rate changes: -1 indicates a rate cut, 0 signifies no change, and 1 suggests a rate increase.",
             "fed",
             "https://www.federalreserve.gov/",
           ],
