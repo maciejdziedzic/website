@@ -162,14 +162,32 @@ function Data() {
         headers={["Metric", "Description", "Source"]}
         rows={[
           [
-            "CPI Forecast",
-            "Forecasted year-over-year change in the quarterly Consumer Price Index.",
-            "fed",
-            "https://www.clevelandfed.org/indicators-and-data/inflation-nowcasting",
+            "CPI",
+            "Historical quarterly percentage change in the Consumer Price Index (CPI).",
+            "FRED",
+            "https://fred.stlouisfed.org/series/CPIAUCSL", // Adjust this link to the specific series for quarterly changes if needed
+          ],
+          [
+            "Fed Rate",
+            "Federal Effective Rate at the end of each quarter.",
+            "FRED",
+            "https://fred.stlouisfed.org/series/FEDFUNDS",
+          ],
+          [
+            "S&P500",
+            "Historical quarterly percentage change in the S&P500 index value.",
+            "stooq.pl",
+            "https://stooq.pl/q/d/?s=%5Espx&c=0&d1=19691231&d2=20221230&i=y",
           ],
           [
             "Federal Effective Rate",
-            "Derived from Chat GPT's text analysis of the latest Federal Reserve press release. It assesses paragraphs first to third paragraphs to predict rate changes: -1 indicates a rate cut, 0 signifies no change, and 1 suggests a rate increase.",
+            "Derived from machine learning model's text analysis of the latest Federal Reserve press release. The model assesses paragraphs first to third paragraphs to predict rate changes: -1 indicates a rate cut, 0 signifies no change, and 1 suggests a rate increase.",
+            "fed",
+            "https://www.federalreserve.gov/",
+          ],
+          [
+            "Current CPI",
+            "Derived from machine learning model's text analysis of the latest Federal Reserve press release. The model assesses paragraphs first to third paragraphs to predict rate changes: -1 indicates a rate cut, 0 signifies no change, and 1 suggests a rate increase.",
             "fed",
             "https://www.federalreserve.gov/",
           ],

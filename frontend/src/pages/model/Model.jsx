@@ -22,7 +22,7 @@ export default function ModelDescription() {
           <strong>Data Sources</strong>:
           <ul className="list-disc list-inside pl-4">
             <li>
-              S&P 500: Data loaded from local CSV files sourced from stooq.pl.
+              S&P 500: Data loaded from local CSV file sourced from stooq.pl.
             </li>
             <li>
               Consumer Price Index (CPI): Fetched using the fredapi from the
