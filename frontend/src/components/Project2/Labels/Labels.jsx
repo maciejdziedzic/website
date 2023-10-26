@@ -21,7 +21,7 @@ export const Labels = {
   },
   debt_to_gdp: {
     label: "DEBT/GDP",
-    tooltipLabel: "Federal Debt to GDP",
+    tooltipLabel: "Federal Debt to GDP Ratio",
     color: "rgb(180, 180, 60)",
   },
   cbasstogdp: {
@@ -51,12 +51,12 @@ export const Labels = {
   },
   resinstogdp: {
     label: "RES./GDP",
-    tooltipLabel: "Reserves of Depository Institutions to GDP",
+    tooltipLabel: "Reserves of Depository Institutions to GDP Ratio",
     color: "rgb(10, 50, 120)",
   },
   cptogdp: {
     label: "C.P./GDP",
-    tooltipLabel: "Corporate Profits to GDP",
+    tooltipLabel: "Corporate Profits to GDP Ratio",
     color: "rgb(140, 40, 180)",
   },
   indpro: {
