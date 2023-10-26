@@ -59,24 +59,24 @@ function Data() {
 
           [
             "FED RATE",
-            "Monthly Federal Effective Funds Rate.",
+            "Federal Effective Funds Rate, updated monthly.",
             "fred",
             "https://fred.stlouisfed.org/series/FEDFUNDS",
           ],
           [
             "IYC",
             <>
-              Monthly Inverted Yield Curve. The FED published a{" "}
+              Monthly Inverted Yield Curve. The FED&apos;s{" "}
               <a
                 href="https://www.federalreserve.gov/econres/feds/files/2018055pap.pdf"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-blue-500 hover:underline"
               >
-                paper
+                paper{" "}
               </a>
-              , in which they consider the Near Term Forward Yield Spread as a
-              better indicator.
+              suggests the Near Term Forward Yield Spread as a more accurate
+              indicator.
             </>,
             "fred",
             "https://fred.stlouisfed.org/series/T10Y2Y",
@@ -96,31 +96,31 @@ function Data() {
           ],
           [
             "CB. ASST./GDP",
-            "Ratio of annual Central Bank assets to quarterly GDP, both adjusted to monthly intervals.",
+            "Annual ratio of Central Bank assets to quarterly GDP, adjusted to monthly intervals.",
             "fred",
             "https://fred.stlouisfed.org/series/DDDI06USA156NWDB",
           ],
           [
             "M3/GDP",
-            "Monthly Broad Money M3 to quarterly GDP ratio.",
+            "Monthly ratio of Broad Money M3 to quarterly GDP.",
             "fred",
             "https://fred.stlouisfed.org/series/MABMM301USM189S",
           ],
           [
             "UNEMPL",
-            "Monthly U.S. unemployment rate.",
+            "U.S. unemployment rate, updated monthly.",
             "fred",
             "https://fred.stlouisfed.org/series/UNRATE",
           ],
           [
             "CPI",
-            "Year-over-year change in the monthly Consumer Price Index.",
+            "Year-over-year change in the monthly Consumer Price Index, updated monthly.",
             "fred",
             "https://fred.stlouisfed.org/series/CPIAUCSL",
           ],
           [
             "PPI",
-            "Year-over-year change in the monthly Producer Price Index.",
+            "Year-over-year change in the monthly Producer Price Index, updated monthly.",
             "fred",
             "https://fred.stlouisfed.org/series/PPIACO",
           ],
@@ -138,7 +138,7 @@ function Data() {
           ],
           [
             "INDUST. PROD.",
-            "Monthly Industrial Production Index (base year: 2017).",
+            "Industrial Production Index (base year: 2017), updated monthly.",
             "fred",
             "https://fred.stlouisfed.org/series/INDPRO",
           ],
@@ -150,7 +150,7 @@ function Data() {
           ],
           [
             "OIL",
-            "Monthly WTI crude oil price.",
+            "WTI crude oil price, updated monthly.",
             "fred",
             "https://fred.stlouisfed.org/series/WTISPLC",
           ],
