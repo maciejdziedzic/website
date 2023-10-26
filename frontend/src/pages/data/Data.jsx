@@ -161,34 +161,36 @@ function Data() {
         title="U.S. Recession Model"
         headers={["Metric", "Description", "Source"]}
         rows={[
+          // Training Variables
           [
             "CPI",
-            "Historical quarterly percentage change in the Consumer Price Index (CPI).",
-            "fred",
-            "https://fred.stlouisfed.org/series/CPIAUCSL", // Adjust this link to the specific series for quarterly changes if needed
+            "Quarterly percentage change in the Consumer Price Index.",
+            "FRED",
+            "https://fred.stlouisfed.org/series/CPIAUCSL",
           ],
           [
-            "Fed Rate",
-            "Federal Effective Rate at the end of each quarter.",
-            "fred",
+            "FED RATE",
+            "Federal Funds Rate at the end of each quarter.",
+            "FRED",
             "https://fred.stlouisfed.org/series/FEDFUNDS",
           ],
           [
-            "S&P500",
-            "Historical quarterly percentage change in the S&P500 index value.",
-            "stooq.pl",
+            "S&P 500",
+            "Quarterly percentage change in S&P 500 index.",
+            "Stooq",
             "https://stooq.pl/q/d/?s=%5Espx&c=0&d1=19691231&d2=20221230&i=y",
           ],
+          // Input Variables for Prediction
           [
-            "Federal Effective Rate",
-            "Based on its analysis of the latest Federal Reserve press release, the machine learning model assesses paragraphs one to three to predict rate changes. It interprets -1 as a rate cut, 0 as no change, and 1 as a rate increase.",
-            "fed",
-            "https://www.federalreserve.gov/",
+            "PROJECTED CPI",
+            "Quarterly Consumer Price Index projection, web-scraped from the Federal Reserve Bank of Cleveland's published data.",
+            "Federal Reserve - Cleveland",
+            "https://www.clevelandfed.org/indicators-and-data/inflation-nowcasting",
           ],
           [
-            "Current",
-            "Derived from machine learning model's text analysis of the latest Federal Reserve press release. The model assesses paragraphs first to third, to predict rate changes. -1 indicates a rate cut, 0 signifies no change, and 1 suggests a rate increase.",
-            "fed",
+            "HYPOTETHICAL FED RATE",
+            "A machine learning model analyzes text from the latest Federal Reserve press release, specifically the first three paragraphs, to predict potential rate changes. A prediction of -1 suggests a rate cut, 0 implies no change, and 1 indicates a rate increase.",
+            "Federal Reserve",
             "https://www.federalreserve.gov/",
           ],
         ]}
