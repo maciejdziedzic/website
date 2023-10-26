@@ -164,13 +164,13 @@ function Data() {
           [
             "CPI",
             "Historical quarterly percentage change in the Consumer Price Index (CPI).",
-            "FRED",
+            "fred",
             "https://fred.stlouisfed.org/series/CPIAUCSL", // Adjust this link to the specific series for quarterly changes if needed
           ],
           [
             "Fed Rate",
             "Federal Effective Rate at the end of each quarter.",
-            "FRED",
+            "fred",
             "https://fred.stlouisfed.org/series/FEDFUNDS",
           ],
           [
@@ -181,13 +181,13 @@ function Data() {
           ],
           [
             "Federal Effective Rate",
-            "Derived from machine learning model's text analysis of the latest Federal Reserve press release. The model assesses paragraphs first to third paragraphs to predict rate changes: -1 indicates a rate cut, 0 signifies no change, and 1 suggests a rate increase.",
+            "Based on its analysis of the latest Federal Reserve press release, the machine learning model assesses paragraphs one to three to predict rate changes. It interprets -1 as a rate cut, 0 as no change, and 1 as a rate increase.",
             "fed",
             "https://www.federalreserve.gov/",
           ],
           [
-            "Current CPI",
-            "Derived from machine learning model's text analysis of the latest Federal Reserve press release. The model assesses paragraphs first to third paragraphs to predict rate changes: -1 indicates a rate cut, 0 signifies no change, and 1 suggests a rate increase.",
+            "Current",
+            "Derived from machine learning model's text analysis of the latest Federal Reserve press release. The model assesses paragraphs first to third, to predict rate changes. -1 indicates a rate cut, 0 signifies no change, and 1 suggests a rate increase.",
             "fed",
             "https://www.federalreserve.gov/",
           ],

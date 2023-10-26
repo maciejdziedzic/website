@@ -63,7 +63,14 @@ export default function GetEconomicData() {
               {data.press_release_content && data.press_release_content}
             </div>
             <div>
-              <strong>Fed expected policy:</strong> {data.interpretation}
+              <strong>Fed expected policy:</strong>{" "}
+              {data.interpretation === -1
+                ? "Based on the press release, Fed is expected to decrease its rates."
+                : data.interpretation === 0
+                ? "Based on the press release, Fed is expected to maintain its rates."
+                : data.interpretation === 1
+                ? "Based on the press release, Fed is expected to increase its rates."
+                : "Unknown"}
             </div>
           </div>
         )}
