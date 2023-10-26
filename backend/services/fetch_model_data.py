@@ -27,18 +27,26 @@ def fetch_data():
         response = requests.get(url)
         if response.status_code == 200:
             soup = BeautifulSoup(response.text, 'html.parser')
-            gdp_css_selector = '#content > div.row.component.column-splitter > div.col-12.col-lg-8.cf-bordered--right.cf-indent--bottom.cf-indent--left.cf-indent--right.cf-section__main > div:nth-child(4) > div > figure > table > tbody > tr:nth-child(2) > td:nth-child(2)'
-            desired_element = soup.select_one(gdp_css_selector)
-            if desired_element is not None:
-                element_text = desired_element.get_text(strip=True)
-                match = re.search(r'(\d+\.\d+|\d+)', element_text)
-                if match:
-                    data['cpi'] = float(match.group())
+
+            # Find the last table on the page
+            tables = soup.find_all('table')
+            if tables:
+                last_table = tables[-1]
+                desired_td = last_table.select_one(
+                    'tbody > tr > td:nth-child(2)')
+                if desired_td:
+                    annualized_pct_change = float(
+                        desired_td.get_text(strip=True))
+                    # Convert annualized percent change to quarterly percent change
+                    quarterly_pct_change = (
+                        pow(1 + annualized_pct_change / 100, 0.25) - 1) * 100
+                    data['cpi'] = quarterly_pct_change
                     data['cpi_status'] = "success"
+
                 else:
-                    raise ValueError("No GDP number found")
+                    raise ValueError("No CPI number found in the last table")
             else:
-                raise ValueError("Element not found")
+                raise ValueError("No tables found on the page")
         else:
             raise ValueError("Failed to retrieve the page")
     except Exception as e:

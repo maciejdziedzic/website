@@ -13,6 +13,7 @@ export default function GetEconomicData() {
     try {
       const response = await axios.get("http://127.0.0.1:5000/api/fetch-data");
       setData(response.data);
+      console.log("Data from Backend:", response.data);
     } catch (error) {
       console.error("Error fetching data: ", error);
     }
@@ -20,10 +21,13 @@ export default function GetEconomicData() {
 
   const runModel = async () => {
     try {
+      console.log("sending data: ", data);
       const response = await axios.post(
         "http://127.0.0.1:5000/api/run-model",
         data
       );
+      console.log("Model Result from Backend:", response.data);
+
       setModelResult(response.data);
     } catch (error) {
       console.error("Error running model: ", error);
@@ -51,7 +55,8 @@ export default function GetEconomicData() {
             }
           >
             <div>
-              <strong>CPI:</strong> {data.cpi_data.cpi}
+              <strong>Quarterly CPI:</strong> {data.cpi_data.cpi.toFixed(2)}{" "}
+              {/* Round to two decimal places */}
             </div>
             <div>
               <strong>Press Release Content:</strong>{" "}
@@ -69,9 +74,20 @@ export default function GetEconomicData() {
           onClick={runModel}
           label="Run Model"
         ></SharedButton>
+        {console.log(typeof modelResult)}
+        {console.log("Model Result Value:", modelResult)}
         {modelResult && (
           <div>
-            <strong>Model Result:</strong> {modelResult}
+            <strong>Model Result: </strong>
+            {parseFloat(JSON.parse(modelResult)[0]) > 0
+              ? `SP500 will increase by ${parseFloat(
+                  JSON.parse(modelResult)[0]
+                ).toFixed(2)}%`
+              : parseFloat(JSON.parse(modelResult)[0]) < 0
+              ? `SP500 will decrease by ${Math.abs(
+                  parseFloat(JSON.parse(modelResult)[0])
+                ).toFixed(2)}%`
+              : `SP500 is expected to maintain the same level`}
           </div>
         )}
       </div>
