@@ -54,8 +54,8 @@ export default function GetEconomicData() {
               <strong>CPI:</strong> {data.cpi_data.cpi}
             </div>
             <div>
-              <strong>Speech Content:</strong>{" "}
-              {data.speech_content && data.speech_content}
+              <strong>Press Release Content:</strong>{" "}
+              {data.press_release_content && data.press_release_content}
             </div>
             <div>
               <strong>Fed expected policy:</strong> {data.interpretation}

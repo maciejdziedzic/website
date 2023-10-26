@@ -58,49 +58,63 @@ def fetch_text():
     base_selector = "#content > div:nth-child(3) > div.col-xs-12.col-sm-8 > ul > li"
     li_tags = soup.select(base_selector)
 
-    newest_speech_link = None
+    newest_press_release_link = None
+
     for li_tag in li_tags:
         span_tag_text = li_tag.select_one(
             'p > span').text.lower() if li_tag else ""
-        if 'press release' in span_tag_text or 'speech' in span_tag_text:
+        if 'press release' in span_tag_text:
             # Extract the link from the matching li element
             link_tag = li_tag.find('a', href=True)
             if link_tag:
-                newest_speech_link = link_tag['href']
+                newest_press_release_link = link_tag['href']
                 break
 
-    if not newest_speech_link:
-        raise ValueError("No 'Press Release' or 'Speech' found!")
+    if not newest_press_release_link:
+        raise ValueError("No 'Press Release' found!")
 
     base_url = 'https://www.federalreserve.gov'
-    full_link = base_url + newest_speech_link
+    full_link = base_url + newest_press_release_link
 
-    speech_url = f"https://www.federalreserve.gov{newest_speech_link}"
-    response = requests.get(speech_url)
+    press_release_url = f"https://www.federalreserve.gov{newest_press_release_link}"
+    response = requests.get(press_release_url)
     soup = BeautifulSoup(response.content, 'html.parser')
 
+    # Fetch paragraphs 1-3 for the press release
     p_tags = soup.select("#article > div:nth-child(3) > p")[:3]
-    speech_content = [p.get_text() for p in p_tags]
-    if speech_content:
-        print(speech_content)
+
+    press_release_content = [p.get_text() for p in p_tags]
+    if press_release_content:
+        print(press_release_content)
     else:
-        print("Failed to retrieve speech content.")
+        print("Failed to retrieve press release content.")
 
-    return speech_content
+    return press_release_content
 
 
-def interpretation(speech_content):
+def interpretation(press_release_content):
     try:
         response = openai.ChatCompletion.create(
             model="gpt-3.5-turbo",
             temperature=0.2,
             messages=[
-                {"role": "system", "content": f"You will be given a text snippet. Your task is to determine its potential impact on interest rates. Return -1 if you believe the text indicates a negative impact on interest rates, 0 if it suggests no impact, and 1 if it indicates a positive impact. Please interpret the following text:{speech_content}"}
+                {"role": "system", "content": f"You will be given a text snippet. Your task is to determine its potential impact on interest rates. Explicitly return '-1' if you believe the text indicates a negative impact on interest rates, '0' if it suggests no impact, and '1' if it indicates a positive impact. Do not provide any other type of response. Please interpret the following text: {press_release_content}"}
             ]
         )
-        # Return content directly
-        return response.choices[0].message['content']
-        # return result
+
+        # Extract the content
+        content = response.choices[0].message['content']
+
+        # Check and map the content to one of the desired outputs
+        if "-1" in content:
+            return -1
+        elif "0" in content:
+            return 0
+        elif "1" in content:
+            return 1
+        else:
+            # If the response doesn't match the expected outputs, handle the exception
+            raise ValueError("Unexpected response from the model.")
 
     except Exception as e:
         return str(e)
@@ -110,13 +124,13 @@ def fetch_combined_data():
 
     cpi_data = fetch_data()
 
-    speech_content = fetch_text()
+    press_release_content = fetch_text()
 
-    interpretation_result = interpretation(speech_content)
+    interpretation_result = interpretation(press_release_content)
 
     combined_data = {
         'cpi_data': cpi_data,
-        'speech_content': speech_content,
+        'press_release_content': press_release_content,
         'interpretation': interpretation_result
     }
 

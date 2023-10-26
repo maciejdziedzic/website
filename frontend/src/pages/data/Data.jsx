@@ -11,12 +11,13 @@ function Data() {
     >
       <ProjectSection
         title="Assets Return"
+        headers={["Asset", "Description", "Source"]}
         rows={[
           [
             "GOLD",
             "Year-over-year return based on gold price.",
             "stooq.pl",
-            "https://stooq.pl/q/d/?s=%5Espx&c=0&d1=19691231&d2=20221230&i=y",
+            "https://stooq.pl/q/d/?s=xauusd&c=0&d1=19691231&d2=20221230&i=y",
           ],
           [
             "HOUSE",
@@ -28,7 +29,7 @@ function Data() {
             "SP500",
             "Year-over-year return based on the S&P500 index value.",
             "stooq.pl",
-            "https://stooq.pl/q/d/?s=^spx&i=y&d1=19691230&d2=20241231",
+            "https://stooq.pl/q/d/?s=%5Espx&c=0&d1=19691230&d2=20221230&i=y",
           ],
           [
             "BONDS10Y",
@@ -46,11 +47,12 @@ function Data() {
       />
 
       <ProjectSection
-        title="Macroeconomic Chart"
+        title="U.S. Macroeconomic Chart"
+        headers={["Indicator", "Description", "Source"]}
         rows={[
           [
             "HOUSE/WAGES",
-            "Quarterly ratio of median house prices to wages.",
+            "Quarterly ratio of median house prices sold in U.S. to monthly (four times weekly) wages.",
             "fred",
             "https://fred.stlouisfed.org/series/LES1252881500Q",
           ],
@@ -71,8 +73,8 @@ function Data() {
                 className="text-blue-500 hover:underline"
               >
                 paper
-              </a>{" "}
-              in which it considers the Near Term Forward Yield Spread as a
+              </a>
+              , in which they consider the Near Term Forward Yield Spread as a
               better indicator.
             </>,
             "fred",
@@ -155,7 +157,8 @@ function Data() {
       />
 
       <ProjectSection
-        title="Recession Model"
+        title="U.S. Recession Model"
+        headers={["Metric", "Description", "Source"]}
         rows={[
           [
             "CPI Forecast",
@@ -165,7 +168,7 @@ function Data() {
           ],
           [
             "Federal Effective Rate",
-            "Derived from Chat GPT's text analysis of the latest Federal Reserve article. It assesses either a Press Release (paragraphs 1-3) or a Speech (paragraphs 3-5) to predict rate changes: -1 indicates a rate cut, 0 signifies no change, and 1 suggests a rate increase.",
+            "Derived from Chat GPT's text analysis of the latest Federal Reserve press release. It assesses paragraphs first to third paragraphs to predict rate changes: -1 indicates a rate cut, 0 signifies no change, and 1 suggests a rate increase.",
             "fed",
             "https://www.federalreserve.gov/",
           ],
@@ -175,40 +178,46 @@ function Data() {
   );
 }
 
-function ProjectSection({ title, rows }) {
+function ProjectSection({ title, headers, rows }) {
   return (
     <section>
       <h1 className="text-2xl font-bold mb-6">{title}</h1>
-      <TableComponent rows={rows} />
+      <TableComponent headers={headers} rows={rows} />
     </section>
   );
 }
 
-function TableComponent({ rows }) {
+function TableComponent({ headers, rows }) {
   return (
     <table className="w-full border-collapse">
       <thead>
         <tr>
-          <th className="py-3 px-4 border-b bg-gray-400">Asset</th>
-          <th className="py-3 px-4 border-b bg-gray-400">Description</th>
-          <th className="py-3 px-4 border-b bg-gray-400">Source</th>
+          {headers.map((header, index) => (
+            <th key={index} className="py-3 px-4 border-b bg-gray-400">
+              {header}
+            </th>
+          ))}
         </tr>
       </thead>
       <tbody>
-        {rows.map((row, index) => (
-          <tr key={index} className="hover:bg-gray-100">
-            <td className="py-2 px-4 border-b">{row[0]}</td>
-            <td className="py-2 px-4 border-b">{row[1]}</td>
-            <td className="py-2 px-4 border-b">
-              <a
-                href={row[3]}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-blue-500 hover:underline"
-              >
-                {row[2]}
-              </a>
-            </td>
+        {rows.map((row, rowIndex) => (
+          <tr key={rowIndex} className="hover:bg-gray-100">
+            {row.map((cell, cellIndex) => (
+              <td key={cellIndex} className="py-2 px-4 border-b">
+                {cellIndex === 2 ? ( // If it's the source column
+                  <a
+                    href={row[cellIndex + 1]} // URL is in the next column
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-blue-500 hover:underline"
+                  >
+                    {cell}
+                  </a>
+                ) : (
+                  cellIndex !== 3 && cell // Skip displaying the URL as plain text
+                )}
+              </td>
+            ))}
           </tr>
         ))}
       </tbody>
@@ -222,12 +231,18 @@ TableComponent.propTypes = {
   rows: PropTypes.arrayOf(
     PropTypes.arrayOf(PropTypes.string.isRequired).isRequired
   ).isRequired,
+  headers: PropTypes.arrayOf(
+    PropTypes.arrayOf(PropTypes.string.isRequired).isRequired
+  ).isRequired,
 };
 
 ProjectSection.propTypes = {
   title: PropTypes.string.isRequired,
   description: PropTypes.string.isRequired,
   rows: PropTypes.arrayOf(
+    PropTypes.arrayOf(PropTypes.string.isRequired).isRequired
+  ).isRequired,
+  headers: PropTypes.arrayOf(
     PropTypes.arrayOf(PropTypes.string.isRequired).isRequired
   ).isRequired,
 };
