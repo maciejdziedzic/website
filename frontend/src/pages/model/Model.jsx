@@ -86,7 +86,50 @@ export default function ModelDescription() {
           Model Serialization: Trained model saved to .pkl file for future use.
         </li>
       </ol>
-
+      <h2 className="text-xl font-semibold mt-4 mb-2">
+        Model Evaluation and Results:
+      </h2>
+      <p className="mb-4">
+        After training and validating the model, the following results were
+        obtained:
+      </p>
+      <ul className="list-disc list-inside pl-4 mb-4">
+        <li>Test Mean Squared Error (MSE): 60.235 (S&P 500)</li>
+        <li>Model Coefficients: [-2.1084, -1.0620]</li>
+        <li>Model Intercept: 4.6312</li>
+        <li>Training R^2: 0.0728</li>
+        <li>Test R^2: -0.1517</li>
+      </ul>
+      <p className="mb-4">
+        The statistical summary from the OLS regression is as follows:
+      </p>
+      <pre className="whitespace-pre-wrap mb-4">
+        {`
+Dep. Variable:                      y   R-squared:                       0.073
+Model:                            OLS   Adj. R-squared:                  0.060
+Method:                 Least Squares   F-statistic:                     5.461
+Date:                Thu, 26 Oct 2023   Prob (F-statistic):            0.00521
+Time:                        18:45:50   Log-Likelihood:                -497.10
+No. Observations:                 142   AIC:                             1000.
+Df Residuals:                     139   BIC:                             1009.
+Df Model:                           2                                         
+Covariance Type:            nonrobust                                         
+==============================================================================
+                coef        std err      t        P>|t|      [0.025      0.975]
+------------------------------------------------------------------------------
+const           4.6312      1.199      3.862      0.000       2.260       7.002
+cpi_pct        -2.1084      0.851     -2.479      0.014      -3.790      -0.427
+fed_sentiment  -1.0620      0.704     -1.508      0.134      -2.454       0.330
+==============================================================================
+Omnibus:                       10.995   Durbin-Watson:                   1.940
+        `}
+      </pre>
+      <p className="italic mb-4">
+        These results provide a comprehensive overview of the model’s
+        performance and the statistical significance of its coefficients.
+        Further analysis and validation might be necessary to improve the model
+        and better understand the relationships between the variables.
+      </p>
       <h2 className="text-xl font-semibold mt-4 mb-2">Key Observations:</h2>
       <p className="mb-4">
         The code aims to understand the influence of macroeconomic factors, like
