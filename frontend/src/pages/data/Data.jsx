@@ -1,3 +1,4 @@
+import { useState } from "react";
 import PropTypes from "prop-types";
 import useDarkMode from "../../contexts/DarkMode/useDarkMode";
 
@@ -5,11 +6,11 @@ function Data() {
   const { darkMode } = useDarkMode();
   return (
     <div
-      className={`space-y-10 ${
+      className={`space-y-10 p-4 ${
         darkMode ? "bg-neutral-700 text-white" : "bg-white text-neutral-700"
       }`}
     >
-      <ProjectSection
+      <CollapsibleProjectSection
         title="Assets Return"
         headers={["Asset", "Description", "Source"]}
         rows={[
@@ -46,7 +47,7 @@ function Data() {
         ]}
       />
 
-      <ProjectSection
+      <CollapsibleProjectSection
         title="U.S. Macroeconomic Chart"
         headers={["Indicator", "Description", "Source"]}
         rows={[
@@ -157,11 +158,11 @@ function Data() {
         ]}
       />
 
-      <ProjectSection
+      <CollapsibleProjectSection
         title="U.S. Recession Model"
-        headers={["Metric", "Description", "Source"]}
-        rows={[
-          // Training Variables
+        firstSectionTitle="Input Variables"
+        firstHeaders={["Metric", "Description", "Source"]}
+        firstRows={[
           [
             "CPI",
             "Quarterly percentage change in the Consumer Price Index.",
@@ -180,7 +181,10 @@ function Data() {
             "Stooq",
             "https://stooq.pl/q/d/?s=%5Espx&c=0&d1=19691231&d2=20221230&i=y",
           ],
-          // Input Variables for Prediction
+        ]}
+        secondSectionTitle="Input Variables for Prediction"
+        secondHeaders={["Metric", "Description", "Source"]}
+        secondRows={[
           [
             "PROJECTED CPI",
             "Quarterly Consumer Price Index projection, web-scraped from the Federal Reserve Bank of Cleveland's published data.",
@@ -189,7 +193,7 @@ function Data() {
           ],
           [
             "HYPOTETHICAL FED RATE",
-            "A machine learning model analyzes text from the latest Federal Reserve press release, specifically the first three paragraphs, to predict potential rate changes. A prediction of -1 suggests a rate cut, 0 implies no change, and 1 indicates a rate increase.",
+            "A machine learning model analyzes text from the latest Federal Reserve press release to predict potential rate changes.",
             "Federal Reserve",
             "https://www.federalreserve.gov/",
           ],
@@ -199,11 +203,52 @@ function Data() {
   );
 }
 
-function ProjectSection({ title, headers, rows }) {
+function CollapsibleProjectSection({
+  title,
+  firstSectionTitle,
+  firstHeaders,
+  firstRows,
+  secondSectionTitle,
+  secondHeaders,
+  secondRows,
+  headers,
+  rows,
+}) {
+  const [isOpen, setIsOpen] = useState(false);
+
   return (
-    <section>
-      <h1 className="text-2xl font-bold mb-6">{title}</h1>
-      <TableComponent headers={headers} rows={rows} />
+    <section className="rounded-lg overflow-hidden shadow-lg mb-6">
+      <div className="flex justify-between items-center p-4 bg-gray-200 dark:bg-gray-800">
+        <h1 className="text-2xl font-bold">{title}</h1>
+        <button
+          onClick={() => setIsOpen(!isOpen)}
+          className="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600 transition duration-300"
+        >
+          {isOpen ? "Collapse" : "Expand"}
+        </button>
+      </div>
+      {isOpen && (
+        <>
+          {firstSectionTitle && firstHeaders && firstRows ? (
+            <>
+              <h2 className="text-xl font-bold my-4 px-4">
+                {firstSectionTitle}
+              </h2>
+              <TableComponent headers={firstHeaders} rows={firstRows} />
+            </>
+          ) : headers && rows ? (
+            <TableComponent headers={headers} rows={rows} />
+          ) : null}
+          {secondSectionTitle && secondHeaders && secondRows && (
+            <>
+              <h2 className="text-xl font-bold my-4 px-4">
+                {secondSectionTitle}
+              </h2>
+              <TableComponent headers={secondHeaders} rows={secondRows} />
+            </>
+          )}
+        </>
+      )}
     </section>
   );
 }
@@ -257,13 +302,14 @@ TableComponent.propTypes = {
   ).isRequired,
 };
 
-ProjectSection.propTypes = {
+CollapsibleProjectSection.propTypes = {
   title: PropTypes.string.isRequired,
-  description: PropTypes.string.isRequired,
-  rows: PropTypes.arrayOf(
-    PropTypes.arrayOf(PropTypes.string.isRequired).isRequired
-  ).isRequired,
-  headers: PropTypes.arrayOf(
-    PropTypes.arrayOf(PropTypes.string.isRequired).isRequired
-  ).isRequired,
+  firstSectionTitle: PropTypes.string,
+  firstHeaders: PropTypes.arrayOf(PropTypes.string),
+  firstRows: PropTypes.arrayOf(PropTypes.arrayOf(PropTypes.string)),
+  secondSectionTitle: PropTypes.string,
+  secondHeaders: PropTypes.arrayOf(PropTypes.string),
+  secondRows: PropTypes.arrayOf(PropTypes.arrayOf(PropTypes.string)),
+  headers: PropTypes.arrayOf(PropTypes.string),
+  rows: PropTypes.arrayOf(PropTypes.arrayOf(PropTypes.string)),
 };
