@@ -165,7 +165,7 @@ function Data() {
         firstRows={[
           [
             "FED RATE",
-            "Quarterly percentage change in the FED Effective Rate, where -1 represents a decrease, 0 indicates no change, and 1 signifies an increase.",
+            "The FED Effective Rate's quarterly percentage change has been categorized into three distinct levels: -1 for a decrease, 0 for no change, and 1 for an increase.",
             "FRED",
             "https://fred.stlouisfed.org/series/FEDFUNDS",
           ],
@@ -187,7 +187,7 @@ function Data() {
         secondRows={[
           [
             "PROJECTED CPI",
-            "Quarterly Consumer Price Index projection, web-scraped from the Federal Reserve Bank of Cleveland's published data.",
+            "Web-scraped quarterly Consumer Price Index projection from the Federal Reserve Bank of Cleveland's published data, transformed from quarterly annualized percentage change to quarterly percentage change.",
             "Federal Reserve - Cleveland",
             "https://www.clevelandfed.org/indicators-and-data/inflation-nowcasting",
           ],
