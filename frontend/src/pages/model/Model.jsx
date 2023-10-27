@@ -87,23 +87,33 @@ export default function ModelDescription() {
       </p>
       <pre className="whitespace-pre-wrap mb-4">
         {`
-Dep. Variable:                      y   R-squared:                       0.073
-Model:                            OLS   Adj. R-squared:                  0.060
-Method:                 Least Squares   F-statistic:                     5.461
-Date:                Thu, 26 Oct 2023   Prob (F-statistic):            0.00521
-Time:                        18:45:50   Log-Likelihood:                -497.10
-No. Observations:                 142   AIC:                             1000.
-Df Residuals:                     139   BIC:                             1009.
+sp500 Test MSE: 65.49505801265217
+sp500 Test MSE: 82.41482712877064
+sp500 Model Coefficients: [-2.17141496 -1.43532648]
+sp500 Model Intercept: 4.807484486328864
+sp500 Training R^2: 0.09517663201680049
+sp500 Test R^2: -0.15963313685264957
+                            OLS Regression Results                            
+==============================================================================
+Dep. Variable:                      y   R-squared:                       0.095
+Model:                            OLS   Adj. R-squared:                  0.085
+Method:                 Least Squares   F-statistic:                     9.414
+Date:                Fri, 27 Oct 2023   Prob (F-statistic):           0.000130
+Time:                        18:13:08   Log-Likelihood:                -618.46
+No. Observations:                 182   AIC:                             1243.
+Df Residuals:                     179   BIC:                             1253.
 Df Model:                           2                                         
 Covariance Type:            nonrobust                                         
 ==============================================================================
-                coef        std err      t        P>|t|      [0.025      0.975]
+                 coef    std err          t      P>|t|      [0.025      0.975]
 ------------------------------------------------------------------------------
-const           4.6312      1.199      3.862      0.000       2.260       7.002
-cpi_pct        -2.1084      0.851     -2.479      0.014      -3.790      -0.427
-fed_sentiment  -1.0620      0.704     -1.508      0.134      -2.454       0.330
+const          4.8075      0.881      5.456      0.000       3.069       6.546
+x1            -2.1714      0.677     -3.206      0.002      -3.508      -0.835
+x2            -1.4353      0.550     -2.610      0.010      -2.520      -0.350
 ==============================================================================
-Omnibus:                       10.995   Durbin-Watson:                   1.940
+Omnibus:                       15.504   Durbin-Watson:                   1.972
+...
+==============================================================================
         `}
       </pre>
       <p className="italic mb-4">
