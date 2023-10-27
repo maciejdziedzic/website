@@ -57,6 +57,7 @@ df = {}
 df['D_M'] = dfs['D'].resample('M').last()
 df['M_M'] = dfs['M'].resample('M').last()
 df['Q_M'] = dfs['Q'].resample('M').ffill()
+df['A_M'] = dfs['A'].resample('M').ffill()
 # new_dates = pd.date_range(
 #     start=df['Q_M'].index.min(), end='2022-12-31', freq='M')
 # df['Q_M'] = df['Q_M'].reindex(new_dates).ffill()
@@ -70,18 +71,16 @@ data['iyc'] = round(data['bonds10tr'] - data['bonds2tr'], 2)
 data['gdp_pct'] = round(data['gdp'].pct_change(periods=4) * 100, 2)
 data['gdp_pct_ma4'] = round(data['gdp_pct'].rolling(window=4).mean(), 2)
 data['gdpworld_pct'] = round(data['gdpworld'].pct_change(12) * 100, 2)
-data['debt_to_gdp'] = round(data['debt'] / data['gdp']/10, 2)
+data['debt_to_gdp'] = round(data['debt'] / data['gdp']/1000, 2)
+data['resins_to_gdp'] = round(data['resins'] / data['gdp'], 2)
+data['cbasstogdp'] = round(data['cbasstogdp'], 2)
+data['cp_to_gdp'] = round(100 * data['cbasstogdp']/data['gdp'], 2)
 data['m0_to_gdp'] = round(data['m0'] / data['gdp']/1000 * 100, 2)
 data['m3_to_gdp'] = round((data['m3']/1000000) / data['gdp']/1000 * 100, 2)
 data['cpi_pct'] = round(data['cpi'].pct_change(periods=12) * 100, 2)
 data['ppi_pct'] = round(data['ppi'].pct_change(periods=12) * 100, 2)
-data['cbasstogdp'] = round(data['cbasstogdp'], 2)
-data['resinstogdp'] = round(100 * data['resins']/data['gdp'], 2)
-data['cptogdp'] = round(100 * data['cbasstogdp']/data['gdp'], 2)
 data['indpro'] = round(data['indpro'], 2)
 data['oil'] = round(data['oil'], 2)
-
-data = data[start_date:end_date]
 
 data.index.name = 'date'
 data = data.reset_index()
