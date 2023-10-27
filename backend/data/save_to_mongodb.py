@@ -34,7 +34,7 @@ series_dict = {
     'oil': ('WTISPLC', 'M'),
     'indpro': ('INDPRO', 'M'),
     'houses': ('MSPUS', 'Q'),
-    'wages': ('LES1252881500Q', 'Q'),
+    'wages': ('AHETPI', 'M'),
     'cp': ('CP', 'Q')
 }
 
