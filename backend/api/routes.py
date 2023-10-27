@@ -35,6 +35,7 @@ def predict():
         feature_names = ['cpi', 'fed_rate']
         X_test = pd.DataFrame([feature_values], columns=feature_names)
         pred_test = logistic_regression.predict(X_test)
+        print(feature_values)
         # # Return prediction as JSON
         return jsonify(str(pred_test))
 
