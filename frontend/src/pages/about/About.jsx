@@ -34,10 +34,11 @@ export default function About() {
       <section className="mb-5">
         <h2 className="text-xl font-semibold mb-3">Technologies Used</h2>
         <p>
-          This website is built using modern web technologies, including React
-          for UI components, D3.js for data visualizations, and Flask for the
-          backend. It&apos;s designed to be responsive and user-friendly across
-          devices.
+          Tech Stack - Ubuntu (Linux), Nginx, Node JS, NPM, React, HTML, CSS,
+          Tailwind, Python, Gnunicorn, Flask, CRON Job - JS, API, working with
+          JSON, MongoDB - - EDA, stating a problem, linear regression -
+          macroeconomic - placing a machine learning model in web based on
+          scraped data and chat gpt interpretation
         </p>
       </section>
 

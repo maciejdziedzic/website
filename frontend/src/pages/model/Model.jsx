@@ -14,26 +14,8 @@ export default function ModelDescription() {
         Sentiment
       </h1>
 
-      <h2 className="text-xl font-semibold mt-4 mb-2">
-        Data Acquisition and Preprocessing:
-      </h2>
+      <h2 className="text-xl font-semibold mt-4 mb-2">Data Transformation:</h2>
       <ol className="list-decimal list-inside pl-4 mb-4">
-        <li className="mb-2">
-          <strong>Data Sources</strong>:
-          <ul className="list-disc list-inside pl-4">
-            <li>
-              S&P 500: Data loaded from local CSV file sourced from stooq.pl.
-            </li>
-            <li>
-              Consumer Price Index (CPI): Fetched using the fredapi from the
-              FRED database.
-            </li>
-            <li>
-              Federal Effective Rate (FEDFUNDS): Also sourced from the FRED
-              database.
-            </li>
-          </ul>
-        </li>
         <li className="mb-2">
           <strong>Data Transformation</strong>:
           <ul className="list-disc list-inside pl-4">

@@ -49,12 +49,12 @@ export const Labels = {
     tooltipLabel: "Producer Price Index Change",
     color: "rgb(0, 180, 140)",
   },
-  resinstogdp: {
+  resins_to_gdp: {
     label: "RES./GDP",
     tooltipLabel: "Reserves of Depository Institutions to GDP Ratio",
     color: "rgb(10, 50, 120)",
   },
-  cptogdp: {
+  cp_to_gdp: {
     label: "C.P./GDP",
     tooltipLabel: "Corporate Profits to GDP Ratio",
     color: "rgb(140, 40, 180)",

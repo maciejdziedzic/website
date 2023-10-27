@@ -133,7 +133,7 @@ function Data() {
           ],
           [
             "C.P./GDP",
-            "Quarterly ratio of after-tax corporate profits to GDP.",
+            "Quarterly ratio of after-tax corporate profits to quarterly GDP.",
             "fred",
             "https://fred.stlouisfed.org/series/CP",
           ],

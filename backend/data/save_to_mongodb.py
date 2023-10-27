@@ -38,10 +38,6 @@ series_dict = {
     'cp': ('CP', 'Q')
 }
 
-# Define dates
-start_date = datetime.datetime(1970, 1, 1)
-end_date = datetime.datetime(2022, 12, 31)
-
 # Initialize DataFrames
 dfs = {'D': pd.DataFrame(), 'M': pd.DataFrame(),
        'Q': pd.DataFrame(), 'A': pd.DataFrame()}
@@ -61,10 +57,10 @@ df = {}
 df['D_M'] = dfs['D'].resample('M').last()
 df['M_M'] = dfs['M'].resample('M').last()
 df['Q_M'] = dfs['Q'].resample('M').ffill()
-new_dates = pd.date_range(
-    start=df['Q_M'].index.min(), end='2022-12-31', freq='M')
-df['Q_M'] = df['Q_M'].reindex(new_dates).ffill()
-df['A_M'] = dfs['A'].resample('M').ffill()
+# new_dates = pd.date_range(
+#     start=df['Q_M'].index.min(), end='2022-12-31', freq='M')
+# df['Q_M'] = df['Q_M'].reindex(new_dates).ffill()
+# df['A_M'] = dfs['A'].resample('M').ffill()
 
 data = pd.concat([df['D_M'], df['M_M'], df['Q_M'], df['A_M']], axis=1)
 

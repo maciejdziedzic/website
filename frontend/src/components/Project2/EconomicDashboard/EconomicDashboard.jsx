@@ -48,7 +48,23 @@ const EconomicDashboard = () => {
       return { ...prev, [label]: targetState };
     });
   };
+  const getFilteredData = () => {
+    // Step 1: Filter the data based on the active series
+    const filteredData = data.filter((row) =>
+      seriesLabels.some((label) => activeSeries[label] && row[label] != null)
+    );
 
+    // Step 2: Calculate the minimum start date
+    const startDate = filteredData.reduce((minDate, row) => {
+      const rowDate = new Date(row.date);
+      return rowDate < minDate ? rowDate : minDate;
+    }, new Date(filteredData[0]?.date));
+
+    // Step 3: Filter rows before the start date
+    return filteredData.filter((row) => new Date(row.date) >= startDate);
+  };
+
+  const filteredData = getFilteredData();
   return (
     <div className="box flex ">
       <div className="left-section button-box flex-col text-xs w-[22.5%] ">
@@ -76,7 +92,7 @@ const EconomicDashboard = () => {
             : "white",
         }}
       >
-        <EconomicChart data={data} activeSeries={activeSeries} />
+        <EconomicChart data={filteredData} activeSeries={activeSeries} />
       </div>
     </div>
   );
