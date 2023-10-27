@@ -87,31 +87,31 @@ export default function ModelDescription() {
       </p>
       <pre className="whitespace-pre-wrap mb-4">
         {`
-sp500 Test MSE: 65.49505801265217
-sp500 Test MSE: 82.41482712877064
-sp500 Model Coefficients: [-2.17141496 -1.43532648]
-sp500 Model Intercept: 4.807484486328864
-sp500 Training R^2: 0.09517663201680049
-sp500 Test R^2: -0.15963313685264957
+sp500 Test MSE: 62.011296148458044
+sp500 Test MSE: 87.77482089995232
+sp500 Model Coefficients: [-2.27638388 -0.05776531]
+sp500 Model Intercept: 4.825802840974553
+sp500 Training R^2: 0.07665043936900495
+sp500 Test R^2: -0.23505192503592576
                             OLS Regression Results                            
 ==============================================================================
-Dep. Variable:                      y   R-squared:                       0.095
-Model:                            OLS   Adj. R-squared:                  0.085
-Method:                 Least Squares   F-statistic:                     9.414
-Date:                Fri, 27 Oct 2023   Prob (F-statistic):           0.000130
-Time:                        18:13:08   Log-Likelihood:                -618.46
-No. Observations:                 182   AIC:                             1243.
-Df Residuals:                     179   BIC:                             1253.
+Dep. Variable:                      y   R-squared:                       0.077
+Model:                            OLS   Adj. R-squared:                  0.066
+Method:                 Least Squares   F-statistic:                     7.430
+Date:                Fri, 27 Oct 2023   Prob (F-statistic):           0.000795
+Time:                        18:49:42   Log-Likelihood:                -620.30
+No. Observations:                 182   AIC:                             1247.
+Df Residuals:                     179   BIC:                             1256.
 Df Model:                           2                                         
 Covariance Type:            nonrobust                                         
 ==============================================================================
                  coef    std err          t      P>|t|      [0.025      0.975]
 ------------------------------------------------------------------------------
-const          4.8075      0.881      5.456      0.000       3.069       6.546
-x1            -2.1714      0.677     -3.206      0.002      -3.508      -0.835
-x2            -1.4353      0.550     -2.610      0.010      -2.520      -0.350
+const          4.8258      0.891      5.418      0.000       3.068       6.583
+x1            -2.2764      0.682     -3.338      0.001      -3.622      -0.931
+x2            -0.0578      0.033     -1.757      0.081      -0.123       0.007
 ==============================================================================
-Omnibus:                       15.504   Durbin-Watson:                   1.972
+Omnibus:                       19.097   Durbin-Watson:                   1.942
 ...
 ==============================================================================
         `}

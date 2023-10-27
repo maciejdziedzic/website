@@ -165,7 +165,7 @@ function Data() {
         firstRows={[
           [
             "FED RATE",
-            "Daily Federal Funds Rate average for each quarter.",
+            "Quarterly percentage change in the FED Effective Rate.",
             "FRED",
             "https://fred.stlouisfed.org/series/FEDFUNDS",
           ],
