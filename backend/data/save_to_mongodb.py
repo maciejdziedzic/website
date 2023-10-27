@@ -65,7 +65,7 @@ df['A_M'] = dfs['A'].resample('M').ffill()
 
 data = pd.concat([df['D_M'], df['M_M'], df['Q_M'], df['A_M']], axis=1)
 
-data['wages_month'] = round(data['wages'] * 4, 2)
+data['wages_month'] = round(data['wages'] * 168, 2)
 data['house_wages'] = round(data['houses']/data['wages_month'], 2)
 data['iyc'] = round(data['bonds10tr'] - data['bonds2tr'], 2)
 data['gdp_pct'] = round(data['gdp'].pct_change(periods=4) * 100, 2)

@@ -53,9 +53,9 @@ function Data() {
         rows={[
           [
             "HOUSE/WAGES",
-            "Quarterly ratio of median U.S. house prices to monthly wages (calculated as four times the weekly rate).",
+            "Quarterly ratio of median U.S. house prices to monthly wages (calculated as 168 times the hourly rate).",
             "fred",
-            "https://fred.stlouisfed.org/series/LES1252881500Q",
+            "https://fred.stlouisfed.org/series/AHETPI",
           ],
 
           [
