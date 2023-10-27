@@ -67,11 +67,11 @@ def build_and_validate_model(X, y, model_name):
 load_dotenv("../.env")
 FRED_API_KEY = os.getenv("API_KEY")
 
-start_date = datetime.datetime(1970, 1, 1)
+start_date = datetime.datetime(1955, 1, 1)
 end_date = datetime.datetime(2022, 12, 31)
 
 # Data loading and preprocessing
-gold = preprocess_stooq_data('../data/xausd.csv', 'gold')
+# gold = preprocess_stooq_data('../data/xausd.csv', 'gold')
 sp500 = preprocess_stooq_data('../data/spx.csv', 'sp500')
 cpi = load_data_from_fred(FRED_API_KEY, 'CPIAUCSL')
 cpi.columns = ['cpi']
@@ -82,24 +82,30 @@ cpi.index.name = 'date'
 fedrate = load_data_from_fred(FRED_API_KEY, 'FEDFUNDS')
 fedrate.columns = ['fedrate']
 fedrate_avg = fedrate.resample('Q').mean()
-fedrate = fedrate_avg[(fedrate_avg.index >= start_date)
-                      & (fedrate_avg.index <= end_date)]
-fedrate.index.name = 'date'
 
-# Final DataFrame
-df = pd.concat([gold, sp500, cpi, fedrate], axis=1)
-df = df.drop(['cpi'], axis=1)
+# Final Df:
+df = pd.concat([sp500, cpi, fedrate_avg], axis=1)
 df['fedrate_change'] = df['fedrate'].diff()
-df['fed_sentiment'] = np.where(
-    df['fedrate_change'] > 0, 1, np.where(df['fedrate_change'] < 0, -1, 0))
-df = df.drop(columns=['fedrate_change'])
+df['fed_sentiment'] = np.where(df['fedrate_change'] > 0, 1,
+                               np.where(df['fedrate_change'] < 0, -1, 0))
+df['cpi_pct_lag1'] = df['cpi_pct'].shift(1)
+df['fed_sentiment_lag1'] = df['fed_sentiment'].shift(1)
+df['fed_sentiment_cpi'] = df['fed_sentiment'] * df['cpi_pct']
+df['cpi_pct_squared'] = df['cpi_pct']**2
+df['cpi_rate_of_change'] = df['cpi_pct'].diff()
+df['cpi_moving_avg'] = df['cpi_pct'].rolling(window=3).mean()
+
+# After adding these transformations, you can then split and build the model.
 df = df[(df.index >= start_date) & (df.index <= end_date)]
 
-# Build and validate models
 X_sp500 = df[['cpi_pct', 'fed_sentiment']].values
 y_sp500 = df['sp500_q_pct'].values
 build_and_validate_model(X_sp500, y_sp500, "sp500")
 
-X_gold = df[['cpi_pct', 'fed_sentiment']].values
-y_gold = df['gold_q_pct'].values
-build_and_validate_model(X_gold, y_gold, "gold")
+# Check:
+# loaded_model = joblib.load("sp500_model.pkl")
+# cpi_pct = 0.8564348381840725
+# fed_sentiment = 0
+# input_data = np.array([[cpi_pct, fed_sentiment]])
+# predicted_output = loaded_model.predict(input_data)
+# predicted_output
