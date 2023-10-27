@@ -164,16 +164,16 @@ function Data() {
         firstHeaders={["Metric", "Description", "Source"]}
         firstRows={[
           [
-            "CPI",
-            "Quarterly percentage change in the Consumer Price Index.",
-            "FRED",
-            "https://fred.stlouisfed.org/series/CPIAUCSL",
-          ],
-          [
             "FED RATE",
             "Federal Funds Rate at the end of each quarter.",
             "FRED",
             "https://fred.stlouisfed.org/series/FEDFUNDS",
+          ],
+          [
+            "CPI",
+            "Quarterly percentage change in the Consumer Price Index.",
+            "FRED",
+            "https://fred.stlouisfed.org/series/CPIAUCSL",
           ],
           [
             "S&P 500",
