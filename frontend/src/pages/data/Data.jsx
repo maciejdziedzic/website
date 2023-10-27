@@ -165,7 +165,7 @@ function Data() {
         firstRows={[
           [
             "FED RATE",
-            "Quarterly percentage change in the FED Effective Rate.",
+            "Quarterly percentage change in the FED Effective Rate, where -1 represents a decrease, 0 indicates no change, and 1 signifies an increase.",
             "FRED",
             "https://fred.stlouisfed.org/series/FEDFUNDS",
           ],
@@ -193,7 +193,7 @@ function Data() {
           ],
           [
             "HYPOTETHICAL FED RATE",
-            "A machine learning model analyzes text from the latest Federal Reserve press release to predict potential rate changes.",
+            "A machine learning model analyzes the most recent Federal Reserve press release text to forecast possible rate changes. It assigns -1 when it predicts a rate decrease, 0 when it anticipates rate stability, and 1 when it expects rate increases.",
             "Federal Reserve",
             "https://www.federalreserve.gov/",
           ],

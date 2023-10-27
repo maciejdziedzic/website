@@ -14,31 +14,6 @@ export default function ModelDescription() {
         Sentiment
       </h1>
 
-      <h2 className="text-xl font-semibold mt-4 mb-2">Data Transformation:</h2>
-      <ol className="list-decimal list-inside pl-4 mb-4">
-        <li className="mb-2">
-          <strong>Data Transformation</strong>:
-          <ul className="list-disc list-inside pl-4">
-            <li>
-              S&P 500 data is resampled quarterly with percentage change in
-              price computed.
-            </li>
-            <li>
-              CPI data is also resampled quarterly with percentage change
-              calculated.
-            </li>
-            <li>
-              Federal Effective Rate is resampled and averaged. Fed sentiment is
-              derived based on rate change.
-            </li>
-          </ul>
-        </li>
-        <li>
-          Final Dataset: Combined all datasets into one DataFrame containing
-          quarterly changes and Federal Effective Rate sentiment.
-        </li>
-      </ol>
-
       <h2 className="text-xl font-semibold mt-4 mb-2">Model Construction:</h2>
       <ol className="list-decimal list-inside pl-4 mb-4">
         <li className="mb-2">

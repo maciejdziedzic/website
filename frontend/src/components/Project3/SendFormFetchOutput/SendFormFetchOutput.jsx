@@ -51,9 +51,13 @@ export default function GetEconomicData() {
             }
           >
             <div>
-              <strong>Quarterly CPI:</strong> {data.cpi_data.cpi.toFixed(2)}{" "}
-              {/* Round to two decimal places */}
+              <strong>Quarterly Annualized CPI:</strong>{" "}
+              {data.cpi_data.cpi_annualized.toFixed(2)}{" "}
             </div>
+            <div>
+              <strong>Quarterly CPI:</strong> {data.cpi_data.cpi.toFixed(2)}{" "}
+            </div>
+
             <div>
               <strong>Press Release Content:</strong>{" "}
               {data.press_release_content && data.press_release_content}

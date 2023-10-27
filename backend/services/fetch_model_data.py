@@ -41,6 +41,7 @@ def fetch_data():
                     quarterly_pct_change = (
                         pow(1 + annualized_pct_change / 100, 0.25) - 1) * 100
                     data['cpi'] = quarterly_pct_change
+                    data['cpi_annualized'] = annualized_pct_change
                     data['cpi_status'] = "success"
 
                 else:
