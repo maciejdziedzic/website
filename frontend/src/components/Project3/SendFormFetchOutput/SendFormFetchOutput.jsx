@@ -57,6 +57,9 @@ export default function GetEconomicData() {
             <div>
               <strong>Quarterly CPI:</strong> {data.cpi_data.cpi.toFixed(2)}{" "}
             </div>
+            <div>
+              <strong>My data:</strong> {data.last_unemp}{" "}
+            </div>
 
             <div>
               <strong>Press Release Content:</strong>{" "}
@@ -83,16 +86,16 @@ export default function GetEconomicData() {
         ></SharedButton>
         {modelResult && (
           <div>
-            <strong>Model Result: </strong>
-            {parseFloat(JSON.parse(modelResult)[0]) > 0
-              ? `SP500 will increase by ${parseFloat(
-                  JSON.parse(modelResult)[0]
-                ).toFixed(2)}%`
-              : parseFloat(JSON.parse(modelResult)[0]) < 0
-              ? `SP500 will decrease by ${Math.abs(
-                  parseFloat(JSON.parse(modelResult)[0])
-                ).toFixed(2)}%`
-              : `SP500 is expected to maintain the same level`}
+            <div>
+              <strong>
+                Probability that the FED will lower or maintain the rates:
+              </strong>
+              {(modelResult.maintain_or_lower * 100).toFixed(2)}%
+            </div>
+            <div>
+              <strong>Probability that the FED will raise the rates: </strong>
+              {(modelResult.raise * 100).toFixed(2)}%
+            </div>
           </div>
         )}
       </div>

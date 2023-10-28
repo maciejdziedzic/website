@@ -11,12 +11,15 @@ log_reg_model = joblib.load(model_path)
 scaler = joblib.load(scaler)
 
 # # Define the input data
-input_data = np.array([[0.2, 4.8]])
+input_data = np.array([[0.86, 3.8]])
 
 # # Scale the input data
 input_data_scaled = scaler.transform(input_data)
 
 # # Make a prediction
 prediction = log_reg_model.predict(input_data_scaled)
+probability = log_reg_model.predict_proba(input_data_scaled)
+
 
 print("Prediction:", prediction)
+print("Probability estimates for each class:", probability)

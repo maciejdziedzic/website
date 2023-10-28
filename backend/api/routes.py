@@ -1,5 +1,6 @@
 from flask import Blueprint, jsonify, request
 import pandas as pd
+import numpy as np
 import joblib
 import logging
 from pymongo import MongoClient
@@ -20,24 +21,31 @@ def get_data():
         return jsonify(error=str(e)), 500
 
 
-logistic_regression = joblib.load('model/sp500_model.pkl')
+logistic_regression = joblib.load('model/fed_model.pkl')
+scaler = joblib.load('model/fed_scaler.pkl')
 
 
 @api_blueprint.route('/run-model', methods=['POST'])
 def predict():
     try:
+
         data = request.get_json()
         cpi = data['cpi_data']['cpi']
         fed_rate = int(data['interpretation'])
-
+        last_unemp = data['last_unemp']
         # Run model
-        feature_values = [cpi, fed_rate]
-        feature_names = ['cpi', 'fed_rate']
-        X_test = pd.DataFrame([feature_values], columns=feature_names)
-        pred_test = logistic_regression.predict(X_test)
-        # print(feature_values)
+        feature_values = np.array([[cpi, last_unemp]])
+        feature_values_scaled = scaler.transform(feature_values)
+        feature_names = ['cpi', 'last_unemp']
+
+        X_test = pd.DataFrame(feature_values_scaled, columns=feature_names)
+        # pred_test = logistic_regression.predict(X_test)
+        probability = logistic_regression.predict_proba(X_test)
+        prob_list = probability[0].tolist()
+        print(prob_list[0])
+        print(type(prob_list[0]))
         # # Return prediction as JSON
-        return jsonify(str(pred_test))
+        return jsonify({'maintain_or_lower': prob_list[0], 'raise': prob_list[1]})
 
     except Exception as e:
         return jsonify(error=str(e)), 500

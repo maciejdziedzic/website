@@ -129,16 +129,27 @@ def interpretation(press_release_content):
         return str(e)
 
 
+def fetch_unemp():
+    unemp = fred.get_series('UNRATE')
+    # last_unemp = 'hello world'
+    last_unemp = unemp.iloc[-1]
+
+    return last_unemp
+
+
 def fetch_combined_data():
 
     cpi_data = fetch_data()
 
     press_release_content = fetch_text()
 
+    last_unemp = fetch_unemp()
+
     interpretation_result = interpretation(press_release_content)
 
     combined_data = {
         'cpi_data': cpi_data,
+        'last_unemp': last_unemp,
         'press_release_content': press_release_content,
         'interpretation': interpretation_result
     }
