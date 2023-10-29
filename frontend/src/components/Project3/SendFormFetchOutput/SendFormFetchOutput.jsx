@@ -51,14 +51,11 @@ export default function GetEconomicData() {
             }
           >
             <div>
-              <strong>Quarterly Annualized CPI:</strong>{" "}
-              {data.cpi_data.cpi_annualized.toFixed(2)}{" "}
+              <strong>Quarterly CPI Projected Change:</strong>{" "}
+              {data.cpi_data.cpi.toFixed(2)}{" "}
             </div>
             <div>
-              <strong>Quarterly CPI:</strong> {data.cpi_data.cpi.toFixed(2)}{" "}
-            </div>
-            <div>
-              <strong>My data:</strong> {data.last_unemp}{" "}
+              <strong>Last Monthly Unemployment Rate:</strong> {data.last_unemp}{" "}
             </div>
 
             <div>
@@ -66,6 +63,9 @@ export default function GetEconomicData() {
               {data.press_release_content && data.press_release_content}
             </div>
             <div>
+              <strong>Text model interpretation:</strong> {data.interpretation}
+            </div>
+            {/* <div>
               <strong>Fed expected policy:</strong>{" "}
               {data.interpretation === -1
                 ? "Based on the press release, Fed is expected to decrease its rates."
@@ -74,7 +74,7 @@ export default function GetEconomicData() {
                 : data.interpretation === 1
                 ? "Based on the press release, Fed is expected to increase its rates."
                 : "Unknown"}
-            </div>
+            </div> */}
           </div>
         )}
       </div>
@@ -87,15 +87,17 @@ export default function GetEconomicData() {
         {modelResult && (
           <div>
             <div>
+              Output from the model: {""}
               <strong>
                 Probability that the FED will lower or maintain the rates:
               </strong>
-              {(modelResult.maintain_or_lower * 100).toFixed(2)}%
+              {modelResult.maintain_or_lower}%
             </div>
             <div>
               <strong>Probability that the FED will raise the rates: </strong>
-              {(modelResult.raise * 100).toFixed(2)}%
+              {modelResult.raise}
             </div>
+            <div>Model Output plus GPT interpretation:</div>
           </div>
         )}
       </div>

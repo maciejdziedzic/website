@@ -107,23 +107,19 @@ def interpretation(press_release_content):
             model="gpt-3.5-turbo",
             temperature=0.2,
             messages=[
-                {"role": "system", "content": f"You will be given a text snippet. Your task is to determine its potential impact on interest rates. Explicitly return '-1' if you believe the text indicates a negative impact on interest rates, '0' if it suggests no impact, and '1' if it indicates a positive impact. Do not provide any other type of response. Please interpret the following text: {press_release_content}"}
+                {"role": "system",
+                    "content": f"You will be given a text snippet. Your task is to determine its potential impact on interest rates in percentage terms. Return the likelihood that interest rates will rise based on the text. Please provide a response in the form of a percentage. A response of 50% means that the text gives no indication whether interest rates will rise or fall. A response above 50% means that the text suggests a higher likelihood of interest rates increasing, while a response below 50% suggests a higher likelihood of interest rates remaining the same or decreasing. Interpret the following text: {press_release_content}"}
             ]
         )
 
         # Extract the content
         content = response.choices[0].message['content']
 
-        # Check and map the content to one of the desired outputs
-        if "-1" in content:
-            return -1
-        elif "0" in content:
-            return 0
-        elif "1" in content:
-            return 1
-        else:
-            # If the response doesn't match the expected outputs, handle the exception
-            raise ValueError("Unexpected response from the model.")
+        # Extract the percentage from the content
+        percentage = int(re.search(r"(\d+)%", content).group(1))
+        # test_percentage = 0.5
+        return percentage / 100
+        # return test_percentage
 
     except Exception as e:
         return str(e)
@@ -131,7 +127,6 @@ def interpretation(press_release_content):
 
 def fetch_unemp():
     unemp = fred.get_series('UNRATE')
-    # last_unemp = 'hello world'
     last_unemp = unemp.iloc[-1]
 
     return last_unemp

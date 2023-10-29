@@ -28,24 +28,43 @@ scaler = joblib.load('model/fed_scaler.pkl')
 @api_blueprint.route('/run-model', methods=['POST'])
 def predict():
     try:
-
         data = request.get_json()
         cpi = data['cpi_data']['cpi']
-        fed_rate = int(data['interpretation'])
+        fed_rate = data['interpretation']
         last_unemp = data['last_unemp']
+
         # Run model
         feature_values = np.array([[cpi, last_unemp]])
         feature_values_scaled = scaler.transform(feature_values)
         feature_names = ['cpi', 'last_unemp']
-
         X_test = pd.DataFrame(feature_values_scaled, columns=feature_names)
-        # pred_test = logistic_regression.predict(X_test)
         probability = logistic_regression.predict_proba(X_test)
         prob_list = probability[0].tolist()
-        print(prob_list[0])
-        print(type(prob_list[0]))
-        # # Return prediction as JSON
-        return jsonify({'maintain_or_lower': prob_list[0], 'raise': prob_list[1]})
+
+        # Adjusting probabilities with GPT-3 interpretation
+        transformed_gpt_interpretation = 2 * (fed_rate - 0.5)
+        adjustment = 0.1 * transformed_gpt_interpretation
+        adjusted_prob_lower = prob_list[0] - adjustment
+        adjusted_prob_raise = prob_list[1] + adjustment
+
+        # Normalizing to ensure the probabilities sum to 1
+        prob_sum = adjusted_prob_lower + adjusted_prob_raise
+        normalized_prob_lower = adjusted_prob_lower / prob_sum
+        normalized_prob_raise = adjusted_prob_raise / prob_sum
+
+        # Rounding to two decimal places
+        normalized_prob_lower = round(normalized_prob_lower, 2)
+        normalized_prob_raise = round(normalized_prob_raise, 2)
+
+        # Ensuring that rounded probabilities sum to 1
+        if normalized_prob_lower + normalized_prob_raise != 1:
+            # Adjusting the probabilities by the smallest possible value (0.01)
+            if normalized_prob_lower > normalized_prob_raise:
+                normalized_prob_lower -= 0.01
+            else:
+                normalized_prob_raise -= 0.01
+
+        return jsonify({'maintain_or_lower': normalized_prob_lower, 'raise': normalized_prob_raise})
 
     except Exception as e:
         return jsonify(error=str(e)), 500
