@@ -58,6 +58,22 @@ def fetch_data():
     return data
 
 
+def fetch_unemp():
+    unemp = fred.get_series('UNRATE')
+    last_unemp = unemp.iloc[-1]
+
+    return last_unemp
+
+
+def fetch_logistic_data():
+    cpi_data = fetch_data()
+    last_unemp = fetch_unemp()
+
+    logistic_data = {'last_unemp': last_unemp, 'cpi_data': cpi_data}
+
+    return logistic_data
+
+
 def fetch_text():
     url = "https://www.federalreserve.gov/"  # Assuming this is the main page URL
     response = requests.get(url)
@@ -123,13 +139,6 @@ def interpretation(press_release_content):
 
     except Exception as e:
         return str(e)
-
-
-def fetch_unemp():
-    unemp = fred.get_series('UNRATE')
-    last_unemp = unemp.iloc[-1]
-
-    return last_unemp
 
 
 def fetch_combined_data():

@@ -8,6 +8,31 @@ export default function GetEconomicData() {
   const { darkMode } = useContext(DarkModeContext);
   const [data, setData] = useState(null);
   const [modelResult, setModelResult] = useState(null);
+  const [logisticData, setLogisticData] = useState(null);
+  const [logisticModelResult, setLogisticModelResult] = useState(null);
+
+  const fetchLogisticData = async () => {
+    try {
+      const response = await axios.get(
+        "http://127.0.0.1:5000/api/fetch-logistic-data"
+      );
+      setLogisticData(response.data);
+    } catch (error) {
+      console.error("Error fetching logistic data: ", error);
+    }
+  };
+
+  const runLogisticModel = async () => {
+    try {
+      const response = await axios.post(
+        "http://127.0.0.1:5000/api/run-logistic-model",
+        logisticData
+      );
+      setLogisticModelResult(response.data);
+    } catch (error) {
+      "Error running logistic model: ", error;
+    }
+  };
 
   const fetchData = async () => {
     try {
@@ -39,6 +64,26 @@ export default function GetEconomicData() {
       <div className="flex space-x-5">
         <SharedButton
           variant="button1"
+          label="Fetch DataL"
+          onClick={fetchLogisticData}
+        ></SharedButton>
+        <div>
+          {logisticData && (
+            <div>
+              <div>
+                <strong>Last Unemployment Rate:</strong>{" "}
+                {logisticData.last_unemp}
+              </div>
+              <div>
+                <strong>CPI:</strong> {logisticData.cpi_data.cpi}
+              </div>
+            </div>
+          )}
+        </div>
+      </div>
+      <div className="flex space-x-5">
+        <SharedButton
+          variant="button1"
           onClick={fetchData}
           label="Fetch Data"
         ></SharedButton>
@@ -63,17 +108,13 @@ export default function GetEconomicData() {
               {data.press_release_content && data.press_release_content}
             </div>
             <div>
+              <strong>GPT-3 Interpretation of Fed&apos;s Press Release:</strong>
               <div>
-                <strong>
-                  Probability that the FED will lower or maintain the rates::
-                </strong>{" "}
                 Probability that the FED will lower or maintain the rates:
                 {data.interpretation * 100}%{" "}
               </div>
-              <div></div>{" "}
-              <strong>
-                Probability that the FED will lower or maintain the rates::
-              </strong>{" "}
+              <div></div> Probability that the FED will lower or maintain the
+              rates::
               {(1 - data.interpretation) * 100}%
             </div>
           </div>
@@ -87,18 +128,15 @@ export default function GetEconomicData() {
         ></SharedButton>
         {modelResult && (
           <div>
+            <strong>Output from the model: {""}</strong>
             <div>
-              Output from the model: {""}
-              <strong>
-                Probability that the FED will lower or maintain the rates:
-              </strong>
+              Probability that the FED will lower or maintain the rates:
               {modelResult.maintain_or_lower}%
             </div>
             <div>
-              <strong>Probability that the FED will raise the rates: </strong>
+              Probability that the FED will raise the rates:
               {modelResult.raise}%
             </div>
-            <div>Model Output plus GPT interpretation:</div>
           </div>
         )}
       </div>

@@ -5,6 +5,7 @@ import joblib
 import logging
 from pymongo import MongoClient
 from services.fetch_model_data import fetch_combined_data
+from services.fetch_model_data import fetch_logistic_data
 
 
 # logging.basicConfig(level=logging.DEBUG)
@@ -17,6 +18,30 @@ def get_data():
     try:
         data = fetch_combined_data()
         return jsonify(data)
+    except Exception as e:
+        return jsonify(error=str(e)), 500
+
+# Uwaga, zmieniam strukture!
+
+
+@api_blueprint.route('/fetch-logistic-data', methods=['GET', 'POST'])
+def get_logistic_data():
+    try:
+        data = fetch_logistic_data()
+        # dataCpi = fetch_cpi()
+        # data = {'last_unemp': dataUnemp, 'cpi_data': dataCpi}
+        print(data)
+        test_data = 'hello world'
+        return jsonify(data)
+    except Exception as e:
+        return jsonify(error=str(e)), 500
+
+
+@api_blueprint.route('run-logistic-model', methods=['POST'])
+def run_logistic_model():
+    try:
+        test_data = 'hello world'
+        return jsonify(test_data)
     except Exception as e:
         return jsonify(error=str(e)), 500
 
