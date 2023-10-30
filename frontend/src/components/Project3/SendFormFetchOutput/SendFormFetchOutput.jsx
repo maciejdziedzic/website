@@ -10,7 +10,8 @@ export default function GetEconomicData() {
   const [modelResult, setModelResult] = useState(null);
   const [logisticData, setLogisticData] = useState(null);
   const [logisticModelResult, setLogisticModelResult] = useState(null);
-  const [fedArticle, setFedArticle] = useState(null);
+  const [fedData, setfedData] = useState(null);
+  const [interpretation, setInterpretation] = useState(null);
 
   const fetchLogisticData = async () => {
     try {
@@ -40,7 +41,19 @@ export default function GetEconomicData() {
       const response = await axios.post(
         "http://127.0.0.1:5000/api/fetch-fed-text"
       );
-      setFedArticle(response.data);
+      setfedData(response.data);
+    } catch (error) {
+      console.error("Error fetching fed article: ", error);
+    }
+  };
+
+  const fetchInterpretation = async () => {
+    try {
+      const response = await axios.post(
+        "http://127.0.0.1:5000/api/fetch-fed-interpretation",
+        fedData
+      );
+      setInterpretation(response.data);
     } catch (error) {
       console.error("Error fetching fed article: ", error);
     }
@@ -120,12 +133,26 @@ export default function GetEconomicData() {
           onClick={fetchFedArticle}
           label="Fetch FED"
         />
-        {fedArticle && (
+        {fedData && (
           <div>
-            <strong>Press Release Content:</strong> {fedArticle}
+            <div>
+              <strong>Press Release Content:</strong>{" "}
+              {fedData.press_release_content}
+            </div>
           </div>
         )}
       </div>
+
+      <SharedButton
+        variant="button1"
+        label="Fetch GPT"
+        onClick={fetchInterpretation}
+      ></SharedButton>
+      {interpretation && (
+        <div>
+          <strong>Model Interpretation:</strong> {interpretation.interpretation}
+        </div>
+      )}
 
       <div className="flex space-x-5">
         <SharedButton

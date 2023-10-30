@@ -144,8 +144,11 @@ def interpretation(press_release_content):
 def fetch_fed_data():
     press_release_content = fetch_text()
     interpretation_result = interpretation(press_release_content)
-
-    return interpretation_result
+    fed_data = {
+        'press_release_content': press_release_content,
+        'interpretation': interpretation_result
+    }
+    return fed_data
 
 
 def fetch_combined_data():

@@ -6,7 +6,9 @@ import logging
 from pymongo import MongoClient
 from services.fetch_model_data import fetch_combined_data
 from services.fetch_model_data import fetch_logistic_data
+from services.fetch_model_data import fetch_text
 from services.fetch_model_data import fetch_fed_data
+from services.fetch_model_data import interpretation
 
 
 # logging.basicConfig(level=logging.DEBUG)
@@ -54,9 +56,20 @@ def run_logistic_model():
 @api_blueprint.route('/fetch-fed-text', methods=['POST'])
 def get_fed_data():
     try:
-        text = fetch_fed_data()
-        text_sample = 'hello world'
-        return jsonify(text)
+        press_release_content = fetch_text()
+        return jsonify({'press_release_content': press_release_content})
+    except Exception as e:
+        return jsonify(error=str(e)), 500
+
+
+@api_blueprint.route('/fetch-fed-interpretation', methods=['POST'])
+def get_fed_interpretation():
+    try:
+        data = request.get_json()
+        print(data)
+        press_release_content = data
+        interpretation_result = interpretation(press_release_content)
+        return jsonify({'interpretation': interpretation_result})
     except Exception as e:
         return jsonify(error=str(e)), 500
 
