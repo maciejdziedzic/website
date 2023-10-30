@@ -17,7 +17,7 @@ AI_KEY = os.getenv("OPENAI_API_KEY")
 openai.api_key = AI_KEY
 
 
-def fetch_data():
+def fetch_cpi():
     url = 'https://www.clevelandfed.org/indicators-and-data/inflation-nowcasting'
     data = {}
     error_messages = []
@@ -66,7 +66,7 @@ def fetch_unemp():
 
 
 def fetch_logistic_data():
-    cpi_data = fetch_data()
+    cpi_data = fetch_cpi()
     unemp_value = fetch_unemp()
     cpi_value = cpi_data.get('cpi')
     logistic_data = {'unemp': unemp_value, 'cpi': cpi_value}
@@ -117,7 +117,7 @@ def fetch_text():
     return press_release_content
 
 
-def interpretation(press_release_content):
+def fetch_interpretation(press_release_content):
     try:
         response = openai.ChatCompletion.create(
             model="gpt-3.5-turbo",
@@ -143,29 +143,9 @@ def interpretation(press_release_content):
 
 def fetch_fed_data():
     press_release_content = fetch_text()
-    interpretation_result = interpretation(press_release_content)
+    interpretation_result = fetch_interpretation(press_release_content)
     fed_data = {
         'press_release_content': press_release_content,
         'interpretation': interpretation_result
     }
     return fed_data
-
-
-def fetch_combined_data():
-
-    cpi_data = fetch_data()
-
-    press_release_content = fetch_text()
-
-    last_unemp = fetch_unemp()
-
-    interpretation_result = interpretation(press_release_content)
-
-    combined_data = {
-        'cpi_data': cpi_data,
-        'last_unemp': last_unemp,
-        'press_release_content': press_release_content,
-        'interpretation': interpretation_result
-    }
-
-    return combined_data
