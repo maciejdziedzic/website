@@ -10,6 +10,7 @@ export default function GetEconomicData() {
   const [modelResult, setModelResult] = useState(null);
   const [logisticData, setLogisticData] = useState(null);
   const [logisticModelResult, setLogisticModelResult] = useState(null);
+  const [fedArticle, setFedArticle] = useState(null);
 
   const fetchLogisticData = async () => {
     try {
@@ -31,6 +32,17 @@ export default function GetEconomicData() {
       setLogisticModelResult(response.data);
     } catch (error) {
       "Error running logistic model: ", error;
+    }
+  };
+
+  const fetchFedArticle = async () => {
+    try {
+      const response = await axios.post(
+        "http://127.0.0.1:5000/api/fetch-fed-text"
+      );
+      setFedArticle(response.data);
+    } catch (error) {
+      console.error("Error fetching fed article: ", error);
     }
   };
 
@@ -98,6 +110,19 @@ export default function GetEconomicData() {
               Probability that the FED will raise the rates:
               {logisticModelResult.raise}
             </div>
+          </div>
+        )}
+      </div>
+
+      <div>
+        <SharedButton
+          variant="button1"
+          onClick={fetchFedArticle}
+          label="Fetch FED"
+        />
+        {fedArticle && (
+          <div>
+            <strong>Press Release Content:</strong> {fedArticle}
           </div>
         )}
       </div>

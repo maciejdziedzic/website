@@ -6,20 +6,13 @@ import logging
 from pymongo import MongoClient
 from services.fetch_model_data import fetch_combined_data
 from services.fetch_model_data import fetch_logistic_data
+from services.fetch_model_data import fetch_fed_data
 
 
 # logging.basicConfig(level=logging.DEBUG)
 
 api_blueprint = Blueprint('api', __name__, url_prefix='/api')
 
-
-@api_blueprint.route('/fetch-data', methods=['GET', 'POST'])
-def get_data():
-    try:
-        data = fetch_combined_data()
-        return jsonify(data)
-    except Exception as e:
-        return jsonify(error=str(e)), 500
 
 # Uwaga, zmieniam strukture!
 
@@ -58,8 +51,23 @@ def run_logistic_model():
         return jsonify(error=str(e)), 500
 
 
-logistic_regression = joblib.load('model/fed_model.pkl')
-scaler = joblib.load('model/fed_scaler.pkl')
+@api_blueprint.route('/fetch-fed-text', methods=['POST'])
+def get_fed_data():
+    try:
+        text = fetch_fed_data()
+        text_sample = 'hello world'
+        return jsonify(text)
+    except Exception as e:
+        return jsonify(error=str(e)), 500
+
+
+@api_blueprint.route('/fetch-data', methods=['GET', 'POST'])
+def get_data():
+    try:
+        data = fetch_combined_data()
+        return jsonify(data)
+    except Exception as e:
+        return jsonify(error=str(e)), 500
 
 
 @api_blueprint.route('/run-model', methods=['POST'])
@@ -71,6 +79,8 @@ def predict():
         last_unemp = data['last_unemp']
 
         # Run model
+        logistic_regression = joblib.load('model/fed_model.pkl')
+        scaler = joblib.load('model/fed_scaler.pkl')
         feature_values = np.array([[cpi, last_unemp]])
         feature_values_scaled = scaler.transform(feature_values)
         feature_names = ['cpi', 'last_unemp']

@@ -141,6 +141,13 @@ def interpretation(press_release_content):
         return str(e)
 
 
+def fetch_fed_data():
+    press_release_content = fetch_text()
+    interpretation_result = interpretation(press_release_content)
+
+    return interpretation_result
+
+
 def fetch_combined_data():
 
     cpi_data = fetch_data()
