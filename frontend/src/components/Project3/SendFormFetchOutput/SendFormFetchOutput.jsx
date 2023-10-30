@@ -63,18 +63,19 @@ export default function GetEconomicData() {
               {data.press_release_content && data.press_release_content}
             </div>
             <div>
-              <strong>Text model interpretation:</strong> {data.interpretation}
+              <div>
+                <strong>
+                  Probability that the FED will lower or maintain the rates::
+                </strong>{" "}
+                Probability that the FED will lower or maintain the rates:
+                {data.interpretation * 100}%{" "}
+              </div>
+              <div></div>{" "}
+              <strong>
+                Probability that the FED will lower or maintain the rates::
+              </strong>{" "}
+              {(1 - data.interpretation) * 100}%
             </div>
-            {/* <div>
-              <strong>Fed expected policy:</strong>{" "}
-              {data.interpretation === -1
-                ? "Based on the press release, Fed is expected to decrease its rates."
-                : data.interpretation === 0
-                ? "Based on the press release, Fed is expected to maintain its rates."
-                : data.interpretation === 1
-                ? "Based on the press release, Fed is expected to increase its rates."
-                : "Unknown"}
-            </div> */}
           </div>
         )}
       </div>
@@ -95,7 +96,7 @@ export default function GetEconomicData() {
             </div>
             <div>
               <strong>Probability that the FED will raise the rates: </strong>
-              {modelResult.raise}
+              {modelResult.raise}%
             </div>
             <div>Model Output plus GPT interpretation:</div>
           </div>
