@@ -39,7 +39,7 @@ function Data() {
             "https://fred.stlouisfed.org/series/DGS10",
           ],
           [
-            "Inflation",
+            "INFLATION",
             "Annual growth rate in the Consumer Price Index.",
             "fred",
             "https://fred.stlouisfed.org/series/CPIAUCSL",
@@ -160,15 +160,9 @@ function Data() {
 
       <CollapsibleProjectSection
         title="U.S. Recession Model"
-        firstSectionTitle="Input Variables"
+        firstSectionTitle="Training Variables"
         firstHeaders={["Metric", "Description", "Source"]}
         firstRows={[
-          [
-            "FED RATE",
-            "The FED Effective Rate's quarterly percentage change has been categorized into three distinct levels: -1 for a decrease, 0 for no change, and 1 for an increase.",
-            "FRED",
-            "https://fred.stlouisfed.org/series/FEDFUNDS",
-          ],
           [
             "CPI",
             "Quarterly percentage change in the Consumer Price Index.",
@@ -176,15 +170,18 @@ function Data() {
             "https://fred.stlouisfed.org/series/CPIAUCSL",
           ],
           [
-            "S&P 500",
-            "Quarterly percentage change in S&P 500 index.",
-            "Stooq",
-            "https://stooq.pl/q/d/?s=%5Espx&c=0&d1=19691231&d2=20221230&i=y",
+            "UNEMPLOYMENT RATE QUARTER AVG",
+            "Quarterly average unemployment rate, calculated from three monthly rates.",
+            "FRED",
+            "https://fred.stlouisfed.org/series/UNRATE",
           ],
-        ]}
-        secondSectionTitle="Input Variables for Prediction"
-        secondHeaders={["Metric", "Description", "Source"]}
-        secondRows={[
+
+          [
+            "FED POLICY",
+            "The model's target is determined by averaging monthly Federal Effective Rates to a quarterly basis, calculating the quarter-to-quarter change, and assigning 1 for an increase and 0 for no change or a decrease.",
+            "FRED",
+            "https://fred.stlouisfed.org/series/FEDFUNDS",
+          ],
           [
             "PROJECTED CPI",
             "Web-scraped quarterly Consumer Price Index projection from the Federal Reserve Bank of Cleveland's published data, transformed from quarterly annualized percentage change to quarterly percentage change.",
@@ -192,8 +189,18 @@ function Data() {
             "https://www.clevelandfed.org/indicators-and-data/inflation-nowcasting",
           ],
           [
+            "UNEMPLOYMENT RATE LATEST",
+            "Most recent monthly unemployment rate.",
+            "FRED",
+            "https://fred.stlouisfed.org/series/UNRATE",
+          ],
+        ]}
+        secondSectionTitle="Input Variables for Prediction"
+        secondHeaders={["Metric", "Description", "Source"]}
+        secondRows={[
+          [
             "HYPOTETHICAL FED RATE",
-            "A machine learning model analyzes the most recent Federal Reserve press release text to forecast possible rate changes. It assigns -1 when it predicts a rate decrease, 0 when it anticipates rate stability, and 1 when it expects rate increases.",
+            "The machine learning model evaluates the most recent Federal Reserve press release, providing a percentage-based prediction of the likelihood of an interest rate increase.",
             "Federal Reserve",
             "https://www.federalreserve.gov/",
           ],
