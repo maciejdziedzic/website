@@ -28,10 +28,8 @@ def get_data():
 def get_logistic_data():
     try:
         data = fetch_logistic_data()
-        # dataCpi = fetch_cpi()
-        # data = {'last_unemp': dataUnemp, 'cpi_data': dataCpi}
         print(data)
-        test_data = 'hello world'
+
         return jsonify(data)
     except Exception as e:
         return jsonify(error=str(e)), 500
@@ -40,6 +38,7 @@ def get_logistic_data():
 @api_blueprint.route('run-logistic-model', methods=['POST'])
 def run_logistic_model():
     try:
+        data = request.get_json()
         test_data = 'hello world'
         return jsonify(test_data)
     except Exception as e:

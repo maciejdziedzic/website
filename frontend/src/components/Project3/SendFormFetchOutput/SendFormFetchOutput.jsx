@@ -75,12 +75,23 @@ export default function GetEconomicData() {
                 {logisticData.last_unemp}
               </div>
               <div>
-                <strong>CPI:</strong> {logisticData.cpi_data.cpi}
+                <strong>CPI:</strong> {logisticData.cpi}
               </div>
             </div>
           )}
         </div>
       </div>
+
+      <div>
+        {" "}
+        <SharedButton
+          variant="button1"
+          label="Run Log"
+          onClick={runLogisticModel}
+        ></SharedButton>
+        {logisticModelResult && <div>Hello world</div>}
+      </div>
+
       <div className="flex space-x-5">
         <SharedButton
           variant="button1"

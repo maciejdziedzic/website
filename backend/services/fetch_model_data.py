@@ -67,9 +67,9 @@ def fetch_unemp():
 
 def fetch_logistic_data():
     cpi_data = fetch_data()
-    last_unemp = fetch_unemp()
-
-    logistic_data = {'last_unemp': last_unemp, 'cpi_data': cpi_data}
+    unemp_value = fetch_unemp()
+    cpi_value = cpi_data.get('cpi')
+    logistic_data = {'last_unemp': unemp_value, 'cpi': cpi_value}
 
     return logistic_data
 
