@@ -1,17 +1,15 @@
-import { useState } from "react";
+import { useState, useContext } from "react";
 import axios from "axios";
 import SharedButton from "../../Shared/Button/SharedButton";
 import { DarkModeContext } from "../../../contexts/DarkMode/DarkModeContext";
-import { useContext } from "react";
 
 export default function GetEconomicData() {
   const { darkMode } = useContext(DarkModeContext);
-  const [data, setData] = useState(null);
-  const [modelResult, setModelResult] = useState(null);
   const [logisticData, setLogisticData] = useState(null);
   const [logisticModelResult, setLogisticModelResult] = useState(null);
-  const [fedData, setfedData] = useState(null);
+  const [fedData, setFedData] = useState(null);
   const [interpretation, setInterpretation] = useState(null);
+  const [finalResult, setFinalResult] = useState(null);
 
   const fetchLogisticData = async () => {
     try {
@@ -30,9 +28,12 @@ export default function GetEconomicData() {
         "http://127.0.0.1:5000/api/run-logistic-model",
         logisticData
       );
-      setLogisticModelResult(response.data);
+      setLogisticModelResult({
+        lower_or_maintain: (response.data.lower_or_maintain * 100).toFixed(2),
+        raise: (response.data.raise * 100).toFixed(2),
+      });
     } catch (error) {
-      "Error running logistic model: ", error;
+      console.error("Error running logistic model: ", error);
     }
   };
 
@@ -41,7 +42,7 @@ export default function GetEconomicData() {
       const response = await axios.post(
         "http://127.0.0.1:5000/api/fetch-fed-text"
       );
-      setfedData(response.data);
+      setFedData(response.data);
     } catch (error) {
       console.error("Error fetching fed article: ", error);
     }
@@ -55,161 +56,146 @@ export default function GetEconomicData() {
       );
       setInterpretation(response.data);
     } catch (error) {
-      console.error("Error fetching fed article: ", error);
+      console.error("Error fetching fed interpretation: ", error);
     }
   };
 
-  const fetchData = async () => {
-    try {
-      const response = await axios.get("http://127.0.0.1:5000/api/fetch-data");
-      setData(response.data);
-    } catch (error) {
-      console.error("Error fetching data: ", error);
-    }
-  };
+  const calculateFinalResult = () => {
+    if (logisticModelResult && interpretation) {
+      const logisticLowerOrMaintain =
+        parseFloat(logisticModelResult.lower_or_maintain) / 100;
+      const logisticRaise = parseFloat(logisticModelResult.raise) / 100;
+      const gptInterpretation = parseFloat(interpretation.interpretation);
 
-  const runModel = async () => {
-    try {
-      const response = await axios.post(
-        "http://127.0.0.1:5000/api/run-model",
-        data
-      );
-      setModelResult(response.data);
-    } catch (error) {
-      console.error("Error running model: ", error);
+      const transformedGptInterpretation = 2 * (gptInterpretation - 0.5);
+      const adjustment = 0.1 * transformedGptInterpretation;
+      let adjustedProbLower = logisticLowerOrMaintain - adjustment;
+      let adjustedProbRaise = logisticRaise + adjustment;
+
+      // Normalizing to ensure the probabilities sum to 1
+      const probSum = adjustedProbLower + adjustedProbRaise;
+      adjustedProbLower /= probSum;
+      adjustedProbRaise /= probSum;
+
+      // Rounding to two decimal places
+      adjustedProbLower = (adjustedProbLower * 100).toFixed(2);
+      adjustedProbRaise = (adjustedProbRaise * 100).toFixed(2);
+
+      // Ensuring that rounded probabilities sum to 100%
+      if (
+        parseFloat(adjustedProbLower) + parseFloat(adjustedProbRaise) !==
+        100.0
+      ) {
+        // Adjusting the probabilities by the smallest possible value (0.01%)
+        if (parseFloat(adjustedProbLower) > parseFloat(adjustedProbRaise)) {
+          adjustedProbLower = (parseFloat(adjustedProbLower) - 0.01).toFixed(2);
+        } else {
+          adjustedProbRaise = (parseFloat(adjustedProbRaise) - 0.01).toFixed(2);
+        }
+      }
+
+      setFinalResult({
+        lower_or_maintain: adjustedProbLower,
+        raise: adjustedProbRaise,
+      });
+    } else {
+      console.error("Logistic model result or interpretation is not available");
     }
   };
 
   return (
     <div
-      className={`flex flex-col space-y-2 ml-5 ${
+      className={`flex flex-col space-y-4 ml-5 p-4 ${
         darkMode ? "bg-neutral-700 text-white" : "bg-white text-neutral-700"
       }`}
     >
-      <div className="flex space-x-5">
+      <div className="flex space-x-4">
         <SharedButton
           variant="button1"
-          label="Fetch DataL"
+          label="Fetch Logistic"
           onClick={fetchLogisticData}
-        ></SharedButton>
-        <div>
-          {logisticData && (
-            <div>
-              <div>
-                <strong>Last Unemployment Rate:</strong> {logisticData.unemp}
-              </div>
-              <div>
-                <strong>CPI:</strong> {logisticData.cpi}
-              </div>
-            </div>
-          )}
-        </div>
-      </div>
-
-      <div className="flex space-x-5">
-        <SharedButton
-          variant="button1"
-          label="Run Log"
-          onClick={runLogisticModel}
-        ></SharedButton>
-        {logisticModelResult && (
+        />
+        {logisticData && (
           <div>
-            <strong>Output from the Logistic Model:</strong>
-            <div>
-              Probability that the FED will lower or maintain the rates:
-              {logisticModelResult.lower_or_maintain}
-            </div>
-            <div>
-              Probability that the FED will raise the rates:
-              {logisticModelResult.raise}
-            </div>
+            <p>
+              <strong>Unemployment Rate:</strong> {logisticData.unemp}%
+            </p>
+            <p>
+              <strong>CPI:</strong>{" "}
+              {parseFloat(logisticData.cpi).toLocaleString(undefined, {
+                minimumFractionDigits: 2,
+                maximumFractionDigits: 2,
+              })}
+            </p>
           </div>
         )}
       </div>
 
-      <div>
+      <div className="flex space-x-4">
         <SharedButton
           variant="button1"
-          onClick={fetchFedArticle}
+          label="Run Model"
+          onClick={runLogisticModel}
+        />
+        {logisticModelResult && (
+          <div>
+            <p>
+              <strong>Model Output:</strong>
+            </p>
+            <p>Lower/Maintain: {logisticModelResult.lower_or_maintain}%</p>
+            <p>Raise: {logisticModelResult.raise}%</p>
+          </div>
+        )}
+      </div>
+
+      <div className="flex space-x-4">
+        <SharedButton
+          variant="button1"
           label="Fetch FED"
+          onClick={fetchFedArticle}
         />
         {fedData && (
           <div>
-            <div>
-              <strong>Press Release Content:</strong>{" "}
-              {fedData.press_release_content}
-            </div>
+            <p>
+              <strong>Press Release:</strong>
+            </p>
+            <p>{fedData.press_release_content}</p>
           </div>
         )}
       </div>
 
-      <SharedButton
-        variant="button1"
-        label="Fetch GPT"
-        onClick={fetchInterpretation}
-      ></SharedButton>
-      {interpretation && (
-        <div>
-          <strong>Model Interpretation:</strong> {interpretation.interpretation}
-        </div>
-      )}
-
-      <div className="flex space-x-5">
+      <div className="flex space-x-4">
         <SharedButton
           variant="button1"
-          onClick={fetchData}
-          label="Fetch Data"
-        ></SharedButton>
-        {data && (
-          <div
-            className={
-              darkMode
-                ? "text-dark-text flex flex-col space-y-2 ml-5t"
-                : "flex flex-col space-y-2 ml-5"
-            }
-          >
-            <div>
-              <strong>Quarterly CPI Projected Change:</strong>{" "}
-              {data.cpi_data.cpi.toFixed(2)}{" "}
-            </div>
-            <div>
-              <strong>Last Monthly Unemployment Rate:</strong> {data.last_unemp}{" "}
-            </div>
-
-            <div>
-              <strong>Press Release Content:</strong>{" "}
-              {data.press_release_content && data.press_release_content}
-            </div>
-            <div>
-              <strong>GPT-3 Interpretation of Fed&apos;s Press Release:</strong>
-              <div>
-                Probability that the FED will lower or maintain the rates:
-                {data.interpretation * 100}%{" "}
-              </div>
-              <div></div> Probability that the FED will lower or maintain the
-              rates::
-              {(1 - data.interpretation) * 100}%
-            </div>
-          </div>
-        )}
-      </div>
-      <div className="flex space-x-5">
-        <SharedButton
-          variant="button1"
-          onClick={runModel}
-          label="Run Model"
-        ></SharedButton>
-        {modelResult && (
+          label="Fetch GPT"
+          onClick={fetchInterpretation}
+        />
+        {interpretation && (
           <div>
-            <strong>Output from the model: {""}</strong>
-            <div>
-              Probability that the FED will lower or maintain the rates:
-              {modelResult.maintain_or_lower}%
-            </div>
-            <div>
-              Probability that the FED will raise the rates:
-              {modelResult.raise}%
-            </div>
+            <p>
+              <strong>Interpretation:</strong> Based on the text analysis, there
+              is a {(interpretation.interpretation * 100).toFixed(0)}% chance
+              that the Federal Reserve will raise interest rates, and a{" "}
+              {((1 - interpretation.interpretation) * 100).toFixed(0)}% chance
+              that it will lower or maintain interest rates.
+            </p>
+          </div>
+        )}
+      </div>
+
+      <div className="flex space-x-4">
+        <SharedButton
+          variant="button1"
+          label="Calculate"
+          onClick={calculateFinalResult}
+        />
+        {finalResult && (
+          <div>
+            <p>
+              <strong>Final Result:</strong>
+            </p>
+            <p>Lower/Maintain: {finalResult.lower_or_maintain}%</p>
+            <p>Raise: {finalResult.raise}%</p>
           </div>
         )}
       </div>
