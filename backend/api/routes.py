@@ -38,9 +38,22 @@ def get_logistic_data():
 @api_blueprint.route('run-logistic-model', methods=['POST'])
 def run_logistic_model():
     try:
+        logistic_regression = joblib.load('model/fed_model.pkl')
+        scaler = joblib.load('model/fed_scaler.pkl')
         data = request.get_json()
-        test_data = 'hello world'
-        return jsonify(test_data)
+        cpi = data['cpi']
+        unemp = data['unemp']
+        feature_values = np.array([[cpi, unemp]])
+        feature_values_scaled = scaler.transform(feature_values)
+        feature_names = ['cpi', 'unemp']
+        X_test = pd.DataFrame(feature_values_scaled, columns=feature_names)
+        probability = logistic_regression.predict_proba(X_test)
+        prob_list = probability[0].tolist()
+        result = {
+            'lower_or_maintain': prob_list[0],
+            'raise': prob_list[1]
+        }
+        return jsonify(result)
     except Exception as e:
         return jsonify(error=str(e)), 500
 

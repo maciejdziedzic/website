@@ -71,8 +71,7 @@ export default function GetEconomicData() {
           {logisticData && (
             <div>
               <div>
-                <strong>Last Unemployment Rate:</strong>{" "}
-                {logisticData.last_unemp}
+                <strong>Last Unemployment Rate:</strong> {logisticData.unemp}
               </div>
               <div>
                 <strong>CPI:</strong> {logisticData.cpi}
@@ -82,14 +81,25 @@ export default function GetEconomicData() {
         </div>
       </div>
 
-      <div>
-        {" "}
+      <div className="flex space-x-5">
         <SharedButton
           variant="button1"
           label="Run Log"
           onClick={runLogisticModel}
         ></SharedButton>
-        {logisticModelResult && <div>Hello world</div>}
+        {logisticModelResult && (
+          <div>
+            <strong>Output from the Logistic Model:</strong>
+            <div>
+              Probability that the FED will lower or maintain the rates:
+              {logisticModelResult.lower_or_maintain}
+            </div>
+            <div>
+              Probability that the FED will raise the rates:
+              {logisticModelResult.raise}
+            </div>
+          </div>
+        )}
       </div>
 
       <div className="flex space-x-5">
