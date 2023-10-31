@@ -160,7 +160,7 @@ function Data() {
 
       <CollapsibleProjectSection
         title="U.S. Recession Model"
-        firstSectionTitle="Training Variables"
+        firstSectionTitle="Logistic Regression Model"
         firstHeaders={["Metric", "Description", "Source"]}
         firstRows={[
           [
@@ -195,7 +195,7 @@ function Data() {
             "https://fred.stlouisfed.org/series/UNRATE",
           ],
         ]}
-        secondSectionTitle="Input Variables for Prediction"
+        secondSectionTitle="LLM Text Interpretation"
         secondHeaders={["Metric", "Description", "Source"]}
         secondRows={[
           [
