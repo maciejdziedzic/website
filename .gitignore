@@ -25,8 +25,7 @@ dist-ssr
 *.sw?
 
 # Python Env
-Lib
-Scripts
+pyenv
 
 # CPython Cache
 # Ignore the pycache directory
