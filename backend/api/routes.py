@@ -8,7 +8,7 @@ from services.fetch_model_data import fetch_logistic_data
 from services.fetch_model_data import fetch_text
 from services.fetch_model_data import fetch_fed_data
 from services.fetch_model_data import fetch_interpretation
-
+import statsmodels.api as sm
 
 # logging.basicConfig(level=logging.DEBUG)
 
@@ -22,7 +22,6 @@ api_blueprint = Blueprint('api', __name__, url_prefix='/api')
 def get_logistic_data():
     try:
         data = fetch_logistic_data()
-        print(data)
 
         return jsonify(data)
     except Exception as e:
@@ -32,23 +31,37 @@ def get_logistic_data():
 @api_blueprint.route('run-logistic-model', methods=['POST'])
 def run_logistic_model():
     try:
+        # Load the logistic regression model and the scaler
         logistic_regression = joblib.load('model/fed_model.pkl')
         scaler = joblib.load('model/fed_scaler.pkl')
+
+        # Get the input data from the request's JSON body
         data = request.get_json()
         cpi = data['cpi']
         unemp = data['unemp']
-        feature_values = np.array([[cpi, unemp]])
+
+        # Create a NumPy array from the input data
+        feature_values = np.array([[unemp, cpi]])
+
+        # Transform the data using the scaler
         feature_values_scaled = scaler.transform(feature_values)
-        feature_names = ['cpi', 'unemp']
-        X_test = pd.DataFrame(feature_values_scaled, columns=feature_names)
-        probability = logistic_regression.predict_proba(X_test)
-        prob_list = probability[0].tolist()
+
+        # Add a constant to the scaled data
+        feature_values_scaled_sm = sm.add_constant(
+            feature_values_scaled, has_constant='add')
+
+        # Make a prediction using the logistic regression model
+        predicted_probability = logistic_regression.predict(
+            feature_values_scaled_sm)
+
         result = {
-            'lower_or_maintain': prob_list[0],
-            'raise': prob_list[1]
+            'lower_or_maintain': 1-predicted_probability[0],
+            'raise': predicted_probability[0]
         }
         return jsonify(result)
+
     except Exception as e:
+        print("An error occurred:", str(e))
         return jsonify(error=str(e)), 500
 
 
