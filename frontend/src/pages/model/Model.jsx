@@ -157,6 +157,60 @@ x2            -0.4176      0.147     -2.836      0.005      -0.706      -0.129
         <pre className="whitespace-pre-wrap mb-4">
           {logisticRegressionResults}
         </pre>
+        <p>
+          <strong>Intercept:</strong>At zero unemployment and CPI change, the
+          log odds of the target being 1 is 0.1216.
+        </p>
+        <p>
+          <strong>Unemployment:</strong>A one-unit increase in unemployment
+          increases the log odds of the target being 1 by 0.2677.
+        </p>
+        <p>
+          <strong>CPI Change:</strong>A one-unit increase in CPI percentage
+          change decreases the log odds of the target being 1 by 0.4176.
+        </p>
+      </section>
+      <h1 className="text-2xl font-bold mb-4 mt-4">LLM Text Interpretation</h1>
+      <p>
+        Based on the latest press release from the Federal Reserve, model
+        predicts chance that the Federal Reserve will increase the interest
+        rates.
+      </p>
+      <h1 className="text-2xl font-bold mb-4 mt-4">Final Results Algorithm</h1>
+      <h1>Model Prediction Explanation</h1>
+      {/* ... other sections ... */}
+      <section>
+        <h2>5. Calculate Final Result</h2>
+        <p>
+          The final prediction is a weighted average of the outputs from the
+          logistic regression model and the GPT model. The logistic regression
+          model is assigned a weight of 90%, reflecting its based on
+          quantitative data and established statistical methods. The GPT model,
+          providing a qualitative perspective based on text analysis, is
+          assigned a weight of 10%. This distribution of weights underscores the
+          primary reliance on the logistic regression model, while still
+          considering the insights provided by the GPT model.
+        </p>
+        <p>The final result is calculated using the following formula:</p>
+        <pre>
+          Final Score (Raise) = (0.9 * Logistic Regression Score) + (0.1 * GPT
+          Model Score)
+        </pre>
+        <pre>Final Score (Lower/Maintain) = 1 - Final Score (Raise)</pre>
+        <p>
+          Where:
+          <ul>
+            <li>
+              <strong>Logistic Regression Score</strong>: The probability of
+              raising rates as predicted by the logistic regression model.
+            </li>
+            <li>
+              <strong>GPT Model Score</strong>: The probability of raising rates
+              as interpreted by the GPT model from the Federal Reserve&apos;s
+              press release.
+            </li>
+          </ul>
+        </p>
       </section>
     </div>
   );
