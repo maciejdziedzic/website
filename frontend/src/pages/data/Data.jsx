@@ -60,7 +60,7 @@ function Data() {
 
           [
             "FED RATE",
-            "Federal Effective Funds Rate, updated monthly.",
+            "Federal Effective Funds Rate.",
             "fred",
             "https://fred.stlouisfed.org/series/FEDFUNDS",
           ],
@@ -85,7 +85,7 @@ function Data() {
 
           [
             "US GDP",
-            "Four-month moving average of quarterly GDP growth rate, represented in monthly intervals.",
+            "Four-month moving average of quarterly GDP growth rate.",
             "fred",
             "https://fred.stlouisfed.org/series/GDP",
           ],
@@ -97,7 +97,7 @@ function Data() {
           ],
           [
             "CB. ASST./GDP",
-            "Annual ratio of Central Bank assets to quarterly GDP, adjusted to monthly intervals.",
+            "Annual ratio of Central Bank assets to quarterly GDP.",
             "fred",
             "https://fred.stlouisfed.org/series/DDDI06USA156NWDB",
           ],
@@ -109,19 +109,19 @@ function Data() {
           ],
           [
             "UNEMPL",
-            "U.S. unemployment rate, updated monthly.",
+            "U.S. unemployment rate.",
             "fred",
             "https://fred.stlouisfed.org/series/UNRATE",
           ],
           [
             "CPI",
-            "Year-over-year change in the monthly Consumer Price Index, updated monthly.",
+            "Year-over-year change in the monthly Consumer Price Index.",
             "fred",
             "https://fred.stlouisfed.org/series/CPIAUCSL",
           ],
           [
             "PPI",
-            "Year-over-year change in the monthly Producer Price Index, updated monthly.",
+            "Year-over-year change in the monthly Producer Price Index.",
             "fred",
             "https://fred.stlouisfed.org/series/PPIACO",
           ],
@@ -139,7 +139,7 @@ function Data() {
           ],
           [
             "INDUST. PROD.",
-            "Industrial Production Index (base year: 2017), updated monthly.",
+            "Industrial Production Index (base year: 2017).",
             "fred",
             "https://fred.stlouisfed.org/series/INDPRO",
           ],
@@ -151,7 +151,7 @@ function Data() {
           ],
           [
             "OIL",
-            "WTI crude oil price, updated monthly.",
+            "WTI crude oil price.",
             "fred",
             "https://fred.stlouisfed.org/series/WTISPLC",
           ],
