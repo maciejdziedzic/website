@@ -23,7 +23,7 @@ function Home() {
     "Hello, welcome to my website. You can find here projects built on real data:";
   const textAssetsReturns = "Assets Returns";
   const text2 = " Yearly Returns Across 1970-2022";
-  const textMacroCharts = "US Macroeconomic Overview";
+  const textMacroCharts = "US Overview";
   const text3 = " U.S. Economic Indicators ";
   const textRecessionModel = "Recession model";
   const text4 = " Model that Predicts future FED's Policy";
@@ -115,7 +115,7 @@ function Home() {
   ]);
 
   return (
-    <div className="flex items-center justify-center my-24 mx-auto">
+    <div className="flex items-center justify-center my-24 mx-auto text-lg">
       <div
         className={`items-center ${
           darkMode ? "text-dark-text" : "text-white-100"
@@ -129,32 +129,32 @@ function Home() {
                 <Link to="/project1" className="flex-1 project-button ">
                   {assetsReturns}
                 </Link>
-                <span className="ml-2 description">{part2}</span>
+                <span className="ml-7 description">{part2}</span>
               </div>
               <div className="flex items-center my-2">
                 <Link to="/project2" className="flex-1 project-button ">
                   {macroCharts}
                 </Link>
-                <span className="ml-2 description">{part3}</span>
+                <span className="ml-7 description">{part3}</span>
               </div>
               <div className="flex items-center my-2">
                 <Link to="/project3" className="flex-1 project-button ">
                   {recessionModel}
                 </Link>
-                <span className="ml-2 description">{part4}</span>
+                <span className="ml-7 description">{part4}</span>
               </div>{" "}
               <br />
               <div className="flex items-center my-2">
                 <Link to="/data" className="flex-1 project-button ">
                   {data}
                 </Link>
-                <span className="ml-2 description">{part5}</span>
+                <span className="ml-7 description">{part5}</span>
               </div>
               <div className="flex items-center my-2">
                 <Link to="/model" className="flex-1 project-button ">
                   {model}
                 </Link>
-                <span className="ml-2 description">{part6}</span>
+                <span className="ml-7 description">{part6}</span>
 
                 {allTextPrinted && <span className="cursor">_</span>}
               </div>

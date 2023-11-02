@@ -5,7 +5,7 @@ export default function About() {
 
   return (
     <div
-      className={`container mx-auto m-5 p-5 ${
+      className={`container mx-auto m-5 pr-3 pl-3 ${
         darkMode ? "bg-neutral-700 text-white" : "bg-white text-neutral-700"
       }`}
     >

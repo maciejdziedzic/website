@@ -13,15 +13,13 @@
   background-color: #f0f0f0;
   border: none;
   color: black;
-  /* margin: 0.5rem; */
   /* padding: 10px; */
   border-radius: 0.25rem;
   cursor: pointer;
   text-decoration: none;
-  /* color: inherit; */
   transition: background-color 0.3s;
-  max-width: 15rem;
-  min-width: 15rem;
+  max-width: 12rem;
+  min-width: 12rem;
   width: 100%;
   text-align: center;
   box-sizing: border-box;
