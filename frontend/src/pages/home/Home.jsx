@@ -20,7 +20,7 @@ function Home() {
   const [allTextPrinted, setAllTextPrinted] = useState(false);
 
   const text1 =
-    "Hello, welcome to my website.\nYou can find here three projects based on real data:";
+    "Hello, welcome to my website. You can find here projects built on real data:";
   const textAssetsReturns = "Assets Returns";
   const text2 = " Yearly Returns Across 1970-2022";
   const textMacroCharts = "US Macroeconomic Overview";
@@ -30,7 +30,7 @@ function Home() {
   const textData = "Data";
   const textPart5 = " Sources and transformations used in all projects";
   const textModel = "Model";
-  const textPart6 = " Additional information on used model";
+  const textPart6 = " Additional information";
 
   useEffect(() => {
     let timer;
