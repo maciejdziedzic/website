@@ -87,7 +87,7 @@ export default function Navbar() {
                 </Link>
                 <Link to="/project3">
                   <button className="text-left hover:font-bold ">
-                    Recession Model
+                    FED Policy Model
                   </button>
                 </Link>
               </ul>

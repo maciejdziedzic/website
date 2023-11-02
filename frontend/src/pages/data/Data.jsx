@@ -155,7 +155,7 @@ function Data() {
       />
 
       <CollapsibleProjectSection
-        title="U.S. Recession Model"
+        title="FED Policy Model"
         firstSectionTitle="Logistic Regression Model"
         firstHeaders={["Metric", "Description", "Source"]}
         firstRows={[

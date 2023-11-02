@@ -176,10 +176,8 @@ x2             0.2677      0.147      1.824      0.068      -0.020       0.555
         rates.
       </p>
       <h1 className="text-2xl font-bold mb-4 mt-4">Final Results Algorithm</h1>
-      <h1>Model Prediction Explanation</h1>
-      {/* ... other sections ... */}
+
       <section>
-        <h2>5. Calculate Final Result</h2>
         <p>
           The final prediction is a weighted average of the outputs from the
           logistic regression model and the GPT model. The logistic regression
@@ -190,12 +188,14 @@ x2             0.2677      0.147      1.824      0.068      -0.020       0.555
           primary reliance on the logistic regression model, while still
           considering the insights provided by the GPT model.
         </p>
-        <p>The final result is calculated using the following formula:</p>
+        <p>The final result is calculated using the following formula:</p>{" "}
+        <br />
         <pre>
           Final Score (Raise) = (0.9 * Logistic Regression Score) + (0.1 * GPT
           Model Score)
         </pre>
         <pre>Final Score (Lower/Maintain) = 1 - Final Score (Raise)</pre>
+        <br />
         <p>
           Where:
           <ul>
