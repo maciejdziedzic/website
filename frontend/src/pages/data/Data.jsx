@@ -5,7 +5,7 @@ import useDarkMode from "../../contexts/DarkMode/useDarkMode";
 function Data() {
   const { darkMode } = useDarkMode();
   return (
-    <div className={`space-y-10 p-4 ${darkMode ? "" : "bg-white "}`}>
+    <div className={`space-y-10 p-4 ${darkMode ? "" : " "}`}>
       <CollapsibleProjectSection
         title="Assets Return"
         headers={["Asset", "Description", "Source"]}
@@ -262,12 +262,18 @@ function CollapsibleProjectSection({
 }
 
 function TableComponent({ headers, rows }) {
+  const { darkMode } = useDarkMode();
   return (
     <table className="w-full border-collapse">
       <thead>
         <tr>
           {headers.map((header, index) => (
-            <th key={index} className="py-3 px-4 border-b bg-gray-400">
+            <th
+              key={index}
+              className={`py-3 px-4 border-b ${
+                darkMode ? "bg-neutral-500" : " bg-gray-200"
+              }`}
+            >
               {header}
             </th>
           ))}
@@ -275,7 +281,7 @@ function TableComponent({ headers, rows }) {
       </thead>
       <tbody>
         {rows.map((row, rowIndex) => (
-          <tr key={rowIndex} className="hover:bg-gray-300">
+          <tr key={rowIndex} className="hover:bg-neutral-500">
             {row.map((cell, cellIndex) => (
               <td key={cellIndex} className="py-2 px-4 border-b">
                 {cellIndex === 2 ? ( // If it's the source column
