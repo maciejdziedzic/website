@@ -4,12 +4,8 @@ export default function About() {
   const { darkMode } = useDarkMode();
 
   return (
-    <div className="rounded-lg shadow-md mr-16 ml-16 mt-8">
-      <div
-        className={`container mx-auto  ${
-          darkMode ? " text-white" : " text-neutral-700"
-        }`}
-      >
+    <div className=" mr-16 ml-16 mt-8">
+      <div className={`container mx-auto  ${darkMode ? " text-white" : " "}`}>
         <div className=" mt-5">
           <h1 className="text-2xl font-bold mb-5">About the Website</h1>
 

@@ -107,7 +107,7 @@ export default function GetEconomicData() {
   return (
     <div
       className={`flex flex-col space-y-4 ml-5 p-4 ${
-        darkMode ? "bg-neutral-700 text-white" : "bg-white text-neutral-700"
+        darkMode ? "bg-neutral-700 text-white" : "bg-white"
       }`}
     >
       <div className="flex space-x-4">
@@ -176,10 +176,10 @@ export default function GetEconomicData() {
           <div>
             <p>
               <strong>Interpretation:</strong> Based on the text analysis, there
-              is a {(interpretation.interpretation * 100).toFixed(0)}% chance
-              that the Federal Reserve will raise interest rates, and a{" "}
-              {((1 - interpretation.interpretation) * 100).toFixed(0)}% chance
-              that it will lower or maintain interest rates.
+              is {((1 - interpretation.interpretation) * 100).toFixed(0)}%
+              chance that it will lower or maintain interest rates, and{" "}
+              {(interpretation.interpretation * 100).toFixed(0)}% chance that
+              the Federal Reserve will raise interest rates,
             </p>
           </div>
         )}
