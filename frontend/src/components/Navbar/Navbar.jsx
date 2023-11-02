@@ -18,7 +18,7 @@ export default function Navbar() {
 
   return (
     <div style={{ position: "sticky", top: "0", zIndex: "1000" }}>
-      <div className="flex h-6 mb-5 ">
+      <div className="flex h-12 mb-5 ">
         <div
           className={
             darkMode
@@ -60,7 +60,12 @@ export default function Navbar() {
               />
             </li>
           </ul>
-          <div className="border-t border-gray-100 "></div>
+
+          <div
+            className={
+              darkMode ? "border-t border-gray-600" : "border-t border-gray-100"
+            }
+          ></div>
           {ProjectsOpen && (
             <div
               className={
@@ -86,8 +91,13 @@ export default function Navbar() {
                   </button>
                 </Link>
               </ul>
-              <div className="border-l border-gray-100 "></div>
-
+              <div
+                className={
+                  darkMode
+                    ? "border-l border-gray-600 "
+                    : "border-l border-gray-200 "
+                }
+              ></div>
               <ul className="flex flex-col space-y-4 text-sm p-6">
                 <Link to="/data">
                   <button className="text-left hover:font-bold">Data</button>
