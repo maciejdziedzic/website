@@ -3,15 +3,15 @@
   white-space: pre;
   font-weight: 300;
   white-space: pre-wrap;
-  /* letter-spacing: 0.1rem; */
+  letter-spacing: 0.1rem;
 }
 
 .cursor {
-  animation: blink 1s step-start 0s infinite;
+  animation: blink 1s step-end infinite;
 }
 
 @keyframes blink {
   50% {
-    opacity: 0;
+    visibility: hidden;
   }
 }
