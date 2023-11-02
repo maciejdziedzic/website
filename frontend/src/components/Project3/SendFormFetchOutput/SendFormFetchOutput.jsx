@@ -110,7 +110,7 @@ export default function GetEconomicData() {
       <Section darkMode={darkMode} className="flex space-x-4">
         <SharedButton
           variant="button1"
-          label="Fetch Logistic"
+          label="Fetch Data"
           onClick={fetchLogisticData}
         />
         {logisticData && (

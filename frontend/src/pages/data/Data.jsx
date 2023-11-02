@@ -218,14 +218,19 @@ function CollapsibleProjectSection({
   rows,
 }) {
   const [isOpen, setIsOpen] = useState(false);
+  const { darkMode } = useDarkMode();
 
   return (
-    <section className="rounded-lg overflow-hidden shadow-lg mb-6">
-      <div className="flex justify-between items-center p-2 bg-neutral-700 dark:bg-gray-800">
-        <h1 className="text-2xl font-bold">{title}</h1>
+    <section className=" rounded-sm overflow-hidden shadow-sm mb-6">
+      <div
+        className={`flex justify-between items-center p-2 ${
+          darkMode ? "bg-neutral-700" : "bg-gray-200"
+        }`}
+      >
+        <h1 className="text-2xl font-extralight ml-5 ">{title}</h1>
         <button
           onClick={() => setIsOpen(!isOpen)}
-          className="px-5 py-2 bg-blue-500 text-white rounded hover:bg-blue-600 transition duration-300"
+          className="mr-5 px-5 py-2 bg-zinc-500  rounded hover:bg-zinc-600 transition duration-300"
         >
           {isOpen ? "Collapse" : "Expand"}
         </button>
