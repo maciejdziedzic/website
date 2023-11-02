@@ -69,8 +69,8 @@ x2             0.2677      0.147      1.824      0.068      -0.020       0.555
 
   return (
     <div
-      className={`p-8 rounded-lg shadow-md ${
-        darkMode ? "bg-neutral-700 text-white" : "bg-white text-neutral-700"
+      className={` rounded-lg shadow-md mr-16 ml-16 mt-8 ${
+        darkMode ? " text-white" : " text-neutral-700"
       }`}
     >
       <h1 className="text-2xl font-bold mb-4">
