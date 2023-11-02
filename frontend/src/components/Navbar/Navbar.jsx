@@ -6,7 +6,7 @@ import useDarkMode from "../../contexts/DarkMode/useDarkMode";
 import "./Navbar.css";
 
 export default function Navbar() {
-  const { darkMode, toggledarkMode } = useDarkMode();
+  const { darkMode, toggleDarkMode } = useDarkMode();
   const [ProjectsOpen, setProjectsOpen] = useState(false);
 
   const buttonHoverColor = darkMode ? "hover:font-bold" : "hover:font-bold";
@@ -54,7 +54,7 @@ export default function Navbar() {
             <li className="w-40 flex justify-center">
               <img
                 src={darkMode ? Sun : Moon}
-                onClick={toggledarkMode}
+                onClick={toggleDarkMode}
                 alt="Toggle Dark Mode"
                 className="w-5 h-5 cursor-pointer svg-hover"
               />

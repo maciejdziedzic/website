@@ -1,17 +1,17 @@
 .text-container {
   font-size: 16px;
-  /* white-space: pre; */
+  white-space: pre;
   font-weight: 300;
-  /* white-space: pre-wrap; */
+  white-space: pre-wrap;
   /* letter-spacing: 0.1rem; */
 }
 
 .cursor {
-  animation: blink 1s step-end infinite;
+  animation: blink 1s step-start 0s infinite;
 }
 
 @keyframes blink {
   50% {
-    visibility: hidden;
+    opacity: 0;
   }
 }

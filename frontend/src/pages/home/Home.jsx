@@ -7,67 +7,99 @@ import { Link } from "react-router-dom";
 function Home() {
   const { darkMode } = useContext(DarkModeContext);
   const [part1, setPart1] = useState("");
+  const [assetsReturns, setAssetsReturns] = useState("");
   const [part2, setPart2] = useState("");
+  const [macroCharts, setMacroCharts] = useState("");
   const [part3, setPart3] = useState("");
+  const [recessionModel, setRecessionModel] = useState("");
   const [part4, setPart4] = useState("");
+  const [allTextPrinted, setAllTextPrinted] = useState(false);
 
   const text1 =
     "Hello, welcome to my website.\nYou can find here three projects: ";
-  const text2 =
-    "Assets Returns - yearly returns from different assets across 1970-2022";
-  const text3 = "Macroeconomic Charts - macroeconomic variables charts across";
-  const text4 = "Recession model - model that predicts FED's policy";
+  const textAssetsReturns = "Assets Returns";
+  const text2 = " - yearly returns from different assets across 1970-2022.";
+  const textMacroCharts = "Macroeconomic Charts";
+  const text3 = " - macroeconomic variables charts across.";
+  const textRecessionModel = "Recession model";
+  const text4 = " - model that predicts FED's policy.";
 
   useEffect(() => {
+    let timer;
     if (part1.length < text1.length) {
-      const timer1 = setTimeout(() => {
-        const nextChar1 = text1[part1.length];
-        setPart1((prev) => prev + nextChar1);
-      }, 10);
-
-      return () => clearTimeout(timer1);
+      timer = setTimeout(
+        () => setPart1((prev) => prev + text1[part1.length]),
+        10
+      );
+    } else if (assetsReturns.length < textAssetsReturns.length) {
+      timer = setTimeout(
+        () =>
+          setAssetsReturns(
+            (prev) => prev + textAssetsReturns[assetsReturns.length]
+          ),
+        10
+      );
     } else if (part2.length < text2.length) {
-      const timer2 = setTimeout(() => {
-        const nextChar2 = text2[part2.length];
-        setPart2((prev) => prev + nextChar2);
-      }, 10);
-
-      return () => clearTimeout(timer2);
+      timer = setTimeout(
+        () => setPart2((prev) => prev + text2[part2.length]),
+        10
+      );
+    } else if (macroCharts.length < textMacroCharts.length) {
+      timer = setTimeout(
+        () =>
+          setMacroCharts((prev) => prev + textMacroCharts[macroCharts.length]),
+        10
+      );
     } else if (part3.length < text3.length) {
-      const timer3 = setTimeout(() => {
-        const nextChar3 = text3[part3.length];
-        setPart3((prev) => prev + nextChar3);
-      }, 10);
-
-      return () => clearTimeout(timer3);
+      timer = setTimeout(
+        () => setPart3((prev) => prev + text3[part3.length]),
+        10
+      );
+    } else if (recessionModel.length < textRecessionModel.length) {
+      timer = setTimeout(
+        () =>
+          setRecessionModel(
+            (prev) => prev + textRecessionModel[recessionModel.length]
+          ),
+        10
+      );
     } else if (part4.length < text4.length) {
-      const timer4 = setTimeout(() => {
-        const nextChar4 = text4[part4.length];
-        setPart4((prev) => prev + nextChar4);
-      }, 10);
-
-      return () => clearTimeout(timer4);
+      timer = setTimeout(
+        () => setPart4((prev) => prev + text4[part4.length]),
+        10
+      );
+    } else {
+      setAllTextPrinted(true);
     }
-  }, [part1, part2, part3, part4]);
+    return () => clearTimeout(timer);
+  }, [part1, assetsReturns, part2, macroCharts, part3, recessionModel, part4]);
 
   return (
-    <div className="flex items-center justify-center  m-10">
+    <div className="flex items-center justify-center m-10">
       <div
-        className={`items-center   ${
-          darkMode ? "text-dark-text " : "text-white-100"
+        className={`items-center ${
+          darkMode ? "text-dark-text" : "text-white-100"
         }`}
       >
         <div className="text-container font-thin">
           <p>{part1}</p>
           <br />
-          <Link to="/project1">{part2}</Link>
+          <Link to="/project1">
+            <span className="font-bold">{assetsReturns}</span>
+            {part2}
+          </Link>
           <br />
-          <Link to="/project2">{part3}</Link>
+          <Link to="/project2">
+            <span className="font-bold">{macroCharts}</span>
+            {part3}
+          </Link>
           <br />
-          <Link to="/project3">{part4}</Link>
-
+          <Link to="/project3">
+            <span className="font-bold">{recessionModel}</span>
+            {part4}
+          </Link>
           <br />
-          <span className="cursor">_</span>
+          {allTextPrinted && <span className="cursor">_</span>}
         </div>
       </div>
     </div>
