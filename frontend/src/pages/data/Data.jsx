@@ -5,9 +5,7 @@ import useDarkMode from "../../contexts/DarkMode/useDarkMode";
 function Data() {
   const { darkMode } = useDarkMode();
   return (
-    <div
-      className={`space-y-10 p-4 ${darkMode ? "bg-neutral-700 " : "bg-white "}`}
-    >
+    <div className={`space-y-10 p-4 ${darkMode ? "" : "bg-white "}`}>
       <CollapsibleProjectSection
         title="Assets Return"
         headers={["Asset", "Description", "Source"]}
@@ -223,11 +221,11 @@ function CollapsibleProjectSection({
 
   return (
     <section className="rounded-lg overflow-hidden shadow-lg mb-6">
-      <div className="flex justify-between items-center p-4 bg-gray-200 dark:bg-gray-800">
+      <div className="flex justify-between items-center p-2 bg-neutral-700 dark:bg-gray-800">
         <h1 className="text-2xl font-bold">{title}</h1>
         <button
           onClick={() => setIsOpen(!isOpen)}
-          className="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600 transition duration-300"
+          className="px-5 py-2 bg-blue-500 text-white rounded hover:bg-blue-600 transition duration-300"
         >
           {isOpen ? "Collapse" : "Expand"}
         </button>
@@ -272,7 +270,7 @@ function TableComponent({ headers, rows }) {
       </thead>
       <tbody>
         {rows.map((row, rowIndex) => (
-          <tr key={rowIndex} className="hover:bg-gray-100">
+          <tr key={rowIndex} className="hover:bg-gray-300">
             {row.map((cell, cellIndex) => (
               <td key={cellIndex} className="py-2 px-4 border-b">
                 {cellIndex === 2 ? ( // If it's the source column

@@ -2,6 +2,7 @@ import { useState, useContext } from "react";
 import axios from "axios";
 import SharedButton from "../../Shared/Button/SharedButton";
 import { DarkModeContext } from "../../../contexts/DarkMode/DarkModeContext";
+import PropTypes from "prop-types";
 
 export default function GetEconomicData() {
   const { darkMode } = useContext(DarkModeContext);
@@ -105,12 +106,8 @@ export default function GetEconomicData() {
   };
 
   return (
-    <div
-      className={`flex flex-col space-y-4 ml-5 p-4 ${
-        darkMode ? "bg-neutral-700 " : "bg-white"
-      }`}
-    >
-      <div className="flex space-x-4">
+    <div className={`flex flex-col space-y-4 ml-5 p-4 ${darkMode ? " " : ""}`}>
+      <Section darkMode={darkMode} className="flex space-x-4">
         <SharedButton
           variant="button1"
           label="Fetch Logistic"
@@ -131,16 +128,16 @@ export default function GetEconomicData() {
             </p>
           </div>
         )}
-      </div>
+      </Section>
 
-      <div className="flex space-x-4">
+      <Section darkMode={darkMode} className="flex space-x-4">
         <SharedButton
           variant="button1"
           label="Run Model"
           onClick={runLogisticModel}
         />
         {logisticModelResult && (
-          <div>
+          <div className="">
             <p>
               <strong>Model Output:</strong>
             </p>
@@ -148,9 +145,9 @@ export default function GetEconomicData() {
             <p>Raise: {logisticModelResult.raise}%</p>
           </div>
         )}
-      </div>
+      </Section>
 
-      <div className="flex space-x-4">
+      <Section darkMode={darkMode} className="flex space-x-4">
         <SharedButton
           variant="button1"
           label="Fetch FED"
@@ -164,9 +161,9 @@ export default function GetEconomicData() {
             <p>{fedData.press_release_content}</p>
           </div>
         )}
-      </div>
+      </Section>
 
-      <div className="flex space-x-4">
+      <Section darkMode={darkMode} className="flex space-x-4">
         <SharedButton
           variant="button1"
           label="Fetch GPT"
@@ -183,9 +180,9 @@ export default function GetEconomicData() {
             </p>
           </div>
         )}
-      </div>
+      </Section>
 
-      <div className="flex space-x-4">
+      <Section darkMode={darkMode} className="flex space-x-4">
         <SharedButton
           variant="button1"
           label="Calculate"
@@ -200,7 +197,24 @@ export default function GetEconomicData() {
             <p>Raise: {finalResult.raise}%</p>
           </div>
         )}
-      </div>
+      </Section>
     </div>
   );
 }
+
+function Section({ children, darkMode }) {
+  return (
+    <div
+      className={`flex space-x-4 p-4 rounded-md ${
+        darkMode ? "bg-neutral-700" : "bg-neutral-300"
+      }`}
+    >
+      {children}
+    </div>
+  );
+}
+
+Section.propTypes = {
+  children: PropTypes.node.isRequired,
+  darkMode: PropTypes.bool.isRequired,
+};
