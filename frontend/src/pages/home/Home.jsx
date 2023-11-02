@@ -19,6 +19,8 @@ function Home() {
 
   const [allTextPrinted, setAllTextPrinted] = useState(false);
 
+  const [maxTextLength, setMaxTextLength] = useState(0);
+
   const text1 =
     "Hello, welcome to my website. You can find here projects built on real data:";
   const textAssetsReturns = "Assets Returns";
@@ -114,6 +116,24 @@ function Home() {
     part6,
   ]);
 
+  useEffect(() => {
+    // Calculate the max length of text content
+    const texts = [
+      textAssetsReturns,
+      text2,
+      textMacroCharts,
+      text3,
+      textRecessionModel,
+      text4,
+      textData,
+      textPart5,
+      textModel,
+      textPart6,
+    ];
+    const maxLength = Math.max(...texts.map((t) => t.length));
+    setMaxTextLength(maxLength);
+  }, []);
+
   return (
     <div className="flex items-center justify-center my-24 mx-auto text-lg">
       <div
@@ -126,36 +146,50 @@ function Home() {
             <p>{part1}</p> <br />
             <div className="flex flex-col">
               <div className="flex items-center my-2">
-                <Link to="/project1" className="flex-1 project-button ">
+                <Link to="/project1" className="project-button">
                   {assetsReturns}
                 </Link>
-                <span className="ml-7 description">{part2}</span>
+                <span
+                  className="ml-7 description"
+                  style={{ minWidth: `${maxTextLength}ch` }}
+                >
+                  {part2}
+                </span>
               </div>
               <div className="flex items-center my-2">
-                <Link to="/project2" className="flex-1 project-button ">
+                <Link to="/project2" className="project-button">
                   {macroCharts}
                 </Link>
-                <span className="ml-7 description">{part3}</span>
+                <span
+                  className="ml-7 description"
+                  style={{ minWidth: `${maxTextLength}ch` }}
+                >
+                  {part3}
+                </span>
               </div>
               <div className="flex items-center my-2">
-                <Link to="/project3" className="flex-1 project-button ">
+                <Link to="/project3" className="project-button">
                   {recessionModel}
                 </Link>
-                <span className="ml-7 description">{part4}</span>
+                <span
+                  className="ml-7 description"
+                  style={{ minWidth: `${maxTextLength}ch` }}
+                >
+                  {part4}
+                </span>
               </div>{" "}
               <br />
               <div className="flex items-center my-2">
-                <Link to="/data" className="flex-1 project-button ">
+                <Link to="/data" className="project-button">
                   {data}
                 </Link>
                 <span className="ml-7 description">{part5}</span>
               </div>
               <div className="flex items-center my-2">
-                <Link to="/model" className="flex-1 project-button ">
+                <Link to="/model" className="project-button">
                   {model}
                 </Link>
                 <span className="ml-7 description">{part6}</span>
-
                 {allTextPrinted && <span className="cursor">_</span>}
               </div>
             </div>

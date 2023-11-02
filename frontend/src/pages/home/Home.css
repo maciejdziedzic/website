@@ -18,8 +18,8 @@
   cursor: pointer;
   text-decoration: none;
   transition: background-color 0.3s;
-  max-width: 12rem;
-  min-width: 12rem;
+  max-width: 8rem;
+  min-width: 8rem;
   width: 100%;
   text-align: center;
   box-sizing: border-box;
