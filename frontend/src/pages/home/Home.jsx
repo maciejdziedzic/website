@@ -136,11 +136,7 @@ function Home() {
 
   return (
     <div className="flex items-center justify-center my-24 mx-auto text-lg">
-      <div
-        className={`items-center ${
-          darkMode ? "text-dark-text" : "text-white-100"
-        }`}
-      >
+      <div className={`items-center ${darkMode ? "" : "text-white-100"}`}>
         <div className="font-thin w-full max-w-2xl mx-4">
           <div className="text-left">
             <p>{part1}</p> <br />

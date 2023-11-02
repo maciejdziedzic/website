@@ -22,7 +22,7 @@ export default function Navbar() {
         <div
           className={
             darkMode
-              ? "flex-shrink-0 text-dark-text bg-neutral-700 w-full"
+              ? "flex-shrink-0  bg-neutral-700 w-full"
               : "flex-shrink-0 w-full bg-neutral-100"
           }
         >

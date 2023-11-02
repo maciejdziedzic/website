@@ -107,7 +107,7 @@ export default function GetEconomicData() {
   return (
     <div
       className={`flex flex-col space-y-4 ml-5 p-4 ${
-        darkMode ? "bg-neutral-700 text-white" : "bg-white"
+        darkMode ? "bg-neutral-700 " : "bg-white"
       }`}
     >
       <div className="flex space-x-4">

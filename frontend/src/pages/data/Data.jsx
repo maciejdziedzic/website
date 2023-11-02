@@ -6,9 +6,7 @@ function Data() {
   const { darkMode } = useDarkMode();
   return (
     <div
-      className={`space-y-10 p-4 ${
-        darkMode ? "bg-neutral-700 text-white" : "bg-white text-neutral-700"
-      }`}
+      className={`space-y-10 p-4 ${darkMode ? "bg-neutral-700 " : "bg-white "}`}
     >
       <CollapsibleProjectSection
         title="Assets Return"
