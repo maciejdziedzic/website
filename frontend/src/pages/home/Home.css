@@ -12,18 +12,21 @@
 .project-button {
   background-color: #f0f0f0;
   border: none;
-  padding: 10px;
-  border-radius: 5px;
+  color: black;
+  /* margin: 0.5rem; */
+  /* padding: 10px; */
+  border-radius: 0.25rem;
   cursor: pointer;
   text-decoration: none;
-  color: inherit;
+  /* color: inherit; */
   transition: background-color 0.3s;
   max-width: 15rem;
   min-width: 15rem;
   width: 100%;
   text-align: center;
   box-sizing: border-box;
-  font-weight: 400;
+  font-weight: 500;
+  font-size: small;
 }
 
 .description {

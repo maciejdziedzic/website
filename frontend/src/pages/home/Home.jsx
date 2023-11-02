@@ -17,18 +17,18 @@ function Home() {
   const text1 =
     "Hello, welcome to my website.\nYou can find here three projects based on real data:";
   const textAssetsReturns = "Assets Returns";
-  const text2 = " - Yearly returns from different assets across 1970-2022";
+  const text2 = " Yearly Returns Across 1970-2022";
   const textMacroCharts = "US Macroeconomic Overview";
-  const text3 = " - Comprehensive chart of key U.S. economic indicators ";
+  const text3 = " U.S. Economic Indicators ";
   const textRecessionModel = "Recession model";
-  const text4 = " - Model that predicts FED's policy";
+  const text4 = " Model that Predicts future FED's Policy";
 
   useEffect(() => {
     let timer;
     if (part1.length < text1.length) {
       timer = setTimeout(
         () => setPart1((prev) => prev + text1[part1.length]),
-        10
+        8
       );
     } else if (assetsReturns.length < textAssetsReturns.length) {
       timer = setTimeout(
@@ -36,23 +36,23 @@ function Home() {
           setAssetsReturns(
             (prev) => prev + textAssetsReturns[assetsReturns.length]
           ),
-        6
+        7
       );
     } else if (part2.length < text2.length) {
       timer = setTimeout(
         () => setPart2((prev) => prev + text2[part2.length]),
-        6
+        7
       );
     } else if (macroCharts.length < textMacroCharts.length) {
       timer = setTimeout(
         () =>
           setMacroCharts((prev) => prev + textMacroCharts[macroCharts.length]),
-        6
+        7
       );
     } else if (part3.length < text3.length) {
       timer = setTimeout(
         () => setPart3((prev) => prev + text3[part3.length]),
-        6
+        7
       );
     } else if (recessionModel.length < textRecessionModel.length) {
       timer = setTimeout(
@@ -60,12 +60,12 @@ function Home() {
           setRecessionModel(
             (prev) => prev + textRecessionModel[recessionModel.length]
           ),
-        6
+        7
       );
     } else if (part4.length < text4.length) {
       timer = setTimeout(
         () => setPart4((prev) => prev + text4[part4.length]),
-        6
+        7
       );
     } else {
       setAllTextPrinted(true);
@@ -85,28 +85,19 @@ function Home() {
             <p>{part1}</p> <br />
             <div className="flex flex-col">
               <div className="flex items-center my-2">
-                <Link
-                  to="/project1"
-                  className="flex-1 project-button text-black"
-                >
+                <Link to="/project1" className="flex-1 project-button ">
                   {assetsReturns}
                 </Link>
                 <span className="ml-2 description">{part2}</span>
               </div>
               <div className="flex items-center my-2">
-                <Link
-                  to="/project2"
-                  className="flex-1 project-button text-black"
-                >
+                <Link to="/project2" className="flex-1 project-button ">
                   {macroCharts}
                 </Link>
                 <span className="ml-2 description">{part3}</span>
               </div>
               <div className="flex items-center my-2">
-                <Link
-                  to="/project3"
-                  className="flex-1 project-button text-black"
-                >
+                <Link to="/project3" className="flex-1 project-button ">
                   {recessionModel}
                 </Link>
                 <span className="ml-2 description">{part4}</span>
