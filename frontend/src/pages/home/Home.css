@@ -1,17 +1,38 @@
 .text-container {
   font-size: 16px;
-  white-space: pre;
+  /* white-space: pre; */
   font-weight: 300;
   white-space: pre-wrap;
   letter-spacing: 0.1rem;
 }
 
 .cursor {
-  animation: blink 1s step-end infinite;
+  display: inline;
+  animation: blink 0.8s step-end infinite;
 }
 
 @keyframes blink {
   50% {
     visibility: hidden;
   }
+}
+
+.project-button {
+  background-color: #f0f0f0;
+  border: none;
+  padding: 10px;
+  border-radius: 5px;
+  cursor: pointer;
+  text-decoration: none;
+  color: inherit;
+  transition: background-color 0.3s;
+  max-width: 15rem;
+  min-width: 15rem;
+  width: 100%;
+  text-align: center;
+  box-sizing: border-box; /* Include padding in the element's total width and height */
+}
+
+.description {
+  cursor: default;
 }

@@ -28,7 +28,7 @@ function Home() {
     if (part1.length < text1.length) {
       timer = setTimeout(
         () => setPart1((prev) => prev + text1[part1.length]),
-        6
+        13
       );
     } else if (assetsReturns.length < textAssetsReturns.length) {
       timer = setTimeout(
@@ -73,40 +73,37 @@ function Home() {
     return () => clearTimeout(timer);
   }, [part1, assetsReturns, part2, macroCharts, part3, recessionModel, part4]);
 
-  const longestLine = Math.max(
-    text1.length,
-    textAssetsReturns.length + text2.length,
-    textMacroCharts.length + text3.length,
-    textRecessionModel.length + text4.length
-  );
-
   return (
-    <div className="flex items-center justify-center m-20">
+    <div className="flex items-center justify-center my-20 mx-auto">
       <div
         className={`items-center ${
           darkMode ? "text-dark-text" : "text-white-100"
         }`}
       >
-        <div className="text-container font-thin">
-          <div style={{ minWidth: `${longestLine}ch` }} className="text-left">
-            <p>{part1}</p>
-            <br />
-            <Link to="/project1">
-              <span className="font-bold">{assetsReturns}</span>
-              {part2}
-            </Link>
-            <br />
-            <Link to="/project2">
-              <span className="font-bold">{macroCharts}</span>
-              {part3}
-            </Link>
-            <br />
-            <Link to="/project3">
-              <span className="font-bold">{recessionModel}</span>
-              {part4}
-            </Link>
-            {/* <br /> */}
-            {allTextPrinted && <span className="cursor">_</span>}
+        <div className="font-thin w-full max-w-2xl mx-4">
+          <div className="text-left">
+            <p>{part1}</p> <br />
+            <div className="flex flex-col">
+              <div className="flex items-center my-2">
+                <Link to="/project1" className="flex-1 project-button">
+                  {assetsReturns}
+                </Link>
+                <span className="ml-2 description">{part2}</span>
+              </div>
+              <div className="flex items-center my-2">
+                <Link to="/project2" className="flex-1 project-button">
+                  {macroCharts}
+                </Link>
+                <span className="ml-2 description">{part3}</span>
+              </div>
+              <div className="flex items-center my-2">
+                <Link to="/project3" className="flex-1 project-button">
+                  {recessionModel}
+                </Link>
+                <span className="ml-2 description">{part4}</span>
+                {allTextPrinted && <span className="cursor">_</span>}
+              </div>
+            </div>
           </div>
         </div>
       </div>
