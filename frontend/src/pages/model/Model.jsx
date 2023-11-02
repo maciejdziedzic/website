@@ -69,6 +69,9 @@ x2             0.2677      0.147      1.824      0.068      -0.020       0.555
 
   return (
     <div className={`mr-16 ml-16 mt-8 ${darkMode ? " " : " "}`}>
+      <h1 className="text-3xl font-bold mb-4 justify-center flex">
+        FED Policy Model
+      </h1>
       <h1 className="text-2xl font-bold mb-4">
         Logistic Regression Model Description
       </h1>

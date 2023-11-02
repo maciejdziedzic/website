@@ -5,9 +5,11 @@ export default function About() {
 
   return (
     <div className=" mr-16 ml-16 mt-8">
-      <div className={`container mx-auto  ${darkMode ? " " : " "}`}>
+      <div className={`container mx-auto  ${darkMode ? " text-white" : " "}`}>
         <div className=" mt-5">
-          <h1 className="text-2xl font-bold mb-5">About the Website</h1>
+          <h1 className="flex justify-center text-2xl font-bold mb-5">
+            About the Website
+          </h1>
 
           <section className="mb-5">
             <h2 className="text-xl font-semibold mb-3">Introduction</h2>
