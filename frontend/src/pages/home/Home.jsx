@@ -15,20 +15,20 @@ function Home() {
   const [allTextPrinted, setAllTextPrinted] = useState(false);
 
   const text1 =
-    "Hello, welcome to my website.\nYou can find here three projects: ";
+    "Hello, welcome to my website.\nYou can find here three projects based on real data:";
   const textAssetsReturns = "Assets Returns";
-  const text2 = " - yearly returns from different assets across 1970-2022";
-  const textMacroCharts = "Macroeconomic Charts";
-  const text3 = " - macroeconomic variables charts across";
+  const text2 = " - Yearly returns from different assets across 1970-2022";
+  const textMacroCharts = "US Macroeconomic Overview";
+  const text3 = " - Comprehensive chart of key U.S. economic indicators ";
   const textRecessionModel = "Recession model";
-  const text4 = " - model that predicts FED's policy";
+  const text4 = " - Model that predicts FED's policy";
 
   useEffect(() => {
     let timer;
     if (part1.length < text1.length) {
       timer = setTimeout(
         () => setPart1((prev) => prev + text1[part1.length]),
-        13
+        10
       );
     } else if (assetsReturns.length < textAssetsReturns.length) {
       timer = setTimeout(
@@ -74,7 +74,7 @@ function Home() {
   }, [part1, assetsReturns, part2, macroCharts, part3, recessionModel, part4]);
 
   return (
-    <div className="flex items-center justify-center my-20 mx-auto">
+    <div className="flex items-center justify-center my-24 mx-auto">
       <div
         className={`items-center ${
           darkMode ? "text-dark-text" : "text-white-100"
@@ -85,19 +85,28 @@ function Home() {
             <p>{part1}</p> <br />
             <div className="flex flex-col">
               <div className="flex items-center my-2">
-                <Link to="/project1" className="flex-1 project-button">
+                <Link
+                  to="/project1"
+                  className="flex-1 project-button text-black"
+                >
                   {assetsReturns}
                 </Link>
                 <span className="ml-2 description">{part2}</span>
               </div>
               <div className="flex items-center my-2">
-                <Link to="/project2" className="flex-1 project-button">
+                <Link
+                  to="/project2"
+                  className="flex-1 project-button text-black"
+                >
                   {macroCharts}
                 </Link>
                 <span className="ml-2 description">{part3}</span>
               </div>
               <div className="flex items-center my-2">
-                <Link to="/project3" className="flex-1 project-button">
+                <Link
+                  to="/project3"
+                  className="flex-1 project-button text-black"
+                >
                   {recessionModel}
                 </Link>
                 <span className="ml-2 description">{part4}</span>
