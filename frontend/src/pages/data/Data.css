@@ -34,17 +34,27 @@
   margin-right: 3.5rem;
 }
 
-.table-header {
-  /* display: flex; */
-  /* justify-content: space-between; */
-  padding: 0 4.5rem 0 0.5rem;
-}
-
+.table-header,
 .table-row {
-  /* display: flex; */
-  /* justify-content: space-between; */
+  display: grid;
+  grid-template-columns: 1fr 2fr 1fr; /* Adjust the fr units as needed */
+  gap: 1rem; /* This adds some space between your columns */
 }
+/* .table-header {
+  padding: 0 4.5rem 0 0.5rem;
+} */
 
 .table-cell {
   padding: 0.5rem;
+}
+
+.table-header-cell,
+.table-cell {
+  padding: 0.5rem; /* This ensures padding is consistent */
+}
+
+.table-cell a {
+  display: block; /* Or inline-block, depending on desired appearance */
+  text-decoration: none; /* If you don't want the underline */
+  color: inherit; /* If you want the link color to be the same as the text */
 }
