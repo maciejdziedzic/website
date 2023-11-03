@@ -5,6 +5,8 @@
 
 .collapsible-section {
   margin-bottom: 1.5rem;
+  padding: 0;
+  margin: 0 auto;
 }
 
 .section-header {
@@ -18,6 +20,7 @@
 
 .section-title {
   font-size: 1.2em;
+  width: 100%;
 }
 
 .collapse-expand-icon {
@@ -25,4 +28,23 @@
   font-weight: bold;
 }
 
-/* Add additional styles as needed */
+.table {
+  width: 100%;
+  margin-left: 1.5rem;
+  margin-right: 3.5rem;
+}
+
+.table-header {
+  /* display: flex; */
+  /* justify-content: space-between; */
+  padding: 0 4.5rem 0 0.5rem;
+}
+
+.table-row {
+  /* display: flex; */
+  /* justify-content: space-between; */
+}
+
+.table-cell {
+  padding: 0.5rem;
+}

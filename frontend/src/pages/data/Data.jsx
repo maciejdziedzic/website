@@ -48,7 +48,7 @@ function TableComponent({ headers, rows }) {
       <div className="table-body">
         {rows.map((row, rowIndex) => (
           <div key={rowIndex} className="table-row">
-            {row.slice(0, -1).map((cell, cellIndex) => (
+            {row.slice(0, -2).map((cell, cellIndex) => (
               <div key={cellIndex} className="table-cell">
                 {cell}
               </div>
@@ -59,7 +59,7 @@ function TableComponent({ headers, rows }) {
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                Source
+                {row[row.length - 2]}
               </a>
             </div>
           </div>
