@@ -26,9 +26,9 @@ function Home() {
   const textAssetsReturns = "Assets Returns";
   const text2 = " Yearly Returns Across 1970-2022";
   const textMacroCharts = "Macro Chart";
-  const text3 = " U.S. Economic Indicators ";
-  const textRecessionModel = "Model";
-  const text4 = " Predicts future FED's Policy";
+  const text3 = " U.S. Macroeconomic Indicators ";
+  const textRecessionModel = "Policy Model";
+  const text4 = " Predicts future FED's Policy regarding interest rates";
   const textData = "Data";
   const textPart5 = " Sources and transformations used in all projects";
   const textModel = "Model";

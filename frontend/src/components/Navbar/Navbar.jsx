@@ -82,7 +82,7 @@ export default function Navbar() {
                 </Link>
                 <Link to="/project2">
                   <button className="text-left hover:font-bold w-60">
-                    Macroeconomic Charts
+                    Macroeconomic Chart
                   </button>
                 </Link>
                 <Link to="/project3">

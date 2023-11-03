@@ -36,7 +36,7 @@ export const assetsReturnData = {
 };
 
 export const macroChartData = {
-  title: "Assets Return",
+  title: "Macroeconomic Chart",
   headers: ["Asset", "Description", "Source"],
   rows: [
     [
@@ -135,7 +135,7 @@ export const macroChartData = {
 };
 
 export const fedPolicyModelData = {
-  title: "Assets Return",
+  title: "FED Policy Model",
   headers: ["Asset", "Description", "Source"],
   firstHeaders: ["Metric", "Description", "Source"],
   firstRows: [
