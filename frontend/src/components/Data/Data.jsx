@@ -5,17 +5,19 @@ import TableContainer from "@mui/material/TableContainer";
 import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
+import useDarkMode from "../../contexts/DarkMode/useDarkMode";
 import PropTypes from "prop-types";
 
 function Row({ row }) {
+  const { darkMode } = useDarkMode();
   return (
     <TableRow
       sx={{
         "& > *": {
           borderBottom: "unset",
-          padding: "4px",
-          "&:last-child": { paddingRight: "8px" },
-          "&:first-child": { paddingLeft: "8px" },
+          padding: "10px",
+          "&:last-child": { paddingRight: "10px" },
+          "&:first-child": { paddingLeft: "10px" },
         },
       }}
     >
@@ -24,6 +26,9 @@ function Row({ row }) {
         scope="row"
         style={{
           fontFamily: '"Nunito Sans", sans-serif, "Segoe UI", Tahoma, Geneva',
+          color: darkMode
+            ? "var(--text-color-dark)"
+            : "var(--text-color-light)",
         }}
       >
         {row.metric}
@@ -32,6 +37,9 @@ function Row({ row }) {
         align="left"
         style={{
           fontFamily: '"Nunito Sans", sans-serif, "Segoe UI", Tahoma, Geneva',
+          color: darkMode
+            ? "var(--text-color-dark)"
+            : "var(--text-color-light)",
         }}
       >
         {row.description}
@@ -40,6 +48,9 @@ function Row({ row }) {
         align="left"
         style={{
           fontFamily: '"Nunito Sans", sans-serif, "Segoe UI", Tahoma, Geneva',
+          color: darkMode
+            ? "var(--text-color-dark)"
+            : "var(--text-color-light)",
         }}
       >
         <a href={row.source.url} target="_blank" rel="noopener noreferrer">
@@ -62,9 +73,14 @@ Row.propTypes = {
 };
 
 function Data({ data }) {
+  const { darkMode } = useDarkMode();
+
   return (
     <TableContainer component={Paper}>
-      <Table aria-label="collapsible table">
+      <Table
+        aria-label="collapsible table"
+        className={darkMode ? "bg-neutral-500" : "bg-zinc-100"}
+      >
         <TableHead>
           <TableRow>
             {data.headers.map((header, index) => (

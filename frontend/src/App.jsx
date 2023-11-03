@@ -5,7 +5,7 @@ import About from "./pages/about/About";
 import Project1 from "./pages/projects/project1/Project1";
 import Project2 from "./pages/projects/project2/Project2";
 import Project3 from "./pages/projects/project3/Project3";
-import DataContainer from "./pages/data/DataContainer";
+import DataContainer from "./pages/dataContainer/DataContainer";
 import Model from "./pages/model/Model";
 import "./App.css";
 
