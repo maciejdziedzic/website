@@ -7,6 +7,9 @@ import useDarkMode from "../../../contexts/DarkMode/useDarkMode";
 
 ChartJS.register(...registerables, dateFnsAdapter);
 
+const getCSSVariable = (variable) =>
+  getComputedStyle(document.documentElement).getPropertyValue(variable);
+
 const COLORS = {
   gold_pct: "rgb(238, 212, 133)",
   house_pct: "rgb(252 165 165)",
@@ -85,7 +88,9 @@ const AssetChart = ({
         ticks: {
           autoSkip: true,
           maxTicksLimit: 10,
-          color: darkMode ? "white" : "black",
+          color: darkMode
+            ? getCSSVariable("--text-color-dark")
+            : getCSSVariable("--text-color-light"),
         },
         grid: {
           color: darkMode ? "rgba(255, 255, 255, 0.1)" : "rgba(0, 0, 0, 0.1)",
@@ -93,7 +98,9 @@ const AssetChart = ({
       },
       y: {
         ticks: {
-          color: darkMode ? "white" : "black",
+          color: darkMode
+            ? getCSSVariable("--text-color-dark")
+            : getCSSVariable("--text-color-light"),
         },
         grid: {
           color: darkMode ? "rgba(255, 255, 255, 0.1)" : "rgba(0, 0, 0, 0.1)",
@@ -103,7 +110,9 @@ const AssetChart = ({
     plugins: {
       legend: {
         labels: {
-          color: darkMode ? "white" : "black",
+          color: darkMode
+            ? getCSSVariable("--text-color-dark")
+            : getCSSVariable("--text-color-light"),
         },
       },
       tooltip: {
@@ -112,7 +121,7 @@ const AssetChart = ({
           label: (tooltipItem) => {
             const date = new Date(tooltipItem.parsed.x);
             let label = tooltipItem.dataset.label;
-            label = label.replace(" (%)", ""); // This line will remove "(%)" from the label
+            label = label.replace(" (%)", "");
             const value = tooltipItem.parsed.y.toFixed(2);
             return `${label}: ${value}%, ${date.getFullYear()}`;
           },

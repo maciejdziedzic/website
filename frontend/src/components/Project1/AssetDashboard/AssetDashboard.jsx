@@ -9,6 +9,8 @@ import { createTheme, ThemeProvider } from "@mui/material/styles";
 import "./AssetDashboard.css";
 
 const AssetDashboard = () => {
+  const getCSSVariable = (variable) =>
+    getComputedStyle(document.documentElement).getPropertyValue(variable);
   const [data, setData] = useState([]);
   const [enabledMetrics, setEnabledMetrics] = useState({
     gold_pct: true,
@@ -41,20 +43,24 @@ const AssetDashboard = () => {
           },
           track: {
             height: 1.2,
-            backgroundColor: `${darkMode ? "#e2e2e2" : "#000000"}`, // Your existing color for the track (axis)
+            backgroundColor: `${darkMode ? "#e2e2e2" : "#000000"}`,
           },
           rail: {
             backgroundColor: `${darkMode ? "#000000" : "#e5e7eb"}`,
           },
           markLabel: {
-            color: `${darkMode ? "#fff" : "#000000"}`,
+            color: darkMode
+              ? getCSSVariable("--text-color-dark")
+              : getCSSVariable("--text-color-light"),
           },
           valueLabel: {
             background: `${darkMode ? "#737373" : "#fff"}`,
             top: -6,
             "& *": {
               background: `${darkMode ? "#737373" : "#fff"}`,
-              color: `${darkMode ? "#fff" : "#000"}`,
+              color: darkMode
+                ? getCSSVariable("--text-color-dark")
+                : getCSSVariable("--text-color-light"),
             },
             "&:before": {
               display: "none",
@@ -130,10 +136,7 @@ const AssetDashboard = () => {
 
   return (
     <div className="asset-dashboard  lg:flex  lg:justify-center lg:space-x-8">
-      <div
-        className="left-section bg-neutral-400 bg-opacity-10 rounded shadow-md  lg:w-[22.5%] 2xl:w-[18%]"
-        style={{ color: darkMode ? "white" : "black" }}
-      >
+      <div className="left-section bg-neutral-400 bg-opacity-10 rounded shadow-md  lg:w-[22.5%] 2xl:w-[18%]">
         <div className="lg:scale-90 lg:m-0 scale-90 flex-col md:flex sm:flex-col">
           {/* Assets Section */}
           <div className=" mb-8">
