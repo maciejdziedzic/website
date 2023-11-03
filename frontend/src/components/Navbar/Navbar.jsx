@@ -75,17 +75,17 @@ export default function Navbar() {
               }
             >
               <ul className="flex flex-col space-y-4 text-sm  p-2">
-                <Link to="/project1">
+                <Link to="/project1" onClick={toggleProjects}>
                   <button className="text-left hover:font-bold">
                     Assets Return
                   </button>
                 </Link>
-                <Link to="/project2">
+                <Link to="/project2" onClick={toggleProjects}>
                   <button className="text-left hover:font-bold w-60">
                     Macroeconomic Chart
                   </button>
                 </Link>
-                <Link to="/project3">
+                <Link to="/project3" onClick={toggleProjects}>
                   <button className="text-left hover:font-bold ">
                     FED Policy Model
                   </button>
@@ -99,10 +99,10 @@ export default function Navbar() {
                 }
               ></div>
               <ul className="flex flex-col space-y-4 text-sm p-6">
-                <Link to="/data">
+                <Link to="/data" onClick={toggleProjects}>
                   <button className="text-left hover:font-bold">Data</button>
                 </Link>
-                <Link to="/model">
+                <Link to="/model" onClick={toggleProjects}>
                   <button className="text-left hover:font-bold w-40">
                     Model
                   </button>
