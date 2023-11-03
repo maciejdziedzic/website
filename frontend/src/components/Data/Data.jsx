@@ -9,12 +9,39 @@ import PropTypes from "prop-types";
 
 function Row({ row }) {
   return (
-    <TableRow sx={{ "& > *": { borderBottom: "unset" } }}>
-      <TableCell component="th" scope="row">
+    <TableRow
+      sx={{
+        "& > *": {
+          borderBottom: "unset",
+          padding: "4px",
+          "&:last-child": { paddingRight: "8px" },
+          "&:first-child": { paddingLeft: "8px" },
+        },
+      }}
+    >
+      <TableCell
+        component="th"
+        scope="row"
+        style={{
+          fontFamily: '"Nunito Sans", sans-serif, "Segoe UI", Tahoma, Geneva',
+        }}
+      >
         {row.metric}
       </TableCell>
-      <TableCell align="right">{row.description}</TableCell>
-      <TableCell align="right">
+      <TableCell
+        align="left"
+        style={{
+          fontFamily: '"Nunito Sans", sans-serif, "Segoe UI", Tahoma, Geneva',
+        }}
+      >
+        {row.description}
+      </TableCell>
+      <TableCell
+        align="left"
+        style={{
+          fontFamily: '"Nunito Sans", sans-serif, "Segoe UI", Tahoma, Geneva',
+        }}
+      >
         <a href={row.source.url} target="_blank" rel="noopener noreferrer">
           {row.source.name}
         </a>
@@ -41,7 +68,14 @@ function Data({ data }) {
         <TableHead>
           <TableRow>
             {data.headers.map((header, index) => (
-              <TableCell key={index} align={index === 0 ? "inherit" : "right"}>
+              <TableCell
+                key={index}
+                align={index === 0 ? "inherit" : "left"}
+                style={{
+                  fontFamily:
+                    '"Nunito Sans", sans-serif, "Segoe UI", Tahoma, Geneva',
+                }}
+              >
                 {header}
               </TableCell>
             ))}

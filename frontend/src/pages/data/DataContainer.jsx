@@ -1,17 +1,21 @@
 import Accordion from "@mui/material/Accordion";
 import AccordionSummary from "@mui/material/AccordionSummary";
 import AccordionDetails from "@mui/material/AccordionDetails";
-import Typography from "@mui/material/Typography";
+// import Typography from "@mui/material/Typography";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
-import Data from "./Data";
-import { assetsReturnData, macroChartData, fedPolicyModelData } from "./Text";
+import Data from "../../components/Data/Data";
+import {
+  assetsReturnData,
+  macroChartData,
+  fedPolicyModelData,
+} from "../../components/Data/Text";
 
 const DataContainer = () => {
   return (
-    <div>
+    <div className="m-5">
       <Accordion>
         <AccordionSummary expandIcon={<ExpandMoreIcon />}>
-          <Typography>Assets Return</Typography>
+          <div>Assets Return</div>
         </AccordionSummary>
         <AccordionDetails>
           <Data data={assetsReturnData} />
@@ -19,7 +23,7 @@ const DataContainer = () => {
       </Accordion>
       <Accordion>
         <AccordionSummary expandIcon={<ExpandMoreIcon />}>
-          <Typography>Macro Chart Data</Typography>
+          <div>Macro Chart Data</div>
         </AccordionSummary>
         <AccordionDetails>
           <Data data={macroChartData} />
@@ -27,7 +31,7 @@ const DataContainer = () => {
       </Accordion>
       <Accordion>
         <AccordionSummary expandIcon={<ExpandMoreIcon />}>
-          <Typography>Fed Policy Model Data</Typography>
+          <div>Fed Policy Model Data</div>
         </AccordionSummary>
         <AccordionDetails>
           <Data data={fedPolicyModelData} />
