@@ -35,7 +35,9 @@ const AssetDashboard = () => {
           thumb: {
             height: 22,
             width: 22,
-            backgroundColor: "#fff",
+            backgroundColor: darkMode
+              ? getCSSVariable("--text-color-dark")
+              : getCSSVariable("--text-color-light"),
             border: "1.4px solid #000",
             "&:hover": {
               boxShadow: "0 0 0 0px rgba(58, 133, 137, 0.8)",
@@ -43,10 +45,14 @@ const AssetDashboard = () => {
           },
           track: {
             height: 1.2,
-            backgroundColor: `${darkMode ? "#e2e2e2" : "#000000"}`,
+            backgroundColor: darkMode
+              ? getCSSVariable("--text-color-dark")
+              : getCSSVariable("--text-color-light"),
           },
           rail: {
-            backgroundColor: `${darkMode ? "#000000" : "#e5e7eb"}`,
+            backgroundColor: darkMode
+              ? getCSSVariable("--text-color-dark")
+              : getCSSVariable("--text-color-light"),
           },
           markLabel: {
             color: darkMode

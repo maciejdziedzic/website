@@ -11,7 +11,7 @@
   -moz-osx-font-smoothing: grayscale;
   -webkit-text-size-adjust: 100%;
   --text-color-light: #000;
-  --text-color-dark: #e0d1c5;
+  --text-color-dark: rgb(226, 213, 209);
 }
 
 body {

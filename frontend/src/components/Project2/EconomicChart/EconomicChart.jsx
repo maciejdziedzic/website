@@ -5,6 +5,8 @@ import { Labels } from "../Labels/Labels";
 import useDarkMode from "../../../contexts/DarkMode/useDarkMode";
 
 const EconomicChart = ({ data, activeSeries }) => {
+  const getCSSVariable = (variable) =>
+    getComputedStyle(document.documentElement).getPropertyValue(variable);
   const [chartData, setChartData] = useState(null);
   const { darkMode } = useDarkMode();
 
@@ -34,7 +36,9 @@ const EconomicChart = ({ data, activeSeries }) => {
           ticks: {
             autoSkip: true,
             maxTicksLimit: 10,
-            color: darkMode ? "white" : "black",
+            color: darkMode
+              ? getCSSVariable("--text-color-dark")
+              : getCSSVariable("--text-color-light"),
           },
           grid: {
             color: darkMode ? "rgba(255, 255, 255, 0.1)" : "rgba(0, 0, 0, 0.1)",
@@ -42,7 +46,9 @@ const EconomicChart = ({ data, activeSeries }) => {
         },
         y: {
           ticks: {
-            color: darkMode ? "white" : "black",
+            color: darkMode
+              ? getCSSVariable("--text-color-dark")
+              : getCSSVariable("--text-color-light"),
           },
           grid: {
             color: darkMode ? "rgba(255, 255, 255, 0.1)" : "rgba(0, 0, 0, 0.1)",
@@ -52,7 +58,9 @@ const EconomicChart = ({ data, activeSeries }) => {
       plugins: {
         legend: {
           labels: {
-            color: darkMode ? "white" : "black",
+            color: darkMode
+              ? getCSSVariable("--text-color-dark")
+              : getCSSVariable("--text-color-light"),
           },
         },
         tooltip: {
