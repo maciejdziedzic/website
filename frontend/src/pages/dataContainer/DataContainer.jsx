@@ -13,11 +13,17 @@ import useDarkMode from "../../contexts/DarkMode/useDarkMode";
 const DataContainer = () => {
   const { darkMode } = useDarkMode();
   return (
-    <div className="m-5 bg">
-      <h1 className=" text-3xl mb-5 flex justify-center">Data Sources</h1>
+    <div className="m-5 ">
+      <h1 className="mt-12 text-3xl font-bold mb-5 flex justify-center">
+        Project&apos;s Data
+      </h1>
       <Accordion
         sx={{
           bgcolor: darkMode ? "rgb(82 82 82);" : "rgb(255, 255, 255)",
+          color: darkMode
+            ? "var(--text-color-dark)"
+            : "var(--text-color-light)",
+
           "& > *": {
             borderBottom: "unset",
             "&:last-child": { paddingRight: "10px" },
@@ -39,6 +45,9 @@ const DataContainer = () => {
             borderBottom: "unset",
             "&:last-child": { paddingRight: "10px" },
             "&:first-child": { paddingLeft: "10px" },
+            color: darkMode
+              ? "var(--text-color-dark)"
+              : "var(--text-color-light)",
           },
         }}
       >
@@ -56,6 +65,9 @@ const DataContainer = () => {
             borderBottom: "unset",
             "&:last-child": { paddingRight: "10px" },
             "&:first-child": { paddingLeft: "10px" },
+            color: darkMode
+              ? "var(--text-color-dark)"
+              : "var(--text-color-light)",
           },
         }}
       >
