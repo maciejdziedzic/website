@@ -145,6 +145,7 @@ export default function GetEconomicData() {
           variant="button1"
           label="Fetch Data"
           onClick={fetchLogisticData}
+          disabled={false}
         />
         {renderContentOrPlaceholder(
           logisticData,
@@ -172,6 +173,7 @@ export default function GetEconomicData() {
           variant="button1"
           label="Run Model"
           onClick={runLogisticModel}
+          disabled={!logisticData}
         />
         {renderContentOrPlaceholder(
           logisticModelResult,
@@ -193,6 +195,7 @@ export default function GetEconomicData() {
           variant="button1"
           label="Fetch FED"
           onClick={fetchFedArticle}
+          disabled={!logisticModelResult}
         />
 
         {renderContentOrPlaceholder(fedData, loadingFedData, () => (
@@ -210,6 +213,7 @@ export default function GetEconomicData() {
           variant="button1"
           label="Fetch GPT"
           onClick={fetchInterpretation}
+          disabled={!fedData}
         />
         {renderContentOrPlaceholder(
           interpretation,
@@ -236,6 +240,7 @@ export default function GetEconomicData() {
           variant="button1"
           label="Calculate"
           onClick={calculateFinalResult}
+          disabled={!interpretation}
         />
         {renderContentOrPlaceholder(finalResult, loadingFinalResult, () => (
           <Fragment>
