@@ -1,6 +1,6 @@
 export const assetsReturnData = {
   title: "Assets Return",
-  headers: ["Asset", "Description", "Source"],
+  headers: ["Metric", "Description", "Source"],
   rows: [
     [
       "GOLD",
@@ -37,7 +37,7 @@ export const assetsReturnData = {
 
 export const macroChartData = {
   title: "Macroeconomic Chart",
-  headers: ["Asset", "Description", "Source"],
+  headers: ["Metric", "Description", "Source"],
   rows: [
     [
       "HOUSE/WAGES",
@@ -136,9 +136,8 @@ export const macroChartData = {
 
 export const fedPolicyModelData = {
   title: "FED Policy Model",
-  headers: ["Asset", "Description", "Source"],
-  firstHeaders: ["Metric", "Description", "Source"],
-  firstRows: [
+  headers: ["Metric", "Description", "Source"],
+  rows: [
     [
       "CPI",
       "Quarterly percentage change in the Consumer Price Index.",
@@ -170,10 +169,6 @@ export const fedPolicyModelData = {
       "fred",
       "https://fred.stlouisfed.org/series/UNRATE",
     ],
-  ],
-  secondSectionTitle: ["LLM Text Interpretation"],
-  secondHeaders: ["Metric", "Description", "Source"],
-  secondRows: [
     [
       "HYPOTETHICAL FED RATE",
       "The machine learning model evaluates the most recent Federal Reserve press release, providing a percentage-based prediction of the likelihood of an interest rate increase.",
