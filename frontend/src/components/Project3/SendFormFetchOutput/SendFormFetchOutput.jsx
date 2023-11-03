@@ -1,8 +1,20 @@
-import { useState, useContext } from "react";
+import { useState, useContext, Fragment } from "react";
 import axios from "axios";
 import SharedButton from "../../Shared/Button/SharedButton";
 import { DarkModeContext } from "../../../contexts/DarkMode/DarkModeContext";
 import PropTypes from "prop-types";
+
+function Section({ children, darkMode }) {
+  return (
+    <div
+      className={`flex space-x-10 items-center p-3 rounded-md ${
+        darkMode ? "bg-neutral-700" : "bg-neutral-300"
+      }`}
+    >
+      {children}
+    </div>
+  );
+}
 
 export default function GetEconomicData() {
   const { darkMode } = useContext(DarkModeContext);
@@ -12,7 +24,13 @@ export default function GetEconomicData() {
   const [interpretation, setInterpretation] = useState(null);
   const [finalResult, setFinalResult] = useState(null);
 
+  const [loadingLogisticData, setLoadingLogisticData] = useState(false);
+  const [loadingLogisticModel, setLoadingLogisticModel] = useState(false);
+  // const [loadingFedData, setLoadingFedData] = useState(false);
+  // const [loadingInterpretation, setLoadingInterpretation] = useState(false);
+
   const fetchLogisticData = async () => {
+    setLoadingLogisticData(true); // Set loading to true
     try {
       const response = await axios.get(
         "http://127.0.0.1:5000/api/fetch-logistic-data"
@@ -21,9 +39,11 @@ export default function GetEconomicData() {
     } catch (error) {
       console.error("Error fetching logistic data: ", error);
     }
+    setLoadingLogisticData(false); // Set loading to false once the fetch is complete
   };
 
   const runLogisticModel = async () => {
+    setLoadingLogisticModel(true);
     try {
       const response = await axios.post(
         "http://127.0.0.1:5000/api/run-logistic-model",
@@ -37,6 +57,7 @@ export default function GetEconomicData() {
     } catch (error) {
       console.error("Error running logistic model: ", error);
     }
+    setLoadingLogisticModel(false);
   };
 
   const fetchFedArticle = async () => {
@@ -105,28 +126,37 @@ export default function GetEconomicData() {
     }
   };
 
+  const renderContentOrPlaceholder = (data, loading, contentRenderer) => {
+    if (loading) return <div>Loading...</div>;
+    return <div>{data ? contentRenderer(data) : "-"}</div>;
+  };
+
   return (
-    <div className={`flex flex-col space-y-4 ml-5 p-4 ${darkMode ? " " : ""}`}>
-      <Section darkMode={darkMode} className="flex space-x-4">
+    <div className={`flex flex-col space-y-4 ml-5 p-4  ${darkMode ? " " : ""}`}>
+      <Section darkMode={darkMode} className="flex">
         <SharedButton
           variant="button1"
           label="Fetch Data"
           onClick={fetchLogisticData}
         />
-        {logisticData && (
-          <div>
-            <p>
-              <strong>Unemployment Rate:</strong> {logisticData.unemp}%
-            </p>
-            <p>
-              <strong>CPI:</strong>{" "}
-              {parseFloat(logisticData.cpi).toLocaleString(undefined, {
-                minimumFractionDigits: 2,
-                maximumFractionDigits: 2,
-              })}
-              %
-            </p>
-          </div>
+        {renderContentOrPlaceholder(
+          logisticData,
+          loadingLogisticData,
+          (data) => (
+            <Fragment>
+              <p>
+                <strong>Unemployment Rate:</strong> {data.unemp}%
+              </p>
+              <p>
+                <strong>CPI:</strong>{" "}
+                {parseFloat(data.cpi).toLocaleString(undefined, {
+                  minimumFractionDigits: 2,
+                  maximumFractionDigits: 2,
+                })}
+                %
+              </p>
+            </Fragment>
+          )
         )}
       </Section>
 
@@ -136,14 +166,20 @@ export default function GetEconomicData() {
           label="Run Model"
           onClick={runLogisticModel}
         />
-        {logisticModelResult && (
-          <div className="">
-            <p>
-              <strong>Model Output:</strong>
-            </p>
-            <p>Lower/Maintain: {logisticModelResult.lower_or_maintain}%</p>
-            <p>Raise: {logisticModelResult.raise}%</p>
-          </div>
+        {renderContentOrPlaceholder(
+          logisticModelResult,
+          loadingLogisticModel,
+          () => (
+            <Fragment>
+              <div className="">
+                <p>
+                  <strong>Model Output:</strong>
+                </p>
+                <p>Lower/Maintain: {logisticModelResult.lower_or_maintain}%</p>
+                <p>Raise: {logisticModelResult.raise}%</p>
+              </div>
+            </Fragment>
+          )
         )}
       </Section>
 
@@ -198,18 +234,6 @@ export default function GetEconomicData() {
           </div>
         )}
       </Section>
-    </div>
-  );
-}
-
-function Section({ children, darkMode }) {
-  return (
-    <div
-      className={`flex space-x-4 p-4 rounded-md ${
-        darkMode ? "bg-neutral-700" : "bg-neutral-300"
-      }`}
-    >
-      {children}
     </div>
   );
 }
