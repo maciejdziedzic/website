@@ -26,8 +26,9 @@ export default function GetEconomicData() {
 
   const [loadingLogisticData, setLoadingLogisticData] = useState(false);
   const [loadingLogisticModel, setLoadingLogisticModel] = useState(false);
-  // const [loadingFedData, setLoadingFedData] = useState(false);
-  // const [loadingInterpretation, setLoadingInterpretation] = useState(false);
+  const [loadingFedData, setLoadingFedData] = useState(false);
+  const [loadingInterpretation, setLoadingInterpretation] = useState(false);
+  const [loadingFinalResult, setLoadingFinalResult] = useState(false);
 
   const fetchLogisticData = async () => {
     setLoadingLogisticData(true); // Set loading to true
@@ -61,6 +62,7 @@ export default function GetEconomicData() {
   };
 
   const fetchFedArticle = async () => {
+    setLoadingFedData(true);
     try {
       const response = await axios.post(
         "http://127.0.0.1:5000/api/fetch-fed-text"
@@ -69,9 +71,11 @@ export default function GetEconomicData() {
     } catch (error) {
       console.error("Error fetching fed article: ", error);
     }
+    setLoadingFedData(false);
   };
 
   const fetchInterpretation = async () => {
+    setLoadingInterpretation(true);
     try {
       const response = await axios.post(
         "http://127.0.0.1:5000/api/fetch-fed-interpretation",
@@ -81,9 +85,11 @@ export default function GetEconomicData() {
     } catch (error) {
       console.error("Error fetching fed interpretation: ", error);
     }
+    setLoadingInterpretation(false);
   };
 
   const calculateFinalResult = () => {
+    setLoadingFinalResult(true);
     if (logisticModelResult && interpretation) {
       const logisticLowerOrMaintain =
         parseFloat(logisticModelResult.lower_or_maintain) / 100;
@@ -124,6 +130,7 @@ export default function GetEconomicData() {
     } else {
       console.error("Logistic model result or interpretation is not available");
     }
+    setLoadingFinalResult(false);
   };
 
   const renderContentOrPlaceholder = (data, loading, contentRenderer) => {
@@ -171,13 +178,11 @@ export default function GetEconomicData() {
           loadingLogisticModel,
           () => (
             <Fragment>
-              <div className="">
-                <p>
-                  <strong>Model Output:</strong>
-                </p>
-                <p>Lower/Maintain: {logisticModelResult.lower_or_maintain}%</p>
-                <p>Raise: {logisticModelResult.raise}%</p>
-              </div>
+              <p>
+                <strong>Model Output:</strong>
+              </p>
+              <p>Lower/Maintain: {logisticModelResult.lower_or_maintain}%</p>
+              <p>Raise: {logisticModelResult.raise}%</p>
             </Fragment>
           )
         )}
@@ -189,14 +194,15 @@ export default function GetEconomicData() {
           label="Fetch FED"
           onClick={fetchFedArticle}
         />
-        {fedData && (
-          <div>
+
+        {renderContentOrPlaceholder(fedData, loadingFedData, () => (
+          <Fragment>
             <p>
               <strong>Press Release:</strong>
             </p>
             <p>{fedData.press_release_content}</p>
-          </div>
-        )}
+          </Fragment>
+        ))}
       </Section>
 
       <Section darkMode={darkMode} className="flex space-x-4">
@@ -205,16 +211,23 @@ export default function GetEconomicData() {
           label="Fetch GPT"
           onClick={fetchInterpretation}
         />
-        {interpretation && (
-          <div>
-            <p>
-              <strong>Interpretation:</strong> Based on the text analysis, there
-              is {((1 - interpretation.interpretation) * 100).toFixed(0)}%
-              chance that it will lower or maintain interest rates, and{" "}
-              {(interpretation.interpretation * 100).toFixed(0)}% chance that
-              the Federal Reserve will raise interest rates,
-            </p>
-          </div>
+        {renderContentOrPlaceholder(
+          interpretation,
+          loadingInterpretation,
+          () => (
+            <Fragment>
+              <p>
+                <strong>Interpretation:</strong>{" "}
+              </p>
+              <p>
+                Based on the text analysis, there is{" "}
+                {((1 - interpretation.interpretation) * 100).toFixed(0)}% chance
+                that it will lower or maintain interest rates, and{" "}
+                {(interpretation.interpretation * 100).toFixed(0)}% chance that
+                the Federal Reserve will raise interest rates.
+              </p>
+            </Fragment>
+          )
         )}
       </Section>
 
@@ -224,15 +237,17 @@ export default function GetEconomicData() {
           label="Calculate"
           onClick={calculateFinalResult}
         />
-        {finalResult && (
-          <div>
-            <p>
-              <strong>Final Result:</strong>
-            </p>
-            <p>Lower/Maintain: {finalResult.lower_or_maintain}%</p>
-            <p>Raise: {finalResult.raise}%</p>
-          </div>
-        )}
+        {renderContentOrPlaceholder(finalResult, loadingFinalResult, () => (
+          <Fragment>
+            <div>
+              <p>
+                <strong>Final Result:</strong>
+              </p>
+              <p>Lower/Maintain: {finalResult.lower_or_maintain}%</p>
+              <p>Raise: {finalResult.raise}%</p>
+            </div>
+          </Fragment>
+        ))}
       </Section>
     </div>
   );
