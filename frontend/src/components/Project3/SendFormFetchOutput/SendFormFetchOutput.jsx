@@ -181,7 +181,7 @@ export default function GetEconomicData() {
           () => (
             <Fragment>
               <p>
-                <strong>Model Output:</strong>
+                <strong>Result:</strong>
               </p>
               <p>Lower/Maintain: {logisticModelResult.lower_or_maintain}%</p>
               <p>Raise: {logisticModelResult.raise}%</p>

@@ -24,15 +24,16 @@ function Home() {
   const text1 =
     "Hello, welcome to my website. You can find here projects built on real data:";
   const textAssetsReturns = "Assets Returns";
-  const text2 = " Yearly Returns Across 1970-2022";
+  const text2 = "Annual returns over five decades,";
   const textMacroCharts = "Macro Chart";
-  const text3 = " U.S. Macroeconomic Indicators ";
+  const text3 = "Visual representations of key U.S. macroeconomic indicators,";
   const textRecessionModel = "Policy Model";
-  const text4 = " Predicts future FED's Policy regarding interest rates";
+  const text4 =
+    "Forecasts of the Federal Reserve's future policy decisions regarding interest rates,";
   const textData = "Data";
-  const textPart5 = " Sources and transformations used in all projects";
-  const textModel = "Model";
-  const textPart6 = " Additional information";
+  const textPart5 = "Sources used in all projects,";
+  const textModel = "Model Info";
+  const textPart6 = "Methodology.";
 
   useEffect(() => {
     let timer;
