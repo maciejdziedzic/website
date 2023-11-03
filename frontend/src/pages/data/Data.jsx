@@ -7,7 +7,10 @@ import { assetsReturnData, macroChartData, fedPolicyModelData } from "./Text";
 
 function Data() {
   return (
-    <div className="data-container">
+    <div className="data-container mt-8">
+      <h1 className="flex justify-center text-3xl font-semibold items-center mb-8">
+        Data
+      </h1>
       <CollapsibleProjectSection data={assetsReturnData} />
       <CollapsibleProjectSection data={macroChartData} />
       <CollapsibleProjectSection data={fedPolicyModelData} />
@@ -19,10 +22,13 @@ function CollapsibleProjectSection({ data }) {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <section className="collapsible-section">
-      <header className="section-header" onClick={() => setIsOpen(!isOpen)}>
-        <h1 className="section-title">{data.title}</h1>
-        <span className="collapse-expand-icon">{isOpen ? "-" : "+"}</span>
+    <section className="collapsible-section mt-2">
+      <header
+        className="section-header ml-5 mr-5"
+        onClick={() => setIsOpen(!isOpen)}
+      >
+        <h1 className="section-title ml-5">{data.title}</h1>
+        <span className="collapse-expand-icon mr-5">{isOpen ? "-" : "+"}</span>
       </header>
       {isOpen && <TableComponent headers={data.headers} rows={data.rows} />}
     </section>
@@ -31,7 +37,7 @@ function CollapsibleProjectSection({ data }) {
 
 function TableComponent({ headers, rows }) {
   return (
-    <div className="table">
+    <div className="table mr-5">
       <div className="table-header">
         {headers.map((header, index) => (
           <div key={index} className="table-header-cell">
