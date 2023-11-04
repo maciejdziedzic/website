@@ -9,6 +9,7 @@ import {
 
 export default function Model() {
   const { darkMode } = useDarkMode();
+  const [isModelDevelopOpen, setModelDevelopOpen] = useState(false);
   const [isModelEvalOpen, setModelEvalOpen] = useState(false);
   const [isLogisticRegResultsOpen, setLogisticRegResultsOpen] = useState(false);
   const [isGPTResultsOpen, setGPTResultsOpen] = useState(false);
@@ -20,6 +21,8 @@ export default function Model() {
       setLogisticRegResultsOpen(!isLogisticRegResultsOpen);
     } else if (section === "gptResults") {
       setGPTResultsOpen(!isGPTResultsOpen);
+    } else if (section === "modelDevelop") {
+      setModelDevelopOpen(!isModelDevelopOpen);
     }
   };
 
@@ -74,36 +77,45 @@ export default function Model() {
           unemployment rate.
         </p>
       </section>
-      <section>
-        <h2 className="font-semibold mt-4 mb-2">Data Preparation:</h2>
-        <ol className="list-decimal list-inside pl-4 mb-4">
-          <li className="mb-2">
-            Selection of features: &apos;CPI&apos; and &apos;Unemployment
-            Rate&apos;.
-          </li>
-          <li className="mb-2">
-            Selection of target variable: &apos;Target&apos; indicating Federal
-            Reserve&apos;s policy direction.
-          </li>
-        </ol>
-      </section>
-      <section>
-        <h2 className="font-semibold mt-4 mb-2">Model Training:</h2>
-        <ol className="list-decimal list-inside pl-4 mb-4">
-          <li className="mb-2">
-            The dataset was split into training (80%) and testing (20%) sets,
-            preserving the chronological order.
-          </li>
-          <li className="mb-2">
-            Feature Scaling: Standardized the features to have a mean of 0 and a
-            standard deviation of 1.
-          </li>
-          <li className="mb-2">
-            The Logistic Regression model was trained using the scaled training
-            data.
-          </li>
-        </ol>
-      </section>
+      <button
+        className={`flex justify-between items-center w-full font-semibold mt-4 mb-2  p-2 ${
+          darkMode ? "bg-neutral-500 " : "bg-neutral-200 "
+        }`}
+        onClick={() => toggleAccordion("modelDevelop")}
+      >
+        <span> Model Devekooment:</span>
+        <span>{isModelDevelopOpen ? "−" : "+"}</span>
+      </button>
+      {isModelDevelopOpen && (
+        <div>
+          <section>
+            <section>
+              <ol className="list-decimal list-inside pl-4 mb-4">
+                <li className="mb-2">
+                  Selection of features: &apos;CPI&apos; and &apos;Unemployment
+                  Rate&apos;.
+                </li>
+                <li className="mb-2">
+                  Selection of target variable: &apos;Target&apos; indicating
+                  Federal Reserve&apos;s policy direction.
+                </li>
+                <li className="mb-2">
+                  The dataset was split into training (80%) and testing (20%)
+                  sets, preserving the chronological order.
+                </li>
+                <li className="mb-2">
+                  Feature Scaling: Standardized the features to have a mean of 0
+                  and a standard deviation of 1.
+                </li>
+                <li className="mb-2">
+                  The Logistic Regression model was trained using the scaled
+                  training data.
+                </li>
+              </ol>
+            </section>
+          </section>
+        </div>
+      )}
       <section>
         <button
           className={`flex justify-between items-center w-full font-semibold mt-4 mb-2  p-2 ${
@@ -128,8 +140,6 @@ export default function Model() {
             </section>
           </div>
         )}
-      </section>
-      <section>
         <button
           className={`flex justify-between items-center w-full font-semibold mt-4 mb-2  p-2 ${
             darkMode ? "bg-neutral-500 " : "bg-neutral-200 "
