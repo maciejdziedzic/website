@@ -63,7 +63,7 @@ export default function Navbar() {
 
           <div
             className={
-              darkMode ? "border-t border-gray-600" : "border-t border-gray-100"
+              darkMode ? "border-t border-gray-600" : "border-t border-gray-200"
             }
           ></div>
           {ProjectsOpen && (
