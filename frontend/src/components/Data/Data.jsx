@@ -79,7 +79,7 @@ function Data({ data }) {
     <TableContainer component={Paper}>
       <Table
         aria-label="collapsible table"
-        className={darkMode ? "bg-neutral-500" : "bg-zinc-100"}
+        className={darkMode ? "bg-neutral-700" : "bg-zinc-100"}
       >
         <TableHead>
           <TableRow>
@@ -90,6 +90,11 @@ function Data({ data }) {
                 style={{
                   fontFamily:
                     '"Nunito Sans", sans-serif, "Segoe UI", Tahoma, Geneva',
+                  color: darkMode
+                    ? "var(--text-color-dark)"
+                    : "var(--text-color-light)",
+                  fontWeight: "bold",
+                  fontSize: "1.2rem",
                 }}
               >
                 {header}

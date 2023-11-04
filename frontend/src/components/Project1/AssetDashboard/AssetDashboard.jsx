@@ -37,7 +37,7 @@ const AssetDashboard = () => {
             width: 22,
             backgroundColor: darkMode
               ? getCSSVariable("--text-color-dark")
-              : getCSSVariable("--text-color-light"),
+              : getCSSVariable("--text-color-dark"),
             border: "1.4px solid #000",
             "&:hover": {
               boxShadow: "0 0 0 0px rgba(58, 133, 137, 0.8)",

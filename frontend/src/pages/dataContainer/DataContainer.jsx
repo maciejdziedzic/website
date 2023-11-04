@@ -13,8 +13,8 @@ import useDarkMode from "../../contexts/DarkMode/useDarkMode";
 const DataContainer = () => {
   const { darkMode } = useDarkMode();
   return (
-    <div className="m-5 ">
-      <h1 className="mt-12 text-3xl font-bold mb-5 flex justify-center">
+    <div className="m-5 p-5 ">
+      <h1 className="mt-4 text-3xl font-bold mb-5 flex justify-center">
         Project&apos;s Data
       </h1>
       <Accordion
@@ -31,8 +31,18 @@ const DataContainer = () => {
           },
         }}
       >
-        <AccordionSummary expandIcon={<ExpandMoreIcon />}>
-          <div>Assets Return</div>
+        <AccordionSummary
+          expandIcon={
+            <ExpandMoreIcon
+              sx={{
+                color: darkMode
+                  ? "var(--text-color-dark)"
+                  : "var(--text-color-light)",
+              }}
+            />
+          }
+        >
+          <div className="p-5 text-lg font-bold">Assets Return</div>
         </AccordionSummary>
         <AccordionDetails>
           <Data data={assetsReturnData} />
@@ -51,8 +61,18 @@ const DataContainer = () => {
           },
         }}
       >
-        <AccordionSummary expandIcon={<ExpandMoreIcon />}>
-          <div>Macro Chart Data</div>
+        <AccordionSummary
+          expandIcon={
+            <ExpandMoreIcon
+              sx={{
+                color: darkMode
+                  ? "var(--text-color-dark)"
+                  : "var(--text-color-light)",
+              }}
+            />
+          }
+        >
+          <div className="p-5 text-lg font-bold">Macro Chart Data</div>
         </AccordionSummary>
         <AccordionDetails>
           <Data data={macroChartData} />
@@ -71,8 +91,18 @@ const DataContainer = () => {
           },
         }}
       >
-        <AccordionSummary expandIcon={<ExpandMoreIcon />}>
-          <div>Fed Policy Model Data</div>
+        <AccordionSummary
+          expandIcon={
+            <ExpandMoreIcon
+              sx={{
+                color: darkMode
+                  ? "var(--text-color-dark)"
+                  : "var(--text-color-light)",
+              }}
+            />
+          }
+        >
+          <div className="p-5 text-lg font-bold">Fed Policy Model Data</div>
         </AccordionSummary>
         <AccordionDetails>
           <Data data={fedPolicyModelData} />

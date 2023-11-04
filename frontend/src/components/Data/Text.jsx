@@ -232,6 +232,5 @@ export const fedPolicyModelData = {
         url: "https://www.federalreserve.gov/",
       },
     },
-    // ... add more rows if necessary
   ],
 };
