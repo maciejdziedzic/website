@@ -131,22 +131,12 @@ x2             0.2677      0.147      1.824      0.068      -0.020       0.555
           </h3>
           {renderTable(classificationReport)}
           <p>
+            <strong>AUC: </strong>0.64
+          </p>
+          <p>
             <strong>Overall Accuracy:</strong> {classificationReport.accuracy}
           </p>
         </section>
-        <p>
-          Additionally, the Receiver Operating Characteristic (ROC) curve and
-          the Area Under the Curve (AUC) score were used to evaluate the model.
-          These tools provide a visual and quantitative method to assess the
-          model&apos;s performance, particularly its ability to distinguish
-          between the two classes. It is recommended to include these in the
-          model&apos;s evaluation for a more comprehensive understanding.
-        </p>
-      </section>
-
-      <section>
-        <h3 className="text-lg font-semibold mt-4 mb-2">ROC Curve</h3>
-        {/* <img src="/roc_curve.png" alt="ROC Curve" className="my-2" /> */}
       </section>
 
       <section>
