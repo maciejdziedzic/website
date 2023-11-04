@@ -2,6 +2,7 @@ import { useState, useContext, Fragment } from "react";
 import axios from "axios";
 import SharedButton from "../../Shared/Button/SharedButton";
 import { DarkModeContext } from "../../../contexts/DarkMode/DarkModeContext";
+import "./EconomicModel.css";
 import PropTypes from "prop-types";
 
 function Section({ children, darkMode }) {
@@ -133,13 +134,23 @@ export default function EconomicModel() {
     setLoadingFinalResult(false);
   };
 
+  const LoadingDots = () => (
+    <div className="loadingDots">
+      Loading<span></span>
+    </div>
+  );
+
   const renderContentOrPlaceholder = (data, loading, contentRenderer) => {
-    if (loading) return <div>Loading...</div>;
+    if (loading) return <LoadingDots />;
     return <div>{data ? contentRenderer(data) : "-"}</div>;
   };
 
   return (
-    <div className={`flex flex-col space-y-4 ml-5 p-4  ${darkMode ? " " : ""}`}>
+    <div
+      className={`flex flex-col space-y-4 mr-10 ml-10 p-4  ${
+        darkMode ? " " : ""
+      }`}
+    >
       <Section darkMode={darkMode} className="flex">
         <SharedButton
           variant="button1"
@@ -183,8 +194,8 @@ export default function EconomicModel() {
               <p>
                 <strong>Result:</strong>
               </p>
-              <p>Lower/Maintain: {logisticModelResult.lower_or_maintain}%</p>
               <p>Raise: {logisticModelResult.raise}%</p>
+              <p>Lower/Maintain: {logisticModelResult.lower_or_maintain}%</p>
             </Fragment>
           )
         )}
@@ -225,10 +236,10 @@ export default function EconomicModel() {
               </p>
               <p>
                 Based on the text analysis, there is{" "}
-                {((1 - interpretation.interpretation) * 100).toFixed(0)}% chance
-                that it will lower or maintain interest rates, and{" "}
                 {(interpretation.interpretation * 100).toFixed(0)}% chance that
-                the Federal Reserve will raise interest rates.
+                the Federal Reserve will raise interest rates, and {""}
+                {((1 - interpretation.interpretation) * 100).toFixed(0)}% chance
+                that it will lower or maintain interest rates.
               </p>
             </Fragment>
           )
@@ -248,8 +259,8 @@ export default function EconomicModel() {
               <p>
                 <strong>Final Result:</strong>
               </p>
-              <p>Lower/Maintain: {finalResult.lower_or_maintain}%</p>
               <p>Raise: {finalResult.raise}%</p>
+              <p>Lower/Maintain: {finalResult.lower_or_maintain}%</p>
             </div>
           </Fragment>
         ))}
