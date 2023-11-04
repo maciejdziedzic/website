@@ -23,7 +23,7 @@ function Home() {
 
   const text1 =
     "Hello, welcome to my website. You can find here projects built on real data:";
-  const textAssetsReturns = "Assets Returns";
+  const textAssetsReturns = "Asset Returns";
   const text2 = " Annual returns over five decades";
   const textMacroCharts = "Macro Chart";
   const text3 = " Visual representations of key U.S. macroeconomic indicators";

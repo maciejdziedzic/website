@@ -154,7 +154,7 @@ export default function Model() {
         {isLogisticRegResultsOpen && (
           <div>
             <section>
-              <pre className="whitespace-pre-wrap mb-4">
+              <pre className="whitespace-pre-wrap mb-2">
                 {logisticRegressionResults}
               </pre>
               <p>
@@ -180,9 +180,9 @@ export default function Model() {
         predicts chance that the Federal Reserve will increase the interest
         rates.
       </p>
-      <section className="mb-5">
+      <section className="mb-4">
         <button
-          className={`flex justify-between items-center w-full font-semibold mt-4 mb-2  p-2 ${
+          className={`flex justify-between items-center w-full font-semibold mt-6 mb-4 p-2 ${
             darkMode ? "bg-neutral-500 " : "bg-neutral-200 "
           }`}
           onClick={() => toggleAccordion("gptResults")}

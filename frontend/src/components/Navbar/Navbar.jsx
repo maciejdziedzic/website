@@ -77,7 +77,7 @@ export default function Navbar() {
               <ul className="flex flex-col space-y-4 text-sm  p-2">
                 <Link to="/project1" onClick={toggleProjects}>
                   <button className="text-left hover:font-bold">
-                    Assets Return
+                    Asset Returns
                   </button>
                 </Link>
                 <Link to="/project2" onClick={toggleProjects}>
