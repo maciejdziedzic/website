@@ -47,23 +47,23 @@ function Home() {
           setAssetsReturns(
             (prev) => prev + textAssetsReturns[assetsReturns.length]
           ),
-        5
+        4
       );
     } else if (part2.length < text2.length) {
       timer = setTimeout(
         () => setPart2((prev) => prev + text2[part2.length]),
-        5
+        4
       );
     } else if (macroCharts.length < textMacroCharts.length) {
       timer = setTimeout(
         () =>
           setMacroCharts((prev) => prev + textMacroCharts[macroCharts.length]),
-        5
+        4
       );
     } else if (part3.length < text3.length) {
       timer = setTimeout(
         () => setPart3((prev) => prev + text3[part3.length]),
-        5
+        4
       );
     } else if (recessionModel.length < textRecessionModel.length) {
       timer = setTimeout(
@@ -71,32 +71,32 @@ function Home() {
           setRecessionModel(
             (prev) => prev + textRecessionModel[recessionModel.length]
           ),
-        5
+        4
       );
     } else if (part4.length < text4.length) {
       timer = setTimeout(
         () => setPart4((prev) => prev + text4[part4.length]),
-        5
+        4
       );
     } else if (data.length < textData.length) {
       timer = setTimeout(
         () => setData((prev) => prev + textData[data.length]),
-        5
+        4
       );
     } else if (part5.length < textPart5.length) {
       timer = setTimeout(
         () => setPart5((prev) => prev + textPart5[part5.length]),
-        5
+        4
       );
     } else if (model.length < textModel.length) {
       timer = setTimeout(
         () => setModel((prev) => prev + textModel[model.length]),
-        5
+        4
       );
     } else if (part6.length < textPart6.length) {
       timer = setTimeout(
         () => setPart6((prev) => prev + textPart6[part6.length]),
-        5
+        4
       );
     } else {
       setAllTextPrinted(true);
@@ -135,7 +135,7 @@ function Home() {
   }, []);
 
   return (
-    <div className="flex items-center justify-center my-24 mx-auto text-lg ml-6">
+    <div className="flex items-center justify-center my-16 mx-auto text-lg ml-6">
       <div className={`items-center ${darkMode ? "" : ""}`}>
         <div className="w-full max-w-2xl mx-4">
           <div className="text-left">
