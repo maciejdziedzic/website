@@ -2,6 +2,9 @@ import useDarkMode from "../../contexts/DarkMode/useDarkMode";
 
 export default function About() {
   const { darkMode } = useDarkMode();
+  const techClassName = `font-mono ${
+    darkMode ? "text-blue-300" : "text-blue-800"
+  }`;
 
   return (
     <div className=" mr-16 ml-16 mt-8">
@@ -17,7 +20,9 @@ export default function About() {
               I created this website to deepen my understanding of web
               technology, economics and statistics. It serves to showcase my
               research to an audience whom I hope will find it intriguing and
-              potentially wish to collaborate on future projects.
+              potentially wish to collaborate on future projects. I am
+              particularly interested in working in finance, healthcare and
+              technology.
             </p>
           </section>
 
@@ -30,12 +35,14 @@ export default function About() {
                 server with Nginx handling the web serving operations.
               </li>
               <li>
-                Frontend: Interactive user interface designed with Node.js and
-                React in JavaScript language.
+                Frontend: Interactive user interface designed with{" "}
+                <span className={techClassName}>Node.js</span> and{" "}
+                <span className={techClassName}>React</span> in{" "}
+                <span className={techClassName}>JavaScript</span>.
               </li>
               <li>
-                Backend: A Python-powered backend, with Flask applications
-                served through Gunicorn.
+                Backend: A <span className={techClassName}>Python</span>-powered
+                backend, with Flask application served through Gunicorn.
               </li>
             </ul>
             <h3 className="text-lg font-semibold mb-2">Projects</h3>
@@ -46,9 +53,10 @@ export default function About() {
               </li>
               <li>
                 Macroeconomic Chart: Features an automated data retrieval system
-                established with CRON job. This system fetches data from an API
-                monthly, stores it in MongoDB, and then visualizes it with
-                Chart.js.
+                established with CRON job. This system fetches data from an{" "}
+                <span className={techClassName}>API{""}</span> monthly, stores
+                it in <span className={techClassName}>MongoDB{""}</span>, and
+                then visualizes it with Chart.js.
               </li>
               <li>
                 FED Policy Model: Developed an API that feeds data into a
