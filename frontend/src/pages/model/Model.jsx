@@ -66,7 +66,6 @@ export default function Model() {
         Logistic Regression Model Description
       </h1>
       <section>
-        <h2 className="font-semibold mt-4 mb-2">Model Overview:</h2>
         <p>
           This model is a Logistic Regression model trained to predict the
           Federal Reserve&apos;s policy based on economic indicators. The
@@ -107,10 +106,13 @@ export default function Model() {
       </section>
       <section>
         <button
-          className="font-semibold mt-4 mb-2 bg-red-200"
+          className={`flex justify-between items-center w-full font-semibold mt-4 mb-2  p-2 ${
+            darkMode ? "bg-neutral-500 " : "bg-neutral-200 "
+          }`}
           onClick={() => toggleAccordion("modelEval")}
         >
-          Model Evaluation:
+          <span> Model Evaluation:</span>
+          <span>{isModelEvalOpen ? "−" : "+"}</span>
         </button>
         {isModelEvalOpen && (
           <div>
@@ -129,10 +131,13 @@ export default function Model() {
       </section>
       <section>
         <button
-          className="font-semibold mt-4 mb-2 bg-red-200"
+          className={`flex justify-between items-center w-full font-semibold mt-4 mb-2  p-2 ${
+            darkMode ? "bg-neutral-500 " : "bg-neutral-200 "
+          }`}
           onClick={() => toggleAccordion("logisticRegResults")}
         >
-          Logistic Regression Results:
+          <span>Logistic Regression Results:</span>
+          <span>{isLogisticRegResultsOpen ? "−" : "+"}</span>
         </button>
         {isLogisticRegResultsOpen && (
           <div>
@@ -163,12 +168,15 @@ export default function Model() {
         predicts chance that the Federal Reserve will increase the interest
         rates.
       </p>
-      <section>
+      <section className="mb-5">
         <button
-          className="font-semibold mt-4 mb-2 bg-red-200"
+          className={`flex justify-between items-center w-full font-semibold mt-4 mb-2  p-2 ${
+            darkMode ? "bg-neutral-500 " : "bg-neutral-200 "
+          }`}
           onClick={() => toggleAccordion("gptResults")}
         >
-          Chat GPT Prompt:
+          <span>Chat GPT Prompt</span>
+          <span>{isGPTResultsOpen ? "−" : "+"}</span>
         </button>
         {isGPTResultsOpen && (
           <div>
