@@ -1,5 +1,5 @@
 import EconomicChart from "../EconomicChart/EconomicChart";
-import SharedButton from "../../Shared/Button/SharedButton";
+import Button from "../../Button/Button";
 import { useState, useEffect } from "react";
 import { Labels } from "../Labels/Labels";
 import useDarkMode from "../../../contexts/DarkMode/useDarkMode";
@@ -69,7 +69,7 @@ const EconomicDashboard = () => {
     <div className="box flex ">
       <div className="left-section button-box flex-col text-xs w-[22.5%] ">
         {seriesLabels.map((label) => (
-          <SharedButton
+          <Button
             variant="button2"
             key={label}
             label={Labels[label].label}

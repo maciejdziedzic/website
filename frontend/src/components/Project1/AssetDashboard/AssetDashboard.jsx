@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import SharedButton from "../../Shared/Button/SharedButton";
+import Button from "../../Button/Button";
 import AssetChart from "../AssetChart/AssetChart";
 import fetchData from "../../../utils/fetchData";
 import Slider from "@mui/material/Slider";
@@ -148,7 +148,7 @@ const AssetDashboard = () => {
           <div className=" mb-8">
             <h1 className="h1-title">Assets:</h1>
             <div className="">
-              <SharedButton
+              <Button
                 variant="button1"
                 className=""
                 onClick={() => toggleMetric("gold_pct")}
@@ -156,7 +156,7 @@ const AssetDashboard = () => {
                 active={enabledMetrics.gold_pct}
               />
               <div className="button-checkbox flex items-center lg:space-x-4">
-                <SharedButton
+                <Button
                   variant="button1"
                   onClick={() => toggleMetric("house_pct")}
                   label="HOUSE"
@@ -194,7 +194,7 @@ const AssetDashboard = () => {
               </div>
 
               <div className="button-checkbox flex items-center lg:space-x-4">
-                <SharedButton
+                <Button
                   variant="button1"
                   onClick={() => toggleMetric("sp500_pct")}
                   label="SP500"
@@ -232,7 +232,7 @@ const AssetDashboard = () => {
                 </div>
               </div>
             </div>
-            <SharedButton
+            <Button
               variant="button1"
               onClick={() => toggleMetric("bond10tr_pct")}
               label="BONDS10Y"

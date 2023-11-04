@@ -1,6 +1,6 @@
 import { useState, useContext, Fragment } from "react";
 import axios from "axios";
-import SharedButton from "../../Shared/Button/SharedButton";
+import Button from "../../Button/Button";
 import { DarkModeContext } from "../../../contexts/DarkMode/DarkModeContext";
 import "./EconomicModel.css";
 import PropTypes from "prop-types";
@@ -152,7 +152,7 @@ export default function EconomicModel() {
       }`}
     >
       <Section darkMode={darkMode} className="flex">
-        <SharedButton
+        <Button
           variant="button1"
           label="Fetch Data"
           onClick={fetchLogisticData}
@@ -180,7 +180,7 @@ export default function EconomicModel() {
       </Section>
 
       <Section darkMode={darkMode} className="flex space-x-4">
-        <SharedButton
+        <Button
           variant="button1"
           label="Run Model"
           onClick={runLogisticModel}
@@ -202,7 +202,7 @@ export default function EconomicModel() {
       </Section>
 
       <Section darkMode={darkMode} className="flex space-x-4">
-        <SharedButton
+        <Button
           variant="button1"
           label="Fetch FED"
           onClick={fetchFedArticle}
@@ -220,7 +220,7 @@ export default function EconomicModel() {
       </Section>
 
       <Section darkMode={darkMode} className="flex space-x-4">
-        <SharedButton
+        <Button
           variant="button1"
           label="Fetch GPT"
           onClick={fetchInterpretation}
@@ -247,7 +247,7 @@ export default function EconomicModel() {
       </Section>
 
       <Section darkMode={darkMode} className="flex space-x-4">
-        <SharedButton
+        <Button
           variant="button1"
           label="Calculate"
           onClick={calculateFinalResult}

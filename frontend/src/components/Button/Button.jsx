@@ -1,9 +1,9 @@
 import PropTypes from "prop-types";
 import { useContext } from "react";
-import { DarkModeContext } from "../../../contexts/DarkMode/DarkModeContext";
-import "./SharedButton.css";
+import { DarkModeContext } from "../../contexts/DarkMode/DarkModeContext";
+import "./Button.css";
 
-const SharedButton = ({ variant, label, onClick, active, disabled }) => {
+const Button = ({ variant, label, onClick, active, disabled }) => {
   const { darkMode } = useContext(DarkModeContext);
 
   const baseClass = "button-shared";
@@ -26,7 +26,7 @@ const SharedButton = ({ variant, label, onClick, active, disabled }) => {
   );
 };
 
-SharedButton.propTypes = {
+Button.propTypes = {
   variant: PropTypes.oneOf(["button1", "button2"]).isRequired,
   label: PropTypes.string.isRequired,
   onClick: PropTypes.func.isRequired,
@@ -34,4 +34,4 @@ SharedButton.propTypes = {
   disabled: PropTypes.bool,
 };
 
-export default SharedButton;
+export default Button;
