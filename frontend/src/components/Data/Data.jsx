@@ -15,7 +15,7 @@ function Row({ row }) {
       sx={{
         "& > *": {
           borderBottom: "unset",
-          padding: "10px",
+          padding: "5px",
           "&:last-child": { paddingRight: "10px" },
           "&:first-child": { paddingLeft: "10px" },
         },
@@ -57,7 +57,7 @@ function Row({ row }) {
           href={row.source.url}
           target="_blank"
           rel="noopener noreferrer"
-          className="underline"
+          className="underline decoration-0"
         >
           {row.source.name}
         </a>

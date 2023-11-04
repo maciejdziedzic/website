@@ -146,7 +146,7 @@ x2             0.2677      0.147      1.824      0.068      -0.020       0.555
 
       <section>
         <h3 className="text-lg font-semibold mt-4 mb-2">ROC Curve</h3>
-        <img src="/roc_curve.png" alt="ROC Curve" className="my-2" />
+        {/* <img src="/roc_curve.png" alt="ROC Curve" className="my-2" /> */}
       </section>
 
       <section>
