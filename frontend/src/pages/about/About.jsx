@@ -14,31 +14,57 @@ export default function About() {
           <section className="mb-5">
             <h2 className="text-xl font-semibold mb-3">Introduction</h2>
             <p>
-              I created this website to deepen my understanding of web design,
-              statistics and economics, and to showcase my research to an
-              audiance, who in my hope will find it interesting and may be
-              interested to collaborate with me on a project.
+              I created this website to deepen my understanding of web
+              technology, economics and statistics. It serves to showcase my
+              research to an audience whom I hope will find it intriguing and
+              potentially wish to collaborate on future projects.
             </p>
           </section>
 
           <section className="mb-5">
             <h2 className="text-xl font-semibold mb-3">Technologies Used</h2>
-            <p>
-              Tech Stack - Ubuntu (Linux), Nginx, Node JS, NPM, React, HTML,
-              CSS, Tailwind, Python, Gnunicorn, Flask, CRON Job - JS, API,
-              working with JSON, MongoDB - - EDA, stating a problem, linear
-              regression - macroeconomic - placing a machine learning model in
-              web based on scraped data and chat gpt interpretation
-            </p>
+
+            <ul className="list-disc pl-5 mb-4">
+              <li>
+                Operating System & Server: The website is hosted on an Ubuntu
+                server with Nginx handling the web serving operations.
+              </li>
+              <li>
+                Frontend: Interactive user interface designed with Node.js and
+                React in JavaScript language.
+              </li>
+              <li>
+                Backend: A Python-powered backend, with Flask applications
+                served through Gunicorn.
+              </li>
+            </ul>
+            <h3 className="text-lg font-semibold mb-2">Projects</h3>
+            <ul className="list-disc pl-5 mb-4">
+              <li>
+                Asset Returns: Visualization of data from CSV files using the
+                Chart.js library.
+              </li>
+              <li>
+                Macroeconomic Chart: Features an automated data retrieval system
+                established with CRON job. This system fetches data from an API
+                monthly, stores it in MongoDB, and then visualizes it with
+                Chart.js.
+              </li>
+              <li>
+                FED Policy Model: Developed an API that feeds data into a
+                machine learning model. The model, managed with the joblib
+                library, is enhanced with interpretations from the Chat GPT API
+                of the Federal Reserve&apos;s press releases.
+              </li>
+            </ul>
           </section>
 
           <section className="mb-5">
             <h2 className="text-xl font-semibold mb-3">Data Overview</h2>
             <p>
-              The data showcased here is curated from reputable sources and is
+              The data presented here is curated from reputable sources and is
               processed to ensure accuracy and relevance. If you find any
-              errors, please let me know by e-mail at:
-              maciej.dziedzic9@gmail.com
+              discrepancies, please feel free to reach out to me via email.
             </p>
           </section>
         </div>
