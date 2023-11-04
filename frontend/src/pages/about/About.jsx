@@ -73,7 +73,7 @@ export default function About() {
             <p>
               The data presented here is curated from reputable sources and is
               processed to ensure accuracy and relevance. If you find any
-              discrepancies, please feel free to reach out to me via email.
+              discrepancies, please let me know via email.
             </p>
           </section>
         </div>

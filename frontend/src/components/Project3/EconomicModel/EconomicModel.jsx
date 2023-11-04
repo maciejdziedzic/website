@@ -136,7 +136,7 @@ export default function EconomicModel() {
 
   const LoadingDots = () => (
     <div className="loadingDots">
-      Loading<span></span>
+      Loading <span></span>
     </div>
   );
 
