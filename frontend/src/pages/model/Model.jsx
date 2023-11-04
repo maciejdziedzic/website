@@ -83,7 +83,7 @@ export default function Model() {
         }`}
         onClick={() => toggleAccordion("modelDevelop")}
       >
-        <span> Model Devekooment:</span>
+        <span> Model Development</span>
         <span>{isModelDevelopOpen ? "−" : "+"}</span>
       </button>
       {isModelDevelopOpen && (
@@ -123,7 +123,7 @@ export default function Model() {
           }`}
           onClick={() => toggleAccordion("modelEval")}
         >
-          <span> Model Evaluation:</span>
+          <span> Model Evaluation</span>
           <span>{isModelEvalOpen ? "−" : "+"}</span>
         </button>
         {isModelEvalOpen && (
@@ -135,7 +135,9 @@ export default function Model() {
                 </h3>
                 {renderTable(classificationReport)}
                 <p>AUC: 0.64</p>
-                <p>Overall Accuracy: {classificationReport.accuracy}</p>
+                <strong>
+                  Overall Accuracy: {classificationReport.accuracy}
+                </strong>
               </section>
             </section>
           </div>
@@ -146,7 +148,7 @@ export default function Model() {
           }`}
           onClick={() => toggleAccordion("logisticRegResults")}
         >
-          <span>Logistic Regression Results:</span>
+          <span>Logistic Regression Results</span>
           <span>{isLogisticRegResultsOpen ? "−" : "+"}</span>
         </button>
         {isLogisticRegResultsOpen && (
@@ -160,12 +162,12 @@ export default function Model() {
                 the target being 1 is 0.1216.
               </p>
               <p>
-                Unemployment: A one-unit increase in unemployment increases the
-                log odds of the target being 1 by 0.2677.
+                Unemployment: A one-unit increase in CPI percentage change
+                decreases the log odds of the target being 1 by 0.4176.
               </p>
               <p>
-                CPI Change: A one-unit increase in CPI percentage change
-                decreases the log odds of the target being 1 by 0.4176.
+                CPI Change: A one-unit increase in unemployment increases the
+                log odds of the target being 1 by 0.2677.
               </p>
             </section>
           </div>
