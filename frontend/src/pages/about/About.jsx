@@ -2,8 +2,8 @@ import useDarkMode from "../../contexts/DarkMode/useDarkMode";
 
 export default function About() {
   const { darkMode } = useDarkMode();
-  const techClassName = `font-mono ${
-    darkMode ? "text-blue-300" : "text-blue-800"
+  const techClassName = `${
+    darkMode ? "text-blue-300 font-semibold" : "text-blue-800"
   }`;
 
   return (
@@ -42,7 +42,8 @@ export default function About() {
               </li>
               <li>
                 Backend: A <span className={techClassName}>Python</span>-powered
-                backend, with Flask application served through Gunicorn.
+                backend, with <span className={techClassName}>Flask </span>
+                application served through Gunicorn.
               </li>
             </ul>
             <h3 className="text-lg font-semibold mb-2">Projects</h3>
