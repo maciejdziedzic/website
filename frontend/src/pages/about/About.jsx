@@ -3,7 +3,7 @@ import useDarkMode from "../../contexts/DarkMode/useDarkMode";
 export default function About() {
   const { darkMode } = useDarkMode();
   const techClassName = `${
-    darkMode ? "text-blue-300 font-semibold" : "text-blue-800"
+    darkMode ? "text-green-700 font-semibold" : "text-blue-800"
   }`;
 
   return (
