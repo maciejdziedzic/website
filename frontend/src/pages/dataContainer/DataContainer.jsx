@@ -9,6 +9,7 @@ import {
   fedPolicyModelData,
 } from "../../components/Data/Text";
 import useDarkMode from "../../contexts/DarkMode/useDarkMode";
+import "./DataContainer.css";
 
 const DataContainer = () => {
   const { darkMode } = useDarkMode();
@@ -44,7 +45,7 @@ const DataContainer = () => {
         >
           <div className="p-5 text-lg font-bold">Assets Return</div>
         </AccordionSummary>
-        <AccordionDetails>
+        <AccordionDetails className="accordion-details">
           <Data data={assetsReturnData} />
         </AccordionDetails>
       </Accordion>
@@ -74,7 +75,7 @@ const DataContainer = () => {
         >
           <div className="p-5 text-lg font-bold">Macro Chart Data</div>
         </AccordionSummary>
-        <AccordionDetails>
+        <AccordionDetails className="accordion-details">
           <Data data={macroChartData} />
         </AccordionDetails>
       </Accordion>
@@ -104,7 +105,7 @@ const DataContainer = () => {
         >
           <div className="p-5 text-lg font-bold">Fed Policy Model Data</div>
         </AccordionSummary>
-        <AccordionDetails>
+        <AccordionDetails className="accordion-details">
           <Data data={fedPolicyModelData} />
         </AccordionDetails>
       </Accordion>

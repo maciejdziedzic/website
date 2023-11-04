@@ -24,11 +24,11 @@ function Home() {
   const text1 =
     "Hello, welcome to my website. You can find here projects built on real data:";
   const textAssetsReturns = "Assets Returns";
-  const text2 = " Yearly Returns Across 1970-2022";
+  const text2 = " Annual returns over five decades";
   const textMacroCharts = "Macro Chart";
-  const text3 = " U.S. Macroeconomic Indicators ";
+  const text3 = " Visual representations of key U.S. macroeconomic indicators";
   const textRecessionModel = "Policy Model";
-  const text4 = " Predicts future FED's Policy regarding interest rates";
+  const text4 = " Forecasts of the Federal Reserve's future policy";
   const textData = "Data";
   const textPart5 = " Sources and transformations used in all projects";
   const textModel = "Model";
@@ -135,7 +135,7 @@ function Home() {
   }, []);
 
   return (
-    <div className="flex items-center justify-center my-24 mx-auto text-lg">
+    <div className="flex items-center justify-center my-24 mx-auto text-lg ml-6">
       <div className={`items-center ${darkMode ? "" : ""}`}>
         <div className="w-full max-w-2xl mx-4">
           <div className="text-left">

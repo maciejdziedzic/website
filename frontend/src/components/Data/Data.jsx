@@ -53,7 +53,12 @@ function Row({ row }) {
             : "var(--text-color-light)",
         }}
       >
-        <a href={row.source.url} target="_blank" rel="noopener noreferrer">
+        <a
+          href={row.source.url}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="underline"
+        >
           {row.source.name}
         </a>
       </TableCell>
