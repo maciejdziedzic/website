@@ -8,7 +8,7 @@ const Button = ({ variant, label, onClick, active, disabled }) => {
 
   const baseClass = "button-shared";
   const variantClass = variant === "button1" ? "button1" : "button2";
-  const activeClass = active ? "bg-neutral-500" : "bg-neutral-200";
+  const activeClass = active ? "active" : "";
   const darkModeClass = darkMode ? "dark" : "";
   const disabledClass = disabled ? "cursor-not-allowed" : "";
 
@@ -29,8 +29,8 @@ const Button = ({ variant, label, onClick, active, disabled }) => {
 Button.propTypes = {
   variant: PropTypes.oneOf(["button1", "button2"]).isRequired,
   label: PropTypes.string.isRequired,
-  onClick: PropTypes.func.isRequired,
-  active: PropTypes.bool, // Removed .isRequired
+  onClick: PropTypes.func,
+  active: PropTypes.bool,
   disabled: PropTypes.bool,
 };
 
