@@ -2,16 +2,16 @@ import Accordion from "@mui/material/Accordion";
 import AccordionSummary from "@mui/material/AccordionSummary";
 import AccordionDetails from "@mui/material/AccordionDetails";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
-import Data from "../../components/Data/Data";
+import DataContent from "../data/DataContent";
 import {
   assetsReturnData,
   macroChartData,
   fedPolicyModelData,
-} from "../../components/Data/Text";
+} from "../../components/DataContent/Text";
 import useDarkMode from "../../contexts/DarkMode/useDarkMode";
-import "./DataContainer.css";
+import "./Data.css";
 
-const DataContainer = () => {
+const Data = () => {
   const { darkMode } = useDarkMode();
   return (
     <div className="m-5 p-8 ">
@@ -46,7 +46,7 @@ const DataContainer = () => {
           <div className="p-5  text-lg font-bold">Assets Return</div>
         </AccordionSummary>
         <AccordionDetails className="accordion-details">
-          <Data data={assetsReturnData} />
+          <DataContent data={assetsReturnData} />
         </AccordionDetails>
       </Accordion>
       <Accordion
@@ -76,7 +76,7 @@ const DataContainer = () => {
           <div className="p-5 text-lg font-bold">Macro Chart Data</div>
         </AccordionSummary>
         <AccordionDetails className="accordion-details">
-          <Data data={macroChartData} />
+          <DataContent data={macroChartData} />
         </AccordionDetails>
       </Accordion>
       <Accordion
@@ -106,11 +106,11 @@ const DataContainer = () => {
           <div className="p-5 text-lg font-bold">Fed Policy Model Data</div>
         </AccordionSummary>
         <AccordionDetails className="accordion-details">
-          <Data data={fedPolicyModelData} />
+          <DataContent data={fedPolicyModelData} />
         </AccordionDetails>
       </Accordion>
     </div>
   );
 };
 
-export default DataContainer;
+export default Data;

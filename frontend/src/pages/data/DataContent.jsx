@@ -77,7 +77,7 @@ Row.propTypes = {
   }).isRequired,
 };
 
-function Data({ data }) {
+function DataContent({ data }) {
   const { darkMode } = useDarkMode();
 
   return (
@@ -117,7 +117,7 @@ function Data({ data }) {
   );
 }
 
-Data.propTypes = {
+DataContent.propTypes = {
   data: PropTypes.shape({
     headers: PropTypes.arrayOf(PropTypes.string).isRequired,
     rows: PropTypes.arrayOf(
@@ -133,4 +133,4 @@ Data.propTypes = {
   }).isRequired,
 };
 
-export default Data;
+export default DataContent;

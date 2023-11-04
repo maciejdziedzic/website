@@ -16,7 +16,7 @@ function Section({ children, darkMode }) {
   );
 }
 
-export default function GetEconomicData() {
+export default function EconomicModel() {
   const { darkMode } = useContext(DarkModeContext);
   const [logisticData, setLogisticData] = useState(null);
   const [logisticModelResult, setLogisticModelResult] = useState(null);
