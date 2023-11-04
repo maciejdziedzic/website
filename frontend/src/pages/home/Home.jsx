@@ -27,12 +27,12 @@ function Home() {
   const text2 = " Annual returns over five decades";
   const textMacroCharts = "Macro Chart";
   const text3 = " Visual representations of key U.S. macroeconomic indicators";
-  const textRecessionModel = "Policy Model";
+  const textRecessionModel = "Model";
   const text4 = " Forecasts of the Federal Reserve's future policy";
   const textData = "Data";
-  const textPart5 = " Sources and transformations used in all projects";
-  const textModel = "Model";
-  const textPart6 = " Additional information";
+  const textPart5 = " Sources used in all projects";
+  const textModel = "Model Info";
+  const textPart6 = " Methodology";
 
   useEffect(() => {
     let timer;
