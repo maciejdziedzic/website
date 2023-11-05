@@ -30,9 +30,15 @@ export default function EconomicModel() {
   const [loadingFedData, setLoadingFedData] = useState(false);
   const [loadingInterpretation, setLoadingInterpretation] = useState(false);
   const [loadingFinalResult, setLoadingFinalResult] = useState(false);
-
+  const [buttonActiveState, setButtonActiveState] = useState({
+    fetchData: false,
+    runModel: false,
+    fetchFed: false,
+    fetchGPT: false,
+    calculate: false,
+  });
   const fetchLogisticData = async () => {
-    setLoadingLogisticData(true); // Set loading to true
+    setLoadingLogisticData(true);
     try {
       const response = await axios.get(
         "http://127.0.0.1:5000/api/fetch-logistic-data"
@@ -41,7 +47,8 @@ export default function EconomicModel() {
     } catch (error) {
       console.error("Error fetching logistic data: ", error);
     }
-    setLoadingLogisticData(false); // Set loading to false once the fetch is complete
+    setLoadingLogisticData(false);
+    setButtonActiveState((prev) => ({ ...prev, fetchData: true }));
   };
 
   const runLogisticModel = async () => {
@@ -60,6 +67,7 @@ export default function EconomicModel() {
       console.error("Error running logistic model: ", error);
     }
     setLoadingLogisticModel(false);
+    setButtonActiveState((prev) => ({ ...prev, runModel: true }));
   };
 
   const fetchFedArticle = async () => {
@@ -73,6 +81,7 @@ export default function EconomicModel() {
       console.error("Error fetching fed article: ", error);
     }
     setLoadingFedData(false);
+    setButtonActiveState((prev) => ({ ...prev, fetchFed: true }));
   };
 
   const fetchInterpretation = async () => {
@@ -87,6 +96,7 @@ export default function EconomicModel() {
       console.error("Error fetching fed interpretation: ", error);
     }
     setLoadingInterpretation(false);
+    setButtonActiveState((prev) => ({ ...prev, fetchGPT: true }));
   };
 
   const calculateFinalResult = () => {
@@ -132,6 +142,7 @@ export default function EconomicModel() {
       console.error("Logistic model result or interpretation is not available");
     }
     setLoadingFinalResult(false);
+    setButtonActiveState((prev) => ({ ...prev, calculate: true }));
   };
 
   const LoadingDots = () => (
@@ -156,7 +167,8 @@ export default function EconomicModel() {
           variant="button1"
           label="Fetch Data"
           onClick={fetchLogisticData}
-          disabled={false}
+          disabled={loadingLogisticData}
+          active={buttonActiveState.fetchData}
         />
         {renderContentOrPlaceholder(
           logisticData,
@@ -184,7 +196,8 @@ export default function EconomicModel() {
           variant="button1"
           label="Run Model"
           onClick={runLogisticModel}
-          disabled={!logisticData}
+          disabled={!buttonActiveState.fetchData || loadingLogisticModel}
+          active={buttonActiveState.runModel}
         />
         {renderContentOrPlaceholder(
           logisticModelResult,
@@ -206,7 +219,8 @@ export default function EconomicModel() {
           variant="button1"
           label="Fetch FED"
           onClick={fetchFedArticle}
-          disabled={!logisticModelResult}
+          disabled={!buttonActiveState.runModel || loadingFedData}
+          active={buttonActiveState.fetchFed}
         />
 
         {renderContentOrPlaceholder(fedData, loadingFedData, () => (
@@ -224,7 +238,8 @@ export default function EconomicModel() {
           variant="button1"
           label="Fetch GPT"
           onClick={fetchInterpretation}
-          disabled={!fedData}
+          disabled={!buttonActiveState.fetchFed || loadingInterpretation}
+          active={buttonActiveState.fetchGPT}
         />
         {renderContentOrPlaceholder(
           interpretation,
@@ -251,7 +266,8 @@ export default function EconomicModel() {
           variant="button1"
           label="Calculate"
           onClick={calculateFinalResult}
-          disabled={!interpretation}
+          disabled={!buttonActiveState.fetchGPT || loadingFinalResult}
+          active={buttonActiveState.calculate}
         />
         {renderContentOrPlaceholder(finalResult, loadingFinalResult, () => (
           <Fragment>
