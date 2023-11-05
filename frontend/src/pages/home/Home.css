@@ -1,6 +1,6 @@
 .cursor {
   display: inline;
-  animation: blink 0.7s step-end infinite;
+  animation: blink 0.5s step-end infinite;
 }
 
 @keyframes blink {
