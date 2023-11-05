@@ -13,7 +13,7 @@
 
 .button-shared.button1 {
   background-color: rgb(91, 156, 156);
-  border: 0.18rem solid transparent;
+  border: 0.13rem solid transparent;
   color: var(--text-color-dark);
 }
 
@@ -31,7 +31,7 @@
   letter-spacing: 0.1em;
   font-weight: bold;
   font-size: smaller;
-  border: 0.18rem solid transparent;
+  border: 0.13rem solid transparent;
 }
 
 .button-shared.button2.dark {
