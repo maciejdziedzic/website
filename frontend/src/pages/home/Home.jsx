@@ -135,7 +135,7 @@ function Home() {
   }, []);
 
   return (
-    <div className="flex items-center justify-center my-16 mx-auto text-lg ml-6">
+    <div className="flex items-center justify-center my-14 mx-auto text-lg ml-6">
       <div className={`items-center ${darkMode ? "" : ""}`}>
         <div className="w-full max-w-2xl mx-4">
           <div className="text-left">

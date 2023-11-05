@@ -28,7 +28,7 @@ export default function Navbar() {
               : "flex-shrink-0  bg-neutral-100 w-full"
           }
         >
-          <ul className="flex items-center justify-center space-x-4 text-sm h-full tracking-widest">
+          <ul className="flex items-center justify-center space-x-4 text-sm font-light h-full tracking-widest">
             <li className="w-40">
               <Link
                 to="/"

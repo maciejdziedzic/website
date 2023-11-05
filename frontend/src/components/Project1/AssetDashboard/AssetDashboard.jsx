@@ -245,13 +245,13 @@ const AssetDashboard = () => {
             <h1 className="h1-title">Returns:</h1>
             <div className="space-y-2.5 button-txt">
               <div className="flex space-x-3">
-                <div className="h-8 w-1 bg-yellow-500"></div>
+                <div className="h-8 w-1 bg-yellow-400"></div>
                 <span className="text-2xl">
                   {renderCummulativePercentage("Gold", "gold_pct")}
                 </span>
               </div>
               <div className="flex space-x-3">
-                <div className="h-8 w-1 bg-red-300"></div>
+                <div className="h-8 w-1 bg-red-600"></div>
                 <span className="text-2xl">
                   {renderCummulativePercentage("House", "house_pct")}
                 </span>

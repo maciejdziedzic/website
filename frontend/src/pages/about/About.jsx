@@ -3,7 +3,7 @@ import useDarkMode from "../../contexts/DarkMode/useDarkMode";
 export default function About() {
   const { darkMode } = useDarkMode();
   const techClassName = `${
-    darkMode ? "text-amber-500 font-bold" : "text-blue-500 font-bold"
+    darkMode ? "text-amber-400 font-bold" : "text-blue-700 font-bold"
   }`;
 
   return (
@@ -41,7 +41,8 @@ export default function About() {
             <li>
               Backend: A <span className={techClassName}>Python</span>-powered
               backend, with <span className={techClassName}>Flask </span>
-              application served through Gunicorn.
+              application served through{" "}
+              <span className={techClassName}>Gunicorn</span>.
             </li>
           </ul>
           <h3 className="text-lg font-semibold mb-2">Projects</h3>
