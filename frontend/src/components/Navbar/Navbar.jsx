@@ -1,9 +1,11 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import Sun from "../../assets/sun.svg";
-import Moon from "../../assets/moon.svg";
 import useDarkMode from "../../contexts/DarkMode/useDarkMode";
 import "./Navbar.css";
+import { CiMail } from "react-icons/ci";
+import { CiLinkedin } from "react-icons/ci";
+import { FiSun } from "react-icons/fi";
+import { GiMoon } from "react-icons/gi";
 
 export default function Navbar() {
   const { darkMode, toggleDarkMode } = useDarkMode();
@@ -51,13 +53,40 @@ export default function Navbar() {
                 PROJECTS⏷
               </span>
             </li>
-            <li className="w-40 flex justify-center">
-              <img
-                src={darkMode ? Sun : Moon}
+            <li className="flex justify-center">
+              <a href="mailto:maciej.dziedzic9@gmail.com">
+                <CiMail size="1.1rem" className="cursor-pointer icon-hover" />
+              </a>
+            </li>
+            <li className="flex justify-center">
+              <a
+                href="https://www.linkedin.com/in/maciej-d-404000103/"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <CiLinkedin
+                  size="1.1rem"
+                  className="cursor-pointer icon-hover"
+                />
+              </a>
+            </li>
+            <li className="flex justify-center">
+              <div
                 onClick={toggleDarkMode}
-                alt="Toggle Dark Mode"
-                className="w-5 h-5 cursor-pointer svg-hover"
-              />
+                className="cursor-pointer icon-hover"
+              >
+                {darkMode ? (
+                  <FiSun
+                    size="1rem"
+                    className="cursor-pointer sun icon-hover"
+                  />
+                ) : (
+                  <GiMoon
+                    size="1.1rem"
+                    className="cursor-pointer moon icon-hover"
+                  />
+                )}
+              </div>
             </li>
           </ul>
 

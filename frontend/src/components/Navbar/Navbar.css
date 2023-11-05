@@ -1,4 +1,12 @@
-.svg-hover:hover {
-  filter: drop-shadow(0.9px 0.9px 0 rgb(224, 224, 224))
-    drop-shadow(-0.2px -0.2px 0 rgb(67, 66, 66));
+.icon-hover:hover {
+  transform: scale(1.1);
+  transition: transform 0.1s ease, box-shadow 0.3s ease;
+}
+
+.sun {
+  color: rgb(245 158 11);
+}
+
+.moon {
+  color: rgb(59 130 246);
 }
