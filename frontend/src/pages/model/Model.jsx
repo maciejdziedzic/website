@@ -143,7 +143,7 @@ export default function Model() {
           </div>
         )}
         <button
-          className={`flex justify-between items-center w-full font-semibold mt-4 mb-10  p-2 ${
+          className={`flex justify-between items-center w-full font-semibold mt-4 mb-2  p-2 ${
             darkMode ? "bg-neutral-700 " : "bg-neutral-200 "
           }`}
           onClick={() => toggleAccordion("logisticRegResults")}
@@ -168,6 +168,12 @@ export default function Model() {
               <p>
                 CPI Change: A one-unit increase in unemployment increases the
                 log odds of the target being 1 by 0.2677.
+              </p>
+              <br />
+              <p>
+                The Pseudo R-squared value is 0.03610, which suggests that the
+                model explains approximately 3.61% of the variability in the
+                dependent variable.
               </p>
             </section>
           </div>
