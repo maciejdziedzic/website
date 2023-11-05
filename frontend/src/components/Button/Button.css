@@ -13,48 +13,37 @@
 
 .button-shared.button1 {
   background-color: rgb(91, 156, 156);
-  border: 3px solid transparent;
-  color: white;
+  border: 0.18rem solid transparent;
+  color: var(--text-color-dark);
 }
 
 .button-shared.button1.dark {
   background-color: rgb(59, 80, 69);
-  border: 3px solid transparent;
-  color: white;
+  border: 0.18rem solid transparent;
 }
 
 .button-shared.button2 {
   background-color: rgb(91, 156, 156);
-  color: white;
+  color: var(--text-color-dark);
   width: 7.5rem;
   height: 1.5rem;
   margin: 0.5rem;
   letter-spacing: 0.1em;
   font-weight: bold;
   font-size: smaller;
+  border: 0.18rem solid transparent;
 }
 
 .button-shared.button2.dark {
   background-color: rgb(59, 80, 69);
-  color: white;
+  color: var(--text-color-dark);
   width: 7.5rem;
   height: 1.5rem;
   margin: 0.5rem;
   letter-spacing: 0.1em;
   font-weight: bold;
   font-size: smaller;
-}
-
-.button-shared.button2 {
-  background-color: rgb(91, 156, 156);
-  border: 2px solid;
-  color: white;
-}
-
-.button-shared.button2.dark {
-  background-color: rgb(59, 80, 69);
-  border: 3px solid transparent;
-  color: white;
+  border: 0.18rem solid transparent;
 }
 
 /* Hover state */
@@ -68,26 +57,25 @@
 
 /* Active/Pressed state */
 .button-shared.button1.pressed {
+  background-color: rgb(206, 209, 209);
   border-color: rgb(91, 156, 156);
-  background-color: rgb(229, 232, 235);
-  color: black;
   border-radius: 4%;
+  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.15);
+  color: var(--text-color-light);
 }
 
 .button-shared.button2.pressed {
-  border-color: rgb(91, 156, 156);
-  background-color: rgb(229, 232, 235);
-  color: black;
+  background-color: rgb(206, 209, 209);
   border-radius: 4%;
+  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.15);
+  color: var(--text-color-light);
 }
 
-/* Active/Pressed state */
+/* Active/Pressed state for dark mode */
 .button-shared.button1.dark.pressed {
   border-color: rgb(59, 80, 69);
-  background-color: rgb(229, 232, 235);
-  color: black;
+  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.3);
 }
-/* rgb(72, 150, 107); */
 
 .button-shared.button2.dark.pressed {
   border-color: rgb(59, 80, 69);
