@@ -30,9 +30,9 @@ function Home() {
   const textRecessionModel = "Model";
   const text4 = " Forecasts of the Federal Reserve's future policy";
   const textData = "Data";
-  const textPart5 = " Sources used in all projects";
+  const text5 = " Sources used in all projects";
   const textModel = "Model Info";
-  const textPart6 = " Methodology";
+  const text6 = " Methodology";
 
   useEffect(() => {
     let timer;
@@ -83,9 +83,9 @@ function Home() {
         () => setData((prev) => prev + textData[data.length]),
         4
       );
-    } else if (part5.length < textPart5.length) {
+    } else if (part5.length < text5.length) {
       timer = setTimeout(
-        () => setPart5((prev) => prev + textPart5[part5.length]),
+        () => setPart5((prev) => prev + text5[part5.length]),
         4
       );
     } else if (model.length < textModel.length) {
@@ -93,9 +93,9 @@ function Home() {
         () => setModel((prev) => prev + textModel[model.length]),
         4
       );
-    } else if (part6.length < textPart6.length) {
+    } else if (part6.length < text6.length) {
       timer = setTimeout(
-        () => setPart6((prev) => prev + textPart6[part6.length]),
+        () => setPart6((prev) => prev + text6[part6.length]),
         4
       );
     } else {
@@ -125,25 +125,25 @@ function Home() {
       textRecessionModel,
       text4,
       textData,
-      textPart5,
+      text5,
       textModel,
-      textPart6,
+      text6,
     ];
     const maxLength = Math.max(...texts.map((t) => t.length));
     setMaxTextLength(maxLength);
   }, []);
 
   return (
-    <div className="flex items-center justify-center my-14  text-lg ml-24 ">
+    <div className="lg:flex items-center justify-center lg:my-14  text-lg lg:ml-24 ">
       <div className={`items-center ${darkMode ? "" : ""}`}>
         <div className="w-full max-w-3xl mx-5">
-          <div className="text-left">
-            <p>{part1}</p> <br />
+          <div className="flex-col ml-28 justify-center md:flex-col">
+            <p className="hidden md:block">{part1}</p> <br />
             <div className="flex flex-col">
               <div className="flex items-center my-2">
                 <Link
                   to="/project1"
-                  className={`project-button  ${
+                  className={`project-button ${
                     darkMode ? "project-button-dark" : ""
                   }`}
                 >
@@ -153,13 +153,13 @@ function Home() {
                   className="ml-7 description"
                   style={{ minWidth: `${maxTextLength}ch` }}
                 >
-                  {part2}
+                  <p className="hidden md:block">{part2}</p>
                 </span>
               </div>
-              <div className="flex items-center my-2">
+              <div className="flex items-center my-2 ">
                 <Link
                   to="/project2"
-                  className={`project-button ${
+                  className={`project-button  ${
                     darkMode ? "project-button-dark" : ""
                   }`}
                 >
@@ -169,7 +169,7 @@ function Home() {
                   className="ml-7 description"
                   style={{ minWidth: `${maxTextLength}ch` }}
                 >
-                  {part3}
+                  <p className="hidden md:block">{part3}</p>
                 </span>
               </div>
               <div className="flex items-center my-2">
@@ -185,7 +185,7 @@ function Home() {
                   className="ml-7 description"
                   style={{ minWidth: `${maxTextLength}ch` }}
                 >
-                  {part4}
+                  <p className="hidden md:block">{part4}</p>
                 </span>
               </div>{" "}
               <br />
@@ -198,7 +198,9 @@ function Home() {
                 >
                   {data}
                 </Link>
-                <span className="ml-7 description">{part5}</span>
+                <span className="ml-7 description">
+                  <p className="hidden md:block">{part5}</p>
+                </span>
               </div>
               <div className="flex items-center my-2">
                 <Link
@@ -209,8 +211,12 @@ function Home() {
                 >
                   {model}
                 </Link>
-                <span className="ml-7 description">{part6}</span>
-                {allTextPrinted && <span className="cursor">_</span>}
+                <span className="ml-7 description">
+                  <p className="hidden md:block">{part6}</p>
+                </span>
+                {allTextPrinted && (
+                  <span className="cursor hidden md:block">_</span>
+                )}
               </div>
             </div>
           </div>

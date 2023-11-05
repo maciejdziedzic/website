@@ -13,13 +13,12 @@
   background-color: rgb(91, 156, 156);
   border: none;
   color: var(--text-color-dark);
-  /* border-radius: 0.25rem; */
   cursor: pointer;
   text-decoration: none;
   transition: background-color 0.3s;
   max-width: 8rem;
   min-width: 8rem;
-  width: 100%;
+  /* width: 100%; */
   text-align: center;
   box-sizing: border-box;
   font-weight: 500;
@@ -30,13 +29,9 @@
   background-color: rgb(59, 80, 69);
   border: none;
   color: var(--text-color-dark);
-  /* border-radius: 0.25rem; */
   cursor: pointer;
   text-decoration: none;
   transition: background-color 0.3s;
-  max-width: 8rem;
-  min-width: 8rem;
-  width: 100%;
   text-align: center;
   box-sizing: border-box;
   font-weight: 500;
@@ -49,4 +44,13 @@
 
 .description {
   cursor: default;
+}
+
+/* Media query for small screens */
+@media (max-width: 640px) {
+  .project-button {
+    padding: 20px 40px;
+    /* font-size: 1.25rem; */
+    width: 110%;
+  }
 }
