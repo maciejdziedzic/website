@@ -47,7 +47,7 @@
 
 .button-shared.button2 {
   background-color: rgb(91, 156, 156);
-  border: 3px solid transparent;
+  border: 2px solid;
   color: white;
 }
 
@@ -71,12 +71,14 @@
   border-color: rgb(91, 156, 156);
   background-color: rgb(229, 232, 235);
   color: black;
+  border-radius: 4%;
 }
 
 .button-shared.button2.pressed {
   border-color: rgb(91, 156, 156);
   background-color: rgb(229, 232, 235);
   color: black;
+  border-radius: 4%;
 }
 
 /* Active/Pressed state */
@@ -102,6 +104,6 @@
 
 .button-shared.button2.disabled {
   background-color: rgba(179, 179, 173, 0.9);
-  color: #ccc;
+  color: #535353;
   cursor: not-allowed;
 }

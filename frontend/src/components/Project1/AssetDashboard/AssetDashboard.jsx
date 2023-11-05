@@ -251,7 +251,7 @@ const AssetDashboard = () => {
                 </span>
               </div>
               <div className="flex space-x-3">
-                <div className="h-8 w-1 bg-red-600"></div>
+                <div className="h-8 w-1 bg-red-500"></div>
                 <span className="text-2xl">
                   {renderCummulativePercentage("House", "house_pct")}
                 </span>
@@ -263,7 +263,7 @@ const AssetDashboard = () => {
                 </span>
               </div>
               <div className="flex space-x-3">
-                <div className="h-8 w-1 bg-green-800	"></div>
+                <div className="h-8 w-1 bg-green-600	"></div>
                 <span className="text-2xl">
                   {renderCummulativePercentage("BONDS", "bond10tr_pct")}
                 </span>

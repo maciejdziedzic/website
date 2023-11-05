@@ -2,7 +2,7 @@ export const Labels = {
   house_wages: {
     label: "HOUSE/WAGES",
     tooltipLabel: "Median Sales Price of Houses to Monthly Wages Ratio",
-    color: "rgb(0, 190, 200)",
+    color: "rgb(239 68 68)",
   },
   fedrate: {
     label: "FED RATE",
@@ -17,12 +17,12 @@ export const Labels = {
   gdp_pct_ma4: {
     label: "US GDP",
     tooltipLabel: "US GDP Growth",
-    color: "rgb(0, 170, 170)",
+    color: "rgb(249 115 22)",
   },
   debt_to_gdp: {
     label: "DEBT/GDP",
     tooltipLabel: "Federal Debt to GDP Ratio",
-    color: "rgb(180, 180, 60)",
+    color: "rgb(153 27 27)",
   },
   cbasstogdp: {
     label: "CB. ASST./GDP",
@@ -42,12 +42,12 @@ export const Labels = {
   cpi_pct: {
     label: "CPI",
     tooltipLabel: "Consumer Price Index Change",
-    color: "rgb(200, 40, 40)",
+    color: "rgb(163 230 53)",
   },
   ppi_pct: {
     label: "PPI",
     tooltipLabel: "Producer Price Index Change",
-    color: "rgb(0, 180, 140)",
+    color: "rgb(161 98 7)",
   },
   resins_to_gdp: {
     label: "RES./GDP",
@@ -72,6 +72,6 @@ export const Labels = {
   oil: {
     label: "OIL",
     tooltipLabel: "WTI Crude Oil Price",
-    color: "rgb(20, 70, 160)",
+    color: "rgb(163 163 163)",
   },
 };
