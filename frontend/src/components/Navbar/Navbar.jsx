@@ -23,7 +23,7 @@ export default function Navbar() {
           className={
             darkMode
               ? "flex-shrink-0  bg-neutral-700 w-full"
-              : "flex-shrink-0 w-full bg-neutral-100"
+              : "flex-shrink-0  bg-neutral-100 w-full"
           }
         >
           <ul className="flex items-center justify-center space-x-4 text-sm h-full tracking-widest">
@@ -63,49 +63,60 @@ export default function Navbar() {
 
           <div
             className={
-              darkMode ? "border-t border-gray-600" : "border-t border-gray-100"
+              darkMode ? "border-t border-gray-600" : "border-t border-gray-200"
             }
           ></div>
           {ProjectsOpen && (
-            <div
-              className={
-                darkMode
-                  ? "bg-neutral-700 flex justify-center space-x-36"
-                  : "bg-neutral-100 flex justify-center space-x-36"
-              }
-            >
-              <ul className="flex flex-col space-y-4 text-sm  p-2">
-                <Link to="/project1" onClick={toggleProjects}>
-                  <button className="text-left hover:font-bold">
-                    Asset Returns
-                  </button>
-                </Link>
-                <Link to="/project2" onClick={toggleProjects}>
-                  <button className="text-left hover:font-bold ">
-                    Macroeconomic Chart
-                  </button>
-                </Link>
-                <Link to="/project3" onClick={toggleProjects}>
-                  <button className="text-left hover:font-bold ">
-                    FED Policy Model
-                  </button>
-                </Link>
-              </ul>
+            <div>
               <div
                 className={
                   darkMode
-                    ? "border-l border-gray-600 "
-                    : "border-l border-gray-200 "
+                    ? "bg-neutral-700 flex justify-center space-x-36"
+                    : "bg-neutral-100 flex justify-center space-x-36"
+                }
+              >
+                <ul className="flex flex-col space-y-4 text-sm ml-2 p-2">
+                  <Link to="/project1" onClick={toggleProjects}>
+                    <button className="text-left hover:font-bold">
+                      Asset Returns
+                    </button>
+                  </Link>
+                  <Link to="/project2" onClick={toggleProjects}>
+                    <button className="text-left hover:font-bold w-60">
+                      Macroeconomic Chart
+                    </button>
+                  </Link>
+                  <Link to="/project3" onClick={toggleProjects}>
+                    <button className="text-left hover:font-bold ">
+                      FED Policy Model
+                    </button>
+                  </Link>
+                </ul>
+                <div
+                  className={
+                    darkMode
+                      ? "border-l border-gray-600 "
+                      : "border-l border-gray-200 "
+                  }
+                ></div>
+                <ul className="flex flex-col space-y-4 text-sm p-2">
+                  <Link to="/data" onClick={toggleProjects}>
+                    <button className="text-left hover:font-bold">Data</button>
+                  </Link>
+                  <Link to="/model" onClick={toggleProjects}>
+                    <button className="text-left hover:font-bold w-40">
+                      Model
+                    </button>
+                  </Link>
+                </ul>
+              </div>
+              <div
+                className={
+                  darkMode
+                    ? "border-t border-gray-600"
+                    : "border-t border-gray-100"
                 }
               ></div>
-              <ul className="flex flex-col space-y-4 text-sm p-6">
-                <Link to="/data" onClick={toggleProjects}>
-                  <button className="text-left hover:font-bold">Data</button>
-                </Link>
-                <Link to="/model" onClick={toggleProjects}>
-                  <button className="text-left hover:font-bold">Model</button>
-                </Link>
-              </ul>
             </div>
           )}
         </div>
