@@ -60,27 +60,26 @@
   background-color: rgb(206, 209, 209);
   border-color: rgb(91, 156, 156);
   border-radius: 4%;
-  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.15);
+  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.4);
   color: var(--text-color-light);
+}
+/* Active/Pressed state for dark mode */
+.button-shared.button1.dark.pressed {
+  border-color: rgb(59, 80, 69);
+  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.7);
 }
 
 .button-shared.button2.pressed {
   background-color: rgb(206, 209, 209);
+  border-color: rgb(91, 156, 156);
   border-radius: 4%;
-  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.15);
+  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.4);
   color: var(--text-color-light);
-}
-
-/* Active/Pressed state for dark mode */
-.button-shared.button1.dark.pressed {
-  border-color: rgb(59, 80, 69);
-  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.3);
 }
 
 .button-shared.button2.dark.pressed {
   border-color: rgb(59, 80, 69);
-  background-color: rgb(229, 232, 235);
-  color: black;
+  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.7);
 }
 
 /* Disabled state */
