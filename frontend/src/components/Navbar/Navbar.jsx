@@ -63,7 +63,7 @@ export default function Navbar() {
 
           <div
             className={
-              darkMode ? "border-t border-gray-600" : "border-t border-gray-200"
+              darkMode ? "border-t border-gray-600" : "border-t border-gray-100"
             }
           ></div>
           {ProjectsOpen && (
@@ -81,7 +81,7 @@ export default function Navbar() {
                   </button>
                 </Link>
                 <Link to="/project2" onClick={toggleProjects}>
-                  <button className="text-left hover:font-bold w-60">
+                  <button className="text-left hover:font-bold ">
                     Macroeconomic Chart
                   </button>
                 </Link>
@@ -103,9 +103,7 @@ export default function Navbar() {
                   <button className="text-left hover:font-bold">Data</button>
                 </Link>
                 <Link to="/model" onClick={toggleProjects}>
-                  <button className="text-left hover:font-bold w-40">
-                    Model
-                  </button>
+                  <button className="text-left hover:font-bold">Model</button>
                 </Link>
               </ul>
             </div>

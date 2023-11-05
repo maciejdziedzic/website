@@ -34,7 +34,7 @@ cpi            0.2677      0.147      1.824      0.068      -0.020       0.555
 
 export const prompt = `response = openai.ChatCompletion.create(
 model="gpt-3.5-turbo",
-temperature=0.2,
+temperature=0.5,
 messages=[
 {"role": "system",
 "content": f"You will be given a text snippet. Your task is to determine its potential impact on interest rates in percentage terms. Return the likelihood that interest rates will rise based on the text. Please provide a response in the form of a percentage. A response of 50% means that the text gives no indication whether interest rates will rise or fall. A response above 50% means that the text suggests a higher likelihood of interest rates increasing, while a response below 50% suggests a higher likelihood of interest rates remaining the same or decreasing. Interpret the following text: {press_release_content}"}])`;
