@@ -41,7 +41,9 @@ const Data = () => {
         >
           <div className="p-5  text-lg font-bold">Assets Return</div>
         </AccordionSummary>
-        <AccordionDetails className="accordion-details">
+        <AccordionDetails
+          className={`accordion-details ${darkMode ? "dark" : ""}`}
+        >
           <DataContent data={assetsReturnData} />
         </AccordionDetails>
       </Accordion>
@@ -71,7 +73,9 @@ const Data = () => {
         >
           <div className="p-5 text-lg font-bold">Macro Chart Data</div>
         </AccordionSummary>
-        <AccordionDetails className="accordion-details">
+        <AccordionDetails
+          className={`accordion-details ${darkMode ? "dark" : ""}`}
+        >
           <DataContent data={macroChartData} />
         </AccordionDetails>
       </Accordion>
@@ -101,7 +105,9 @@ const Data = () => {
         >
           <div className="p-5 text-lg font-bold">Fed Policy Model Data</div>
         </AccordionSummary>
-        <AccordionDetails className="accordion-details">
+        <AccordionDetails
+          className={`accordion-details ${darkMode ? "dark" : ""}`}
+        >
           <DataContent data={fedPolicyModelData} />
         </AccordionDetails>
       </Accordion>

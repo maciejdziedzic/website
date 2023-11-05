@@ -142,7 +142,12 @@ function Home() {
             <p>{part1}</p> <br />
             <div className="flex flex-col">
               <div className="flex items-center my-2">
-                <Link to="/project1" className="project-button">
+                <Link
+                  to="/project1"
+                  className={`project-button ${
+                    darkMode ? "project-button-dark" : ""
+                  }`}
+                >
                   {assetsReturns}
                 </Link>
                 <span
@@ -153,7 +158,12 @@ function Home() {
                 </span>
               </div>
               <div className="flex items-center my-2">
-                <Link to="/project2" className="project-button">
+                <Link
+                  to="/project2"
+                  className={`project-button ${
+                    darkMode ? "project-button-dark" : ""
+                  }`}
+                >
                   {macroCharts}
                 </Link>
                 <span
@@ -164,7 +174,12 @@ function Home() {
                 </span>
               </div>
               <div className="flex items-center my-2">
-                <Link to="/project3" className="project-button">
+                <Link
+                  to="/project3"
+                  className={`project-button ${
+                    darkMode ? "project-button-dark" : ""
+                  }`}
+                >
                   {recessionModel}
                 </Link>
                 <span
@@ -176,13 +191,23 @@ function Home() {
               </div>{" "}
               <br />
               <div className="flex items-center my-2">
-                <Link to="/data" className="project-button">
+                <Link
+                  to="/data"
+                  className={`project-button ${
+                    darkMode ? "project-button-dark" : ""
+                  }`}
+                >
                   {data}
                 </Link>
                 <span className="ml-7 description">{part5}</span>
               </div>
               <div className="flex items-center my-2">
-                <Link to="/model" className="project-button">
+                <Link
+                  to="/model"
+                  className={`project-button ${
+                    darkMode ? "project-button-dark" : ""
+                  }`}
+                >
                   {model}
                 </Link>
                 <span className="ml-7 description">{part6}</span>

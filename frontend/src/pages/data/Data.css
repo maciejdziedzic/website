@@ -1,7 +1,7 @@
 .accordion-details table tbody tr:hover {
-  background-color: rgb(59, 80, 69);
+  background-color: rgb(91, 156, 156);
 }
 
-/* .accordion-details.dark table tbody tr:hover {
-  background-color: rgb(15 115 115);
-} */
+.accordion-details.dark table tbody tr:hover {
+  background-color: rgb(59, 80, 69);
+}
