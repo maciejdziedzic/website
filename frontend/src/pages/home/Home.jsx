@@ -26,7 +26,7 @@ function Home() {
   const textAssetsReturns = "Asset Returns";
   const text2 = " Annual returns over five decades";
   const textMacroCharts = "Macro Chart";
-  const text3 = " Visual representations of key U.S. macroeconomic indicators";
+  const text3 = " Macroeconomic indicators for the U.S.";
   const textRecessionModel = "Model";
   const text4 = " Forecasts of the Federal Reserve's future policy";
   const textData = "Data";
@@ -117,7 +117,6 @@ function Home() {
   ]);
 
   useEffect(() => {
-    // Calculate the max length of text content
     const texts = [
       textAssetsReturns,
       text2,
@@ -135,16 +134,16 @@ function Home() {
   }, []);
 
   return (
-    <div className="flex items-center justify-center my-14 mx-auto text-lg ml-6">
+    <div className="flex items-center justify-center my-14  text-lg ml-24 ">
       <div className={`items-center ${darkMode ? "" : ""}`}>
-        <div className="w-full max-w-2xl mx-4">
+        <div className="w-full max-w-3xl mx-5">
           <div className="text-left">
             <p>{part1}</p> <br />
             <div className="flex flex-col">
               <div className="flex items-center my-2">
                 <Link
                   to="/project1"
-                  className={`project-button ${
+                  className={`project-button  ${
                     darkMode ? "project-button-dark" : ""
                   }`}
                 >
@@ -193,7 +192,7 @@ function Home() {
               <div className="flex items-center my-2">
                 <Link
                   to="/data"
-                  className={`project-button ${
+                  className={`project-button  ${
                     darkMode ? "project-button-dark" : ""
                   }`}
                 >

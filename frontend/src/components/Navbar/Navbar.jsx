@@ -28,7 +28,7 @@ export default function Navbar() {
               : "flex-shrink-0  bg-neutral-100 w-full"
           }
         >
-          <ul className="flex items-center justify-center space-x-4 text-sm font-light h-full tracking-widest">
+          <ul className="flex items-center justify-end text-sm font-light h-full tracking-widest">
             <li className="w-40">
               <Link
                 to="/"
@@ -45,7 +45,7 @@ export default function Navbar() {
                 ABOUT
               </Link>
             </li>
-            <li className="w-40">
+            <li className="w-44">
               <span
                 onClick={toggleProjects}
                 className={`${buttonHoverColor} ${projectsActiveColor} block w-full h-full text-center  cursor-pointer`}
@@ -53,41 +53,43 @@ export default function Navbar() {
                 PROJECTS⏷
               </span>
             </li>
-            <li className="flex justify-center">
-              <a href="mailto:maciej.dziedzic9@gmail.com">
-                <CiMail size="1.1rem" className="cursor-pointer icon-hover" />
-              </a>
-            </li>
-            <li className="flex justify-center">
-              <a
-                href="https://www.linkedin.com/in/maciej-d-404000103/"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <CiLinkedin
-                  size="1.1rem"
-                  className="cursor-pointer icon-hover"
-                />
-              </a>
-            </li>
-            <li className="flex justify-center">
-              <div
-                onClick={toggleDarkMode}
-                className="cursor-pointer icon-hover"
-              >
-                {darkMode ? (
-                  <FiSun
-                    size="1rem"
-                    className="cursor-pointer sun icon-hover"
-                  />
-                ) : (
-                  <GiMoon
+            <div className="flex justify-center w-40">
+              <li className="w-8">
+                <a href="mailto:maciej.dziedzic9@gmail.com">
+                  <CiMail size="1.1rem" className="cursor-pointer icon-hover" />
+                </a>
+              </li>
+              <li className="w-8">
+                <a
+                  href="https://www.linkedin.com/in/maciej-d-404000103/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <CiLinkedin
                     size="1.1rem"
-                    className="cursor-pointer moon icon-hover"
+                    className="cursor-pointer icon-hover"
                   />
-                )}
-              </div>
-            </li>
+                </a>
+              </li>
+              <li className="w-12">
+                <div
+                  onClick={toggleDarkMode}
+                  className="cursor-pointer icon-hover"
+                >
+                  {darkMode ? (
+                    <FiSun
+                      size="1rem"
+                      className="cursor-pointer sun icon-hover"
+                    />
+                  ) : (
+                    <GiMoon
+                      size="1.1rem"
+                      className="cursor-pointer moon icon-hover"
+                    />
+                  )}
+                </div>
+              </li>
+            </div>
           </ul>
 
           <div
