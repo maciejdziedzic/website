@@ -48,7 +48,7 @@ export default function About() {
           <h3 className="text-lg font-semibold mb-2">Projects</h3>
           <ul className="list-disc pl-5 mb-4">
             <li>
-              Asset Returns: Visualization of data from CSV files using the
+              Asset Returns: Visualization of data from CSV file using the
               Chart.js library.
             </li>
             <li>
