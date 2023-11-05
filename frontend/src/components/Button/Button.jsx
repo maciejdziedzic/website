@@ -3,9 +3,9 @@ import { useContext, useState } from "react";
 import { DarkModeContext } from "../../contexts/DarkMode/DarkModeContext";
 import "./Button.css";
 
-const Button = ({ variant, label, onClick, active, disabled }) => {
+const Button = ({ variant, label, onClick, disabled, active }) => {
   const { darkMode } = useContext(DarkModeContext);
-  const [isPressed, setPressed] = useState(active);
+  const [isPressed, setPressed] = useState(active || false);
 
   const handleButtonClick = (e) => {
     setPressed(!isPressed);
@@ -14,7 +14,7 @@ const Button = ({ variant, label, onClick, active, disabled }) => {
 
   const baseClass = "button-shared";
   const variantClass = variant === "button1" ? "button1" : "button2";
-  const pressedClass = active ? "pressed" : "";
+  const pressedClass = isPressed ? "pressed" : "";
   const darkModeClass = darkMode ? "dark" : "";
   const disabledClass = disabled ? "disabled" : "";
 
@@ -26,7 +26,7 @@ const Button = ({ variant, label, onClick, active, disabled }) => {
       onClick={handleButtonClick}
       disabled={disabled}
       aria-pressed={isPressed}
-      title={disabled ? "You can select up to 4 variables" : ""}
+      title={disabled ? "" : ""}
     >
       {label}
     </button>
@@ -39,6 +39,10 @@ Button.propTypes = {
   onClick: PropTypes.func,
   disabled: PropTypes.bool,
   active: PropTypes.bool,
+};
+
+Button.defaultProps = {
+  active: false,
 };
 
 export default Button;
