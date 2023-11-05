@@ -69,9 +69,9 @@ export default function About() {
         <section className="mb-5">
           <h2 className="text-xl font-semibold mb-3">Data Overview</h2>
           <p>
-            The data presented here is curated from reputable sources and is
-            processed to ensure accuracy and relevance. If you find any
-            discrepancies, please let me know via email.
+            The data presented here is curated from sources believed to be
+            reliable and is processed to ensure accuracy and relevance. If you
+            find any discrepancies, please let me know via email.
           </p>
         </section>
       </div>

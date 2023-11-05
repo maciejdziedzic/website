@@ -17,8 +17,25 @@
   color: white;
 }
 
+.button-shared.button2 {
+  background-color: rgb(59, 80, 69);
+  border: 3px solid transparent;
+  color: white;
+  width: 7.5rem;
+  height: 1.5rem;
+  margin: 0.5rem;
+  letter-spacing: 0.1em;
+  font-weight: bold;
+  /* border-radius: 0.25rem; */
+  font-size: smaller;
+}
+
 /* Hover state */
 .button-shared.button1:hover:not(:disabled):not(.pressed) {
+  background-color: rgb(7, 209, 152, 90);
+}
+
+.button-shared.button2:hover:not(:disabled):not(.pressed) {
   background-color: rgb(7, 209, 152, 90);
 }
 
@@ -29,10 +46,21 @@
   color: black;
 }
 
+.button-shared.button2.pressed {
+  border-color: rgb(21 128 61);
+  background-color: rgb(229, 232, 235);
+  color: black;
+}
+
 /* Disabled state */
 .button-shared.button1.disabled {
-  background-color: #fafafa; /* Disabled background color */
-  color: #ccc; /* Disabled font color */
+  background-color: rgba(179, 179, 173, 0.9);
+  color: #ccc;
   cursor: not-allowed;
-  border: 2px solid #f0f0f0; /* Disabled border color */
+}
+
+.button-shared.button2.disabled {
+  background-color: rgba(179, 179, 173, 0.9);
+  color: #ccc;
+  cursor: not-allowed;
 }
