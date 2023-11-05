@@ -28,11 +28,11 @@ export default function Model() {
 
   return (
     <div className={`mr-16 ml-16  ${darkMode ? " " : " "}`}>
-      <h1 className="text-3xl font-bold mb-4 justify-center flex mt-4 ">
+      <h1 className="text-3xl font-bold justify-center flex mt-4 mb-4">
         FED Policy Model
       </h1>
 
-      <h1 className="text-2xl font-bold mb-4 mt-6">Final Results Algorithm</h1>
+      <h1 className="text-2xl font-bold mb-2">Final Results Algorithm</h1>
       <section>
         <p>
           The final prediction is a weighted average of the outputs from the
@@ -40,7 +40,7 @@ export default function Model() {
         </p>
         <p>The final result is calculated using the following formula:</p>{" "}
         <br />
-        <div className="font-bold text-center">
+        <div className="font-bold text-center mb-6">
           <p className="">
             Final Score (Raise) = (0.9 * Logistic Regression Score) + (0.1 * GPT
             Model Score)
@@ -49,23 +49,22 @@ export default function Model() {
             Final Score (Lower/Maintain) = 1 - Final Score (Raise)
           </p>
         </div>
-        <br />
         <p>
-          Where:
           <ul>
             <li>
-              Logistic Regression Score: The probability of raising rates as
-              predicted by the logistic regression model.
+              <strong>Logistic Regression Score:</strong> The probability of
+              raising rates as predicted by the logistic regression model.
             </li>
             <li>
-              GPT Model Score: The probability of raising rates as interpreted
-              by the GPT model from the Federal Reserve&apos;s press release.
+              <strong>GPT Model Score:</strong> The probability of raising rates
+              as interpreted by the GPT model from the Federal Reserve&apos;s
+              press release.
             </li>
           </ul>
         </p>
       </section>
 
-      <h1 className="text-2xl font-bold mb-4 mt-8">
+      <h1 className="text-2xl font-bold mb-2 mt-4">
         Logistic Regression Model Description
       </h1>
       <section>
@@ -152,7 +151,7 @@ export default function Model() {
           <span>{isLogisticRegResultsOpen ? "−" : "+"}</span>
         </button>
         {isLogisticRegResultsOpen && (
-          <div>
+          <div className="">
             <section>
               <pre className="whitespace-pre-wrap mb-2">
                 {logisticRegressionResults}
@@ -180,7 +179,7 @@ export default function Model() {
         )}
       </section>
 
-      <h1 className="text-2xl font-bold mb-4 mt-4">LLM Text Interpretation</h1>
+      <h1 className="text-2xl font-bold mb-2 mt-6">LLM Text Interpretation</h1>
       <p className="">
         Based on the latest press release from the Federal Reserve, model
         predicts chance that the Federal Reserve will increase the interest
@@ -188,7 +187,7 @@ export default function Model() {
       </p>
       <section className="mb-4">
         <button
-          className={`flex justify-between items-center w-full font-semibold mt-6 mb-4 p-2 ${
+          className={`flex justify-between items-center w-full font-semibold mt-2 p-2 ${
             darkMode ? "bg-neutral-700 " : "bg-neutral-200 "
           }`}
           onClick={() => toggleAccordion("gptResults")}
