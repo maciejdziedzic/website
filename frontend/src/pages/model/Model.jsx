@@ -79,7 +79,7 @@ export default function Model() {
       </section>
       <button
         className={`flex justify-between items-center w-full font-semibold mt-4 mb-2  p-2 ${
-          darkMode ? "bg-neutral-500 " : "bg-neutral-200 "
+          darkMode ? "bg-neutral-700 " : "bg-neutral-200 "
         }`}
         onClick={() => toggleAccordion("modelDevelop")}
       >
@@ -119,7 +119,7 @@ export default function Model() {
       <section>
         <button
           className={`flex justify-between items-center w-full font-semibold mt-4 mb-2  p-2 ${
-            darkMode ? "bg-neutral-500 " : "bg-neutral-200 "
+            darkMode ? "bg-neutral-700 " : "bg-neutral-200 "
           }`}
           onClick={() => toggleAccordion("modelEval")}
         >
@@ -143,8 +143,8 @@ export default function Model() {
           </div>
         )}
         <button
-          className={`flex justify-between items-center w-full font-semibold mt-4 mb-2  p-2 ${
-            darkMode ? "bg-neutral-500 " : "bg-neutral-200 "
+          className={`flex justify-between items-center w-full font-semibold mt-4 mb-10  p-2 ${
+            darkMode ? "bg-neutral-700 " : "bg-neutral-200 "
           }`}
           onClick={() => toggleAccordion("logisticRegResults")}
         >
@@ -183,7 +183,7 @@ export default function Model() {
       <section className="mb-4">
         <button
           className={`flex justify-between items-center w-full font-semibold mt-6 mb-4 p-2 ${
-            darkMode ? "bg-neutral-500 " : "bg-neutral-200 "
+            darkMode ? "bg-neutral-700 " : "bg-neutral-200 "
           }`}
           onClick={() => toggleAccordion("gptResults")}
         >

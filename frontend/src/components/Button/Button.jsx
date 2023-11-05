@@ -3,20 +3,18 @@ import { useContext, useState } from "react";
 import { DarkModeContext } from "../../contexts/DarkMode/DarkModeContext";
 import "./Button.css";
 
-const Button = ({ variant, label, onClick, disabled }) => {
+const Button = ({ variant, label, onClick, active, disabled }) => {
   const { darkMode } = useContext(DarkModeContext);
-  const [isPressed, setPressed] = useState(false);
+  const [isPressed, setPressed] = useState(active);
 
   const handleButtonClick = (e) => {
-    // Toggle pressed state
     setPressed(!isPressed);
-    // Call the passed onClick handler if any
     if (onClick) onClick(e);
   };
 
   const baseClass = "button-shared";
   const variantClass = variant === "button1" ? "button1" : "button2";
-  const pressedClass = isPressed ? "pressed" : "";
+  const pressedClass = active ? "pressed" : "";
   const darkModeClass = darkMode ? "dark" : "";
   const disabledClass = disabled ? "disabled" : "";
 
@@ -40,6 +38,7 @@ Button.propTypes = {
   label: PropTypes.string.isRequired,
   onClick: PropTypes.func,
   disabled: PropTypes.bool,
+  active: PropTypes.bool,
 };
 
 export default Button;

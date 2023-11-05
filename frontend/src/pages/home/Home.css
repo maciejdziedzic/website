@@ -10,10 +10,10 @@
 }
 
 .project-button {
-  background-color: #f0f0f0;
+  background-color: rgb(59, 80, 69);
   border: none;
-  color: black;
-  border-radius: 0.25rem;
+  color: var(--text-color-dark);
+  /* border-radius: 0.25rem; */
   cursor: pointer;
   text-decoration: none;
   transition: background-color 0.3s;
@@ -24,6 +24,10 @@
   box-sizing: border-box;
   font-weight: 500;
   font-size: small;
+}
+
+.project-button:hover:not(:disabled):not(.pressed) {
+  background-color: rgb(7, 209, 152, 90);
 }
 
 .description {

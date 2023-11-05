@@ -12,7 +12,7 @@ export default {
         dark: {
           "background-primary": "#606269",
           "background-secondary": "#2a2a2a",
-          text: "#ffffff",
+          "dark-text": "rgb(59, 80, 69)",
         },
       },
     },

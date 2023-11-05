@@ -12,6 +12,8 @@
   -webkit-text-size-adjust: 100%;
   --text-color-light: #000;
   --text-color-dark: rgb(236, 230, 228);
+  --button-color-light: #fafafa;
+  --button-color-dark: rgb(21 128 61);
 }
 
 body {

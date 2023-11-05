@@ -12,19 +12,21 @@
 }
 
 .button-shared.button1 {
-  background-color: rgb(209 250 229);
+  background-color: rgb(59, 80, 69);
   border: 3px solid transparent;
-  color: #000000; /* Default font color */
+  color: white;
 }
 
 /* Hover state */
 .button-shared.button1:hover:not(:disabled):not(.pressed) {
-  background-color: rgb(187 247 208);
+  background-color: rgb(7, 209, 152, 90);
 }
 
 /* Active/Pressed state */
 .button-shared.button1.pressed {
   border-color: rgb(21 128 61);
+  background-color: seashell;
+  color: black;
 }
 
 /* Disabled state */
