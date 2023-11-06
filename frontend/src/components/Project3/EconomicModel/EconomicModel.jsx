@@ -157,130 +157,132 @@ export default function EconomicModel() {
   };
 
   return (
-    <div
-      className={`flex flex-col space-y-4 mr-10 ml-10 p-4 mb-5 ${
-        darkMode ? " " : ""
-      }`}
-    >
-      <Section darkMode={darkMode} className="flex">
-        <Button
-          variant="button1"
-          label="Fetch Data"
-          onClick={fetchLogisticData}
-          disabled={loadingLogisticData}
-          active={buttonActiveState.fetchData}
-        />
-        {renderContentOrPlaceholder(
-          logisticData,
-          loadingLogisticData,
-          (data) => (
+    <div>
+      <div
+        className={`flex flex-col space-y-4 mr-10 ml-10 p-4 mb-5 ${
+          darkMode ? " " : ""
+        }`}
+      >
+        <Section darkMode={darkMode} className="flex">
+          <Button
+            variant="button1"
+            label="Fetch Data"
+            onClick={fetchLogisticData}
+            disabled={loadingLogisticData}
+            active={buttonActiveState.fetchData}
+          />
+          {renderContentOrPlaceholder(
+            logisticData,
+            loadingLogisticData,
+            (data) => (
+              <Fragment>
+                <p>
+                  <strong>Unemployment Rate:</strong> {data.unemp}%
+                </p>
+                <p>
+                  <strong>CPI:</strong>{" "}
+                  {parseFloat(data.cpi).toLocaleString(undefined, {
+                    minimumFractionDigits: 2,
+                    maximumFractionDigits: 2,
+                  })}
+                  %
+                </p>
+              </Fragment>
+            )
+          )}
+        </Section>
+
+        <Section darkMode={darkMode} className="flex space-x-4">
+          <Button
+            variant="button1"
+            label="Run Model"
+            onClick={runLogisticModel}
+            disabled={!buttonActiveState.fetchData || loadingLogisticModel}
+            active={buttonActiveState.runModel}
+          />
+          {renderContentOrPlaceholder(
+            logisticModelResult,
+            loadingLogisticModel,
+            () => (
+              <Fragment>
+                <p>
+                  <strong>Result:</strong>
+                </p>
+                <p>Raise: {logisticModelResult.raise}%</p>
+                <p>Lower/Maintain: {logisticModelResult.lower_or_maintain}%</p>
+              </Fragment>
+            )
+          )}
+        </Section>
+
+        <Section darkMode={darkMode} className="flex space-x-4">
+          <Button
+            variant="button1"
+            label="Fetch FED"
+            onClick={fetchFedArticle}
+            disabled={!buttonActiveState.runModel || loadingFedData}
+            active={buttonActiveState.fetchFed}
+          />
+
+          {renderContentOrPlaceholder(fedData, loadingFedData, () => (
             <Fragment>
               <p>
-                <strong>Unemployment Rate:</strong> {data.unemp}%
+                <strong>Press Release:</strong>
               </p>
-              <p>
-                <strong>CPI:</strong>{" "}
-                {parseFloat(data.cpi).toLocaleString(undefined, {
-                  minimumFractionDigits: 2,
-                  maximumFractionDigits: 2,
-                })}
-                %
-              </p>
+              <p>{fedData.press_release_content}</p>
             </Fragment>
-          )
-        )}
-      </Section>
+          ))}
+        </Section>
 
-      <Section darkMode={darkMode} className="flex space-x-4">
-        <Button
-          variant="button1"
-          label="Run Model"
-          onClick={runLogisticModel}
-          disabled={!buttonActiveState.fetchData || loadingLogisticModel}
-          active={buttonActiveState.runModel}
-        />
-        {renderContentOrPlaceholder(
-          logisticModelResult,
-          loadingLogisticModel,
-          () => (
+        <Section darkMode={darkMode} className="flex space-x-4">
+          <Button
+            variant="button1"
+            label="Fetch GPT"
+            onClick={fetchInterpretation}
+            disabled={!buttonActiveState.fetchFed || loadingInterpretation}
+            active={buttonActiveState.fetchGPT}
+          />
+          {renderContentOrPlaceholder(
+            interpretation,
+            loadingInterpretation,
+            () => (
+              <Fragment>
+                <p>
+                  <strong>Interpretation:</strong>{" "}
+                </p>
+                <p>
+                  Based on the text analysis, there is{" "}
+                  {(interpretation.interpretation * 100).toFixed(0)}% chance
+                  that the Federal Reserve will raise interest rates, and {""}
+                  {((1 - interpretation.interpretation) * 100).toFixed(0)}%
+                  chance that it will lower or maintain interest rates.
+                </p>
+              </Fragment>
+            )
+          )}
+        </Section>
+
+        <Section darkMode={darkMode} className="flex space-x-4">
+          <Button
+            variant="button1"
+            label="Calculate"
+            onClick={calculateFinalResult}
+            disabled={!buttonActiveState.fetchGPT || loadingFinalResult}
+            active={buttonActiveState.calculate}
+          />
+          {renderContentOrPlaceholder(finalResult, loadingFinalResult, () => (
             <Fragment>
-              <p>
-                <strong>Result:</strong>
-              </p>
-              <p>Raise: {logisticModelResult.raise}%</p>
-              <p>Lower/Maintain: {logisticModelResult.lower_or_maintain}%</p>
+              <div>
+                <p>
+                  <strong>Final Result:</strong>
+                </p>
+                <p>Raise: {finalResult.raise}%</p>
+                <p>Lower/Maintain: {finalResult.lower_or_maintain}%</p>
+              </div>
             </Fragment>
-          )
-        )}
-      </Section>
-
-      <Section darkMode={darkMode} className="flex space-x-4">
-        <Button
-          variant="button1"
-          label="Fetch FED"
-          onClick={fetchFedArticle}
-          disabled={!buttonActiveState.runModel || loadingFedData}
-          active={buttonActiveState.fetchFed}
-        />
-
-        {renderContentOrPlaceholder(fedData, loadingFedData, () => (
-          <Fragment>
-            <p>
-              <strong>Press Release:</strong>
-            </p>
-            <p>{fedData.press_release_content}</p>
-          </Fragment>
-        ))}
-      </Section>
-
-      <Section darkMode={darkMode} className="flex space-x-4">
-        <Button
-          variant="button1"
-          label="Fetch GPT"
-          onClick={fetchInterpretation}
-          disabled={!buttonActiveState.fetchFed || loadingInterpretation}
-          active={buttonActiveState.fetchGPT}
-        />
-        {renderContentOrPlaceholder(
-          interpretation,
-          loadingInterpretation,
-          () => (
-            <Fragment>
-              <p>
-                <strong>Interpretation:</strong>{" "}
-              </p>
-              <p>
-                Based on the text analysis, there is{" "}
-                {(interpretation.interpretation * 100).toFixed(0)}% chance that
-                the Federal Reserve will raise interest rates, and {""}
-                {((1 - interpretation.interpretation) * 100).toFixed(0)}% chance
-                that it will lower or maintain interest rates.
-              </p>
-            </Fragment>
-          )
-        )}
-      </Section>
-
-      <Section darkMode={darkMode} className="flex space-x-4">
-        <Button
-          variant="button1"
-          label="Calculate"
-          onClick={calculateFinalResult}
-          disabled={!buttonActiveState.fetchGPT || loadingFinalResult}
-          active={buttonActiveState.calculate}
-        />
-        {renderContentOrPlaceholder(finalResult, loadingFinalResult, () => (
-          <Fragment>
-            <div>
-              <p>
-                <strong>Final Result:</strong>
-              </p>
-              <p>Raise: {finalResult.raise}%</p>
-              <p>Lower/Maintain: {finalResult.lower_or_maintain}%</p>
-            </div>
-          </Fragment>
-        ))}
-      </Section>
+          ))}
+        </Section>
+      </div>
     </div>
   );
 }

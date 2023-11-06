@@ -66,38 +66,37 @@ const EconomicDashboard = () => {
 
   const filteredData = getFilteredData();
   return (
-    <div className="md:flex md:ml-12 md:space-x-6">
-      <div className="left-section button-box md:flex-col text-xs md:w-[22.5%] flex-col flex">
-        <h1 className=" text-lg font-semibold flex justify-center mt-4 md:mt-2 md:mb-2">
-          Macroeconomic Indicators
-        </h1>
-        <div className="button-box scale-75 md:scale-100 mr-48 md:mr-0">
-          {seriesLabels.map((label) => (
-            <Button
-              variant="button2"
-              key={label}
-              label={Labels[label].label}
-              onClick={() => toggleSeries(label)}
-              active={activeSeries[label]}
-              style={{ backgroundColor: Labels[label].color }}
-              disabled={
-                Object.values(activeSeries).filter(Boolean).length >= 4 &&
-                !activeSeries[label]
-              }
-            />
-          ))}
+    <div>
+      <div className="lg:flex lg:ml-12 lg:space-x-6">
+        <div className="left-section button-box lg:flex-col text-xs lg:w-[22.5%] lg:flex">
+          <div className="button-box scale-75 md:scale-90 xl:scale-100 ">
+            {seriesLabels.map((label) => (
+              <Button
+                variant="button2"
+                key={label}
+                label={Labels[label].label}
+                onClick={() => toggleSeries(label)}
+                active={activeSeries[label]}
+                style={{ backgroundColor: Labels[label].color }}
+                disabled={
+                  Object.values(activeSeries).filter(Boolean).length >= 4 &&
+                  !activeSeries[label]
+                }
+              />
+            ))}
+          </div>
         </div>
-      </div>
 
-      <div
-        className="right-section md:mr-0 md:ml-0 mr-2 ml-2 md:w-[72.5%]"
-        style={{
-          backgroundColor: darkMode
-            ? "rgb(163 163 163 / var(--tw-bg-opacity))"
-            : "white",
-        }}
-      >
-        <EconomicChart data={filteredData} activeSeries={activeSeries} />
+        <div
+          className="right-section mr-2 ml-2 lg:w-[72.5%]"
+          style={{
+            backgroundColor: darkMode
+              ? "rgb(163 163 163 / var(--tw-bg-opacity))"
+              : "white",
+          }}
+        >
+          <EconomicChart data={filteredData} activeSeries={activeSeries} />
+        </div>
       </div>
     </div>
   );

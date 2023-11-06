@@ -100,15 +100,27 @@
   /* Adjust the grid container that wraps the buttons */
   .button-box {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    /* gap: 0.5rem; */
-    /* padding: 0.5rem; */
+    grid-template-columns: repeat(4, 1fr);
   }
 
   /* Styles for buttons on mobile */
   .button-shared {
-    font-size: xx-small;
-    /* padding: 0.5rem; */
+    font-size: small;
+    min-width: 0;
+    max-width: 74%;
+  }
+}
+
+/* Media query for mobile devices */
+@media (max-width: 1024px) {
+  .button-box {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+  }
+
+  /* Styles for buttons on mobile */
+  .button-shared {
+    font-size: small;
     min-width: 0;
     max-width: 74%;
   }
