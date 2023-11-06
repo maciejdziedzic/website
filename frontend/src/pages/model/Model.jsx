@@ -53,19 +53,17 @@ export default function Model() {
             Final Score (Lower/Maintain) = 1 - Final Score (Raise)
           </p>
         </div>
-        <p className="md:text-base text-sm">
-          <ul>
-            <li>
-              <strong>Logistic Regression Score:</strong> The probability of
-              raising rates as predicted by the logistic regression model.
-            </li>
-            <li>
-              <strong>GPT Model Score:</strong> The probability of raising rates
-              as interpreted by the GPT model from the Federal Reserve&apos;s
-              press release.
-            </li>
-          </ul>
-        </p>
+        <ul>
+          <li className="md:text-base text-sm">
+            <strong>Logistic Regression Score:</strong> The probability of
+            raising rates as predicted by the logistic regression model.
+          </li>
+          <li className="md:text-base text-sm">
+            <strong>GPT Model Score:</strong> The probability of raising rates
+            as interpreted by the GPT model from the Federal Reserve&apos;s
+            press release.
+          </li>
+        </ul>
       </section>
 
       <h1 className="md:text-2xl font-bold mb-2 mt-4">

@@ -30,7 +30,7 @@ export default function Navbar() {
           className={
             darkMode
               ? "flex-shrink-0  bg-neutral-700 w-full"
-              : "flex-shrink-0  bg-neutral-100 w-full"
+              : "flex-shrink-0  bg-stone-100 w-full"
           }
         >
           <ul className="md:flex items-center md:justify-center lg:justify-end text-sm font-light h-full tracking-widest ">
@@ -153,7 +153,7 @@ export default function Navbar() {
                 className={
                   darkMode
                     ? "border-t border-gray-600"
-                    : "border-t border-gray-100"
+                    : "border-t border-gray-200"
                 }
               ></div>
             </div>

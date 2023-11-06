@@ -7,12 +7,12 @@ export default function Footer() {
     <div>
       <div
         className={
-          darkMode ? "border-t border-gray-600" : "border-t border-gray-100"
+          darkMode ? "border-t border-gray-600" : "border-t border-gray-200"
         }
       ></div>
       <div
         className={`flex justify-center text-xs p-1 ${
-          darkMode ? " bg-neutral-700" : " bg-neutral-200"
+          darkMode ? " bg-neutral-700" : " bg-stone-100"
         }`}
       >
         © 2023 Maciej Dziedzic. All Rights Reserved.

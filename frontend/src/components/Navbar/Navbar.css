@@ -32,8 +32,6 @@
   flex-direction: column;
   background-color: var(--background-color-light);
   color: var(--text-color-light);
-  /* transform: translateX(100%);
-  transition: transform 0.3s ease-in-out; */
 }
 
 .full-screen-menu.open {
@@ -56,7 +54,7 @@
 }
 
 .burger-button {
-  background-color: var(--background-color-light2);
+  background-color: rgb(231 229 228);
   color: var(--text-color-light);
   margin-right: 3rem;
   margin-left: 3rem;
