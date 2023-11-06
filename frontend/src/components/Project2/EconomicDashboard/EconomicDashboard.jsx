@@ -3,6 +3,7 @@ import Button from "../../Button/Button";
 import { useState, useEffect } from "react";
 import { Labels } from "../Labels/Labels";
 import useDarkMode from "../../../contexts/DarkMode/useDarkMode";
+import { dark } from "@mui/material/styles/createPalette";
 
 const seriesLabels = Object.keys(Labels);
 const EconomicDashboard = () => {
@@ -69,7 +70,11 @@ const EconomicDashboard = () => {
     <div>
       <div className="lg:flex lg:ml-12 lg:space-x-6">
         <div className="left-section button-box lg:flex-col text-xs lg:w-[22.5%] lg:flex">
-          <div className="button-box scale-90 xl:scale-100 bg-stone-300 bg-opacity-10 rounded shadow-md ">
+          <div
+            className={`button-box scale-90 xl:scale-100  rounded shadow-xl ${
+              dark ? "bg-neutral-700" : "bg-stone-100"
+            } `}
+          >
             {seriesLabels.map((label) => (
               <Button
                 variant="button2"

@@ -142,7 +142,11 @@ const AssetDashboard = () => {
 
   return (
     <div className="asset-dashboard  lg:flex  lg:justify-center lg:space-x-8 mb-5">
-      <div className="left-section bg-stone-300 bg-opacity-10 rounded shadow-md  lg:w-[22.5%] 2xl:w-[18%]">
+      <div
+        className={`left-section  rounded shadow-md  lg:w-[22.5%] 2xl:w-[18%] ${
+          darkMode ? "dark bg-neutral-700 " : "bg-stone-100  "
+        }`}
+      >
         <div className="lg:scale-90 lg:m-0 scale-90 flex-col md:flex sm:flex-col">
           {/* Assets Section */}
           <div className=" mb-8">
