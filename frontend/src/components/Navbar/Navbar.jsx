@@ -56,13 +56,10 @@ export default function Navbar() {
               </span>
             </li>
             <div className="flex justify-between items-center">
-              <div className="flex justify-end md:w-40">
+              <div className="flex justify-end md:w-40 space-x-0.5 md:space-x-0">
                 <li className="w-8">
                   <a href="mailto:maciej.dziedzic9@gmail.com">
-                    <CiMail
-                      // size="1.1rem"
-                      className="cursor-pointer icon-hover icon-size"
-                    />
+                    <CiMail className="cursor-pointer icon-hover icon-size" />
                   </a>
                 </li>
                 <li className="w-8">
@@ -71,10 +68,7 @@ export default function Navbar() {
                     target="_blank"
                     rel="noopener noreferrer"
                   >
-                    <CiLinkedin
-                      // size="1.1rem"
-                      className="cursor-pointer icon-hover icon-size"
-                    />
+                    <CiLinkedin className="cursor-pointer icon-hover icon-size" />
                   </a>
                 </li>
                 <li className="w-12">
@@ -83,23 +77,17 @@ export default function Navbar() {
                     className="cursor-pointer icon-hover"
                   >
                     {darkMode ? (
-                      <FiSun
-                        // size="1rem"
-                        className="cursor-pointer sun icon-hover icon-size"
-                      />
+                      <FiSun className="cursor-pointer sun icon-hover icon-size" />
                     ) : (
-                      <GiMoon
-                        // size="1.1rem"
-                        className="cursor-pointer moon icon-hover icon-size"
-                      />
+                      <GiMoon className="cursor-pointer moon icon-hover icon-size" />
                     )}
                   </div>
                 </li>
               </div>
               {/* Burger Menu Icon */}
-              <div className="flex justify-end items-center bg-green-600 md:hidden h-16">
+              <div className="flex items-center bg-green-600 md:hidden h-16 mr-5">
                 <FaBars
-                  className="burger-icon text-4xl mr-4"
+                  className="burger-icon text-4xl mr-2 ml-2"
                   onClick={() => setIsBurgerOpen(!isBurgerOpen)}
                 />
               </div>
