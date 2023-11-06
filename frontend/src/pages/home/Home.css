@@ -10,7 +10,7 @@
 }
 
 .project-button {
-  background-color: rgb(91, 156, 156);
+  background-color: var(--button-color-light);
   border: none;
   color: var(--text-color-dark);
   cursor: pointer;
@@ -26,7 +26,7 @@
 }
 
 .project-button-dark {
-  background-color: rgb(59, 80, 69);
+  background-color: var(--button-color-dark);
   border: none;
   color: var(--text-color-dark);
   cursor: pointer;

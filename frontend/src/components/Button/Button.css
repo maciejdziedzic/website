@@ -12,18 +12,18 @@
 }
 
 .button-shared.button1 {
-  background-color: rgb(91, 156, 156);
+  background-color: var(--button-color-light);
   border: 0.13rem solid transparent;
   color: var(--text-color-dark);
 }
 
 .button-shared.button1.dark {
-  background-color: rgb(59, 80, 69);
+  background-color: var(--button-color-dark);
   border: 0.18rem solid transparent;
 }
 
 .button-shared.button2 {
-  background-color: rgb(91, 156, 156);
+  background-color: var(--button-color-light);
   color: var(--text-color-dark);
   width: 7.5rem;
   height: 1.5rem;
@@ -35,7 +35,7 @@
 }
 
 .button-shared.button2.dark {
-  background-color: rgb(59, 80, 69);
+  background-color: var(--button-color-dark);
   color: var(--text-color-dark);
   width: 7.5rem;
   height: 1.5rem;
@@ -58,27 +58,27 @@
 /* Active/Pressed state */
 .button-shared.button1.pressed {
   background-color: rgb(231, 235, 235);
-  border-color: rgb(91, 156, 156);
+  border-color: var(--button-color-light);
   border-radius: 4%;
   box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.4);
   color: var(--text-color-light);
 }
 /* Active/Pressed state for dark mode */
 .button-shared.button1.dark.pressed {
-  border-color: rgb(59, 80, 69);
+  border-color: var(--button-color-dark);
   box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.7);
 }
 
 .button-shared.button2.pressed {
   background-color: rgb(231, 235, 235);
-  border-color: rgb(91, 156, 156);
+  border-color: var(--button-color-light);
   border-radius: 4%;
   box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.4);
   color: var(--text-color-light);
 }
 
 .button-shared.button2.dark.pressed {
-  border-color: rgb(59, 80, 69);
+  border-color: var(--button-color-dark);
   box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.7);
 }
 
