@@ -12,12 +12,15 @@ export default function Navbar() {
   const { darkMode, toggleDarkMode } = useDarkMode();
   const [ProjectsOpen, setProjectsOpen] = useState(false);
   const [isBurgerOpen, setIsBurgerOpen] = useState(false);
-
   const buttonHoverColor = darkMode ? "hover:font-bold" : "hover:font-bold";
   const projectsActiveColor = ProjectsOpen ? "font-bold" : "";
 
   const toggleProjects = () => {
     setProjectsOpen(!ProjectsOpen);
+  };
+
+  const handleMenuItemClick = () => {
+    setIsBurgerOpen(false);
   };
 
   return (
@@ -47,7 +50,7 @@ export default function Navbar() {
                 ABOUT
               </Link>
             </li>
-            <li className="w-40 hidden md:block">
+            <li className="w-64 hidden md:block">
               <span
                 onClick={toggleProjects}
                 className={`${buttonHoverColor} ${projectsActiveColor} block w-full h-full text-center  cursor-pointer`}
@@ -56,13 +59,13 @@ export default function Navbar() {
               </span>
             </li>
             <div className="flex justify-between items-center">
-              <div className="flex justify-end md:w-40 space-x-0.5 md:space-x-0">
-                <li className="w-8">
+              <div className="flex space-x-0.5 md:space-x-2 md:mr-8">
+                <li className="w-6">
                   <a href="mailto:maciej.dziedzic9@gmail.com">
                     <CiMail className="cursor-pointer icon-hover icon-size" />
                   </a>
                 </li>
-                <li className="w-8">
+                <li className="w-6">
                   <a
                     href="https://www.linkedin.com/in/maciej-d-404000103/"
                     target="_blank"
@@ -71,7 +74,7 @@ export default function Navbar() {
                     <CiLinkedin className="cursor-pointer icon-hover icon-size" />
                   </a>
                 </li>
-                <li className="w-12">
+                <li className="w-6">
                   <div
                     onClick={toggleDarkMode}
                     className="cursor-pointer icon-hover"
@@ -85,9 +88,9 @@ export default function Navbar() {
                 </li>
               </div>
               {/* Burger Menu Icon */}
-              <div className="flex items-center bg-green-600 md:hidden h-16 mr-5">
+              <div className="flex items-center bg-green-600 md:hidden h-16 mr-5 ">
                 <FaBars
-                  className="burger-icon text-4xl mr-2 ml-2"
+                  className="burger-icon text-4xl mr-2 ml-2 "
                   onClick={() => setIsBurgerOpen(!isBurgerOpen)}
                 />
               </div>
@@ -153,6 +156,67 @@ export default function Navbar() {
           )}
         </div>
       </div>
+      {/* Mobile Navigation*/}
+      {isBurgerOpen && (
+        <div
+          className={`md:hidden full-screen-menu ${darkMode ? "dark" : ""} ${
+            isBurgerOpen ? "open" : ""
+          }`}
+        >
+          <div className="w-full flex-col space-y-1 p-4  mt-2 ">
+            <Link
+              to="/"
+              className="block block-mb p-2 rounded bg-neutral-700 mt-16"
+              onClick={handleMenuItemClick}
+            >
+              Home
+            </Link>
+            <Link
+              to="/about"
+              className="block block-mb p-2 rounded"
+              onClick={handleMenuItemClick}
+            >
+              About
+            </Link>
+            <Link
+              to="/project1"
+              className="block block-mb p-2 rounded"
+              onClick={handleMenuItemClick}
+            >
+              Asset Returns
+            </Link>
+            <Link
+              to="/project2"
+              className="block block-mb p-2 rounded"
+              onClick={handleMenuItemClick}
+            >
+              Macroeconomic Chart
+            </Link>
+            <Link
+              to="/project3"
+              className="block block-mb p-2 rounded"
+              onClick={handleMenuItemClick}
+            >
+              Fed Policy Model
+            </Link>
+            <br />
+            <Link
+              to="/data"
+              className="block block-mb p-2 rounded"
+              onClick={handleMenuItemClick}
+            >
+              Data
+            </Link>
+            <Link
+              to="/model"
+              className="block block-mb p-2 rounded"
+              onClick={handleMenuItemClick}
+            >
+              Model
+            </Link>
+          </div>
+        </div>
+      )}
     </div>
   );
 }

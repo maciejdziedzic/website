@@ -85,7 +85,7 @@
 /* Disabled state */
 .button-shared.button1.disabled {
   background-color: rgba(179, 179, 173, 0.9);
-  color: #ccc;
+  color: #535353;
   cursor: not-allowed;
 }
 
