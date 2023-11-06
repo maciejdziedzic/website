@@ -17,3 +17,9 @@
   content: "";
   animation: dots 1.5s steps(5, end) infinite;
 }
+
+@media screen and (max-width: 600px) {
+  #root > div > div.flex-grow > div > div > div > div > p {
+    font-size: x-small;
+  }
+}

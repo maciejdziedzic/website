@@ -159,7 +159,7 @@ export default function EconomicModel() {
   return (
     <div>
       <div
-        className={`flex flex-col space-y-4 mr-10 ml-10 p-4 mb-5 ${
+        className={`flex flex-col space-y-4 lg:mr-10 lg:ml-10 p-4 mb-5 scale-90 md:-mt-4 ${
           darkMode ? " " : ""
         }`}
       >
@@ -229,7 +229,7 @@ export default function EconomicModel() {
               <p>
                 <strong>Press Release:</strong>
               </p>
-              <p>{fedData.press_release_content}</p>
+              <p className="text-xs">{fedData.press_release_content}</p>
             </Fragment>
           ))}
         </Section>
