@@ -8,7 +8,7 @@ import PropTypes from "prop-types";
 function Section({ children, darkMode }) {
   return (
     <div
-      className={`flex space-x-10 items-center p-3 rounded-md ${
+      className={`flex md:space-x-8 space-x-2 items-center md:p-3 p-1 rounded-md  ${
         darkMode ? "bg-neutral-700" : "bg-neutral-300"
       }`}
     >
@@ -159,7 +159,7 @@ export default function EconomicModel() {
   return (
     <div>
       <div
-        className={`flex flex-col space-y-4 lg:mr-10 lg:ml-10 p-4 mb-5 scale-90 md:-mt-4 ${
+        className={`flex flex-col space-y-4 md:mr-10 md:ml-10 lg:ml-10 md:mb-4 ml-2 mr-2 mb-4 mt-6 md:mt-0 ${
           darkMode ? " " : ""
         }`}
       >
@@ -192,7 +192,7 @@ export default function EconomicModel() {
           )}
         </Section>
 
-        <Section darkMode={darkMode} className="flex space-x-4">
+        <Section darkMode={darkMode} className="flex">
           <Button
             variant="button1"
             label="Run Model"
@@ -234,7 +234,7 @@ export default function EconomicModel() {
           ))}
         </Section>
 
-        <Section darkMode={darkMode} className="flex space-x-4">
+        <Section darkMode={darkMode} className="flex ">
           <Button
             variant="button1"
             label="Fetch GPT"
@@ -262,7 +262,7 @@ export default function EconomicModel() {
           )}
         </Section>
 
-        <Section darkMode={darkMode} className="flex space-x-4">
+        <Section darkMode={darkMode} className="flex ">
           <Button
             variant="button1"
             label="Calculate"
