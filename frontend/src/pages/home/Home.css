@@ -61,3 +61,10 @@
 .home-button-mobile:hover {
   background-color: rgb(7, 209, 152, 90);
 }
+
+.main-container {
+  font-weight: 300;
+}
+.main-container.dark {
+  font-weight: 100;
+}

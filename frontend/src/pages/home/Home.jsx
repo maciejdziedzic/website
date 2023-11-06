@@ -134,7 +134,11 @@ function Home() {
   }, []);
 
   return (
-    <div className="mt-12 md:flex md:items-center md:justify-center text-lg font-light md:ml-28 md:flex-col md:mr-0">
+    <div
+      className={`main-container mt-12 md:flex md:items-center md:justify-center text-lg md:ml-28 md:flex-col md:mr-0 ${
+        darkMode ? "dark" : ""
+      }`}
+    >
       <div className="typing-effect-container">
         <p className="mr-8 ml-8 md:mr-0 md:ml-0 text-center md:flex hidden ">
           {part1}
