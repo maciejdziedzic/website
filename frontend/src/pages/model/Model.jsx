@@ -188,7 +188,7 @@ export default function Model() {
       <h1 className="md:text-2xl font-bold mb-2 mt-6">
         LLM Text Interpretation
       </h1>
-      <p className="md:text-base text-sm mb-2 md:mb-0">
+      <p className="md:text-base text-sm mb-4 md:mb-0">
         Based on the latest press release from the Federal Reserve, model
         predicts chance that the Federal Reserve will increase the interest
         rates.
