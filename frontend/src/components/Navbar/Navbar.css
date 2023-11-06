@@ -49,6 +49,7 @@
 
 .burger-icon {
   z-index: 102;
+  /* margin-top: 2rem; */
 }
 
 .burger-button {

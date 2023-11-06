@@ -90,7 +90,7 @@ export default function Navbar() {
               </div>
 
               {/* Burger Menu Icon */}
-              <div className="flex items-center md:hidden h-16 p-2">
+              <div className="flex items-center md:hidden h-20 p-2">
                 <FaBars
                   className="burger-icon text-4xl"
                   onClick={() => setIsBurgerOpen(!isBurgerOpen)}
