@@ -121,7 +121,7 @@ export default function Navbar() {
                     </button>
                   </Link>
                   <Link to="/project2" onClick={toggleProjects}>
-                    <button className="text-left hover:font-bold w-60">
+                    <button className="text-left hover:font-bold">
                       Macroeconomic Chart
                     </button>
                   </Link>
