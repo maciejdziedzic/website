@@ -36,7 +36,3 @@ __pycache__/
 
 # If using Jupyter Notebooks
 .ipynb_checkpoints/
-
-*.csv
-*.pkl
-*.png
