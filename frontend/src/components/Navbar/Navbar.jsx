@@ -6,10 +6,12 @@ import { CiMail } from "react-icons/ci";
 import { CiLinkedin } from "react-icons/ci";
 import { FiSun } from "react-icons/fi";
 import { GiMoon } from "react-icons/gi";
+import { FaBars } from "react-icons/fa";
 
 export default function Navbar() {
   const { darkMode, toggleDarkMode } = useDarkMode();
   const [ProjectsOpen, setProjectsOpen] = useState(false);
+  const [isBurgerOpen, setIsBurgerOpen] = useState(false);
 
   const buttonHoverColor = darkMode ? "hover:font-bold" : "hover:font-bold";
   const projectsActiveColor = ProjectsOpen ? "font-bold" : "";
@@ -19,8 +21,8 @@ export default function Navbar() {
   };
 
   return (
-    <div style={{ position: "sticky", top: "0", zIndex: "1000" }}>
-      <div className="flex h-12 mb-5 ">
+    <div className="" style={{ position: "sticky", top: "0", zIndex: "1000" }}>
+      <div className="md:flex md:h-12 md:mb-5">
         <div
           className={
             darkMode
@@ -28,8 +30,8 @@ export default function Navbar() {
               : "flex-shrink-0  bg-neutral-100 w-full"
           }
         >
-          <ul className="flex items-center justify-end text-sm font-light h-full tracking-widest">
-            <li className="w-40">
+          <ul className="md:flex items-center md:justify-center lg:justify-end text-sm font-light h-full tracking-widest ">
+            <li className="w-40 hidden md:block">
               <Link
                 to="/"
                 className={`${buttonHoverColor} block w-full h-full text-center `}
@@ -37,7 +39,7 @@ export default function Navbar() {
                 HOME
               </Link>
             </li>
-            <li className="w-40">
+            <li className="w-40 hidden md:block">
               <Link
                 to="/about"
                 className={`${buttonHoverColor} block w-full h-full text-center `}
@@ -45,7 +47,7 @@ export default function Navbar() {
                 ABOUT
               </Link>
             </li>
-            <li className="w-44">
+            <li className="w-40 hidden md:block">
               <span
                 onClick={toggleProjects}
                 className={`${buttonHoverColor} ${projectsActiveColor} block w-full h-full text-center  cursor-pointer`}
@@ -53,45 +55,56 @@ export default function Navbar() {
                 PROJECTS⏷
               </span>
             </li>
-            <div className="flex justify-center w-40">
-              <li className="w-8">
-                <a href="mailto:maciej.dziedzic9@gmail.com">
-                  <CiMail size="1.1rem" className="cursor-pointer icon-hover" />
-                </a>
-              </li>
-              <li className="w-8">
-                <a
-                  href="https://www.linkedin.com/in/maciej-d-404000103/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  <CiLinkedin
-                    size="1.1rem"
+            <div className="flex justify-between items-center">
+              <div className="flex justify-end md:w-40">
+                <li className="w-8">
+                  <a href="mailto:maciej.dziedzic9@gmail.com">
+                    <CiMail
+                      // size="1.1rem"
+                      className="cursor-pointer icon-hover icon-size"
+                    />
+                  </a>
+                </li>
+                <li className="w-8">
+                  <a
+                    href="https://www.linkedin.com/in/maciej-d-404000103/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <CiLinkedin
+                      // size="1.1rem"
+                      className="cursor-pointer icon-hover icon-size"
+                    />
+                  </a>
+                </li>
+                <li className="w-12">
+                  <div
+                    onClick={toggleDarkMode}
                     className="cursor-pointer icon-hover"
-                  />
-                </a>
-              </li>
-              <li className="w-12">
-                <div
-                  onClick={toggleDarkMode}
-                  className="cursor-pointer icon-hover"
-                >
-                  {darkMode ? (
-                    <FiSun
-                      size="1rem"
-                      className="cursor-pointer sun icon-hover"
-                    />
-                  ) : (
-                    <GiMoon
-                      size="1.1rem"
-                      className="cursor-pointer moon icon-hover"
-                    />
-                  )}
-                </div>
-              </li>
+                  >
+                    {darkMode ? (
+                      <FiSun
+                        // size="1rem"
+                        className="cursor-pointer sun icon-hover icon-size"
+                      />
+                    ) : (
+                      <GiMoon
+                        // size="1.1rem"
+                        className="cursor-pointer moon icon-hover icon-size"
+                      />
+                    )}
+                  </div>
+                </li>
+              </div>
+              {/* Burger Menu Icon */}
+              <div className="flex justify-end items-center bg-green-600 md:hidden h-16">
+                <FaBars
+                  className="burger-icon text-4xl mr-4"
+                  onClick={() => setIsBurgerOpen(!isBurgerOpen)}
+                />
+              </div>
             </div>
           </ul>
-
           <div
             className={
               darkMode ? "border-t border-gray-600" : "border-t border-gray-200"
