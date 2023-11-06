@@ -10,8 +10,8 @@ import "./Data.css";
 const Data = () => {
   const { darkMode } = useDarkMode();
   return (
-    <div className="md:mr-5 md:ml-5 md:p-8 p-2 mt-6 md:mt-0 mb-3">
-      <h1 className="text-2xl font-bold mb-10 flex justify-center">
+    <div className="md:mr-5 md:ml-5 md:p-8 p-2 mt-6 md:-mt-2 mb-3">
+      <h1 className="text-3xl font-bold mb-10 flex justify-center">
         Project&apos;s Data
       </h1>
       <Accordion
