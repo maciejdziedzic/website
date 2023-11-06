@@ -36,15 +36,15 @@ export default function Model() {
         FED Policy Model
       </h1>
 
-      <h1 className="text-2xl font-bold mb-2">Final Results Algorithm</h1>
+      <h1 className="md:text-2xl font-bold mb-2">Final Results Algorithm</h1>
       <section>
-        <p>
+        <p className=" md:text-base text-sm">
           The final prediction is a weighted average of the outputs from the
           logistic regression model and the GPT model.
         </p>
         <p>The final result is calculated using the following formula:</p>{" "}
         <br />
-        <div className="font-bold text-center mb-6">
+        <div className="font-bold text-center mb-6 md:text-base text-sm">
           <p className="">
             Final Score (Raise) = (0.9 * Logistic Regression Score) + (0.1 * GPT
             Model Score)
@@ -53,7 +53,7 @@ export default function Model() {
             Final Score (Lower/Maintain) = 1 - Final Score (Raise)
           </p>
         </div>
-        <p>
+        <p className="md:text-base text-sm">
           <ul>
             <li>
               <strong>Logistic Regression Score:</strong> The probability of
@@ -68,11 +68,11 @@ export default function Model() {
         </p>
       </section>
 
-      <h1 className="text-2xl font-bold mb-2 mt-4">
+      <h1 className="md:text-2xl font-bold mb-2 mt-4">
         Logistic Regression Model Description
       </h1>
       <section>
-        <p>
+        <p className="md:text-base text-sm">
           This model is a Logistic Regression model trained to predict the
           Federal Reserve&apos;s policy based on economic indicators. The
           primary features used for prediction are the quarterly percentage
@@ -93,7 +93,7 @@ export default function Model() {
         <div>
           <section>
             <section>
-              <ol className="list-decimal list-inside pl-4 mb-4">
+              <ol className="list-decimal list-inside pl-4 mb-4 md:text-base text-sm">
                 <li className="mb-2">
                   Selection of features: &apos;CPI&apos; and &apos;Unemployment
                   Rate&apos;.
@@ -119,7 +119,8 @@ export default function Model() {
           </section>
         </div>
       )}
-      <section>
+
+      <section className="hidden md:block">
         <button
           className={`flex justify-between items-center w-full font-semibold mt-4 mb-2  p-2 ${
             darkMode ? "bg-neutral-700 " : "bg-neutral-200 "
@@ -131,7 +132,7 @@ export default function Model() {
         </button>
         {isModelEvalOpen && (
           <div>
-            <section>
+            <section className="md:text-base text-xs">
               <section>
                 <h3 className="font-semibold mt-2 mb-3">
                   Classification Report:
@@ -155,22 +156,23 @@ export default function Model() {
           <span>{isLogisticRegResultsOpen ? "−" : "+"}</span>
         </button>
         {isLogisticRegResultsOpen && (
-          <div className="">
+          <div className="md:text-base text-xs">
             <section>
               <pre className="whitespace-pre-wrap mb-2">
                 {logisticRegressionResults}
               </pre>
               <p>
-                Intercept: At zero unemployment and CPI change, the log odds of
-                the target being 1 is 0.1216.
+                <strong>Intercept:</strong> At zero unemployment and CPI change,
+                the log odds of the target being 1 is 0.1216.
               </p>
               <p>
-                Unemployment: A one-unit increase in CPI percentage change
-                decreases the log odds of the target being 1 by 0.4176.
+                <strong>Unemployment:</strong> A one-unit increase in CPI
+                percentage change decreases the log odds of the target being 1
+                by 0.4176.
               </p>
               <p>
-                CPI Change: A one-unit increase in unemployment increases the
-                log odds of the target being 1 by 0.2677.
+                <strong>CPI Change:</strong> A one-unit increase in unemployment
+                increases the log odds of the target being 1 by 0.2677.
               </p>
               <br />
               <p>
@@ -183,13 +185,15 @@ export default function Model() {
         )}
       </section>
 
-      <h1 className="text-2xl font-bold mb-2 mt-6">LLM Text Interpretation</h1>
-      <p className="">
+      <h1 className="md:text-2xl font-bold mb-2 mt-6">
+        LLM Text Interpretation
+      </h1>
+      <p className="md:text-base text-sm mb-2 md:mb-0">
         Based on the latest press release from the Federal Reserve, model
         predicts chance that the Federal Reserve will increase the interest
         rates.
       </p>
-      <section className="mb-4">
+      <section className="mb-4 hidden md:block">
         <button
           className={`flex justify-between items-center w-full font-semibold mt-2 p-2 ${
             darkMode ? "bg-neutral-700 " : "bg-neutral-200 "

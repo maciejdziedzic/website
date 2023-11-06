@@ -16,7 +16,7 @@ export const classificationReport = {
   },
 };
 
-export const logisticRegressionResults = `==============================================================================
+export const logisticRegressionResults = `
 Dep. Variable:                 target   No. Observations:                  217
 Model:                          Logit   Df Residuals:                      214
 Method:                           MLE   Df Model:                            2
@@ -24,13 +24,11 @@ Date:                Tue, 31 Oct 2023   Pseudo R-squ.:                 0.03610
 Time:                        21:01:48   Log-Likelihood:                -144.61
 converged:                       True   LL-Null:                       -150.02
 Covariance Type:            nonrobust   LLR p-value:                  0.004447
-==============================================================================
                 coef      std err       z        P>|z|      [0.025      0.975]
 ------------------------------------------------------------------------------
 const          0.1216      0.139      0.872      0.383      -0.152       0.395
 unemp         -0.4176      0.147     -2.836      0.005      -0.706      -0.129
-cpi            0.2677      0.147      1.824      0.068      -0.020       0.555
-==============================================================================`;
+cpi            0.2677      0.147      1.824      0.068      -0.020       0.555`;
 
 export const prompt = `response = openai.ChatCompletion.create(
 model="gpt-3.5-turbo",
