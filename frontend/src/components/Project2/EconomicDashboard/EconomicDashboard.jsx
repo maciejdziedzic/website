@@ -69,7 +69,7 @@ const EconomicDashboard = () => {
     <div>
       <div className="lg:flex lg:ml-12 lg:space-x-6">
         <div className="left-section button-box lg:flex-col text-xs lg:w-[22.5%] lg:flex">
-          <div className="button-box scale-90 xl:scale-100 bg-stone-300 rounded shadow-md bg-opacity-10">
+          <div className="button-box scale-90 xl:scale-100 bg-stone-300 bg-opacity-10 rounded shadow-md ">
             {seriesLabels.map((label) => (
               <Button
                 variant="button2"

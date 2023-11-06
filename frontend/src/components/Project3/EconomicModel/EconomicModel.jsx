@@ -9,7 +9,7 @@ function Section({ children, darkMode }) {
   return (
     <div
       className={`flex md:space-x-8 space-x-2 items-center md:p-3 p-1 rounded-md  ${
-        darkMode ? "bg-neutral-700" : "bg-neutral-300"
+        darkMode ? "bg-neutral-700" : "bg-stone-300 bg-opacity-20"
       }`}
     >
       {children}
