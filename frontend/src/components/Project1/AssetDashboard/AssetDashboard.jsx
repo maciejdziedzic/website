@@ -311,8 +311,8 @@ const AssetDashboard = () => {
           </div>
         </div>
       </div>
-      <div className="right-section flex lg:w-[72.5%] 2xl:w-[80%] m-5 md:m-0 ">
-        <div className="chart-container ">
+      <div className="right-section flex lg:w-[72.5%] 2xl:w-[80%] m-5 lg:m-0 ">
+        <div className="chart-container">
           <AssetChart
             data={displayedData}
             enabledMetrics={enabledMetrics}
