@@ -94,34 +94,29 @@
   cursor: not-allowed;
 }
 
-/* Media query for mobile devices */
+/* Styles for larger devices are unchanged */
+
+/* Media query for mobile and up to medium-sized tablet devices */
 @media (max-width: 768px) {
-  /* Adjust this value based on your design's breakpoint */
-  /* Adjust the grid container that wraps the buttons */
-  .button-box {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-  }
-
-  /* Styles for buttons on mobile */
-  .button-shared {
-    font-size: small;
-    min-width: 0;
-    max-width: 74%;
-  }
-}
-
-/* Media query for mobile devices */
-@media (max-width: 1024px) {
   .button-box {
     display: grid;
     grid-template-columns: repeat(5, 1fr);
+    gap: 1.5rem;
+  }
+}
+
+/* Media query for small mobile devices */
+@media (max-width: 480px) {
+  .button-box {
+    display: flex; /* Use flexbox */
+    flex-wrap: wrap; /* Allow multiple rows */
+    justify-content: center; /* Center the items horizontally */
+    gap: 0.5rem; /* Maintain the gap between buttons */
   }
 
-  /* Styles for buttons on mobile */
   .button-shared {
-    font-size: small;
-    min-width: 0;
-    max-width: 74%;
+    flex: 0 0 auto; /* Don't grow, don't shrink, and be auto width */
+    padding: 0.1rem;
+    margin: 0.25rem; /* Adjust the margin to ensure gaps are consistent */
   }
 }
