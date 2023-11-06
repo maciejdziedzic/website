@@ -19,7 +19,6 @@
   .icon-size {
     width: 1.1rem;
     height: 1.1rem;
-    margin-left: 0rem;
   }
 }
 .full-screen-menu {
@@ -52,20 +51,15 @@
   z-index: 102;
 }
 
-.mobajl {
-  background-color: var(--background-color-light);
-}
-
-.mobajl.dark {
-  background-color: var(--background-color-dark);
-}
-
-.block-mb {
-  background-color: var(--button-color-light);
+.burger-button {
+  background-color: var(--background-color-light2);
   color: var(--text-color-light);
+  margin-right: 3rem;
+  margin-left: 3rem;
+  padding: 1rem;
 }
 
-.block-mb.dark {
-  background-color: var(--button-color-dark);
+.full-screen-menu.dark.open > div > a {
+  background-color: var(--background-color-dark2);
   color: var(--text-color-dark);
 }

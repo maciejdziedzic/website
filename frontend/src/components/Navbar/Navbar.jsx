@@ -58,8 +58,9 @@ export default function Navbar() {
                 PROJECTS⏷
               </span>
             </li>
-            <div className="flex justify-between items-center">
-              <div className="flex space-x-0.5 md:space-x-1 md:mr-8">
+            <div className="flex justify-between items-center ml-5 mr-5">
+              {/* Icons */}
+              <div className="flex space-x-3 md:space-x-1 md:mr-8">
                 <li className="w-6">
                   <a href="mailto:maciej.dziedzic9@gmail.com">
                     <CiMail className="cursor-pointer icon-hover icon-size" />
@@ -87,8 +88,9 @@ export default function Navbar() {
                   </div>
                 </li>
               </div>
+
               {/* Burger Menu Icon */}
-              <div className="flex items-center bg-green-600 md:hidden h-16 ">
+              <div className="flex items-center md:hidden h-16 p-2">
                 <FaBars
                   className="burger-icon text-4xl"
                   onClick={() => setIsBurgerOpen(!isBurgerOpen)}
@@ -159,42 +161,46 @@ export default function Navbar() {
       {/* Mobile Navigation*/}
       {isBurgerOpen && (
         <div
-          className={`md:hidden full-screen-menu mt-20 mobajl ${
-            darkMode ? "dark" : ""
-          } ${isBurgerOpen ? "open" : ""}`}
+          className={`md:hidden full-screen-menu  ${darkMode ? "dark" : ""} ${
+            isBurgerOpen ? "open" : ""
+          }`}
         >
-          <div className="w-full flex-col space-y-1">
+          <div
+            className={`w-full flex-col space-y-2 mt-24 font-bold burger-buttons ${
+              darkMode ? "dark" : ""
+            }`}
+          >
             <Link
               to="/"
-              className="block block-mb p-3 rounded"
+              className="block burger-button rounded"
               onClick={handleMenuItemClick}
             >
               Home
             </Link>
             <Link
               to="/about"
-              className="block block-mb p-2 rounded"
+              className="block burger-button rounded"
               onClick={handleMenuItemClick}
             >
               About
             </Link>
             <Link
               to="/project1"
-              className="block block-mb p-2 rounded"
+              className="block burger-button rounded"
               onClick={handleMenuItemClick}
             >
               Asset Returns
             </Link>
             <Link
               to="/project2"
-              className="block block-mb p-2 rounded"
+              className="block burger-button rounded"
               onClick={handleMenuItemClick}
             >
               Macroeconomic Chart
             </Link>
             <Link
               to="/project3"
-              className="block block-mb p-2 rounded"
+              className="block burger-button rounded"
               onClick={handleMenuItemClick}
             >
               Fed Policy Model
@@ -202,14 +208,14 @@ export default function Navbar() {
             <br />
             <Link
               to="/data"
-              className="block block-mb p-2 rounded"
+              className="block burger-button rounded"
               onClick={handleMenuItemClick}
             >
               Data
             </Link>
             <Link
               to="/model"
-              className="block block-mb p-2 rounded"
+              className="block burger-button rounded"
               onClick={handleMenuItemClick}
             >
               Model
