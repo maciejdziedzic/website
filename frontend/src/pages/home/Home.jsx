@@ -136,7 +136,12 @@ function Home() {
   return (
     <div className="mt-12 md:flex md:items-center md:justify-center text-lg font-light md:ml-28 md:flex-col md:mr-0">
       <div className="typing-effect-container">
-        <p className=" text-center md:flex">{part1}</p> <br />
+        <p className="mr-8 ml-8 md:mr-0 md:ml-0 text-center md:flex hidden ">
+          {part1}
+        </p>
+        <p className="mr-8 ml-8 md:hidden text-center">{text1}</p>
+
+        <br />
         <div className="flex flex-col">
           <div className="md:flex md:items-center md:my-2">
             <Link
@@ -150,7 +155,7 @@ function Home() {
             <div className="flex justify-center items-center">
               <Link
                 to="project1"
-                className={`home-button-mobile md:hidden ${
+                className={`home-button-mobile flex justify-center items-center md:hidden ${
                   darkMode ? "dark" : ""
                 }`}
               >
@@ -173,12 +178,23 @@ function Home() {
             >
               {macroCharts}
             </Link>
+
             <span
               className="ml-7 description"
               style={{ minWidth: `${maxTextLength}ch` }}
             >
               <p className="hidden md:block">{part3}</p>
             </span>
+          </div>
+          <div className="flex justify-center items-center">
+            <Link
+              to="project2"
+              className={`home-button-mobile flex justify-center items-center md:hidden ${
+                darkMode ? "dark" : ""
+              }`}
+            >
+              Macro Chart
+            </Link>
           </div>
           <div className="flex items-center my-2">
             <Link
@@ -195,7 +211,17 @@ function Home() {
             >
               <p className="hidden md:block">{part4}</p>
             </span>
-          </div>{" "}
+          </div>
+          <div className="flex justify-center items-center">
+            <Link
+              to="project3"
+              className={`home-button-mobile flex justify-center items-center md:hidden ${
+                darkMode ? "dark" : ""
+              }`}
+            >
+              Model
+            </Link>
+          </div>
           <br />
           <div className="flex items-center my-2">
             <Link
@@ -210,9 +236,19 @@ function Home() {
               <p className="hidden md:block">{part5}</p>
             </span>
           </div>
+          <div className="flex justify-center items-center">
+            <Link
+              to="data"
+              className={`home-button-mobile flex justify-center items-center md:hidden ${
+                darkMode ? "dark" : ""
+              }`}
+            >
+              Data
+            </Link>
+          </div>
           <div className="flex items-center my-2">
             <Link
-              to="/model"
+              to="/project3"
               className={`project-button md:block hidden ${
                 darkMode ? "project-button-dark" : ""
               }`}
@@ -225,6 +261,16 @@ function Home() {
             {allTextPrinted && (
               <span className="cursor hidden md:block">_</span>
             )}
+          </div>
+          <div className="flex justify-center items-center">
+            <Link
+              to="/model"
+              className={`home-button-mobile flex justify-center items-center md:hidden ${
+                darkMode ? "dark" : ""
+              }`}
+            >
+              Model Info
+            </Link>
           </div>
         </div>
       </div>

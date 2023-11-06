@@ -125,7 +125,7 @@ export default function Navbar() {
                   </Link>
                   <Link to="/project3" onClick={toggleProjects}>
                     <button className="text-left hover:font-bold ">
-                      FED Policy Model
+                      Fed Policy Model
                     </button>
                   </Link>
                 </ul>
@@ -218,7 +218,7 @@ export default function Navbar() {
               className="block burger-button rounded"
               onClick={handleMenuItemClick}
             >
-              Model
+              Model Info
             </Link>
           </div>
         </div>

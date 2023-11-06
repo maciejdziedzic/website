@@ -48,9 +48,16 @@
 
 .home-button-mobile {
   background-color: var(--button-color-light);
-  padding: 0.5rem 6rem;
+  color: var(--text-color-dark);
+  height: 2.4rem;
+  width: 80%;
+  border-radius: 4%;
 }
 
 .home-button-mobile.dark {
   background-color: var(--button-color-dark);
+}
+/* Hover state */
+.home-button-mobile:hover {
+  background-color: rgb(7, 209, 152, 90);
 }
