@@ -102,41 +102,19 @@ export default function EconomicModel() {
   const calculateFinalResult = () => {
     setLoadingFinalResult(true);
     if (logisticModelResult && interpretation) {
-      const logisticLowerOrMaintain =
-        parseFloat(logisticModelResult.lower_or_maintain) / 100;
       const logisticRaise = parseFloat(logisticModelResult.raise) / 100;
       const gptInterpretation = parseFloat(interpretation.interpretation);
+      // Calculate the weighted average based on the provided logic
+      const weightedRaise = 0.9 * logisticRaise + 0.1 * gptInterpretation;
+      const weightedLowerOrMaintain = 1 - weightedRaise;
 
-      const transformedGptInterpretation = 2 * (gptInterpretation - 0.5);
-      const adjustment = 0.1 * transformedGptInterpretation;
-      let adjustedProbLower = logisticLowerOrMaintain - adjustment;
-      let adjustedProbRaise = logisticRaise + adjustment;
-
-      // Normalizing to ensure the probabilities sum to 1
-      const probSum = adjustedProbLower + adjustedProbRaise;
-      adjustedProbLower /= probSum;
-      adjustedProbRaise /= probSum;
-
-      // Rounding to two decimal places
-      adjustedProbLower = (adjustedProbLower * 100).toFixed(2);
-      adjustedProbRaise = (adjustedProbRaise * 100).toFixed(2);
-
-      // Ensuring that rounded probabilities sum to 100%
-      if (
-        parseFloat(adjustedProbLower) + parseFloat(adjustedProbRaise) !==
-        100.0
-      ) {
-        // Adjusting the probabilities by the smallest possible value (0.01%)
-        if (parseFloat(adjustedProbLower) > parseFloat(adjustedProbRaise)) {
-          adjustedProbLower = (parseFloat(adjustedProbLower) - 0.01).toFixed(2);
-        } else {
-          adjustedProbRaise = (parseFloat(adjustedProbRaise) - 0.01).toFixed(2);
-        }
-      }
+      // You can round these to two decimal places if needed for display
+      const roundedRaise = (weightedRaise * 100).toFixed(2);
+      const roundedLowerOrMaintain = (weightedLowerOrMaintain * 100).toFixed(2);
 
       setFinalResult({
-        lower_or_maintain: adjustedProbLower,
-        raise: adjustedProbRaise,
+        lower_or_maintain: roundedLowerOrMaintain,
+        raise: roundedRaise,
       });
     } else {
       console.error("Logistic model result or interpretation is not available");
