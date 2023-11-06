@@ -27,8 +27,12 @@ export default function Model() {
   };
 
   return (
-    <div className={`mr-16 ml-16  ${darkMode ? " " : " "}`}>
-      <h1 className="text-3xl font-bold justify-center flex mt-4 mb-4">
+    <div
+      className={`mt-6 ml-6 mr-6 md:mr-16 md:ml-16 md:m-8 ${
+        darkMode ? " " : " "
+      }`}
+    >
+      <h1 className="flex justify-center text-2xl md:text-3xl font-bold mb-5">
         FED Policy Model
       </h1>
 
