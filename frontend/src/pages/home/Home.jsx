@@ -134,91 +134,87 @@ function Home() {
   }, []);
 
   return (
-    <div className="lg:flex items-center justify-center lg:my-14  text-lg hidden">
-      <div className={`items-center ${darkMode ? "" : ""}`}>
-        <div className="w-full max-w-3xl mx-5">
-          <div className="flex-col ml-28 justify-center md:flex-col">
-            <p className="hidden md:block">{part1}</p> <br />
-            <div className="flex flex-col">
-              <div className="flex items-center my-2">
-                <Link
-                  to="/project1"
-                  className={`project-button ${
-                    darkMode ? "project-button-dark" : ""
-                  }`}
-                >
-                  {assetsReturns}
-                </Link>
-                <span
-                  className="ml-7 description"
-                  style={{ minWidth: `${maxTextLength}ch` }}
-                >
-                  <p className="hidden md:block">{part2}</p>
-                </span>
-              </div>
-              <div className="flex items-center my-2 ">
-                <Link
-                  to="/project2"
-                  className={`project-button  ${
-                    darkMode ? "project-button-dark" : ""
-                  }`}
-                >
-                  {macroCharts}
-                </Link>
-                <span
-                  className="ml-7 description"
-                  style={{ minWidth: `${maxTextLength}ch` }}
-                >
-                  <p className="hidden md:block">{part3}</p>
-                </span>
-              </div>
-              <div className="flex items-center my-2">
-                <Link
-                  to="/project3"
-                  className={`project-button ${
-                    darkMode ? "project-button-dark" : ""
-                  }`}
-                >
-                  {recessionModel}
-                </Link>
-                <span
-                  className="ml-7 description"
-                  style={{ minWidth: `${maxTextLength}ch` }}
-                >
-                  <p className="hidden md:block">{part4}</p>
-                </span>
-              </div>{" "}
-              <br />
-              <div className="flex items-center my-2">
-                <Link
-                  to="/data"
-                  className={`project-button  ${
-                    darkMode ? "project-button-dark" : ""
-                  }`}
-                >
-                  {data}
-                </Link>
-                <span className="ml-7 description">
-                  <p className="hidden md:block">{part5}</p>
-                </span>
-              </div>
-              <div className="flex items-center my-2">
-                <Link
-                  to="/model"
-                  className={`project-button ${
-                    darkMode ? "project-button-dark" : ""
-                  }`}
-                >
-                  {model}
-                </Link>
-                <span className="ml-7 description">
-                  <p className="hidden md:block">{part6}</p>
-                </span>
-                {allTextPrinted && (
-                  <span className="cursor hidden md:block">_</span>
-                )}
-              </div>
-            </div>
+    <div className="mt-12 md:flex md:items-center md:justify-center text-lg font-light md:ml-28 md:flex-col md:mr-0 mr- ml- ">
+      <div className="typing-effect-container">
+        <p className=" text-center md:flex">{part1}</p> <br />
+        <div className="flex flex-col">
+          <div className="flex items-center md:my-2">
+            <Link
+              to="/project1"
+              className={`project-button md:block hidden ${
+                darkMode ? "project-button-dark" : ""
+              }`}
+            >
+              {assetsReturns}
+            </Link>
+            <span
+              className="md:ml-7 description"
+              style={{ minWidth: `${maxTextLength}ch` }}
+            >
+              <p className="hidden md:block">{part2}</p>
+            </span>
+          </div>
+          <div className="flex items-center my-2 ">
+            <Link
+              to="/project2"
+              className={`project-button md:block  ${
+                darkMode ? "project-button-dark" : ""
+              }`}
+            >
+              {macroCharts}
+            </Link>
+            <span
+              className="ml-7 description"
+              style={{ minWidth: `${maxTextLength}ch` }}
+            >
+              <p className="hidden md:block">{part3}</p>
+            </span>
+          </div>
+          <div className="flex items-center my-2">
+            <Link
+              to="/project3"
+              className={`project-button md:block hidden ${
+                darkMode ? "project-button-dark" : ""
+              }`}
+            >
+              {recessionModel}
+            </Link>
+            <span
+              className="ml-7 description"
+              style={{ minWidth: `${maxTextLength}ch` }}
+            >
+              <p className="hidden md:block">{part4}</p>
+            </span>
+          </div>{" "}
+          <br />
+          <div className="flex items-center my-2">
+            <Link
+              to="/data"
+              className={`project-button md:block hidden ${
+                darkMode ? "project-button-dark" : ""
+              }`}
+            >
+              {data}
+            </Link>
+            <span className="ml-7 description">
+              <p className="hidden md:block">{part5}</p>
+            </span>
+          </div>
+          <div className="flex items-center my-2">
+            <Link
+              to="/model"
+              className={`project-button md:block hidden ${
+                darkMode ? "project-button-dark" : ""
+              }`}
+            >
+              {model}
+            </Link>
+            <span className="ml-7 description">
+              <p className="hidden md:block">{part6}</p>
+            </span>
+            {allTextPrinted && (
+              <span className="cursor hidden md:block">_</span>
+            )}
           </div>
         </div>
       </div>
