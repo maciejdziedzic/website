@@ -11,13 +11,10 @@
   color: rgb(30 64 175);
 }
 
-/* Navbar.css */
 .icon-size {
   width: 1.4rem;
   height: 1.4rem;
 }
-
-/* Medium devices (tablets, 768px and up) */
 @media (min-width: 768px) {
   .icon-size {
     width: 1.1rem;
@@ -25,8 +22,6 @@
     margin-left: 0rem;
   }
 }
-
-/* Add this to your Navbar.css file */
 .full-screen-menu {
   position: fixed;
   top: 0;
@@ -44,7 +39,6 @@
   background-color: var(--background-color-dark);
   color: var(--text-color-dark);
 }
-/* Navbar.css */
 
 .header-fixed {
   position: fixed;
@@ -58,8 +52,20 @@
   z-index: 102;
 }
 
-/* Colors  */
+.mobajl {
+  background-color: var(--background-color-light);
+}
 
-/* $ {
-  darkmode?"text-red-200 bg-slate-400": "text-white bg-slate-800";
-} */
+.mobajl.dark {
+  background-color: var(--background-color-dark);
+}
+
+.block-mb {
+  background-color: var(--button-color-light);
+  color: var(--text-color-light);
+}
+
+.block-mb.dark {
+  background-color: var(--button-color-dark);
+  color: var(--text-color-dark);
+}

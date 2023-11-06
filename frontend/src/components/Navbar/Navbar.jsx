@@ -50,7 +50,7 @@ export default function Navbar() {
                 ABOUT
               </Link>
             </li>
-            <li className="w-64 hidden md:block">
+            <li className="w-48 hidden md:block">
               <span
                 onClick={toggleProjects}
                 className={`${buttonHoverColor} ${projectsActiveColor} block w-full h-full text-center  cursor-pointer`}
@@ -59,7 +59,7 @@ export default function Navbar() {
               </span>
             </li>
             <div className="flex justify-between items-center">
-              <div className="flex space-x-0.5 md:space-x-2 md:mr-8">
+              <div className="flex space-x-0.5 md:space-x-1 md:mr-8">
                 <li className="w-6">
                   <a href="mailto:maciej.dziedzic9@gmail.com">
                     <CiMail className="cursor-pointer icon-hover icon-size" />
@@ -88,9 +88,9 @@ export default function Navbar() {
                 </li>
               </div>
               {/* Burger Menu Icon */}
-              <div className="flex items-center bg-green-600 md:hidden h-16 mr-5 ">
+              <div className="flex items-center bg-green-600 md:hidden h-16 ">
                 <FaBars
-                  className="burger-icon text-4xl mr-2 ml-2 "
+                  className="burger-icon text-4xl"
                   onClick={() => setIsBurgerOpen(!isBurgerOpen)}
                 />
               </div>
@@ -159,14 +159,14 @@ export default function Navbar() {
       {/* Mobile Navigation*/}
       {isBurgerOpen && (
         <div
-          className={`md:hidden full-screen-menu ${darkMode ? "dark" : ""} ${
-            isBurgerOpen ? "open" : ""
-          }`}
+          className={`md:hidden full-screen-menu mt-20 mobajl ${
+            darkMode ? "dark" : ""
+          } ${isBurgerOpen ? "open" : ""}`}
         >
-          <div className="w-full flex-col space-y-1 p-4  mt-2 ">
+          <div className="w-full flex-col space-y-1">
             <Link
               to="/"
-              className="block block-mb p-2 rounded bg-neutral-700 mt-16"
+              className="block block-mb p-3 rounded"
               onClick={handleMenuItemClick}
             >
               Home
