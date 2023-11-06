@@ -7,9 +7,9 @@ export default function About() {
   }`;
 
   return (
-    <div className=" mr-16 ml-16">
+    <div className=" md:mr-16 md:ml-16 m-8">
       <div className={`container mx-auto mt-4  ${darkMode ? " " : " "}`}>
-        <h1 className="flex justify-center text-3xl font-bold mb-5">
+        <h1 className="flex justify-center text-2xl md:text-3xl font-bold mb-5">
           About the Website
         </h1>
 
