@@ -32,6 +32,12 @@
   flex-direction: column;
   background-color: var(--background-color-light);
   color: var(--text-color-light);
+  /* transform: translateX(100%);
+  transition: transform 0.3s ease-in-out; */
+}
+
+.full-screen-menu.open {
+  transform: translateX(0);
 }
 
 .full-screen-menu.dark {
@@ -39,17 +45,14 @@
   color: var(--text-color-dark);
 }
 
-.header-fixed {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  z-index: 101;
+.full-screen-menu.dark.open > div > a {
+  background-color: var(--background-color-dark2);
+  color: var(--text-color-dark);
 }
 
 .burger-icon {
   z-index: 102;
-  /* margin-top: 2rem; */
+  transition: transform 0.3s ease-in-out;
 }
 
 .burger-button {
@@ -60,7 +63,15 @@
   padding: 1rem;
 }
 
-.full-screen-menu.dark.open > div > a {
-  background-color: var(--background-color-dark2);
-  color: var(--text-color-dark);
+/* Rotate burger icon when menu is open */
+.burger-icon.open {
+  transform: rotate(90deg);
+}
+
+.header-fixed {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 101;
 }
