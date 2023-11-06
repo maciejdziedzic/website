@@ -84,7 +84,7 @@ function DataContent({ data }) {
     <TableContainer component={Paper}>
       <Table
         aria-label="collapsible table"
-        className={darkMode ? "bg-neutral-700" : "bg-zinc-100"}
+        className={darkMode ? "bg-neutral-700" : "bg-stone-50"}
       >
         <TableHead>
           <TableRow>
