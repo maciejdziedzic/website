@@ -7,7 +7,7 @@ export const DarkModeProvider = ({ children }) => {
   const [darkMode, setDarkMode] = useState(() => {
     // Retrieve the theme from local storage when the component mounts
     const savedTheme = localStorage.getItem("theme");
-    return savedTheme ? savedTheme === "dark" : false;
+    return savedTheme ? savedTheme === "dark" : true;
   });
 
   useEffect(() => {
