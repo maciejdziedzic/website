@@ -82,7 +82,6 @@
   box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.7);
 }
 
-/* Disabled state */
 .button-shared.button1.disabled {
   background-color: rgba(179, 179, 173, 0.9);
   color: #535353;
@@ -93,4 +92,24 @@
   background-color: rgba(179, 179, 173, 0.9);
   color: #535353;
   cursor: not-allowed;
+}
+
+/* Media query for mobile devices */
+@media (max-width: 768px) {
+  /* Adjust this value based on your design's breakpoint */
+  /* Adjust the grid container that wraps the buttons */
+  .button-box {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    /* gap: 0.5rem; */
+    /* padding: 0.5rem; */
+  }
+
+  /* Styles for buttons on mobile */
+  .button-shared {
+    font-size: xx-small;
+    /* padding: 0.5rem; */
+    min-width: 0;
+    max-width: 74%;
+  }
 }
