@@ -134,19 +134,29 @@ function Home() {
   }, []);
 
   return (
-    <div className="mt-12 md:flex md:items-center md:justify-center text-lg font-light md:ml-28 md:flex-col md:mr-0 mr- ml- ">
+    <div className="mt-12 md:flex md:items-center md:justify-center text-lg font-light md:ml-28 md:flex-col md:mr-0">
       <div className="typing-effect-container">
         <p className=" text-center md:flex">{part1}</p> <br />
         <div className="flex flex-col">
-          <div className="flex items-center md:my-2">
+          <div className="md:flex md:items-center md:my-2">
             <Link
               to="/project1"
-              className={`project-button md:block hidden ${
+              className={`project-button hidden md:block  ${
                 darkMode ? "project-button-dark" : ""
               }`}
             >
               {assetsReturns}
             </Link>
+            <div className="flex justify-center items-center">
+              <Link
+                to="project1"
+                className={`home-button-mobile md:hidden ${
+                  darkMode ? "dark" : ""
+                }`}
+              >
+                Asset Returns
+              </Link>
+            </div>
             <span
               className="md:ml-7 description"
               style={{ minWidth: `${maxTextLength}ch` }}
@@ -157,7 +167,7 @@ function Home() {
           <div className="flex items-center my-2 ">
             <Link
               to="/project2"
-              className={`project-button md:block  ${
+              className={`project-button hidden md:block  ${
                 darkMode ? "project-button-dark" : ""
               }`}
             >

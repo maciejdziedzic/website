@@ -46,14 +46,11 @@
   cursor: default;
 }
 
-/* Media query for small screens */
-@media (max-width: 640px) {
-  .project-button {
-    width: 100%;
-    margin-left: auto;
-    margin-right: auto;
-    display: block;
-    padding: 2px 10rem;
-    box-sizing: border-box;
-  }
+.home-button-mobile {
+  background-color: var(--button-color-light);
+  padding: 0.5rem 6rem;
+}
+
+.home-button-mobile.dark {
+  background-color: var(--button-color-dark);
 }
