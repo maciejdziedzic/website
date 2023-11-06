@@ -20,7 +20,7 @@ export default function About() {
             economics and statistics. It serves to showcase my research to an
             audience whom I hope will find it intriguing and potentially wish to
             collaborate on future projects. I am particularly interested in
-            working in finance, healthcare and technology.
+            working in finance, healthcare or in the field of computer vision.
           </p>
         </section>
 
@@ -30,7 +30,8 @@ export default function About() {
           <ul className="list-disc pl-5 mb-4">
             <li>
               Operating System & Server: The website is hosted on an Ubuntu
-              server with Nginx handling the web serving operations.
+              server with <span className={techClassName}>Nginx</span> handling
+              the web serving operations.
             </li>
             <li>
               Frontend: Interactive user interface designed with{" "}
@@ -59,9 +60,10 @@ export default function About() {
               visualizes it with Chart.js.
             </li>
             <li>
-              FED Policy Model: Developed an API that feeds data into a machine
-              learning model. The model, managed with the joblib library, is
-              enhanced with interpretations from the Chat GPT API of the Federal
+              FED Policy Model: Developed an API that feeds data into a{" "}
+              <span className={techClassName}>machine learning model</span>. The
+              model, managed with the joblib library, is enhanced with
+              interpretations from the Chat GPT API of the Federal
               Reserve&apos;s press releases.
             </li>
           </ul>
