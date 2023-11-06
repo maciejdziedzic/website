@@ -29,9 +29,9 @@ export default function About() {
 
           <ul className="list-disc pl-5 mb-4">
             <li>
-              Operating System & Server: The website is hosted on an Ubuntu
-              server with <span className={techClassName}>Nginx</span> handling
-              the web serving operations.
+              Operating System & Server: Hosted on an Ubuntu server with Nginx
+              handling the web serving operations. PM2 is used as a process
+              manager for Node.js and Gunicorn.
             </li>
             <li>
               Frontend: Interactive user interface designed with{" "}
@@ -41,9 +41,8 @@ export default function About() {
             </li>
             <li>
               Backend: A <span className={techClassName}>Python</span>-powered
-              backend, with <span className={techClassName}>Flask </span>
-              application served through{" "}
-              <span className={techClassName}>Gunicorn</span>.
+              backend, with a <span className={techClassName}>Flask </span>
+              application served through Gunicorn.
             </li>
           </ul>
           <h3 className="text-lg font-semibold mb-2">Projects</h3>
