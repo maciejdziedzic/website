@@ -252,7 +252,7 @@ function Home() {
           </div>
           <div className="flex items-center my-2">
             <Link
-              to="/project3"
+              to="/model"
               className={`project-button md:block hidden ${
                 darkMode ? "project-button-dark" : ""
               }`}
