@@ -22,12 +22,12 @@ export const Labels = {
   debt_to_gdp: {
     label: "DEBT/GDP",
     tooltipLabel: "Federal Debt to GDP Ratio",
-    color: "rgb(153 27 27)",
+    color: "rgb(153 27 255)",
   },
   cbasstogdp: {
     label: "CB. ASST./GDP",
     tooltipLabel: "Central Bank Assets to GDP Ratio",
-    color: "rgb(50, 150, 220)",
+    color: "rgb(222, 150, 116)",
   },
   m3_to_gdp: {
     label: "M3/GDP",
@@ -42,12 +42,12 @@ export const Labels = {
   cpi_pct: {
     label: "CPI",
     tooltipLabel: "Consumer Price Index Change",
-    color: "rgb(163 230 53)",
+    color: "rgb(13 200 1430)",
   },
   ppi_pct: {
     label: "PPI",
     tooltipLabel: "Producer Price Index Change",
-    color: "rgb(161 98 7)",
+    color: "rgb(22, 99, 88)",
   },
   resins_to_gdp: {
     label: "RES./GDP",
@@ -57,7 +57,7 @@ export const Labels = {
   cp_to_gdp: {
     label: "C.P./GDP",
     tooltipLabel: "Corporate Profits to GDP Ratio",
-    color: "rgb(140, 40, 180)",
+    color: "rgb(140, 40, 112)",
   },
   indpro: {
     label: "INDUST. PROD.",
