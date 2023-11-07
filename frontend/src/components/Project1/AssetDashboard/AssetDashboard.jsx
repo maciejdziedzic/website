@@ -96,7 +96,7 @@ const AssetDashboard = () => {
 
   useEffect(() => {
     async function loadAndSetData() {
-      const fileName = "dataProject1.csv";
+      const fileName = "dataproject1.csv";
       const rows = await fetchData(fileName);
       setData(rows);
     }
