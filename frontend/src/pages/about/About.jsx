@@ -30,8 +30,7 @@ export default function About() {
           <ul className="list-disc pl-5 mb-4">
             <li>
               Operating System & Server: Hosted on an Ubuntu server with Nginx
-              handling the web serving operations. PM2 is used as a process
-              manager for Node.js and Gunicorn.
+              handling the web serving operations.
             </li>
             <li>
               Frontend: Interactive user interface designed with{" "}

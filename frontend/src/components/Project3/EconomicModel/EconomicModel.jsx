@@ -37,12 +37,13 @@ export default function EconomicModel() {
     fetchGPT: false,
     calculate: false,
   });
+
+  const apiBaseUrl = import.meta.env.VITE_API_BASE_URL;
+
   const fetchLogisticData = async () => {
     setLoadingLogisticData(true);
     try {
-      const response = await axios.get(
-        "http://127.0.0.1:5000/api/fetch-logistic-data"
-      );
+      const response = await axios.get(`${apiBaseUrl}/api/fetch-logistic-data`);
       setLogisticData(response.data);
     } catch (error) {
       console.error("Error fetching logistic data: ", error);
@@ -55,7 +56,7 @@ export default function EconomicModel() {
     setLoadingLogisticModel(true);
     try {
       const response = await axios.post(
-        "http://127.0.0.1:5000/api/run-logistic-model",
+        `${apiBaseUrl}/api/run-logistic-model`,
         logisticData
       );
       console.log("Logistic model result: ", response.data);
@@ -73,9 +74,7 @@ export default function EconomicModel() {
   const fetchFedArticle = async () => {
     setLoadingFedData(true);
     try {
-      const response = await axios.post(
-        "http://127.0.0.1:5000/api/fetch-fed-text"
-      );
+      const response = await axios.post(`${apiBaseUrl}/api/fetch-fed-text`);
       setFedData(response.data);
     } catch (error) {
       console.error("Error fetching fed article: ", error);
@@ -88,7 +87,7 @@ export default function EconomicModel() {
     setLoadingInterpretation(true);
     try {
       const response = await axios.post(
-        "http://127.0.0.1:5000/api/fetch-fed-interpretation",
+        `${apiBaseUrl}/api/fetch-fed-interpretation`,
         fedData
       );
       setInterpretation(response.data);
@@ -104,11 +103,8 @@ export default function EconomicModel() {
     if (logisticModelResult && interpretation) {
       const logisticRaise = parseFloat(logisticModelResult.raise) / 100;
       const gptInterpretation = parseFloat(interpretation.interpretation);
-      // Calculate the weighted average based on the provided logic
       const weightedRaise = 0.9 * logisticRaise + 0.1 * gptInterpretation;
       const weightedLowerOrMaintain = 1 - weightedRaise;
-
-      // You can round these to two decimal places if needed for display
       const roundedRaise = (weightedRaise * 100).toFixed(2);
       const roundedLowerOrMaintain = (weightedLowerOrMaintain * 100).toFixed(2);
 

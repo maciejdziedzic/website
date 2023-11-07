@@ -19,9 +19,10 @@ const EconomicDashboard = () => {
 
   useEffect(() => {
     const fetchAndSetData = async () => {
+      const apiBaseUrl = import.meta.env.VITE_API_BASE_URL;
       try {
         // Fetch data from your Flask API
-        const response = await fetch("http://127.0.0.1:5000/api/get_data");
+        const response = await fetch(`${apiBaseUrl}/api/get_data`);
         const fetchedData = await response.json();
 
         setData(fetchedData);
