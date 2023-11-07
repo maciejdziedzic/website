@@ -57,10 +57,6 @@
 .home-button-mobile.dark {
   background-color: var(--button-color-dark);
 }
-/* Hover state */
-.home-button-mobile:hover {
-  background-color: rgb(7, 209, 152, 90);
-}
 
 .main-container {
   font-weight: 300;

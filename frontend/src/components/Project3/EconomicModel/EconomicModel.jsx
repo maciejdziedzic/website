@@ -133,7 +133,7 @@ export default function EconomicModel() {
   return (
     <div>
       <div
-        className={`flex flex-col space-y-4 md:mr-10 md:ml-10 lg:ml-10 md:mb-4 ml-2 mr-2 mb-4 mt-6 md:mt-0 ${
+        className={`flex flex-col space-y-4 md:mr-10 md:ml-10 lg:ml-10 md:mb-4 ml-2 mr-2 mb-2 mt-6 md:mt-0 ${
           darkMode ? " " : ""
         }`}
       >

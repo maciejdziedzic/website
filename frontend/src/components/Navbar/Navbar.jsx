@@ -25,7 +25,7 @@ export default function Navbar() {
 
   return (
     <div className="" style={{ position: "sticky", top: "0", zIndex: "1000" }}>
-      <div className="md:flex md:h-12 md:mb-5">
+      <div className="md:flex md:h-12 md:mb-5 flex justify-center">
         <div
           className={
             darkMode

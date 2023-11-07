@@ -46,13 +46,11 @@
   border: 0.18rem solid transparent;
 }
 
-/* Hover state */
-.button-shared.button1:hover:not(:disabled):not(.pressed) {
-  background-color: rgb(7, 209, 152, 90);
-}
-
-.button-shared.button2:hover:not(:disabled):not(.pressed) {
-  background-color: rgb(7, 209, 152, 90);
+@media (min-width: 481px) {
+  .button-shared.button1:hover:not(:disabled):not(.pressed),
+  .button-shared.button2:hover:not(:disabled):not(.pressed) {
+    background-color: rgb(7, 209, 152, 90);
+  }
 }
 
 /* Active/Pressed state */
