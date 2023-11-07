@@ -1,13 +1,19 @@
 @media (min-width: 641px) and (max-width: 1024px) {
-  .left-section-items {
-    scale: 75%;
+  .assets-returns {
+    scale: 90%;
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
+    justify-content: space-evenly;
   }
 }
 
 @media (min-width: 1025px) {
+  .left-section-items {
+    scale: 90%;
+  }
+}
+
+@media (max-width: 480px) {
 }
 
 .button-txt {
