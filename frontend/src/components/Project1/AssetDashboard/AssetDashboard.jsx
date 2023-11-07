@@ -141,176 +141,178 @@ const AssetDashboard = () => {
   };
 
   return (
-    <div className="asset-dashboard  lg:flex  lg:justify-center lg:space-x-8 mb-5">
+    <div className="asset-dashboard  lg:flex  lg:justify-center lg:space-x-8 mb-5  ">
       <div
-        className={` rounded shadow-md  lg:w-[22.5%] 2xl:w-[18%] ${
+        className={`left-section rounded shadow-md   ${
           darkMode ? "dark bg-neutral-700 " : "bg-stone-100  "
         }`}
       >
-        {/* Assets Section */}
-        <div className="left-section mb-8 scale-90">
-          <h1 className="h1-title">Assets:</h1>
-          <div className="">
-            <Button
-              variant="button1"
-              className=""
-              onClick={() => toggleMetric("gold_pct")}
-              label="GOLD"
-              active={enabledMetrics.gold_pct}
-            />
-            <div className="button-checkbox flex items-center lg:space-x-4">
+        <div className="left-section-items">
+          {" "}
+          {/* Assets Section */}
+          <div className=" mb-8">
+            <h1 className="h1-title">Assets:</h1>
+            <div className="">
               <Button
                 variant="button1"
-                onClick={() => toggleMetric("house_pct")}
-                label="HOUSE"
-                active={enabledMetrics.house_pct}
+                className=""
+                onClick={() => toggleMetric("gold_pct")}
+                label="GOLD"
+                active={enabledMetrics.gold_pct}
               />
-              <div className="rent-div space-x-2">
+              <div className="button-checkbox flex items-center lg:space-x-4">
+                <Button
+                  variant="button1"
+                  onClick={() => toggleMetric("house_pct")}
+                  label="HOUSE"
+                  active={enabledMetrics.house_pct}
+                />
+                <div className="rent-div space-x-2">
+                  <label>
+                    <input
+                      type="checkbox"
+                      checked={rent.enabled}
+                      onChange={toggleRent}
+                      disabled={!enabledMetrics.house_pct}
+                      className="ml-2 lg:ml-0"
+                    />
+                    <span className="ml-0.5 text-sm">Rent (%)</span>
+                  </label>
+                  <input
+                    type="number"
+                    min="0"
+                    max="10"
+                    value={rent.value}
+                    onChange={handleRentChange}
+                    disabled={!rent.enabled || !enabledMetrics.house_pct}
+                    className={`${
+                      rent.enabled
+                        ? darkMode
+                          ? "bg-white text-black"
+                          : "bg-white text-black"
+                        : darkMode
+                        ? "bg-gray-300 text-black"
+                        : "bg-gray-200 text-black"
+                    } `}
+                  />
+                </div>
+              </div>
+              <div className="button-checkbox flex items-center lg:space-x-4">
+                <Button
+                  variant="button1"
+                  onClick={() => toggleMetric("sp500_pct")}
+                  label="SP500"
+                  active={enabledMetrics.sp500_pct}
+                />
+                <div className="rent-div space-x-2">
+                  <label className="lg:ml-0 ml-2">
+                    <input
+                      type="checkbox"
+                      checked={dividends.enabled}
+                      onChange={toggleDividends}
+                      disabled={!enabledMetrics.sp500_pct}
+                      className=""
+                    />
+                    <span className="ml-0.5 text-sm ">Dividends (%)</span>
+                  </label>
+                  <input
+                    type="number"
+                    min="0"
+                    max="10"
+                    value={dividends.value}
+                    onChange={handleDividendsChange}
+                    disabled={!dividends.enabled || !enabledMetrics.sp500_pct}
+                    className={`${
+                      dividends.enabled
+                        ? darkMode
+                          ? "bg-white text-black"
+                          : "bg-white text-black"
+                        : darkMode
+                        ? "bg-gray-300 text-black"
+                        : "bg-gray-200 text-black"
+                    } `}
+                  />
+                </div>
+              </div>
+            </div>
+            <Button
+              variant="button1"
+              onClick={() => toggleMetric("bond10tr_pct")}
+              label="BONDS10Y"
+              active={enabledMetrics.bond10tr_pct}
+            />
+          </div>
+          {/* Return Section */}
+          <div className="">
+            <h1 className="h1-title">Returns:</h1>
+            <div className="space-y-2.5 button-txt">
+              <div className="flex space-x-3">
+                <div className="h-8 w-1 bg-yellow-500"></div>
+                <span className="text-2xl">
+                  {renderCummulativePercentage("Gold", "gold_pct")}
+                </span>
+              </div>
+              <div className="flex space-x-3">
+                <div className="h-8 w-1 bg-rose-700"></div>
+                <span className="text-2xl">
+                  {renderCummulativePercentage("House", "house_pct")}
+                </span>
+              </div>
+              <div className="flex space-x-3">
+                <div className="h-8 w-1 bg-blue-700"></div>
+                <span className="text-2xl">
+                  {renderCummulativePercentage("SP500", "sp500_pct")}
+                </span>
+              </div>
+              <div className="flex space-x-3">
+                <div className="h-8 w-1 bg-green-700	"></div>
+                <span className="text-2xl">
+                  {renderCummulativePercentage("BONDS", "bond10tr_pct")}
+                </span>
+              </div>
+            </div>
+          </div>
+          {/* Settings Section */}
+          <div className="">
+            <h2 className="h1-title">Settings:</h2>
+            <div className="">
+              <div>
                 <label>
                   <input
                     type="checkbox"
-                    checked={rent.enabled}
-                    onChange={toggleRent}
-                    disabled={!enabledMetrics.house_pct}
-                    className="ml-2 lg:ml-0"
+                    checked={isInflationAdjusted}
+                    onChange={toggleInflationAdjustment}
                   />
-                  <span className="ml-0.5 text-sm">Rent (%)</span>
+                  <span className="ml-0.5">Inflation Adjusted</span>
                 </label>
-                <input
-                  type="number"
-                  min="0"
-                  max="10"
-                  value={rent.value}
-                  onChange={handleRentChange}
-                  disabled={!rent.enabled || !enabledMetrics.house_pct}
-                  className={`${
-                    rent.enabled
-                      ? darkMode
-                        ? "bg-white text-black"
-                        : "bg-white text-black"
-                      : darkMode
-                      ? "bg-gray-300 text-black"
-                      : "bg-gray-200 text-black"
-                  } `}
-                />
               </div>
-            </div>
-            <div className="button-checkbox flex items-center lg:space-x-4">
-              <Button
-                variant="button1"
-                onClick={() => toggleMetric("sp500_pct")}
-                label="SP500"
-                active={enabledMetrics.sp500_pct}
-              />
-              <div className="rent-div space-x-2">
-                <label className="lg:ml-0 ml-2">
-                  <input
-                    type="checkbox"
-                    checked={dividends.enabled}
-                    onChange={toggleDividends}
-                    disabled={!enabledMetrics.sp500_pct}
-                    className=""
-                  />
-                  <span className="ml-0.5 text-sm ">Dividends (%)</span>
-                </label>
-                <input
-                  type="number"
-                  min="0"
-                  max="10"
-                  value={dividends.value}
-                  onChange={handleDividendsChange}
-                  disabled={!dividends.enabled || !enabledMetrics.sp500_pct}
-                  className={`${
-                    dividends.enabled
-                      ? darkMode
-                        ? "bg-white text-black"
-                        : "bg-white text-black"
-                      : darkMode
-                      ? "bg-gray-300 text-black"
-                      : "bg-gray-200 text-black"
-                  } `}
-                />
+
+              {/* Slider */}
+              <div className="slider-chart ">
+                <Box sx={{ width: 240, margin: "0.6rem" }}>
+                  <ThemeProvider theme={theme}>
+                    <Slider
+                      size="small"
+                      value={yearRange}
+                      onChange={handleSliderChange}
+                      valueLabelDisplay="auto"
+                      aria-labelledby="range-slider"
+                      getAriaValueText={(value) => `${value}`}
+                      min={startYear}
+                      max={2022}
+                      marks={[
+                        { value: startYear, label: "1970" },
+                        { value: endYear, label: "2022" },
+                      ]}
+                    />
+                  </ThemeProvider>
+                </Box>
               </div>
-            </div>
-          </div>
-          <Button
-            variant="button1"
-            onClick={() => toggleMetric("bond10tr_pct")}
-            label="BONDS10Y"
-            active={enabledMetrics.bond10tr_pct}
-          />
-        </div>
-
-        {/* Return Section */}
-        <div className="assets-section mb-8 mobile-section scale-90">
-          <h1 className="h1-title">Returns:</h1>
-          <div className="space-y-2.5 button-txt">
-            <div className="flex space-x-3">
-              <div className="h-8 w-1 bg-yellow-500"></div>
-              <span className="text-2xl">
-                {renderCummulativePercentage("Gold", "gold_pct")}
-              </span>
-            </div>
-            <div className="flex space-x-3">
-              <div className="h-8 w-1 bg-rose-700"></div>
-              <span className="text-2xl">
-                {renderCummulativePercentage("House", "house_pct")}
-              </span>
-            </div>
-            <div className="flex space-x-3">
-              <div className="h-8 w-1 bg-blue-700"></div>
-              <span className="text-2xl">
-                {renderCummulativePercentage("SP500", "sp500_pct")}
-              </span>
-            </div>
-            <div className="flex space-x-3">
-              <div className="h-8 w-1 bg-green-700	"></div>
-              <span className="text-2xl">
-                {renderCummulativePercentage("BONDS", "bond10tr_pct")}
-              </span>
-            </div>
-          </div>
-        </div>
-
-        {/* Settings Section */}
-        <div className="settings-section mobile-section scale-90">
-          <h2 className="h1-title">Settings:</h2>
-          <div className="">
-            <div>
-              <label>
-                <input
-                  type="checkbox"
-                  checked={isInflationAdjusted}
-                  onChange={toggleInflationAdjustment}
-                />
-                <span className="ml-0.5">Inflation Adjusted</span>
-              </label>
-            </div>
-
-            {/* Slider */}
-            <div className="slider-chart ">
-              <Box sx={{ width: 240, margin: "0.6rem" }}>
-                <ThemeProvider theme={theme}>
-                  <Slider
-                    size="small"
-                    value={yearRange}
-                    onChange={handleSliderChange}
-                    valueLabelDisplay="auto"
-                    aria-labelledby="range-slider"
-                    getAriaValueText={(value) => `${value}`}
-                    min={startYear}
-                    max={2022}
-                    marks={[
-                      { value: startYear, label: "1970" },
-                      { value: endYear, label: "2022" },
-                    ]}
-                  />
-                </ThemeProvider>
-              </Box>
             </div>
           </div>
         </div>
       </div>
+
       <div className="right-section flex lg:w-[72.5%] 2xl:w-[80%] m-5 lg:m-0 ">
         <div className="chart-container">
           <AssetChart

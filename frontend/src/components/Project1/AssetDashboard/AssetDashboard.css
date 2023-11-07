@@ -1,5 +1,17 @@
-.chart-container {
-  width: 100%;
+@media (min-width: 641px) and (max-width: 1024px) {
+  .left-section-items {
+    scale: 75%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+}
+
+@media (min-width: 1025px) {
+}
+
+.button-txt {
+  font-weight: 500;
 }
 .h1-title {
   font-weight: 600;
@@ -7,16 +19,6 @@
   margin-bottom: 0.4rem;
 }
 
-.button-txt {
-  font-weight: 500;
-}
-
-.mobile-section {
-  display: flex;
-  flex-direction: column;
-}
-@media (min-width: 641px) and (max-width: 1024px) {
-}
-
-@media (min-width: 1025px) {
+.chart-container {
+  width: 100%;
 }
