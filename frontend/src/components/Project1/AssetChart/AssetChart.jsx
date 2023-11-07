@@ -11,10 +11,10 @@ const getCSSVariable = (variable) =>
   getComputedStyle(document.documentElement).getPropertyValue(variable);
 
 const COLORS = {
-  gold_pct: "rgb(238, 212, 133)",
-  house_pct: "rgb(239 68 68)",
-  sp500_pct: "rgb(43, 142, 199)",
-  bond10tr_pct: "rgb(22 163 74)",
+  gold_pct: "rgb(234 179 8)",
+  house_pct: "rgb(190 18 60)",
+  sp500_pct: "rgb(29 78 216)",
+  bond10tr_pct: "rgb(21 128 61)",
 };
 
 const METRIC_LABELS = {

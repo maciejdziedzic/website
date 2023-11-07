@@ -1,11 +1,3 @@
-.asset-dashboard {
-  flex-direction: column;
-}
-
-.left-section .flex-col {
-  flex-direction: column;
-}
-
 .chart-container {
   width: 100%;
 }
@@ -18,19 +10,13 @@
 .button-txt {
   font-weight: 500;
 }
+
+.mobile-section {
+  display: flex;
+  flex-direction: column;
+}
 @media (min-width: 641px) and (max-width: 1024px) {
-  .left-section .flex-col {
-    flex-direction: row;
-    justify-content: space-between;
-  }
 }
 
 @media (min-width: 1025px) {
-  .asset-dashboard {
-    flex-direction: row;
-  }
-
-  .left-section .flex-col {
-    flex-direction: column;
-  }
 }
