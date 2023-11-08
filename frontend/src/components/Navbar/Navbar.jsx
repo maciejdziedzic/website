@@ -186,6 +186,7 @@ export default function Navbar() {
             >
               About
             </Link>
+            <br />
             <Link
               to="/project1"
               className="block burger-button rounded"
