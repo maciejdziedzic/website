@@ -22,4 +22,8 @@
   #root > div > div.flex-grow > div > div > div > div > p {
     font-size: x-small;
   }
+
+  #root > div > div.flex-grow > div > div > div:nth-child(5) > div > div {
+    font-size: x-small;
+  }
 }
