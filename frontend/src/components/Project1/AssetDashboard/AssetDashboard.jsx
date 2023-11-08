@@ -248,7 +248,7 @@ const AssetDashboard = () => {
 
               {/* Return Section */}
               <div className="returns-settings mb-8">
-                <h1 className="h1-title">Returns:</h1>
+                <h1 className="h1-title">Cumulative Returns:</h1>
                 <div className="space-y-2.5 button-txt">
                   <div className="flex space-x-3">
                     <div className="h-8 w-1 bg-yellow-500"></div>
