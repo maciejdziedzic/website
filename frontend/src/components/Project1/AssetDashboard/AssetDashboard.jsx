@@ -130,12 +130,28 @@ const AssetDashboard = () => {
 
   const toggleDividends = () =>
     setDividends((prev) => ({ ...prev, enabled: !prev.enabled }));
-  const handleDividendsChange = (e) =>
-    setDividends({ enabled: true, value: parseFloat(e.target.value) });
+  const handleDividendsChange = (e) => {
+    let value = parseFloat(e.target.value);
+    if (isNaN(value)) {
+      value = 0;
+    } else {
+      value = Math.min(Math.max(value, 0), 10);
+    }
+    setDividends({ enabled: true, value: value });
+  };
+
   const toggleRent = () =>
     setRent((prev) => ({ ...prev, enabled: !prev.enabled }));
-  const handleRentChange = (e) =>
-    setRent({ enabled: true, value: parseFloat(e.target.value) });
+  const handleRentChange = (e) => {
+    let value = parseFloat(e.target.value);
+    if (isNaN(value)) {
+      value = 0;
+    } else {
+      value = Math.min(Math.max(value, 0), 10);
+    }
+    setRent({ enabled: true, value: value });
+  };
+
   const toggleInflationAdjustment = () => {
     setIsInflationAdjusted((prev) => !prev);
   };
