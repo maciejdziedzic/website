@@ -100,7 +100,6 @@ def fetch_text():
             if link_tag:
                 newest_press_release_link = link_tag['href']
                 break
-        # Swirowanie pawiana
     if not newest_press_release_link:
         raise ValueError("No 'Press Release' found!")
 
