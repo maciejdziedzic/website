@@ -88,18 +88,20 @@ def fetch_text():
     for li_tag in li_tags:
         span_tag_text = li_tag.select_one(
             'p > span').text.lower() if li_tag else ""
+        print(span_tag_text)
         if 'press release' in span_tag_text:
             # Extract the link from the matching li element
             link_tag = li_tag.find('a', href=True)
+            print(link_tag)
             if link_tag:
                 newest_press_release_link = link_tag['href']
-                break
+
         elif 'speech' in span_tag_text:
             # Extract the link from the matching li element
             link_tag = li_tag.find('a', href=True)
             if link_tag:
                 newest_press_release_link = link_tag['href']
-                break
+
     if not newest_press_release_link:
         raise ValueError("No 'Press Release' found!")
 
@@ -114,10 +116,11 @@ def fetch_text():
     p_tags = soup.select("#article > div:nth-child(3) > p")[:3]
 
     press_release_content = [p.get_text() for p in p_tags]
-    if press_release_content:
-        print(press_release_content)
-    else:
-        print("Failed to retrieve press release content.")
+
+    # if press_release_content:
+    #     print(press_release_content)
+    # else:
+    #     print("Failed to retrieve press release content.")
 
     return press_release_content
 
