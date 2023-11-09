@@ -72,7 +72,7 @@ const EconomicDashboard = () => {
         <div className="left-section button-box lg:flex-col text-xs lg:w-[22.5%] lg:flex">
           <div
             className={`button-box scale-90 xl:scale-100  rounded shadow-xl  ${
-              darkMode ? "dark bg-neutral-700 " : "bg-stone-100  "
+              darkMode ? "dark " : " "
             } `}
           >
             {seriesLabels.map((label) => (
@@ -93,7 +93,7 @@ const EconomicDashboard = () => {
         </div>
 
         <div
-          className="right-section mr-2 ml-2 lg:w-[72.5%]"
+          className="right-section mr-2 ml-2 lg:w-[72.5%] 2xl:w-[260.5%]"
           style={{
             backgroundColor: darkMode
               ? "rgb(163 163 163 / var(--tw-bg-opacity))"
