@@ -92,6 +92,7 @@ export default function EconomicModel() {
       setInterpretation(response.data);
     } catch (error) {
       console.error("Error fetching fed interpretation: ", error);
+      console.log(error);
     }
     setLoadingInterpretation(false);
     setButtonActiveState((prev) => ({ ...prev, fetchGPT: true }));
