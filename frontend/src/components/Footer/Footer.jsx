@@ -1,6 +1,6 @@
 import { useContext } from "react";
 import { DarkModeContext } from "../../contexts/DarkMode/DarkModeContext";
-
+// Footer
 export default function Footer() {
   const { darkMode } = useContext(DarkModeContext);
   return (
