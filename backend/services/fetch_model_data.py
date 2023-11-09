@@ -94,6 +94,12 @@ def fetch_text():
             if link_tag:
                 newest_press_release_link = link_tag['href']
                 break
+        elif 'speech' in span_tag_text:
+            # Extract the link from the matching li element
+            link_tag = li_tag.find('a', href=True)
+            if link_tag:
+                newest_press_release_link = link_tag['href']
+                break
 
     if not newest_press_release_link:
         raise ValueError("No 'Press Release' found!")

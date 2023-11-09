@@ -93,7 +93,7 @@ const EconomicDashboard = () => {
         </div>
 
         <div
-          className="right-section mr-2 ml-2 lg:w-[72.5%]"
+          className="right-section mr-2 ml-2 lg:w-[72.5%] 2xl:w-[250%]"
           style={{
             backgroundColor: darkMode
               ? "rgb(163 163 163 / var(--tw-bg-opacity))"
