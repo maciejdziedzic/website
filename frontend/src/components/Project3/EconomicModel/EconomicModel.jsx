@@ -59,7 +59,6 @@ export default function EconomicModel() {
         `${apiBaseUrl}/api/run-logistic-model`,
         logisticData
       );
-      console.log("Logistic model result: ", response.data);
       setLogisticModelResult({
         lower_or_maintain: (response.data.lower_or_maintain * 100).toFixed(2),
         raise: (response.data.raise * 100).toFixed(2),
