@@ -151,6 +151,7 @@ const AssetDashboard = () => {
     }
     setRent({ enabled: true, value: value });
   };
+
   const toggleInflationAdjustment = () => {
     setIsInflationAdjusted((prev) => !prev);
   };

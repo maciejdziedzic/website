@@ -72,7 +72,7 @@ const EconomicDashboard = () => {
         <div className="left-section button-box lg:flex-col text-xs lg:w-[22.5%] lg:flex">
           <div
             className={`button-box scale-90 xl:scale-100  rounded shadow-xl  ${
-              darkMode ? "dark bg-neutral-700 " : "bg-stone-100  "
+              darkMode ? "dark " : " "
             } `}
           >
             {seriesLabels.map((label) => (
