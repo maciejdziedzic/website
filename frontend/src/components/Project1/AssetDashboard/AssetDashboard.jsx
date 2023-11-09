@@ -150,6 +150,7 @@ const AssetDashboard = () => {
       value = Math.min(Math.max(value, 0), 10);
     }
     setRent({ enabled: true, value: value });
+    console.log(value);
   };
 
   const toggleInflationAdjustment = () => {
