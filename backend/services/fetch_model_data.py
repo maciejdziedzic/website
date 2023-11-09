@@ -119,6 +119,7 @@ def fetch_text():
 
 def fetch_interpretation(press_release_content):
     try:
+        # openai.api_key = 'force error'
         response = openai.ChatCompletion.create(
             model="gpt-3.5-turbo",
             temperature=0.5,

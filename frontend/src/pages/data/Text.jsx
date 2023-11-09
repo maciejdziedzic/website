@@ -182,7 +182,8 @@ export const fedPolicyModelData = {
   rows: [
     {
       metric: "CPI",
-      description: "Quarterly percentage change in the Consumer Price Index.",
+      description:
+        "Logistic regression: Quarterly percentage change in the Consumer Price Index.",
       source: {
         name: "fred",
         url: "https://fred.stlouisfed.org/series/CPIAUCSL",
@@ -191,7 +192,7 @@ export const fedPolicyModelData = {
     {
       metric: "UNEMPLOYMENT RATE QUARTER AVG",
       description:
-        "Quarterly average unemployment rate, calculated from three monthly rates.",
+        "Logistic regression: Quarterly average unemployment rate, calculated from three monthly rates.",
       source: {
         name: "fred",
         url: "https://fred.stlouisfed.org/series/UNRATE",
@@ -200,7 +201,7 @@ export const fedPolicyModelData = {
     {
       metric: "FED POLICY",
       description:
-        "The model's target is determined by averaging monthly Federal Effective Rates to a quarterly basis, calculating the quarter-to-quarter change, and assigning 1 for an increase and 0 for no change or a decrease.",
+        "Logistic regression: The model's target is determined by averaging monthly Federal Effective Rates to a quarterly basis, calculating the quarter-to-quarter change, and assigning 1 for an increase and 0 for no change or a decrease.",
       source: {
         name: "fred",
         url: "https://fred.stlouisfed.org/series/FEDFUNDS",
@@ -209,7 +210,7 @@ export const fedPolicyModelData = {
     {
       metric: "PROJECTED CPI",
       description:
-        "Web-scraped quarterly Consumer Price Index projection from the Federal Reserve Bank of Cleveland's published data, transformed from quarterly annualized percentage change to quarterly percentage change.",
+        "Logistic regression input: Web-scraped quarterly Consumer Price Index projection from the Federal Reserve Bank of Cleveland's published data, transformed from quarterly annualized percentage change to quarterly percentage change.",
       source: {
         name: "fed",
         url: "https://www.clevelandfed.org/indicators-and-data/inflation-nowcasting",
@@ -217,7 +218,8 @@ export const fedPolicyModelData = {
     },
     {
       metric: "UNEMPLOYMENT RATE LATEST",
-      description: "Most recent monthly unemployment rate.",
+      description:
+        "Logistic regression input: Most recent monthly unemployment rate.",
       source: {
         name: "fred",
         url: "https://fred.stlouisfed.org/series/UNRATE",
@@ -226,7 +228,7 @@ export const fedPolicyModelData = {
     {
       metric: "HYPOTETHICAL FED RATE",
       description:
-        "The machine learning model evaluates the most recent Federal Reserve press release, providing a percentage-based prediction of the likelihood of an interest rate increase.",
+        "GPT Model: The machine learning model evaluates the most recent Federal Reserve press release, providing a percentage-based prediction of the likelihood of an interest rate increase.",
       source: {
         name: "fed",
         url: "https://www.federalreserve.gov/",
