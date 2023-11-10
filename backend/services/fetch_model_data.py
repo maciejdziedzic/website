@@ -89,17 +89,12 @@ def fetch_text():
         span_tag_text = li_tag.select_one(
             'p > span').text.lower() if li_tag else ""
         print(span_tag_text)
-        if 'speech' in span_tag_text:
+        if 'speech' or 'press release' in span_tag_text:
             # Extract the link from the matching li element
             link_tag = li_tag.find('a', href=True)
-            print(link_tag)
             if link_tag:
                 newest_press_release_link = link_tag['href']
-
-        # elif 'speech' in span_tag_text:
-        #     link_tag = li_tag.find('a', href=True)
-        #     if link_tag:
-        #         newest_press_release_link = link_tag['href']
+                break
 
     if not newest_press_release_link:
         raise ValueError("No 'Press Release' found!")
