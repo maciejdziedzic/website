@@ -228,7 +228,7 @@ export const fedPolicyModelData = {
     {
       metric: "HYPOTETHICAL FED RATE",
       description:
-        "GPT Model: The machine learning model evaluates the most recent Federal Reserve press release, providing a percentage-based prediction of the likelihood of an interest rate increase.",
+        "GPT Model: The machine learning model evaluates the most recent Federal Reserve press release or speech, providing a percentage-based prediction of the likelihood of an interest rate increase.",
       source: {
         name: "fed",
         url: "https://www.federalreserve.gov/",

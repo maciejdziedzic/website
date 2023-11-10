@@ -1,4 +1,4 @@
-import { useState, useContext, Fragment } from "react";
+import { useState, useContext, Fragment, useEffect } from "react";
 import axios from "axios";
 import Button from "../../Button/Button";
 import { DarkModeContext } from "../../../contexts/DarkMode/DarkModeContext";
@@ -23,6 +23,7 @@ export default function EconomicModel() {
   const [logisticModelResult, setLogisticModelResult] = useState(null);
   const [fedData, setFedData] = useState(null);
   const [interpretation, setInterpretation] = useState(null);
+  const [interpretType, setInterpretType] = useState(null);
   const [finalResult, setFinalResult] = useState(null);
 
   const [loadingLogisticData, setLoadingLogisticData] = useState(false);
@@ -90,13 +91,15 @@ export default function EconomicModel() {
         fedData
       );
       setInterpretation(response.data);
+      setInterpretType(typeof response.data.interpretation);
     } catch (error) {
       console.error("Error fetching fed interpretation: ", error);
-      console.log(error);
     }
     setLoadingInterpretation(false);
     setButtonActiveState((prev) => ({ ...prev, fetchGPT: true }));
   };
+
+  useEffect(() => {}, [interpretType]);
 
   const calculateFinalResult = () => {
     setLoadingFinalResult(true);
@@ -125,8 +128,18 @@ export default function EconomicModel() {
     </div>
   );
 
-  const renderContentOrPlaceholder = (data, loading, contentRenderer) => {
+  const renderContentOrPlaceholder = (
+    data,
+    loading,
+    contentRenderer,
+    errorCheck
+  ) => {
     if (loading) return <LoadingDots />;
+    if (errorCheck && typeof errorCheck === "string") {
+      return (
+        <p>Could not retrieve data from OpenAI API. Please try again later.</p>
+      );
+    }
     return <div>{data ? contentRenderer(data) : "-"}</div>;
   };
 
@@ -197,7 +210,6 @@ export default function EconomicModel() {
             disabled={!buttonActiveState.runModel || loadingFedData}
             active={buttonActiveState.fetchFed}
           />
-
           {renderContentOrPlaceholder(fedData, loadingFedData, () => (
             <Fragment>
               <p>
@@ -219,20 +231,26 @@ export default function EconomicModel() {
           {renderContentOrPlaceholder(
             interpretation,
             loadingInterpretation,
-            () => (
-              <Fragment>
+            () =>
+              interpretType === "string" ? (
                 <p>
-                  <strong>Interpretation:</strong>{" "}
+                  Could not retrieve data from OpenAI API. Please try again
+                  later.
                 </p>
-                <p>
-                  Based on the text analysis, there is{" "}
-                  {(interpretation.interpretation * 100).toFixed(0)}% chance
-                  that the Federal Reserve will raise interest rates, and {""}
-                  {((1 - interpretation.interpretation) * 100).toFixed(0)}%
-                  chance that it will lower or maintain interest rates.
-                </p>
-              </Fragment>
-            )
+              ) : (
+                <Fragment>
+                  <p>
+                    <strong>Interpretation:</strong>{" "}
+                  </p>
+                  <p>
+                    Based on the text analysis, there is{" "}
+                    {(interpretation.interpretation * 100).toFixed(0)}% chance
+                    that the Federal Reserve will raise interest rates, and {""}
+                    {((1 - interpretation.interpretation) * 100).toFixed(0)}%
+                    chance that it will lower or maintain interest rates.
+                  </p>
+                </Fragment>
+              )
           )}
         </Section>
 
@@ -244,17 +262,28 @@ export default function EconomicModel() {
             disabled={!buttonActiveState.fetchGPT || loadingFinalResult}
             active={buttonActiveState.calculate}
           />
-          {renderContentOrPlaceholder(finalResult, loadingFinalResult, () => (
-            <Fragment>
-              <div>
+
+          {renderContentOrPlaceholder(finalResult, loadingFinalResult, () =>
+            interpretType === "number" ? (
+              <Fragment>
+                <div>
+                  <p>
+                    <strong>Final Result:</strong>
+                  </p>
+                  <p>Raise: {finalResult.raise}%</p>
+                  <p>Lower/Maintain: {finalResult.lower_or_maintain}%</p>
+                </div>
+              </Fragment>
+            ) : (
+              <Fragment>
                 <p>
-                  <strong>Final Result:</strong>
+                  <strong>Result:</strong>
                 </p>
-                <p>Raise: {finalResult.raise}%</p>
-                <p>Lower/Maintain: {finalResult.lower_or_maintain}%</p>
-              </div>
-            </Fragment>
-          ))}
+                <p>Raise: {logisticModelResult.raise}%</p>
+                <p>Lower/Maintain: {logisticModelResult.lower_or_maintain}%</p>
+              </Fragment>
+            )
+          )}
         </Section>
       </div>
     </div>

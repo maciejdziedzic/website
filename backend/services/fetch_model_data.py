@@ -82,7 +82,7 @@ def fetch_text():
     # Iterate over the li elements
     base_selector = "#content > div:nth-child(3) > div.col-xs-12.col-sm-8 > ul > li"
     li_tags = soup.select(base_selector)
-    print(li_tags)
+
     newest_press_release_link = None
 
     for li in li_tags:
