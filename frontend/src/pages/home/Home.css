@@ -51,7 +51,6 @@
   color: var(--text-color-dark);
   height: 2.4rem;
   width: 80%;
-  border-radius: 4%;
 }
 
 .home-button-mobile.dark {
