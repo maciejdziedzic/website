@@ -16,11 +16,12 @@ export default function About() {
         <section className="mb-5">
           <h2 className="text-xl font-semibold mb-3">Introduction</h2>
           <p>
-            I created this website to deepen my understanding of web technology,
+            I created this website to deepen my understanding of the web,
             economics and statistics. It serves to showcase my research to an
-            audience whom I hope will find it intriguing and potentially wish to
-            collaborate on future projects. I am particularly interested in
-            working in finance, healthcare or in the field of computer vision.
+            audience whom I hope will find it intriguing and thought provoking
+            as I think of these charts myself. If you think of any variables
+            that may be interesting to include here or find any discrepancies,
+            let me know!
           </p>
         </section>
 
@@ -65,15 +66,6 @@ export default function About() {
               Reserve&apos;s press releases.
             </li>
           </ul>
-        </section>
-
-        <section className="mb-5">
-          <h2 className="text-xl font-semibold mb-3">Data Overview</h2>
-          <p>
-            The data presented here is curated from sources believed to be
-            reliable and is processed to ensure accuracy and relevance. If you
-            find any discrepancies, please let me know via email.
-          </p>
         </section>
       </div>
     </div>

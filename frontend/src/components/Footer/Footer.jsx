@@ -15,7 +15,7 @@ export default function Footer() {
           darkMode ? " bg-neutral-700" : " bg-stone-100"
         }`}
       >
-        © 2023 Maciej Dziedzic. All Rights Reserved.
+        Maciej Dziedzic, 2023
       </div>
     </div>
   );
