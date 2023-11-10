@@ -82,19 +82,15 @@ def fetch_text():
     # Iterate over the li elements
     base_selector = "#content > div:nth-child(3) > div.col-xs-12.col-sm-8 > ul > li"
     li_tags = soup.select(base_selector)
-
+    print(li_tags)
     newest_press_release_link = None
 
-    for li_tag in li_tags:
-        span_tag_text = li_tag.select_one(
-            'p > span').text.lower() if li_tag else ""
-        print(span_tag_text)
-        if 'speech' or 'press release' in span_tag_text:
-            # Extract the link from the matching li element
-            link_tag = li_tag.find('a', href=True)
-            if link_tag:
-                newest_press_release_link = link_tag['href']
-                break
+    for li in li_tags:
+        text = li.get_text().lower()
+        if "speech" in text or "press release" in text:
+            link_tag = li.find('a', href=True)
+            newest_press_release_link = link_tag['href']
+            break
 
     if not newest_press_release_link:
         raise ValueError("No 'Press Release' found!")
@@ -103,6 +99,7 @@ def fetch_text():
     full_link = base_url + newest_press_release_link
 
     press_release_url = f"https://www.federalreserve.gov{newest_press_release_link}"
+
     response = requests.get(press_release_url)
     soup = BeautifulSoup(response.content, 'html.parser')
 
