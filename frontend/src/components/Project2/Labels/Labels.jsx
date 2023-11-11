@@ -32,7 +32,7 @@ export const Labels = {
   m3_to_gdp: {
     label: "M3/GDP",
     tooltipLabel: "Broad Money Supply (M3) to GDP Ratio",
-    color: "rgb(120, 60, 190)",
+    color: "rgb(112 26 117)",
   },
   unrate: {
     label: "UNEMPL",
@@ -47,12 +47,12 @@ export const Labels = {
   ppi_pct: {
     label: "PPI",
     tooltipLabel: "Producer Price Index Change",
-    color: "rgb(22, 99, 88)",
+    color: "rgb(248 113 113)",
   },
   resins_to_gdp: {
     label: "RES./GDP",
     tooltipLabel: "Reserves of Depository Institutions to GDP Ratio",
-    color: "rgb(10, 50, 120)",
+    color: "rgb(3 105 161)",
   },
   cp_to_gdp: {
     label: "C.P./GDP",

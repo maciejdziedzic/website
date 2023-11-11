@@ -55,7 +55,7 @@ export default function Navbar() {
                 onClick={toggleProjects}
                 className={`${buttonHoverColor} ${projectsActiveColor} block w-full h-full text-center  cursor-pointer`}
               >
-                PROJECTS⏷
+                PROJECTS {ProjectsOpen ? "⏶" : "⏷"}
               </span>
             </li>
             <div className="flex justify-between items-center ml-5 mr-5">
