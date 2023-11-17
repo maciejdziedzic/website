@@ -14,9 +14,7 @@ export default function Footer() {
         className={`flex justify-center text-xs p-1 ${
           darkMode ? " bg-neutral-700" : " bg-stone-100"
         }`}
-      >
-        Maciej Dziedzic, 2023
-      </div>
+      ></div>
     </div>
   );
 }
