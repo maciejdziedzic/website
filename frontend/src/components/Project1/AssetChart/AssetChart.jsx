@@ -12,9 +12,9 @@ const getCSSVariable = (variable) =>
 
 const COLORS = {
   gold_pct: "rgb(234 179 8)",
-  house_pct: "rgb(190 18 60)",
-  sp500_pct: "rgb(29 78 216)",
-  bond10tr_pct: "rgb(21 128 61)",
+  house_pct: "rgb(162, 103, 132)",
+  sp500_pct: "rgb(81, 163, 214)",
+  bond10tr_pct: "rgb(11, 111, 27)",
 };
 
 const METRIC_LABELS = {

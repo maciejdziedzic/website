@@ -278,25 +278,25 @@ const AssetDashboard = () => {
                   <h1 className="h1-title">Cumulative Returns:</h1>
                   <div className="space-y-2.5 button-txt">
                     <div className="flex space-x-3">
-                      <div className="h-8 w-1 bg-yellow-500"></div>
+                      <div className="l-gold h-8 w-1"></div>
                       <span className="text-lg">
                         {renderCummulativePercentage("Gold", "gold_pct")}
                       </span>
                     </div>
                     <div className="flex space-x-3">
-                      <div className="h-8 w-1 bg-rose-700"></div>
+                      <div className="l-house h-8 w-1 "></div>
                       <span className="text-lg">
                         {renderCummulativePercentage("House", "house_pct")}
                       </span>
                     </div>
                     <div className="flex space-x-3">
-                      <div className="h-8 w-1 bg-blue-700"></div>
+                      <div className="l-sp500 h-8 w-1 "></div>
                       <span className="text-lg">
                         {renderCummulativePercentage("SP500", "sp500_pct")}
                       </span>
                     </div>
                     <div className="flex space-x-3">
-                      <div className="h-8 w-1 bg-green-700	"></div>
+                      <div className="l-bonds h-8 w-1"></div>
                       <span className="text-lg">
                         {renderCummulativePercentage("BONDS", "bond10tr_pct")}
                       </span>
@@ -308,25 +308,25 @@ const AssetDashboard = () => {
                   <h1 className="h1-title">Average:</h1>
                   <div className="space-y-2.5 button-txt">
                     <div className="flex space-x-3">
-                      <div className="h-8 w-1 bg-yellow-500"></div>
+                      <div className="l-gold h-8 w-1 "></div>
                       <span className="text-lg">
                         {renderAverageAnnualPercentage("gold_pct")}
                       </span>
                     </div>
                     <div className="flex space-x-3">
-                      <div className="h-8 w-1 bg-rose-700"></div>
+                      <div className="l-house h-8 w-1 "></div>
                       <span className="text-lg">
                         {renderAverageAnnualPercentage("house_pct")}
                       </span>
                     </div>
                     <div className="flex space-x-3">
-                      <div className="h-8 w-1 bg-blue-700"></div>
+                      <div className="l-sp500 h-8 w-1 "></div>
                       <span className="text-lg">
                         {renderAverageAnnualPercentage("sp500_pct")}
                       </span>
                     </div>
                     <div className="flex space-x-3">
-                      <div className="h-8 w-1 bg-green-700	"></div>
+                      <div className="l-bonds h-8 w-1 	"></div>
                       <span className="text-lg">
                         {renderAverageAnnualPercentage("bond10tr_pct")}
                       </span>

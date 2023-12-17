@@ -31,3 +31,16 @@
 .chart-container {
   width: 100%;
 }
+
+.l-gold {
+  background-color: rgb(234 179 8);
+}
+.l-house {
+  background-color: rgb(162, 103, 132);
+}
+.l-sp500 {
+  background-color: rgb(81, 163, 214);
+}
+.l-bonds {
+  background-color: rgb(11, 111, 27);
+}
