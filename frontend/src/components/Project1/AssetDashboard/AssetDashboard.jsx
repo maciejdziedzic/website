@@ -90,6 +90,16 @@ const AssetDashboard = () => {
     );
   };
 
+  const renderAverageAnnualPercentage = (metric) => {
+    const numberOfYears = yearRange[1] - yearRange[0];
+    if (numberOfYears <= 0 || !cummulativePercentages[metric]) {
+      return "-";
+    }
+    const averageAnnualPercentage =
+      cummulativePercentages[metric] / numberOfYears;
+    return averageAnnualPercentage.toFixed(2) + "%";
+  };
+
   const handleSliderChange = (event, newValue) => {
     setYearRange(newValue);
   };
@@ -263,32 +273,64 @@ const AssetDashboard = () => {
               </div>
 
               {/* Return Section */}
-              <div className="returns-settings mb-8">
-                <h1 className="h1-title">Cumulative Returns:</h1>
-                <div className="space-y-2.5 button-txt">
-                  <div className="flex space-x-3">
-                    <div className="h-8 w-1 bg-yellow-500"></div>
-                    <span className="text-2xl">
-                      {renderCummulativePercentage("Gold", "gold_pct")}
-                    </span>
+              <div className="returns-settings mb-8 flex justify-between">
+                <div className="cumulative">
+                  <h1 className="h1-title">Cumulative Returns:</h1>
+                  <div className="space-y-2.5 button-txt">
+                    <div className="flex space-x-3">
+                      <div className="h-8 w-1 bg-yellow-500"></div>
+                      <span className="text-lg">
+                        {renderCummulativePercentage("Gold", "gold_pct")}
+                      </span>
+                    </div>
+                    <div className="flex space-x-3">
+                      <div className="h-8 w-1 bg-rose-700"></div>
+                      <span className="text-lg">
+                        {renderCummulativePercentage("House", "house_pct")}
+                      </span>
+                    </div>
+                    <div className="flex space-x-3">
+                      <div className="h-8 w-1 bg-blue-700"></div>
+                      <span className="text-lg">
+                        {renderCummulativePercentage("SP500", "sp500_pct")}
+                      </span>
+                    </div>
+                    <div className="flex space-x-3">
+                      <div className="h-8 w-1 bg-green-700	"></div>
+                      <span className="text-lg">
+                        {renderCummulativePercentage("BONDS", "bond10tr_pct")}
+                      </span>
+                    </div>
                   </div>
-                  <div className="flex space-x-3">
-                    <div className="h-8 w-1 bg-rose-700"></div>
-                    <span className="text-2xl">
-                      {renderCummulativePercentage("House", "house_pct")}
-                    </span>
-                  </div>
-                  <div className="flex space-x-3">
-                    <div className="h-8 w-1 bg-blue-700"></div>
-                    <span className="text-2xl">
-                      {renderCummulativePercentage("SP500", "sp500_pct")}
-                    </span>
-                  </div>
-                  <div className="flex space-x-3">
-                    <div className="h-8 w-1 bg-green-700	"></div>
-                    <span className="text-2xl">
-                      {renderCummulativePercentage("BONDS", "bond10tr_pct")}
-                    </span>
+                </div>
+
+                <div className="average flex-col">
+                  <h1 className="h1-title">Average:</h1>
+                  <div className="space-y-2.5 button-txt">
+                    <div className="flex space-x-3">
+                      <div className="h-8 w-1 bg-yellow-500"></div>
+                      <span className="text-lg">
+                        {renderAverageAnnualPercentage("gold_pct")}
+                      </span>
+                    </div>
+                    <div className="flex space-x-3">
+                      <div className="h-8 w-1 bg-rose-700"></div>
+                      <span className="text-lg">
+                        {renderAverageAnnualPercentage("house_pct")}
+                      </span>
+                    </div>
+                    <div className="flex space-x-3">
+                      <div className="h-8 w-1 bg-blue-700"></div>
+                      <span className="text-lg">
+                        {renderAverageAnnualPercentage("sp500_pct")}
+                      </span>
+                    </div>
+                    <div className="flex space-x-3">
+                      <div className="h-8 w-1 bg-green-700	"></div>
+                      <span className="text-lg">
+                        {renderAverageAnnualPercentage("bond10tr_pct")}
+                      </span>
+                    </div>
                   </div>
                 </div>
               </div>
