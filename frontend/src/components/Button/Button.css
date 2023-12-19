@@ -58,7 +58,7 @@
   background-color: rgb(231, 235, 235);
   border-color: var(--button-color-light);
   border-radius: 4%;
-  box-shadow: inset 1px 1px 1px 1px rgba(0, 0, 0, 0.3);
+  box-shadow: inset 1px 1px 1px 0.3px rgba(0, 0, 0, 0.3);
   color: var(--text-color-light);
 }
 /* Active/Pressed state for dark mode */
