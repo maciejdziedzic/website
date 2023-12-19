@@ -168,18 +168,19 @@ const AssetDashboard = () => {
 
   return (
     <div className="dashboard-container">
-      <div className="asset-dashboard  lg:flex  lg:justify-center lg:space-x-8 mb-5  ">
+      <div className="asset-dashboard lg:flex lg:justify-center lg:space-x-8 mb-5">
         <div
           className={`left-section rounded shadow-md   ${
             darkMode ? "dark bg-neutral-700 " : "bg-stone-100  "
           }`}
         >
-          <div className="left-section-items ">
-            {" "}
+          <div className="left-section-items lg:scale-100">
             <div className="assets-returns">
-              <div className="assets mb-8  ">
-                <h1 className="h1-title">Assets:</h1>
-                <div className="">
+              <div className="assets mb-8 md:-space-x-12 lg:space-x-0">
+                <h1 className="h1-title ml-0.5 md:-ml-12 lg:ml-0 space-x-2">
+                  Assets:
+                </h1>
+                <div className="-ml-0.5 md:ml-0">
                   <Button
                     variant="button1"
                     className=""
@@ -263,20 +264,20 @@ const AssetDashboard = () => {
                       />
                     </div>
                   </div>
+                  <Button
+                    variant="button1"
+                    onClick={() => toggleMetric("bond10tr_pct")}
+                    label="BONDS10Y"
+                    active={enabledMetrics.bond10tr_pct}
+                  />
                 </div>
-                <Button
-                  variant="button1"
-                  onClick={() => toggleMetric("bond10tr_pct")}
-                  label="BONDS10Y"
-                  active={enabledMetrics.bond10tr_pct}
-                />
               </div>
 
               {/* Return Section */}
-              <div className="returns-settings mb-8 flex justify-between">
+              <div className="returns-settings mb-8 flex justify-between space-x-6 lg:space-x-0 mr-2 ml-0.5 md:ml-0 md:mr-0">
                 <div className="cumulative">
-                  <h1 className="h1-title">Cumulative Returns:</h1>
-                  <div className="space-y-2.5 button-txt">
+                  <h1 className="h1-title h1-return">Cumulative Returns:</h1>
+                  <div className="space-y-2.5 button-txt ml-0.5 ">
                     <div className="flex space-x-3">
                       <div className="l-gold h-8 w-1"></div>
                       <span className="text-lg">
@@ -305,8 +306,8 @@ const AssetDashboard = () => {
                 </div>
 
                 <div className="average flex-col">
-                  <h1 className="h1-title">Average:</h1>
-                  <div className="space-y-2.5 button-txt">
+                  <h1 className="h1-title h1-return">Average:</h1>
+                  <div className="space-y-2.5 button-txt ml-0.5">
                     <div className="flex space-x-3">
                       <div className="l-gold h-8 w-1 "></div>
                       <span className="text-lg">
@@ -336,7 +337,7 @@ const AssetDashboard = () => {
               </div>
 
               {/* Settings Section */}
-              <div className="returns-settings">
+              <div className="returns-settings ml-0.5">
                 <h2 className="h1-title">Settings:</h2>
                 <div className="">
                   <div>

@@ -25,7 +25,10 @@
 .h1-title {
   font-weight: 600;
   font-size: small;
-  margin-bottom: 0.4rem;
+}
+
+.h1-return {
+  margin-bottom: 0.2rem;
 }
 
 .chart-container {
