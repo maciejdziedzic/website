@@ -115,17 +115,17 @@ export default function Navbar() {
                 }
               >
                 <ul className="flex flex-col space-y-4 text-sm ml-2 p-2">
-                  <Link to="/project1" onClick={toggleProjects}>
+                  <Link to="/finmarkets" onClick={toggleProjects}>
                     <button className="text-left hover:font-bold">
                       Asset Returns
                     </button>
                   </Link>
-                  <Link to="/project2" onClick={toggleProjects}>
+                  <Link to="/macrous" onClick={toggleProjects}>
                     <button className="text-left hover:font-bold  w-40">
                       Macroeconomic Chart
                     </button>
                   </Link>
-                  <Link to="/project3" onClick={toggleProjects}>
+                  <Link to="/modelfed" onClick={toggleProjects}>
                     <button className="text-left hover:font-bold ">
                       Fed Policy Model
                     </button>

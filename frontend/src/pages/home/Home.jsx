@@ -149,7 +149,7 @@ function Home() {
         <div className="flex flex-col">
           <div className="md:flex md:items-center md:my-2">
             <Link
-              to="/project1"
+              to="/finmarkets"
               className={`project-button hidden md:block  ${
                 darkMode ? "project-button-dark" : ""
               }`}
@@ -158,7 +158,7 @@ function Home() {
             </Link>
             <div className="flex justify-center items-center">
               <Link
-                to="project1"
+                to="finmarkets"
                 className={`home-button-mobile flex justify-center items-center md:hidden ${
                   darkMode ? "dark" : ""
                 }`}
@@ -175,7 +175,7 @@ function Home() {
           </div>
           <div className="flex items-center my-2 ">
             <Link
-              to="/project2"
+              to="/macrous"
               className={`project-button hidden md:block  ${
                 darkMode ? "project-button-dark" : ""
               }`}
@@ -192,7 +192,7 @@ function Home() {
           </div>
           <div className="flex justify-center items-center">
             <Link
-              to="project2"
+              to="macrous"
               className={`home-button-mobile flex justify-center items-center md:hidden ${
                 darkMode ? "dark" : ""
               }`}
@@ -202,7 +202,7 @@ function Home() {
           </div>
           <div className="flex items-center my-2">
             <Link
-              to="/project3"
+              to="/modelfed"
               className={`project-button md:block hidden ${
                 darkMode ? "project-button-dark" : ""
               }`}

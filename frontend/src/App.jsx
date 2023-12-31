@@ -19,9 +19,9 @@ function App() {
           <Routes>
             <Route path="/" element={<Home />}></Route>
             <Route path="/about" element={<About />}></Route>
-            <Route path="/project1" element={<AssetDashboard />}></Route>
-            <Route path="/project2" element={<EconomicDashboard />}></Route>
-            <Route path="/project3" element={<EconomicModel />}></Route>
+            <Route path="/finmarkets" element={<AssetDashboard />}></Route>
+            <Route path="/macrous" element={<EconomicDashboard />}></Route>
+            <Route path="/modelfed" element={<EconomicModel />}></Route>
             <Route path="/data" element={<Data />}></Route>
             <Route path="/model" element={<Model />}></Route>
           </Routes>
