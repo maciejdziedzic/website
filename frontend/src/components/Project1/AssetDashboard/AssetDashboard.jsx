@@ -21,10 +21,10 @@ const AssetDashboard = () => {
   const [dividends, setDividends] = useState({ enabled: false, value: 2.8 });
   const [rent, setRent] = useState({ enabled: false, value: 4 });
   const [isInflationAdjusted, setIsInflationAdjusted] = useState(false);
-  const [yearRange, setYearRange] = useState([1970, 2022]);
+  const [yearRange, setYearRange] = useState([1970, 2023]);
   const [displayedData, setDisplayedData] = useState([]);
   const startYear = 1970;
-  const endYear = 2022;
+  const endYear = 2023;
   const [cummulativePercentages, setCummulativePercentages] = useState({});
   const { darkMode } = useDarkMode();
 
@@ -363,10 +363,10 @@ const AssetDashboard = () => {
                           aria-labelledby="range-slider"
                           getAriaValueText={(value) => `${value}`}
                           min={startYear}
-                          max={2022}
+                          max={2023}
                           marks={[
                             { value: startYear, label: "1970" },
-                            { value: endYear, label: "2022" },
+                            { value: endYear, label: "2023" },
                           ]}
                         />
                       </ThemeProvider>
