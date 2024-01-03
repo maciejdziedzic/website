@@ -188,21 +188,21 @@ export default function Navbar() {
             </Link>
             <br />
             <Link
-              to="/project1"
+              to="/finmarkets"
               className="block burger-button rounded"
               onClick={handleMenuItemClick}
             >
               Asset Returns
             </Link>
             <Link
-              to="/project2"
+              to="/macrous"
               className="block burger-button rounded"
               onClick={handleMenuItemClick}
             >
               Macroeconomic Chart
             </Link>
             <Link
-              to="/project3"
+              to="/modelfed"
               className="block burger-button rounded"
               onClick={handleMenuItemClick}
             >

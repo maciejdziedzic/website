@@ -218,7 +218,7 @@ function Home() {
           </div>
           <div className="flex justify-center items-center">
             <Link
-              to="project3"
+              to="modelfed"
               className={`home-button-mobile flex justify-center items-center md:hidden ${
                 darkMode ? "dark" : ""
               }`}
