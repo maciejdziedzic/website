@@ -73,3 +73,12 @@
   right: 0;
   z-index: 101;
 }
+
+.project-arrow {
+  display: inline-block;
+  transition: transform 0.25s ease-in-out; /* Adjust time as needed */
+}
+
+.rotate-arrow {
+  transform: rotate(180deg);
+}
