@@ -177,7 +177,7 @@ export default function EconomicModel() {
                   </p>
                 ) : (
                   <p>
-                    Could not retrieve CPI from{" "}
+                    ERROR: Could not retrieve CPI from{" "}
                     <a
                       href="https://www.clevelandfed.org/indicators-and-data/inflation-nowcasting"
                       target="_blank"
