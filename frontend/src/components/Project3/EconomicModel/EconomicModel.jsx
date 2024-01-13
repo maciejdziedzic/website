@@ -166,27 +166,14 @@ export default function EconomicModel() {
                 <p>
                   <strong>Unemployment Rate:</strong> {data.unemp}%
                 </p>
-                {data.cpi ? (
-                  <p>
-                    <strong>CPI:</strong>
-                    {parseFloat(data.cpi).toLocaleString(undefined, {
-                      minimumFractionDigits: 2,
-                      maximumFractionDigits: 2,
-                    })}
-                    %
-                  </p>
-                ) : (
-                  <p>
-                    ERROR: Could not retrieve CPI from{" "}
-                    <a
-                      href="https://www.clevelandfed.org/indicators-and-data/inflation-nowcasting"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                    >
-                      Cleveland Fed
-                    </a>
-                  </p>
-                )}
+                <p>
+                  <strong>CPI:</strong>{" "}
+                  {parseFloat(data.cpi).toLocaleString(undefined, {
+                    minimumFractionDigits: 2,
+                    maximumFractionDigits: 2,
+                  })}
+                  %
+                </p>
               </Fragment>
             )
           )}

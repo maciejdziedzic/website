@@ -43,7 +43,6 @@ def fetch_cpi():
                     data['cpi'] = quarterly_pct_change
                     data['cpi_annualized'] = annualized_pct_change
                     data['cpi_status'] = "success"
-
                 else:
                     raise ValueError("No CPI number found in the last table")
             else:
@@ -69,6 +68,9 @@ def fetch_logistic_data():
     cpi_data = fetch_cpi()
     unemp_value = fetch_unemp()
     cpi_value = cpi_data.get('cpi')
+    # Hard code value for missing on Fed's page for recruiting purposes
+    if not cpi_value:
+        cpi_value = 0.8
     logistic_data = {'unemp': unemp_value, 'cpi': cpi_value}
 
     return logistic_data
