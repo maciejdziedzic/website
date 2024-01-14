@@ -30,8 +30,10 @@ export default function About() {
 
           <ul className="list-disc pl-5 mb-4">
             <li>
-              Operating System & Server: Hosted on an Ubuntu server with Nginx
-              handling the web serving operations.
+              Operating System & Server: Hosted on an{" "}
+              <span className={techClassName}>Ubuntu</span> server with{" "}
+              <span className={techClassName}>Nginx</span> handling the web
+              serving operations.
             </li>
             <li>
               Frontend: Interactive user interface designed with{" "}
@@ -42,7 +44,8 @@ export default function About() {
             <li>
               Backend: A <span className={techClassName}>Python</span>-powered
               backend, with a <span className={techClassName}>Flask </span>
-              application served through Gunicorn.
+              application served through{" "}
+              <span className={techClassName}>Gunicorn</span>.
             </li>
           </ul>
           <h3 className="text-lg font-semibold mb-2">Projects</h3>
@@ -62,7 +65,8 @@ export default function About() {
               FED Policy Model: Developed an API that feeds data into a{" "}
               <span className={techClassName}>machine learning model</span>. The
               model, managed with the joblib library, is enhanced with
-              interpretations from the Chat GPT API of the Federal
+              interpretations from the{" "}
+              <span className={techClassName}>OpenAI API</span> of the Federal
               Reserve&apos;s press releases.
             </li>
           </ul>
