@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import useDarkMode from "../../contexts/DarkMode/useDarkMode";
 import "./Navbar.css";
 import { CiMail } from "react-icons/ci";
-import { CiLinkedin } from "react-icons/ci";
+// import { CiLinkedin } from "react-icons/ci";
 import { FiSun } from "react-icons/fi";
 import { GiMoon } from "react-icons/gi";
 import { FaBars } from "react-icons/fa";
@@ -74,7 +74,7 @@ export default function Navbar() {
                     <CiMail className="cursor-pointer icon-hover icon-size" />
                   </a>
                 </li>
-                <li className="w-6">
+                {/* <li className="w-6">
                   <a
                     href="https://www.linkedin.com/in/maciej-d-404000103/"
                     target="_blank"
@@ -82,7 +82,7 @@ export default function Navbar() {
                   >
                     <CiLinkedin className="cursor-pointer icon-hover icon-size" />
                   </a>
-                </li>
+                </li> */}
                 <li className="w-6">
                   <div
                     onClick={toggleDarkMode}
