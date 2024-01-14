@@ -76,9 +76,9 @@
 
 .project-arrow {
   display: inline-block;
-  transition: transform 0.25s ease-in-out; /* Adjust time as needed */
+  transition: transform 0.18s ease-in-out; /* Adjust time as needed */
 }
 
 .rotate-arrow {
-  transform: rotate(180deg);
+  transform: rotate(-180deg);
 }
