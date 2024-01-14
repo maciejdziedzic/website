@@ -7,6 +7,7 @@ import { CiLinkedin } from "react-icons/ci";
 import { FiSun } from "react-icons/fi";
 import { GiMoon } from "react-icons/gi";
 import { FaBars } from "react-icons/fa";
+import { CSSTransition } from "react-transition-group";
 
 export default function Navbar() {
   const { darkMode, toggleDarkMode } = useDarkMode();
@@ -112,8 +113,13 @@ export default function Navbar() {
               darkMode ? "border-t border-gray-600" : "border-t border-gray-200"
             }
           ></div>
-          {ProjectsOpen && (
-            <div>
+          <CSSTransition
+            in={ProjectsOpen}
+            timeout={500}
+            classNames="project-dropdown"
+            unmountOnExit
+          >
+            <div className="project-dropdown">
               <div
                 className={
                   darkMode
@@ -164,7 +170,7 @@ export default function Navbar() {
                 }
               ></div>
             </div>
-          )}
+          </CSSTransition>
         </div>
       </div>
       {/* Mobile Navigation*/}
