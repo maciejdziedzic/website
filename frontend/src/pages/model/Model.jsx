@@ -164,12 +164,12 @@ export default function Model() {
                 the log odds of the target being 1 is 0.1216.
               </p>
               <p>
-                <strong>Unemployment:</strong> A one-unit increase in CPI
-                percentage change decreases the log odds of the target being 1
-                by 0.4176.
+                <strong>Unemployment:</strong> A one-unit increase in
+                unemployment percentage change decreases the log odds of the
+                target being 1 by 0.4176.
               </p>
               <p>
-                <strong>CPI Change:</strong> A one-unit increase in unemployment
+                <strong>CPI Change:</strong> A one-unit increase in CPI
                 increases the log odds of the target being 1 by 0.2677.
               </p>
               <br />
