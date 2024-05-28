@@ -33,7 +33,7 @@ const adjustForDividendsAndRent = (data, dividends, rent) => {
   if (dividends.enabled) {
     modifiedData = modifiedData.map((item) => ({
       ...item,
-      sp500_pct: applyAdjustment(Number(item.sp500_pct), dividends.value),
+      sp500_pct: Number(item.sp500_pct) + Number(item.sp500div),
     }));
   }
   if (rent.enabled) {

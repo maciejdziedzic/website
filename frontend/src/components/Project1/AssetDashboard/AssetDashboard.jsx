@@ -140,15 +140,15 @@ const AssetDashboard = () => {
 
   const toggleDividends = () =>
     setDividends((prev) => ({ ...prev, enabled: !prev.enabled }));
-  const handleDividendsChange = (e) => {
-    let value = parseFloat(e.target.value);
-    if (isNaN(value)) {
-      value = 0;
-    } else {
-      value = Math.min(Math.max(value, 0), 10);
-    }
-    setDividends({ enabled: true, value: value });
-  };
+  // const handleDividendsChange = (e) => {
+  //   let value = parseFloat(e.target.value);
+  //   if (isNaN(value)) {
+  //     value = 0;
+  //   } else {
+  //     value = Math.min(Math.max(value, 0), 10);
+  //   }
+  //   setDividends({ enabled: true, value: value });
+  // };
 
   const toggleRent = () =>
     setRent((prev) => ({ ...prev, enabled: !prev.enabled }));
@@ -241,9 +241,11 @@ const AssetDashboard = () => {
                           disabled={!enabledMetrics.sp500_pct}
                           className=""
                         />
-                        <span className="ml-0.5 text-sm ">Dividends (%)</span>
+                        <span className="ml-0.5 text-sm ">
+                          Dividend Yield Reinvs.
+                        </span>
                       </label>
-                      <input
+                      {/* <input
                         type="number"
                         min="0"
                         max="10"
@@ -261,7 +263,7 @@ const AssetDashboard = () => {
                             ? "bg-gray-300 text-black"
                             : "bg-gray-200 text-black"
                         } `}
-                      />
+                      /> */}
                     </div>
                   </div>
                   <Button
