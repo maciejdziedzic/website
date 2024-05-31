@@ -133,7 +133,10 @@ const EconomicChart = ({ data, activeSeries }) => {
                 case "RES./GDP":
                   unit = "%";
                   break;
-                case "C.P./GDP":
+                case "C. P./GDP":
+                  unit = "%";
+                  break;
+                case "COMM. BANK./GDP":
                   unit = "%";
                   break;
                 case "house_wages":

@@ -36,7 +36,8 @@ series_dict = {
     'houses': ('MSPUS', 'Q'),
     'wages': ('AHETPI', 'M'),
     'cp': ('CP', 'Q'),
-    'fed_debt_to_gdp': ('GFDGDPA188S', 'A')
+    'fed_debt_to_gdp': ('GFDGDPA188S', 'A'),
+    'comm_banks_borrowings': ('H8B3094NCBA', 'D')
 }
 
 # Initialize DataFrames
@@ -83,6 +84,8 @@ data['cpi_pct'] = round(data['cpi'].pct_change(periods=12) * 100, 2)
 data['ppi_pct'] = round(data['ppi'].pct_change(periods=12) * 100, 2)
 data['indpro'] = round(data['indpro'], 2)
 data['oil'] = round(data['oil'], 2)
+data['comm_banks_to_gdp'] = round(
+    100 * (data['comm_banks_borrowings'] / (1000 * data['gdp'])), 2)
 
 data.index.name = 'date'
 data = data.reset_index()

@@ -55,7 +55,7 @@ export const Labels = {
     color: "rgb(3 105 161)",
   },
   cp_to_gdp: {
-    label: "C.P./GDP",
+    label: "C. P./GDP",
     tooltipLabel: "Corporate Profits to GDP Ratio",
     color: "rgb(140, 40, 112)",
   },
@@ -73,5 +73,10 @@ export const Labels = {
     label: "OIL",
     tooltipLabel: "WTI Crude Oil Price",
     color: "rgb(163 163 163)",
+  },
+  comm_banks_to_gdp: {
+    label: "COMM. BANK./GDP",
+    tooltipLabel: "Commercial Banks Borrowings to GDP",
+    color: "rgb(1 163 220)",
   },
 };
