@@ -35,7 +35,8 @@ series_dict = {
     'indpro': ('INDPRO', 'M'),
     'houses': ('MSPUS', 'Q'),
     'wages': ('AHETPI', 'M'),
-    'cp': ('CP', 'Q')
+    'cp': ('CP', 'Q'),
+    'fed_debt_to_gdp': ('GFDGDPA188S', 'A')
 }
 
 # Initialize DataFrames
@@ -71,7 +72,8 @@ data['iyc'] = round(data['bonds10tr'] - data['bonds2tr'], 2)
 data['gdp_pct'] = round(data['gdp'].pct_change(periods=4) * 100, 2)
 data['gdp_pct_ma4'] = round(data['gdp_pct'].rolling(window=4).mean(), 2)
 data['gdpworld_pct'] = round(data['gdpworld'].pct_change(12) * 100, 2)
-data['debt_to_gdp'] = round(100 * data['debt'] / data['gdp']/1000, 2)
+# data['debt_to_gdp'] = round(100 * data['debt'] / data['gdp']/1000, 2)
+data['debt_to_gdp'] = round(data['fed_debt_to_gdp'], 2)
 data['resins_to_gdp'] = round(100 * data['resins'] / data['gdp'], 2)
 data['cbasstogdp'] = round(data['cbasstogdp'], 2)
 data['cp_to_gdp'] = round(100 * data['cp'] / data['gdp'], 2)
