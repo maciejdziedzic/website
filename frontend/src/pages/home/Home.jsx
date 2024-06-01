@@ -24,7 +24,7 @@ function Home() {
   const text1 =
     "Hello, welcome to my website. You can find here projects built on real data:";
   const textAssetsReturns = "Asset Returns";
-  const text2 = " Annual returns over last hundred years";
+  const text2 = " Annual returns over the last hundred years";
   const textMacroCharts = "Macro Chart";
   const text3 = " Macroeconomic indicators for the U.S.";
   const textRecessionModel = "Model";
