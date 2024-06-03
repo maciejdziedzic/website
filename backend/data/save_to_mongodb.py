@@ -91,6 +91,28 @@ base_year = 258.906
 data['adjusted_oil'] = data['oil'] * (base_year / data['cpi'])
 data['adjusted_oil']
 
+csv_file_path = '../../frontend/public/cpi_manual_data.csv'
+df = pd.read_csv(csv_file_path)
+# Filter columns
+month_columns = ['Jan', 'Feb', 'Mar', 'Apr', 'May',
+                 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
+df_filtered = df[['Year'] + month_columns]
+
+# Melt the dataframe
+df_melted = df_filtered.melt(
+    id_vars='Year', var_name='Month', value_name='value')
+
+# Extract month and convert to numeric
+df_melted['Month'] = df_melted['Month'].apply(lambda x: {
+                                              'Jan': 1, 'Feb': 2, 'Mar': 3, 'Apr': 4, 'May': 5, 'Jun': 6, 'Jul': 7, 'Aug': 8, 'Sep': 9, 'Oct': 10, 'Nov': 11, 'Dec': 12}[x])
+df_melted['date'] = pd.to_datetime(df_melted['Year'].astype(
+    str) + '-' + df_melted['Month'].astype(str) + '-01')
+df_melted['date'] = df_melted['date'] + pd.offsets.MonthEnd(0)
+df_melted.set_index('date', inplace=True)
+df_melted.sort_index(inplace=True)
+df_melted['cpi_manual'] = df_melted['value']
+merged_df = data.merge(df_melted['cpi_manual'], on='date', how='left')
+
 data.index.name = 'date'
 data = data.reset_index()
 

@@ -19,10 +19,10 @@ export const Labels = {
     tooltipLabel: "Commercial Banks Borrowings to GDP",
     color: "rgb(1 163 220)",
   },
-  cpi_pct: {
+  cpi_manual: {
     label: "CPI",
     tooltipLabel: "Consumer Price Index Change",
-    color: "rgb(13 200 1430)",
+    color: "rgb(13 200 143)",
   },
   ppi_pct: {
     label: "PPI",
