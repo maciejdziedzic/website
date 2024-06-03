@@ -113,7 +113,7 @@ df_melted['cpi_manual'] = df_melted['value']
 merged_df = data.merge(df_melted['cpi_manual'], on='date', how='left')
 
 merged_df.index.name = 'date'
-data = data.reset_index()
+data = merged_df.reset_index()
 
 data_to_insert = data.to_dict(orient='records')
 collection.insert_many(data_to_insert)
