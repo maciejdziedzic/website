@@ -103,6 +103,9 @@ const EconomicChart = ({ data, activeSeries }) => {
                 case "FED RATE":
                   unit = "%";
                   break;
+                case "BANK LOANS/GDP":
+                  unit = "%";
+                  break;
                 case "IYC":
                   unit = "%";
                   break;
