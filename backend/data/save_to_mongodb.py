@@ -71,7 +71,7 @@ data['wages_month'] = round(data['wages'] * 168, 2)
 data['house_wages'] = round(data['houses']/data['wages_month'], 2)
 data['iyc'] = round(data['bonds10tr'] - data['bonds2tr'], 2)
 data['gdp_pct'] = round(data['gdp'].pct_change(periods=4) * 100, 2)
-data['gdp_pct_ma4'] = round(data['gdp_pct'].rolling(window=4).mean(), 2)
+data['gdp_pct_ma4'] = round(data['gdp_pct'].rolling(window=12).mean(), 2)
 data['gdpworld_pct'] = round(data['gdpworld'].pct_change(12) * 100, 2)
 # data['debt_to_gdp'] = round(100 * data['debt'] / data['gdp']/1000, 2)
 data['debt_to_gdp'] = round(data['fed_debt_to_gdp'], 2)
@@ -80,7 +80,7 @@ data['cbasstogdp'] = round(data['cbasstogdp'], 2)
 data['cp_to_gdp'] = round(100 * data['cp'] / data['gdp'], 2)
 data['m0_to_gdp'] = round(data['m0'] / data['gdp']/1000 * 100, 2)
 data['m3_to_gdp'] = round((data['m3']/1000000) / data['gdp']/1000 * 100, 2)
-data['cpi_pct'] = round(data['cpi'].pct_change(periods=12) * 100, 2)
+# data['cpi_pct'] = round(data['cpi'].pct_change(periods=12) * 100, 2)
 data['ppi_pct'] = round(data['ppi'].pct_change(periods=12) * 100, 2)
 data['indpro'] = round(data['indpro'], 2)
 data['oil'] = round(data['oil'], 2)
@@ -89,7 +89,6 @@ data['comm_banks_to_gdp'] = round(
 
 base_year = 258.906
 data['adjusted_oil'] = data['oil'] * (base_year / data['cpi'])
-data['adjusted_oil']
 
 csv_file_path = '../../frontend/public/cpi_manual_data.csv'
 df = pd.read_csv(csv_file_path)
@@ -113,7 +112,7 @@ df_melted.sort_index(inplace=True)
 df_melted['cpi_manual'] = df_melted['value']
 merged_df = data.merge(df_melted['cpi_manual'], on='date', how='left')
 
-data.index.name = 'date'
+merged_df.index.name = 'date'
 data = data.reset_index()
 
 data_to_insert = data.to_dict(orient='records')
