@@ -72,8 +72,8 @@ export const Labels = {
     color: "rgb(0, 190, 160)",
   },
   adjusted_oil: {
-    label: "ADJ. OIL (2020 $)",
-    tooltipLabel: "WTI Crude Oil Price",
+    label: "OIL",
+    tooltipLabel: "WTI Crude Oil Price in 2020 $",
     color: "rgb(163 163 163)",
   },
   gdpworld_pct: {

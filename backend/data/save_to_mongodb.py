@@ -116,7 +116,7 @@ data['comm_banks_to_gdp'] = round(
     100 * (data['comm_banks_borrowings'] / (data['gdp'])), 2)
 # 01.2020
 base_year = 258.906
-data['adjusted_oil'] = data['oil'] * (base_year / data['cpi'])
+data['adjusted_oil'] = round(data['oil'] * (base_year / data['cpi']), 2)
 
 
 data_to_insert = data.to_dict(orient='records')
